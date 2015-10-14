@@ -19,4 +19,4 @@ documentation.
 This package is freely licensed using the MIT License, see file
 LICENSE for details. I also release the catmapping file to the
  public domain (in case it's even copyrightable) using
-(Creative Commons Zero)[https://creativecommons.org/publicdomain/zero/1.0/].
+(Creative Commons Zero)[https://creativecommons.org/publicdomain/zero/1.0/).
