@@ -3,11 +3,11 @@ package mwlib
 import (
 	"bufio"
 	"io"
-        "net/http"
+	"net/http"
 	"os"
 )
 
-func ReadCookies() ([]*http.Cookie) {
+func ReadCookies() []*http.Cookie {
 	cookieFile := GetWorkingDir() + "/cookies"
 	file, err := os.Open(cookieFile)
 	if err != nil {
@@ -16,20 +16,20 @@ func ReadCookies() ([]*http.Cookie) {
 	defer file.Close()
 	reader := bufio.NewReader(file)
 	cookies := []*http.Cookie{}
-	for i := 0;; i++ {
+	for i := 0; ; i++ {
 		name, err := reader.ReadString(' ')
-		if (err == io.EOF) {
-			return cookies;
+		if err == io.EOF {
+			return cookies
 		} else if err != nil {
 			panic(err)
 		}
-		name = name[:len(name) - 1]
+		name = name[:len(name)-1]
 		value, err := reader.ReadString('\n')
 		if err != nil {
 			panic(err)
 		}
-		value = value[:len(value) - 1]
-		cookies = append(cookies, &http.Cookie{Name:name, Value:value})
+		value = value[:len(value)-1]
+		cookies = append(cookies, &http.Cookie{Name: name, Value: value})
 	}
 	return cookies
 }

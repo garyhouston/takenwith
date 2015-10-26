@@ -1,22 +1,22 @@
 package exifcamera
 
-import(
+import (
+	mwclient "cgt.name/pkg/go-mwclient"
+	"cgt.name/pkg/go-mwclient/params"
 	"fmt"
 	"github.com/antonholmquist/jason"
-	"cgt.name/pkg/go-mwclient/params"
-	mwclient "cgt.name/pkg/go-mwclient"
 	"github.com/garyhouston/takenwith/mwlib"
 	"strings"
 )
 
-func requestExif(pages []string, client *mwclient.Client) (*jason.Object) {
-	params := params.Values {
-		"action": "query",
-		"titles": mwlib.MakeTitleString(pages),
-		"prop": "imageinfo",
-		"iiprop": "metadata",
-		"redirects" : "",  // follow redirects
-		"continue": "",
+func requestExif(pages []string, client *mwclient.Client) *jason.Object {
+	params := params.Values{
+		"action":    "query",
+		"titles":    mwlib.MakeTitleString(pages),
+		"prop":      "imageinfo",
+		"iiprop":    "metadata",
+		"redirects": "", // follow redirects
+		"continue":  "",
 	}
 	json, err := client.Get(params)
 	if err != nil {
@@ -58,11 +58,11 @@ func ExtractCamera(imageinfo *jason.Object) (string, string) {
 
 type FileCamera struct {
 	Title string
-	Make string
+	Make  string
 	Model string
 }
 
-// Return the camera manufacturer and model from Exif. Also follow any 
+// Return the camera manufacturer and model from Exif. Also follow any
 // redirects and return the final page name.
 func GetCameraInfo(pageReq []string, client *mwclient.Client) []FileCamera {
 	exif := requestExif(pageReq, client)
@@ -93,7 +93,7 @@ func GetCameraInfo(pageReq []string, client *mwclient.Client) []FileCamera {
 		if err == nil {
 			make, model = ExtractCamera(imageinfo[0])
 		}
-		pageArray = pageArray[0:idx + 1]
+		pageArray = pageArray[0 : idx+1]
 		pageArray[idx] = FileCamera{title, make, model}
 		idx++
 	}

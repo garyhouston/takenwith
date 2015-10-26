@@ -4,8 +4,8 @@ import (
 	"bufio"
 	"encoding/csv"
 	"fmt"
-	"io"
 	"github.com/garyhouston/takenwith/mwlib"
+	"io"
 	"os"
 	"strings"
 )
@@ -32,7 +32,7 @@ func convertCategory(field string) string {
 }
 
 // fill map with relations of makemodel -> Commons category
-func fillCategoryMap() (map[string]string) {
+func fillCategoryMap() map[string]string {
 	file, err := os.Open(mwlib.GetWorkingDir() + "/" + modelFile)
 	if err != nil {
 		panic(err)
@@ -48,13 +48,13 @@ func fillCategoryMap() (map[string]string) {
 		if err != nil {
 			panic(err)
 		}
-		categories[record[0] + record[1]] = convertCategory(record[2])
+		categories[record[0]+record[1]] = convertCategory(record[2])
 	}
 	return categories
 }
 
 // Fill the complete set of relevant Commons Categories.
-func fillCategories(categoryMap map[string]string) (map[string]bool) {
+func fillCategories(categoryMap map[string]string) map[string]bool {
 	var categories = make(map[string]bool)
 	for _, v := range categoryMap {
 		categories[v] = true
@@ -70,7 +70,7 @@ func fillCategories(categoryMap map[string]string) (map[string]bool) {
 		if err := scanner.Err(); err != nil {
 			panic(err)
 		}
-		categories["Category:" + scanner.Text()] = true
+		categories["Category:"+scanner.Text()] = true
 	}
 	return categories
 }

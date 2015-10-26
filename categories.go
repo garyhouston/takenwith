@@ -1,18 +1,18 @@
 package main
 
 import (
+	mwclient "cgt.name/pkg/go-mwclient"
+	"cgt.name/pkg/go-mwclient/params"
 	"fmt"
 	"github.com/antonholmquist/jason"
-	mwclient "cgt.name/pkg/go-mwclient"
 	"github.com/garyhouston/takenwith/mwlib"
-	"cgt.name/pkg/go-mwclient/params"
 )
 
-func requestCategories(page string, client *mwclient.Client) (*jason.Object) {
-	params := params.Values {
-		"action": "query",
-		"titles": page,
-		"prop" : "categories",
+func requestCategories(page string, client *mwclient.Client) *jason.Object {
+	params := params.Values{
+		"action":  "query",
+		"titles":  page,
+		"prop":    "categories",
 		"cllimit": "max",
 	}
 	json, err := client.Get(params)
@@ -22,7 +22,7 @@ func requestCategories(page string, client *mwclient.Client) (*jason.Object) {
 	return json
 }
 
-func getPageCategoriesOld(page string, client *mwclient.Client) ([]string) {
+func getPageCategoriesOld(page string, client *mwclient.Client) []string {
 	json := requestCategories(page, client)
 	pageObj := mwlib.GetJsonPage(json)
 	if pageObj == nil {
@@ -49,12 +49,12 @@ func getPageCategoriesOld(page string, client *mwclient.Client) ([]string) {
 // of categories which the page is a member of.
 // If the page doesn't exist, no entry is added to the map.
 // If the page has no categories, it will map to nil.
-func getPageCategories(pages []string, client *mwclient.Client) (map[string][]string) {
-	params := params.Values {
-		"action": "query",
-		"titles": mwlib.MakeTitleString(pages),
-		"prop" : "categories",
-		"cllimit": "max",
+func getPageCategories(pages []string, client *mwclient.Client) map[string][]string {
+	params := params.Values{
+		"action":   "query",
+		"titles":   mwlib.MakeTitleString(pages),
+		"prop":     "categories",
+		"cllimit":  "max",
 		"continue": "",
 	}
 	json, err := client.Post(params) // Get may fail on long queries.

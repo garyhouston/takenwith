@@ -1,11 +1,11 @@
 package canons100
 
 import (
-	"github.com/garyhouston/takenwith/exifcamera"
-	"fmt"
-	"github.com/antonholmquist/jason"
 	mwclient "cgt.name/pkg/go-mwclient"
 	"cgt.name/pkg/go-mwclient/params"
+	"fmt"
+	"github.com/antonholmquist/jason"
+	"github.com/garyhouston/takenwith/exifcamera"
 	"strings"
 )
 
@@ -14,17 +14,17 @@ import (
 // "Category:Taken with unidentified Canon PowerShot S110".
 
 type CatInfo struct {
-	ExifModel string
-	UnidCategory string
+	ExifModel         string
+	UnidCategory      string
 	PowershotCategory string
-	IxusCategory string
+	IxusCategory      string
 }
 
 func moveFile(file string, powershot bool, cat CatInfo, client *mwclient.Client) {
 	var target string
 	var reason string
 	if powershot {
-		target  = cat.PowershotCategory
+		target = cat.PowershotCategory
 		reason = "since Exif contains ISO speed rating"
 	} else {
 		target = cat.IxusCategory
@@ -43,13 +43,13 @@ func moveFile(file string, powershot bool, cat CatInfo, client *mwclient.Client)
 			panic(fmt.Sprintf("%v %v", file, err))
 		}
 		newText := strings.Replace(text, cat.UnidCategory, target, -1)
-		editcfg := map[string]string {
-			"action": "edit",
-			"title": file,
-			"text": newText,
-			"summary": "moved from [[" + cat.UnidCategory + "]] to [[" + target + "]] " + reason,
-			"minor": "",
-			"bot": "",
+		editcfg := map[string]string{
+			"action":        "edit",
+			"title":         file,
+			"text":          newText,
+			"summary":       "moved from [[" + cat.UnidCategory + "]] to [[" + target + "]] " + reason,
+			"minor":         "",
+			"bot":           "",
 			"basetimestamp": timestamp,
 		}
 		saveError = client.Edit(editcfg)
@@ -100,9 +100,9 @@ func ProcessCategory(cat CatInfo, client *mwclient.Client) {
 		"gcmtitle":  cat.UnidCategory,
 		"gcmtype":   "file",
 		"gcmsort":   "sortkey",
-		"gcmlimit": "100", // Maximum files per batch, API allows 5k with bot flag.
-		"prop": "imageinfo",
-		"iiprop": "metadata",
+		"gcmlimit":  "100", // Maximum files per batch, API allows 5k with bot flag.
+		"prop":      "imageinfo",
+		"iiprop":    "metadata",
 	}
 	query := client.NewQuery(params)
 	for query.Next() {

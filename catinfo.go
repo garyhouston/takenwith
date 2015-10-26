@@ -2,8 +2,8 @@ package main
 
 import (
 	mwclient "cgt.name/pkg/go-mwclient"
-	"github.com/garyhouston/takenwith/mwlib"
 	"cgt.name/pkg/go-mwclient/params"
+	"github.com/garyhouston/takenwith/mwlib"
 )
 
 // Examine the specified categories in the Wiki. For each one that actually
@@ -12,10 +12,10 @@ import (
 // and will have fewer entries than the input array if some categories
 // were duplicated or didn't exist.
 func catNumFiles(categories []string, client *mwclient.Client) ([]string, []int32) {
-	params := params.Values {
+	params := params.Values{
 		"action": "query",
 		"titles": mwlib.MakeTitleString(categories),
-		"prop" : "categoryinfo",
+		"prop":   "categoryinfo",
 	}
 	json, err := client.Get(params)
 	if err != nil {
@@ -35,8 +35,8 @@ func catNumFiles(categories []string, client *mwclient.Client) ([]string, []int3
 			panic(err)
 		}
 		if pageId[0] != '-' {
-			resultCats = resultCats[0 : idx + 1]
-			resultCounts = resultCounts[0 : idx + 1]
+			resultCats = resultCats[0 : idx+1]
+			resultCounts = resultCounts[0 : idx+1]
 			resultCats[idx], err = pageObj.GetString("title")
 			if err != nil {
 				panic(err)

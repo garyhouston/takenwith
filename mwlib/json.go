@@ -6,7 +6,7 @@ import (
 
 // Return page data from JSON, or nil if page is "-1", i.e., not found.
 // Assumes only a single page was requested.
-func GetJsonPage(json *jason.Object)(*jason.Object) {
+func GetJsonPage(json *jason.Object) *jason.Object {
 	pages, err := json.GetObject("query", "pages")
 	if err != nil {
 		panic(err)
@@ -26,7 +26,7 @@ func GetJsonPage(json *jason.Object)(*jason.Object) {
 }
 
 // Write an array of titles into a piped request string.
-func MakeTitleString(titles[] string) string {
+func MakeTitleString(titles []string) string {
 	var result string = ""
 	for i := range titles {
 		if i > 0 {

@@ -74,5 +74,5 @@ func setCatCounts(categories []string, client *mwclient.Client, catCounts map[st
 
 func incCatCount(category string, catCounts map[string]int32) {
 	catCounts[category] = catCounts[category] + 1
-        writeCatCounts(catCounts)
+	writeCatCounts(catCounts)
 }
