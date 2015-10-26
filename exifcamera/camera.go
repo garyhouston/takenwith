@@ -44,13 +44,13 @@ func ExtractCamera(imageinfo *jason.Object) (string, string) {
 			if err != nil {
 				panic(err)
 			}
-			make = strings.Trim(value, " ")
+			make = strings.Trim(value, " \n")
 		} else if name == "Model" {
 			value, err := metadata[i].GetString("value")
 			if err != nil {
 				panic(err)
 			}
-			model = strings.Trim(value, " ")
+			model = strings.Trim(value, " \n")
 		}
 	}
 	return make, model
