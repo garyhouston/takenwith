@@ -20,7 +20,7 @@ type CatInfo struct {
 	IxusCategory      string
 }
 
-func moveFile(file string, powershot bool, cat CatInfo, client *mwclient.Client) {
+func moveFile(file string, powershot bool, cat CatInfo, client *mwclient.Client, verbose bool) {
 	var target string
 	var reason string
 	if powershot {
@@ -30,7 +30,9 @@ func moveFile(file string, powershot bool, cat CatInfo, client *mwclient.Client)
 		target = cat.IxusCategory
 		reason = "since Exif lacks ISO speed rating"
 	}
-	// fmt.Println("moving", file, "from", cat.UnidCategory, "to", target)
+	if verbose {
+		fmt.Println("moving", file, "from", cat.UnidCategory, "to", target)
+	}
 
 	// There's a small change that saving a page may fail due to an
 	// edit conflict. It also occasionally fails with
@@ -59,7 +61,7 @@ func moveFile(file string, powershot bool, cat CatInfo, client *mwclient.Client)
 	}
 }
 
-func processFile(pageObj *jason.Object, cat CatInfo, client *mwclient.Client) {
+func processFile(pageObj *jason.Object, cat CatInfo, client *mwclient.Client, verbose bool) {
 	title, err := pageObj.GetString("title")
 	if err != nil {
 		panic(err)
@@ -87,14 +89,14 @@ func processFile(pageObj *jason.Object, cat CatInfo, client *mwclient.Client) {
 			}
 		}
 		if found {
-			moveFile(title, true, cat, client)
+			moveFile(title, true, cat, client, verbose)
 		} else {
-			moveFile(title, false, cat, client)
+			moveFile(title, false, cat, client, verbose)
 		}
 	}
 }
 
-func ProcessCategory(cat CatInfo, client *mwclient.Client) {
+func ProcessCategory(cat CatInfo, client *mwclient.Client, verbose bool) {
 	params := params.Values{
 		"generator": "categorymembers",
 		"gcmtitle":  cat.UnidCategory,
@@ -119,7 +121,7 @@ func ProcessCategory(cat CatInfo, client *mwclient.Client) {
 				if err != nil {
 					panic(err)
 				}
-				processFile(pageObj, cat, client)
+				processFile(pageObj, cat, client, verbose)
 			}
 		}
 	}

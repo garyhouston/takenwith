@@ -442,9 +442,9 @@ func main() {
 		if numArgs != 1 {
 			usage(os.Args[0])
 		}
-		canons100.ProcessCategory(canons100.CatInfo{"Canon PowerShot S100", "Category:Taken with unidentified Canon PowerShot S100", "Category:Taken with Canon PowerShot S100", "Category:Taken with Canon Digital IXUS"}, client)
+		canons100.ProcessCategory(canons100.CatInfo{"Canon PowerShot S100", "Category:Taken with unidentified Canon PowerShot S100", "Category:Taken with Canon PowerShot S100", "Category:Taken with Canon Digital IXUS"}, client, flags.verbose)
 
-		canons100.ProcessCategory(canons100.CatInfo{"Canon PowerShot S110", "Category:Taken with unidentified Canon PowerShot S110", "Category:Taken with Canon PowerShot S110", "Category:Taken with Canon Digital IXUS v"}, client)
+		canons100.ProcessCategory(canons100.CatInfo{"Canon PowerShot S110", "Category:Taken with unidentified Canon PowerShot S110", "Category:Taken with Canon PowerShot S110", "Category:Taken with Canon Digital IXUS v"}, client, flags.verbose)
 	} else {
 		usage(os.Args[0])
 	}
