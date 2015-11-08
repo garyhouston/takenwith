@@ -35,16 +35,14 @@ func findCamera(metadata []*jason.Object) (string, string) {
 		}
 		if name == "Make" {
 			value, err := metadata[i].GetString("value")
-			if err != nil {
-				panic(err)
+			if err == nil {
+				make = strings.Trim(value, " \n")
 			}
-			make = strings.Trim(value, " \n")
 		} else if name == "Model" {
 			value, err := metadata[i].GetString("value")
-			if err != nil {
-				panic(err)
+			if err == nil {
+				model = strings.Trim(value, " \n")
 			}
-			model = strings.Trim(value, " \n")
 		} else if name == "metadata" {
 			// MediaWiki can return strange embedded metadata
 			// arrays for PNG files.
