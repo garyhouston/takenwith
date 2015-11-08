@@ -25,13 +25,7 @@ func requestExif(pages []string, client *mwclient.Client) *jason.Object {
 	return json
 }
 
-// Return device make/model from json imageinfo object.
-func ExtractCamera(imageinfo *jason.Object) (string, string) {
-	metadata, err := imageinfo.GetObjectArray("metadata")
-	if err != nil {
-		// metadata is null in some cases
-		return "", ""
-	}
+func findCamera(metadata []*jason.Object) (string, string) {
 	make := ""
 	model := ""
 	for i := 0; i < len(metadata); i++ {
@@ -51,9 +45,34 @@ func ExtractCamera(imageinfo *jason.Object) (string, string) {
 				panic(err)
 			}
 			model = strings.Trim(value, " \n")
+		} else if name == "metadata" {
+			// MediaWiki can return strange embedded metadata
+			// arrays for PNG files.
+			obj, err := metadata[i].GetObjectArray("value")
+			if err != nil {
+				panic(err)
+			}
+			tmake, tmodel := findCamera(obj)
+			if tmake != "" {
+				make = tmake
+			}
+			if tmodel != "" {
+				model = tmodel
+			}
 		}
 	}
 	return make, model
+}
+
+// Return device make/model from json imageinfo object.
+func ExtractCamera(imageinfo *jason.Object) (string, string) {
+	metadata, err := imageinfo.GetObjectArray("metadata")
+	if err != nil {
+		// metadata is null in some cases
+		return "", ""
+	} else {
+		return findCamera(metadata)
+	}
 }
 
 type FileCamera struct {
