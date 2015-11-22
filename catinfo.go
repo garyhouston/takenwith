@@ -17,7 +17,7 @@ func catNumFiles(categories []string, client *mwclient.Client) ([]string, []int3
 		"titles": mwlib.MakeTitleString(categories),
 		"prop":   "categoryinfo",
 	}
-	json, err := client.Get(params)
+	json, err := client.Post(params) // Get may fail on long queries.
 	if err != nil {
 		panic(err)
 	}
