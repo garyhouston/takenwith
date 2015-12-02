@@ -1111,6 +1111,7 @@ Jenimage Europe GmbH,Jenoptik JD 6.0 z3 MPEG4,Jenoptik JD 6.0 z3 MPEG4
 Concord Camera GmbH,JD 6.0z3 EasyShot,Jenoptik JD 6.0 z3 EasyShot
 Concord Camera GmbH,JD 8.0,Jenoptik JD 8.0
 JENIMAGE,JD C 3.1 z3,Jenoptik JD C 3.1 z3
+condor,PGN511,Condor Allure A9 Plus
 SPA_CONDOR_ELECTRONICS,PGN-504,Condor C5
 Condor,C-6,Condor C6
 CONTAX,G2,Contax G2
@@ -1229,6 +1230,7 @@ FLIR Systems AB,ThermaCAM EX320,FLIR ThermaCAM EX320
 Fly,Fly E300,Fly E300
 Fly,IQ431,Fly IQ431 Glory
 Fly,Fly IQ440 camera,Fly IQ440 Energy
+Fly,IQ443,Fly IQ443 Trend
 Fly,Fly IQ446 camera,Fly IQ446 Magic
 Fly,IQ4403,Fly IQ4403 Energy 3
 Fly,Fly IQ4516 Octa,Fly IQ4516 Octa
@@ -1723,6 +1725,7 @@ Hasselblad,Hasselblad H5D-40,Hasselblad H5D-40
 Hasselblad,Hasselblad H5D-50,Hasselblad H5D-50
 Hasselblad,Hasselblad H5D-50c,Hasselblad H5D-50c
 Hasselblad,Hasselblad H5D-60,Hasselblad H5D-60
+Hasselblad,Hasselblad H5D-200MS,Hasselblad H5D-200MS
 Hasselblad/Imacon,Ixpress 96 - Hasselblad CW,Hasselblad Imacon Ixpress 96
 Hasselblad/Imacon,Ixpress 96 - Mamiya RZ67,Hasselblad Imacon Ixpress 96
 Hasselblad,Ixpress 96 - DigiFlex II,Hasselblad Imacon Ixpress 96
@@ -2226,6 +2229,7 @@ HUAWEI,U8350,Huawei Boulder U8350
 HUAWEI,C8600,Huawei C8600
 HUAWEI,C8650,Huawei C8650
 HUAWEI,HUAWEI C8816,Huawei C8816
+HUAWEI,HUAWEI C8817L,Huawei C8817L
 HUAWEI,CM980,Huawei CM980
 HUAWEI,CM990,Huawei CM990
 HUAWEI,G630-U10,Huawei G630
@@ -2329,6 +2333,7 @@ JVC,GZ-MG335,JVC GZ-MG335
 JVC,GZ-MG505,JVC Everio GZ-MG505
 JVC,GZ-MG555,JVC Everio GZ-MG555
 JVC,GZ-MG610,JVC Everio GZ-MG610
+JVC,GZ-MS130,JVC Everio GZ-MS130
 JVC,GZ-MS215,JVC Everio GZ-MS215
 Karboon,Karbonn A9*,Karbonn A9 Star
 KAZAM,KAZAM THUNDER2 45L,Kazam Thunder2 4.5L
@@ -2812,6 +2817,7 @@ LG Electronics,LG-D722p,LG G3 S
 LG Electronics,LG-D724,LG G3 S
 lge,LG-D724,LG G3 S
 LG Electronics,LG-D690,LG G3 Stylus
+LG Electronics,LG-D690n,LG G3 Stylus
 LG Electronics,LG-D693,LG G3 Stylus
 LG Electronics,LG-F500K,LG G4
 LG Electronics,LG-F500L,LG G4
@@ -3084,6 +3090,7 @@ Microsoft,RM-1092,Microsoft Lumia 535
 Microsoft,Lumia 640 LTE,Microsoft Lumia 640
 Microsoft,Lumia 640 LTE Dual SIM,Microsoft Lumia 640
 Microsoft,Lumia 640 Dual SIM,Microsoft Lumia 640
+Microsoft,RM-1067,Microsoft Lumia 640 XL
 Microtek,Take-it,Unidentified Microtek Take-it
 MICROTEK,ScanMaker i800,Category:Scanned with Microtek ScanMaker i800
 MICROTEK,ScanMaker i900,Category:Scanned with Microtek ScanMaker i900
@@ -3163,6 +3170,7 @@ Konica,Konica Digital Camera KD-510Z,Konica Revio KD-510Z
 KONICA,KD-3300,Konica Revio KD-3300
 Digital Camera,KD4000 Digital Camera,Konica Revio KD-4000
 MINOX,DC 1055,Minox DC 1055
+Cynus,Cynus T6,Mobistel Cynus T6
 Motorola,1.3 Megapixel,Motorola 1.3 Megapixel
 Motorol,A780,Motorola A780
 motorola,MB865,Motorola ATRIX 2
@@ -3885,6 +3893,7 @@ DoCoMo,P902iS,NTT DoCoMo Panasonic P902iS
 DoCoMo,P904i,NTT DoCoMo Panasonic P904i
 DoCoMo,P905i,NTT DoCoMo P905i
 DoCoMo,P906i,NTT DoCoMo Panasonic P906i
+DoCoMo,SH01A,NTT DoCoMo Sharp SH01A
 DoCoMo,SH01B,NTT DoCoMo SH01B
 SHARP,SH-01E,NTT DoCoMo Sharp Aquos SH01E
 DoCoMo,SH03B,NTT DoCoMo SH03B
@@ -4259,6 +4268,7 @@ PANASONIC,dL1,Panasonic Eluga DL1
 PANASONIC,P-04D,Panasonic Eluga P-04D
 PANASONIC,P-07D,Panasonic Eluga Power P-07D
 Panasonic,DMC-3D1,Panasonic Lumix DMC-3D1
+Panasonic,DMC-CM1,Panasonic Lumix DMC-CM1
 Panasonic,DMC-F1,Panasonic Lumix DMC-F1
 Panasonic,DMC-F2,Panasonic Lumix DMC-F2
 Panasonic,DMC-F3,Panasonic Lumix DMC-F3
@@ -4400,7 +4410,9 @@ Panasonic,DMC-GF5,Panasonic Lumix DMC-GF5
 Panasonic,DMC-GF6,Panasonic Lumix DMC-GF6
 Panasonic,DMC-GH1,Panasonic Lumix DMC-GH1
 Panasonic,DMC-GH2,Panasonic Lumix DMC-GH2
+http://politik.in2pic.com,DMC-GH2,Panasonic Lumix DMC-GH2
 Panasonic,DMC-GH3,Panasonic Lumix DMC-GH3
+http://politik.in2pic.com,DMC-GH3,Panasonic Lumix DMC-GH3
 Panasonic,DMC-GH4,Panasonic Lumix DMC-GH4
 Panasonic,DMC-GM1,Panasonic Lumix DMC-GM1
 Panasonic,DMC-GM5,Panasonic Lumix DMC-GM5
@@ -4453,6 +4465,7 @@ Panasonic,DMC-S3,Panasonic Lumix DMC-S3
 Panasonic,DMC-SZ1,Panasonic Lumix DMC-SZ1
 Panasonic,DMC-SZ02,Panasonic Lumix DMC-SZ1
 Panasonic,DMC-SZ3,Panasonic Lumix DMC-SZ3
+Panasonic,DMC-SZ5,Panasonic Lumix DMC-SZ5
 Panasonic,DMC-SZ7,Panasonic Lumix DMC-SZ7
 Panasonic,DMC-SZ8,Panasonic Lumix DMC-SZ8
 Panasonic,DMC-SZ9,Panasonic Lumix DMC-SZ9
@@ -4907,7 +4920,10 @@ ProServ GmbH,ScannTECH 601i,Category:Scanned with ProServ ScannTECH 601i
 ProServ GmbH,ScannTECH 601i-fb/ms,Category:Scanned with ProServ ScannTECH 601i
 QMobile,QMobile A7 camera,QMobile Noir A7
 QMobile,QMobile A8 camera,QMobile Noir A8
+QMobile,A10,QMobile Noir A10
+QMobile,QMobile A10 Noir,QMobile Noir A10
 QMobile,QMobile A20 camera,QMobile Noir A20
+QMobile,M90,QMobile Noir M90
 QMobile,QMobile X25,QMobile Noir X25
 QMobile,X300,QMobile Noir X300
 QMobile,Z8,QMobile Noir Z8
@@ -5193,6 +5209,7 @@ SAMSUNG,GT-B3410,Samsung Corby Plus GT-B3410
 SAMSUNG,S5200,Samsung GT-S5200
 SAMSUNG,SCH-U820,Samsung Reality SCH-U820
 SAMSUNG,GT-C3312R,Samsung Rex 60
+SAMSUNG,GT-S3802W,Samsung Rex 70
 Samsung,GT-S5230,Samsung Star
 Samsung,S5230,Samsung Star
 Samsung,GT-S5230C,Samsung Star
@@ -5294,6 +5311,7 @@ Samsung,GT-B5330,Samsung Galaxy Chat GT-B5330
 Samsung,GT-B5330L,Samsung Galaxy Chat GT-B5330
 SAMSUNG,GT-I8260,Samsung Galaxy Core
 SAMSUNG,GT-I8262,Samsung Galaxy Core
+SAMSUNG,GT-I8262B,Samsung Galaxy Core
 SAMSUNG,SM-G386F,Samsung Galaxy Core
 SAMSUNG,SM-G386W,Samsung Galaxy Core
 samsung,SM-G355H,Samsung Galaxy Core 2
@@ -5440,6 +5458,7 @@ Samsung,GT-S5312,Samsung Galaxy Pocket Neo
 SAMSUNG,SCH-I559,Samsung Galaxy Pop SCH-I559
 SAMSUNG,SHV-E220S,Samsung Galaxy Pop SHV-E220
 Samsung,GT-I9260,Samsung Galaxy Premier
+SAMSUNG,SPH-M840,Samsung Galaxy Prevail 2
 SAMSUNG,SPH-M830,Samsung Galaxy Rush
 SAMSUNG,GT-I9000B,Samsung Galaxy S
 SAMSUNG,GT-I9000M,Samsung Galaxy S
@@ -5535,6 +5554,7 @@ samsung,GT-I9515,Samsung Galaxy S4 Value Edition
 SAMSUNG,GT-I9515,Samsung Galaxy S4 Value Edition
 SAMSUNG,GT-I9515L,Samsung Galaxy S4 Value Edition
 SAMSUNG,SM-C101,Samsung Galaxy S4 Zoom
+SAMSUNG,SM-C105,Samsung Galaxy S4 Zoom
 SAMSUNG,SAMSUNG-SM-C105A,Samsung Galaxy S4 Zoom
 SAMSUNG,SAMSUNG-SM-G900A,Samsung Galaxy S5
 samsung,SAMSUNG-SM-G900A,Samsung Galaxy S5
@@ -6008,6 +6028,7 @@ SANMENG,WA350,Sanmeng WA350
 "SANYO Electric Co.,Ltd.",X1200,Sanyo VPC-X1200
 "SANYO Electric Co.,Ltd.",X1400,Sanyo VPC-X1400
 "SANYO Electric Co.,Ltd.",X1420,Sanyo VPC-X1420
+Camera,VPC-X1442,Sanyo VPC-X1442
 SANYO,WX310SA,Sanyo WX310SA
 "SANYO Electric Co.,Ltd",J1,Sanyo Xacti DSC-J1
 "SANYO Electric Co.,Ltd",J2,Sanyo Xacti DSC-J2
@@ -6091,6 +6112,7 @@ SHARP,IS03,Sharp IS03
 SHARP,IS12SH,Sharp Aquos IS12SH
 SHARP,J-SH53,Sharp J-SH53
 SHARP,SH-01F,Sharp Aquos Zeta SH-01F
+SHARP,SH-01G,Sharp Aquos Zeta SH-01G
 SHARP,SH-02F,Sharp Aquos SH-02F
 SHARP,SH-05E,Sharp SH-05E
 SHARP,SH-06E,Sharp Aquos Zeta SH-06E
@@ -6876,6 +6898,7 @@ Symphony,W68Q,Symphony Xplorer W68Q
 Symphony,Symphony W70,Symphony Xplorer W70
 Symphony,Xplorer W71,Symphony Xplorer W71
 Symphony,W72,Symphony Xplorer W72
+Symphony,W92,Symphony Xplorer W92
 Symphony,W128,Symphony Xplorer W128
 XXXXX Corporation,CoolPhoto 1.0,TCL CoolPhoto 1.0
 TCL Corporation,CoolPhoto 1.0,TCL CoolPhoto 1.0
@@ -6929,6 +6952,7 @@ TOSHIBA,MEHV10,Toshiba Gigashot MEHV10
 TOSHIBA,T-01B,Toshiba K01
 TOSHIBA,T-01C,Fujitsu Toshiba T-01C
 TOSHIBA,PDR2300,Toshiba PDR-2300
+TOSHIBA,PDRM5,Toshiba PDR-M5
 Toshiba,PDR-M61,Toshiba PDR-M61
 Toshiba,PDR-M65,Toshiba PDR-M65
 TOSHIBA,PDRM70,Toshiba PDR-M70
@@ -6944,6 +6968,7 @@ Trust,Gemini11,Trust Gemini 11
 Trust,550 POWER,Trust Powercam 550
 TRUST,760 POWERC@M,Trust Powercam CCD 760
 Uniden Corporation,UDC-5M,Uniden UDC-5M
+VIDAR,Select 600e Base,Category:Scanned with Vidar Select 600e Base
 "SQ Tech. Co.,Ltd",SQ908 MEGA-Cam,unidentified VistaQuest
 VIVITAR,DVR310,Vivitar DVR310
 Vivitar Corporation,ViviCam 3705,Vivitar ViviCam 3705
@@ -7032,6 +7057,7 @@ Xiaomi,2014818,Xiaomi Redmi 2
 XIAOMI,HM NOTE,Xiaomi Redmi Note
 Xiaomi,HM NOTE,Xiaomi Redmi Note
 XIAOMI,HM NOTE 1S,Xiaomi Redmi Note
+XIAOYI,YDXJ 1,Xiaomi Yi
 XOLO,A500s,Xolo A500s
 XOLO,Play 6X-1000,Xolo Play 6X-1000
 XOLO,Q700S,Xolo Q700s
@@ -7173,6 +7199,7 @@ Ashampoo Photo Commander 6,6.22,skip - software
 Ashampoo Photo Commander 7,7.21,skip - software
 BellaBytes,XCamLG,skip - software
 Brother,DCP-150C,Category:Scanned with Brother DCP-150C
+Brother,DCP-J315W,Category:Scanned with Brother DCP-J315W
 Brother,HL-2280DW,Category:Scanned with Brother HL-2280DW
 ,Brother HL-2280DW,Category:Scanned with Brother HL-2280DW
 Brother,MFC-6490CW,Category:Scanned with Brother MFC-6490CW
