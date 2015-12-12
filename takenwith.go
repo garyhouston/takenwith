@@ -204,9 +204,9 @@ func filterCategories(files []fileTarget, client *mwclient.Client, verbose bool,
 				}
 				break
 			}
-			if strings.HasPrefix(cats[j], "Category:Taken ") {
+			if strings.HasPrefix(cats[j], "Category:Taken ") || strings.HasPrefix(cats[j], "Category:Scanned ") {
 				fmt.Println(files[i].title)
-				fmt.Println("Already in an unknown 'Taken ':", cats[j])
+				fmt.Println("Already in unknown:", cats[j])
 				found = true
 				break
 			}
