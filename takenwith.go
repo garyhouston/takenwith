@@ -176,7 +176,7 @@ func filterFiles(pages []exifcamera.FileCamera, client *mwclient.Client, verbose
 }
 
 // Remove files which are already in a relevant category.
-func filterCategories(files []fileTarget, client *mwclient.Client, verbose bool, allCategories map[string]bool) []fileTarget {
+func filterCategories(files []fileTarget, client *mwclient.Client, verbose bool, ignoreCurrentCats bool, allCategories map[string]bool) []fileTarget {
 	fileArray := make([]string, len(files))
 	for i := range files {
 		fileArray[i] = files[i].title
@@ -196,19 +196,21 @@ func filterCategories(files []fileTarget, client *mwclient.Client, verbose bool,
 				found = true
 				break
 			}
-			_, found = allCategories[cats[j]]
-			if found {
-				if verbose {
-					fmt.Println(files[i].title)
-					fmt.Println("Already in known:", cats[j])
+			if !ignoreCurrentCats {
+				_, found = allCategories[cats[j]]
+				if found {
+					if verbose {
+						fmt.Println(files[i].title)
+						fmt.Println("Already in known:", cats[j])
+					}
+					break
 				}
-				break
-			}
-			if strings.HasPrefix(cats[j], "Category:Taken ") || strings.HasPrefix(cats[j], "Category:Scanned ") {
-				fmt.Println(files[i].title)
-				fmt.Println("Already in unknown:", cats[j])
-				found = true
-				break
+				if strings.HasPrefix(cats[j], "Category:Taken ") || strings.HasPrefix(cats[j], "Category:Scanned ") {
+					fmt.Println(files[i].title)
+					fmt.Println("Already in unknown:", cats[j])
+					found = true
+					break
+				}
 			}
 		}
 		if !found {
@@ -231,7 +233,7 @@ func processFiles(fileArray []exifcamera.FileCamera, client *mwclient.Client, fl
 			return
 		}
 	}
-	selected = filterCategories(selected, client, flags.verbose, allCategories)
+	selected = filterCategories(selected, client, flags.verbose, flags.ignoreCurrentCats, allCategories)
 	if len(selected) == 0 {
 		return
 	}
@@ -348,10 +350,11 @@ func processOneFile(page string, client *mwclient.Client, flags flags, categoryM
 }
 
 type flags struct {
-	verbose      bool
-	catFileLimit int32
-	user         string
-	batchSize    int
+	verbose           bool
+	catFileLimit      int32
+	user              string
+	batchSize         int
+	ignoreCurrentCats bool
 }
 
 func parseFlags() flags {
@@ -362,6 +365,7 @@ func parseFlags() flags {
 	flag.IntVar(&catFileLimit, "catFileLimit", 100, "Don't add to categories with at least this many files. No limit if zero.")
 	flag.StringVar(&flags.user, "user", "nobody@example.com", "Operator's email address or Wiki user name.")
 	flag.IntVar(&flags.batchSize, "batchSize", 100, "Number of files to process per server request.")
+	flag.BoolVar(&flags.ignoreCurrentCats, "ignoreCurrentCats", false, "Add to mapped categories even if already in a relevant category.")
 	iniflags.Parse()
 	flags.catFileLimit = int32(catFileLimit)
 	return flags
