@@ -278,13 +278,13 @@ func processGenerator(params params.Values, client *mwclient.Client, flags flags
 	}
 }
 
-func processUser(user string, timestamp string, client *mwclient.Client, flags flags, categoryMap map[string]string, allCategories map[string]bool, catCounts map[string]int32) {
+func processUser(user string, ts timestamp, client *mwclient.Client, flags flags, categoryMap map[string]string, allCategories map[string]bool, catCounts map[string]int32) {
 	params := params.Values{
 		"generator": "allimages",
 		"gaiuser":   strings.TrimPrefix(user, "User:"),
 		"gaisort":   "timestamp",
 		"gaidir":    "descending",
-		"gaistart":  timestamp,
+		"gaistart":  string(ts),
 		"gailimit":  strconv.Itoa(flags.batchSize),
 		"prop":      "imageinfo",
 		"iiprop":    "metadata",
@@ -323,7 +323,7 @@ func processRandom(client *mwclient.Client, flags flags, categoryMap map[string]
 	}
 }
 
-func processSequence(forward bool, timestamp string, client *mwclient.Client, flags flags, categoryMap map[string]string, allCategories map[string]bool, catCounts map[string]int32) {
+func processSequence(forward bool, ts timestamp, client *mwclient.Client, flags flags, categoryMap map[string]string, allCategories map[string]bool, catCounts map[string]int32) {
 	var direction string
 	if forward {
 		direction = "ascending"
@@ -334,7 +334,7 @@ func processSequence(forward bool, timestamp string, client *mwclient.Client, fl
 		"generator": "allimages",
 		"gaisort":   "timestamp",
 		"gaidir":    direction,
-		"gaistart":  timestamp,
+		"gaistart":  string(ts),
 		"gailimit":  strconv.Itoa(flags.batchSize),
 		"prop":      "imageinfo",
 		"iiprop":    "metadata",
@@ -412,13 +412,17 @@ func main() {
 		}
 		processOneFile(args[0], client, flags, categoryMap, allCategories, catCounts)
 	} else if strings.HasPrefix(args[0], "User:") {
-		var timestamp string
+		var ts timestamp
 		if numArgs == 2 {
-			timestamp = args[1]
+			ts, err = newTimestamp(args[1])
 		} else {
-			timestamp = "2099-01-01T00:00:00Z"
+			ts = futureTimestamp()
 		}
-		processUser(args[0], timestamp, client, flags, categoryMap, allCategories, catCounts)
+		if err == nil {
+			processUser(args[0], ts, client, flags, categoryMap, allCategories, catCounts)
+		} else {
+			printBadTimestamp()
+		}
 	} else if strings.HasPrefix(args[0], "Category:") {
 		var startKey string
 		if numArgs == 2 {
@@ -436,12 +440,22 @@ func main() {
 		if numArgs != 2 {
 			usage(os.Args[0])
 		}
-		processSequence(true, args[1], client, flags, categoryMap, allCategories, catCounts)
+		ts, err := newTimestamp(args[1])
+		if err == nil {
+			processSequence(true, ts, client, flags, categoryMap, allCategories, catCounts)
+		} else {
+			printBadTimestamp()
+		}
 	} else if args[0] == "Back" {
 		if numArgs != 2 {
 			usage(os.Args[0])
 		}
-		processSequence(false, args[1], client, flags, categoryMap, allCategories, catCounts)
+		ts, err := newTimestamp(args[1])
+		if err == nil {
+			processSequence(false, ts, client, flags, categoryMap, allCategories, catCounts)
+		} else {
+			printBadTimestamp()
+		}
 	} else if args[0] == "CanonS100" {
 		if numArgs != 1 {
 			usage(os.Args[0])
