@@ -322,7 +322,6 @@ func processCategory(category string, ts timestamp, client *mwclient.Client, fla
 	if ts.valid {
 		params["gcmstart"] = ts.string
 	}
-	fmt.Println(params)
 	processGenerator(params, client, flags, categoryMap, allCategories, catCounts)
 }
 
@@ -359,7 +358,6 @@ func processAll(ts timestamp, client *mwclient.Client, flags flags, categoryMap 
 		"prop":      "imageinfo",
 		"iiprop":    "metadata",
 	}
-	fmt.Println(params)
 	processGenerator(params, client, flags, categoryMap, allCategories, catCounts)
 }
 
