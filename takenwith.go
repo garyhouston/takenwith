@@ -310,14 +310,14 @@ func processCategory(category string, ts timestamp, client *mwclient.Client, fla
 	// Sorting is by the last modification of the file page. Image upload
 	// time would be preferable.
 	params := params.Values{
-		"generator": "categorymembers",
-		"gcmtitle":  category,
+		"generator":    "categorymembers",
+		"gcmtitle":     category,
 		"gcmnamespace": "6", // namespace 6 for files on Commons.
-		"gcmsort":   "timestamp",
-		"gcmdir":    backString(flags.back),
-		"gcmlimit":  strconv.Itoa(flags.batchSize),
-		"prop":      "imageinfo",
-		"iiprop":    "metadata",
+		"gcmsort":      "timestamp",
+		"gcmdir":       backString(flags.back),
+		"gcmlimit":     strconv.Itoa(flags.batchSize),
+		"prop":         "imageinfo",
+		"iiprop":       "metadata",
 	}
 	if ts.valid {
 		params["gcmstart"] = ts.string
