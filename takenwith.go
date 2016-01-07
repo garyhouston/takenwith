@@ -393,7 +393,7 @@ func parseFlags() flags {
 }
 
 func usage(progName string) {
-	log.Fatal("Usage: \n", progName, " File:f\n", progName, " User:u [timestamp]\n", progName, " Category:c [sort key prefix]\n", progName, " Random\n", progName, " All timestamp\n", progName, " CanonS100\n", "-help: display options.")
+	log.Fatal("Usage: \n", progName, " File:f\n", progName, " User:u [timestamp]\n", progName, " Category:c [timestamp]\n", progName, " Random\n", progName, " All timestamp\n", progName, " CanonS100\n", "-help: display options.")
 }
 
 func main() {
