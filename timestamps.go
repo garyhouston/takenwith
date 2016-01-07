@@ -6,27 +6,26 @@ import (
 	"strconv"
 )
 
-type timestamp string
+// A timestamp is either a string representation of a date/time or
+// blank and not valid if not specified.
+type timestamp struct {
+	string string
+	valid  bool
+}
 
-func newTimestamp(input string) (timestamp, error) {
+func newTimestamp(input string, valid bool) (timestamp, error) {
+	if !valid {
+		return timestamp{"", false}, nil
+	}
 	// checking is basic, the API will reject invalid values anyway.
 	if len(input) != 14 {
-		return "", errors.New("invalid timestamp")
+		return timestamp{"", false}, errors.New("invalid timestamp")
 	}
 	_, err := strconv.Atoi(input)
 	if err != nil {
-		return "", errors.New("invalid timestamp")
+		return timestamp{"", false}, errors.New("invalid timestamp")
 	}
-	return timestamp(input), nil
-}
-
-// some arbitrary future value that is accepted by the API.
-func futureTimestamp() timestamp {
-	ts, err := newTimestamp("20990101000000")
-	if err != nil {
-		panic(err)
-	}
-	return ts
+	return timestamp{input, true}, nil
 }
 
 func printBadTimestamp() {

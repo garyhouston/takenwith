@@ -252,7 +252,11 @@ func processGenerator(params params.Values, client *mwclient.Client, flags flags
 		if len(pagesMap) > 0 {
 			pageArray := make([]exifcamera.FileCamera, len(pagesMap))
 			idx := 0
-			for _, page := range pagesMap {
+			for id, page := range pagesMap {
+				if id == "-1" {
+					// Empty result set.
+					return
+				}
 				pageObj, err := page.Object()
 				if err != nil {
 					panic(err)
@@ -278,31 +282,47 @@ func processGenerator(params params.Values, client *mwclient.Client, flags flags
 	}
 }
 
+func backString(back bool) string {
+	if back {
+		return "descending"
+	} else {
+		return "ascending"
+	}
+}
+
 func processUser(user string, ts timestamp, client *mwclient.Client, flags flags, categoryMap map[string]string, allCategories map[string]bool, catCounts map[string]int32) {
 	params := params.Values{
 		"generator": "allimages",
 		"gaiuser":   strings.TrimPrefix(user, "User:"),
 		"gaisort":   "timestamp",
-		"gaidir":    "descending",
-		"gaistart":  string(ts),
+		"gaidir":    backString(flags.back),
 		"gailimit":  strconv.Itoa(flags.batchSize),
 		"prop":      "imageinfo",
 		"iiprop":    "metadata",
 	}
+	if ts.valid {
+		params["gaistart"] = ts.string
+	}
 	processGenerator(params, client, flags, categoryMap, allCategories, catCounts)
 }
 
-func processCategory(category string, startKey string, client *mwclient.Client, flags flags, categoryMap map[string]string, allCategories map[string]bool, catCounts map[string]int32) {
+func processCategory(category string, ts timestamp, client *mwclient.Client, flags flags, categoryMap map[string]string, allCategories map[string]bool, catCounts map[string]int32) {
+	// Sorting is by the last modification of the file page. Image upload
+	// time would be preferable.
 	params := params.Values{
-		"generator":             "categorymembers",
-		"gcmtitle":              category,
-		"gcmtype":               "file",
-		"gcmsort":               "sortkey",
-		"gcmstartsortkeyprefix": startKey,
-		"gcmlimit":              strconv.Itoa(flags.batchSize),
-		"prop":                  "imageinfo",
-		"iiprop":                "metadata",
+		"generator": "categorymembers",
+		"gcmtitle":  category,
+		"gcmnamespace": "6", // namespace 6 for files on Commons.
+		"gcmsort":   "timestamp",
+		"gcmdir":    backString(flags.back),
+		"gcmlimit":  strconv.Itoa(flags.batchSize),
+		"prop":      "imageinfo",
+		"iiprop":    "metadata",
 	}
+	if ts.valid {
+		params["gcmstart"] = ts.string
+	}
+	fmt.Println(params)
 	processGenerator(params, client, flags, categoryMap, allCategories, catCounts)
 }
 
@@ -323,22 +343,23 @@ func processRandom(client *mwclient.Client, flags flags, categoryMap map[string]
 	}
 }
 
-func processSequence(forward bool, ts timestamp, client *mwclient.Client, flags flags, categoryMap map[string]string, allCategories map[string]bool, catCounts map[string]int32) {
+func processAll(ts timestamp, client *mwclient.Client, flags flags, categoryMap map[string]string, allCategories map[string]bool, catCounts map[string]int32) {
 	var direction string
-	if forward {
-		direction = "ascending"
-	} else {
+	if flags.back {
 		direction = "descending"
+	} else {
+		direction = "ascending"
 	}
 	params := params.Values{
 		"generator": "allimages",
 		"gaisort":   "timestamp",
 		"gaidir":    direction,
-		"gaistart":  string(ts),
+		"gaistart":  ts.string,
 		"gailimit":  strconv.Itoa(flags.batchSize),
 		"prop":      "imageinfo",
 		"iiprop":    "metadata",
 	}
+	fmt.Println(params)
 	processGenerator(params, client, flags, categoryMap, allCategories, catCounts)
 }
 
@@ -355,6 +376,7 @@ type flags struct {
 	user              string
 	batchSize         int
 	ignoreCurrentCats bool
+	back              bool
 }
 
 func parseFlags() flags {
@@ -366,13 +388,14 @@ func parseFlags() flags {
 	flag.StringVar(&flags.user, "user", "nobody@example.com", "Operator's email address or Wiki user name.")
 	flag.IntVar(&flags.batchSize, "batchSize", 100, "Number of files to process per server request.")
 	flag.BoolVar(&flags.ignoreCurrentCats, "ignoreCurrentCats", false, "Add to mapped categories even if already in a relevant category.")
+	flag.BoolVar(&flags.back, "back", false, "Process backwards in time, from newer files to older files.")
 	iniflags.Parse()
 	flags.catFileLimit = int32(catFileLimit)
 	return flags
 }
 
 func usage(progName string) {
-	log.Fatal("Usage: \n", progName, " File:f\n", progName, " User:u [timestamp]\n", progName, " Category:c [sort key prefix]\n", progName, " Random\n", progName, " Forward timestamp\n", progName, " Back timestamp\n", progName, " CanonS100\n", "-help: display options.")
+	log.Fatal("Usage: \n", progName, " File:f\n", progName, " User:u [timestamp]\n", progName, " Category:c [sort key prefix]\n", progName, " Random\n", progName, " All timestamp\n", progName, " CanonS100\n", "-help: display options.")
 }
 
 func main() {
@@ -413,10 +436,14 @@ func main() {
 		processOneFile(args[0], client, flags, categoryMap, allCategories, catCounts)
 	} else if strings.HasPrefix(args[0], "User:") {
 		var ts timestamp
+		if numArgs > 2 {
+			usage(os.Args[0])
+			return
+		}
 		if numArgs == 2 {
-			ts, err = newTimestamp(args[1])
+			ts, err = newTimestamp(args[1], true)
 		} else {
-			ts = futureTimestamp()
+			ts, err = newTimestamp("", false)
 		}
 		if err == nil {
 			processUser(args[0], ts, client, flags, categoryMap, allCategories, catCounts)
@@ -424,35 +451,35 @@ func main() {
 			printBadTimestamp()
 		}
 	} else if strings.HasPrefix(args[0], "Category:") {
-		var startKey string
+		if numArgs > 2 {
+			usage(os.Args[0])
+			return
+		}
+		var ts timestamp
 		if numArgs == 2 {
-			startKey = args[1]
+			ts, err = newTimestamp(args[1], true)
 		} else {
-			startKey = ""
+			ts, err = newTimestamp("", false)
 		}
-		processCategory(args[0], startKey, client, flags, categoryMap, allCategories, catCounts)
-	} else if args[0] == "Random" {
-		if numArgs > 1 {
-			usage(os.Args[0])
-		}
-		processRandom(client, flags, categoryMap, allCategories, catCounts)
-	} else if args[0] == "Forward" {
-		if numArgs != 2 {
-			usage(os.Args[0])
-		}
-		ts, err := newTimestamp(args[1])
 		if err == nil {
-			processSequence(true, ts, client, flags, categoryMap, allCategories, catCounts)
+			processCategory(args[0], ts, client, flags, categoryMap, allCategories, catCounts)
 		} else {
 			printBadTimestamp()
 		}
-	} else if args[0] == "Back" {
+	} else if args[0] == "Random" {
+		if numArgs > 1 {
+			usage(os.Args[0])
+		} else {
+			processRandom(client, flags, categoryMap, allCategories, catCounts)
+		}
+	} else if args[0] == "All" {
 		if numArgs != 2 {
 			usage(os.Args[0])
+			return
 		}
-		ts, err := newTimestamp(args[1])
+		ts, err := newTimestamp(args[1], true)
 		if err == nil {
-			processSequence(false, ts, client, flags, categoryMap, allCategories, catCounts)
+			processAll(ts, client, flags, categoryMap, allCategories, catCounts)
 		} else {
 			printBadTimestamp()
 		}
