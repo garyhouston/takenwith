@@ -61,7 +61,7 @@ func addCategory(page string, category string, client *mwclient.Client) {
 
 	}
 	if saveError != nil {
-		fmt.Sprintf("Failed to save %v %v", page, saveError)
+		panic(fmt.Sprintf("Failed to save %v %v", page, saveError))
 	}
 }
 
