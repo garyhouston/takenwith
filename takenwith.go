@@ -33,7 +33,7 @@ func afterCategories(page string, text *string) int {
 }
 
 func addCategory(page string, category string, client *mwclient.Client) {
-	// There's a small change that saving a page may fail due to an
+	// There's a small chance that saving a page may fail due to an
 	// edit conflict. It also occasionally fails with
 	// "badtoken: Invalid token" for unknown reason. Try up
 	// to 3 times before giving up.

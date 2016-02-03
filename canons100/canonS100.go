@@ -34,7 +34,7 @@ func moveFile(file string, powershot bool, cat CatInfo, client *mwclient.Client,
 		fmt.Println("moving", file, "from", cat.UnidCategory, "to", target)
 	}
 
-	// There's a small change that saving a page may fail due to an
+	// There's a small chance that saving a page may fail due to an
 	// edit conflict. It also occasionally fails with
 	// "badtoken: Invalid token" for unknown reason. Try up
 	// to 3 times before giving up.
