@@ -20,7 +20,8 @@ func ReadCookies() []*http.Cookie {
 		name, err := reader.ReadString(' ')
 		if err == io.EOF {
 			return cookies
-		} else if err != nil {
+		}
+		if err != nil {
 			panic(err)
 		}
 		name = name[:len(name)-1]
@@ -31,5 +32,4 @@ func ReadCookies() []*http.Cookie {
 		value = value[:len(value)-1]
 		cookies = append(cookies, &http.Cookie{Name: name, Value: value})
 	}
-	return cookies
 }
