@@ -268,10 +268,10 @@ func processGenerator(params params.Values, client *mwclient.Client, flags flags
 				}
 				imageinfo, err := pageObj.GetObjectArray("imageinfo")
 				if err != nil {
-					pageArray[idx] = exifcamera.FileCamera{title, "", ""}
+					pageArray[idx] = exifcamera.FileCamera{Title: title}
 				} else {
 					make, model := exifcamera.ExtractCamera(imageinfo[0])
-					pageArray[idx] = exifcamera.FileCamera{title, make, model}
+					pageArray[idx] = exifcamera.FileCamera{Title: title, Make: make, Model: model}
 				}
 				idx++
 			}
@@ -498,9 +498,9 @@ func main() {
 		if numArgs != 1 {
 			usage(os.Args[0])
 		}
-		canons100.ProcessCategory(canons100.CatInfo{"Canon PowerShot S100", "Category:Taken with unidentified Canon PowerShot S100", "Category:Taken with Canon PowerShot S100", "Category:Taken with Canon Digital IXUS"}, client, flags.verbose)
+		canons100.ProcessCategory(canons100.CatInfo{ExifModel: "Canon PowerShot S100", UnidCategory: "Category:Taken with unidentified Canon PowerShot S100", PowershotCategory: "Category:Taken with Canon PowerShot S100", IxusCategory: "Category:Taken with Canon Digital IXUS"}, client, flags.verbose)
 
-		canons100.ProcessCategory(canons100.CatInfo{"Canon PowerShot S110", "Category:Taken with unidentified Canon PowerShot S110", "Category:Taken with Canon PowerShot S110", "Category:Taken with Canon Digital IXUS v"}, client, flags.verbose)
+		canons100.ProcessCategory(canons100.CatInfo{ExifModel: "Canon PowerShot S110", UnidCategory: "Category:Taken with unidentified Canon PowerShot S110", PowershotCategory: "Category:Taken with Canon PowerShot S110", IxusCategory: "Category:Taken with Canon Digital IXUS v"}, client, flags.verbose)
 	} else {
 		usage(os.Args[0])
 	}
