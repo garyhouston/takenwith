@@ -42,8 +42,9 @@ AgfaPhoto,AP Compact 104,AgfaPhoto Compact 104
 7M 3X Digital Camera,DC-733i,AgfaPhoto DC-733i
 AgfaPhoto,DC 1030,AgfaPhoto DC-1030
 AGFAPHOTO,DC-1033m,AgfaPhoto DC-1033m
-AGFA,DUOSCAN T2500,Category:Scanned with Agfa DuoScan T2500
 Agfa,SP2,Agfa Easy Pix SP2
+Agfa Gevaert,SR841,Agfa-Gevaert SR841
+AGFA,DUOSCAN T2500,Category:Scanned with Agfa DuoScan T2500
 AgfaPhoto,OPTIMA 102,AgfaPhoto Optima 102
 AgfaPhoto,OPTIMA 105,AgfaPhoto Optima 105
 AgfaPhoto,OPTIMA 147,AgfaPhoto Optima 147
@@ -1109,6 +1110,7 @@ Canon,Canon VIXIA HV40,Canon Vixia HV40
 Canon,Canon VIXIA HF R20,Canon Vixia R20
 Canon,Canon XA10,Canon XA10
 Canon,Canon XH A1,Canon XH A1
+Canon,Canon ZR90,Canon ZR90
 Canon,Canon ZR830,Canon ZR830
 Canon,Canon ZR850,Canon ZR850
 Canon,DM-XM2,Canon XM2
@@ -1284,6 +1286,7 @@ Concord Camera Corp.,Eye-Q 3340z,Concord Eye-Q 3340z
 Concord Camera Corp.,Eye-Q 3341Z,Concord Eye-Q 3341z
 Concord Camera Corp.,Eye-Q 4060 AF,Concord Eye-Q 4060AF
 Concord Camera Corp.,Concord 4340z,Concord Eye-Q 4340z
+Concord Camera Corp.,Eye-Q 4360Z,Concord Eye-Q 4360z
 Concord Camera Corp.,Eye-Q 5062AF,Concord Eye-Q 5062AF
 Concord Camera Corp.,Concord 5340z,Concord Eye-Q 5340z
 Concord Camera GmbH,JDC 3.0S,Concord JDC 3.0S
@@ -1484,6 +1487,7 @@ Fly,Evo Tech 2,Fly Evo Tech 2
 PRIMAX,IX-30,Fujifilm Axia iX-30
 "AXIA, Inc.",iX-100,Fujifilm Axia iX-100
 "FUJIFILM AXIA CO.,LTD",eyeplate mega,Fujifilm Axia Eyeplate Mega
+FUJIFILM,FinePix30i,Fujifilm FinePix 30i
 FUJIFILM,FinePix40i,Fujifilm FinePix 40i
 FUJIFILM,FinePix50i,Fujifilm FinePix 50i
 FUJIFILM,FinePix1300,Fujifilm FinePix 1300
@@ -2035,6 +2039,7 @@ Hasselblad/Imacon,Ixpress 528C - Hasselblad H1,Hasselblad Imacon Ixpress 528C
 Hasselblad,Ixpress 528C - DigiFlex II,Hasselblad Imacon Ixpress 528C
 Hasselblad,Ixpress 528C - Mamiya AFD,Hasselblad Imacon Ixpress 528C
 Hasselblad,Ixpress 528C - Hasselblad H1,Hasselblad Imacon Ixpress 528C
+Hasselblad/Imacon,Ixpress 528C - Contax 645,Hasselblad Imacon Ixpress 528C
 Hasselblad,Hasselblad CF528-39 - Hasselblad H Series,Hasselblad Imacon Ixpress CF 528
 Hasselblad,Hasselblad CF528-39 - Hasselblad ELD,Hasselblad Imacon Ixpress CF 528
 Hasselblad/Imacon,Ixpress CFH - Hasselblad H1,Hasselblad Ixpress CFH
@@ -2131,6 +2136,7 @@ Hewlett-Packard,HP PhotoSmart C945 (V01.46),HP PhotoSmart C945
 Hewlett-Packard,HP PhotoSmart C945 (V01.46)+,HP PhotoSmart C945
 Hewlett-Packard,HP PhotoSmart C945 (V01.53),HP PhotoSmart C945
 Hewlett-Packard,HP PhotoSmart C945 (V01.54),HP PhotoSmart C945
+Hewlett-Packard,HP PhotoSmart C945 (V01.59),HP PhotoSmart C945
 Hewlett-Packard,HP PhotoSmart C945 (V01.60),HP PhotoSmart C945
 Hewlett-Packard,HP PhotoSmart C945 (V01.67),HP PhotoSmart C945
 Hewlett-Packard,HP PhotoSmart C945 (V01.67)d,HP PhotoSmart C945
@@ -3084,6 +3090,7 @@ KYOCERA,Finecam-L4,Kyocera Finecam L4
 KYOCERA,Finecam L4V,Kyocera Finecam-L4V
 KYOCERA,Finecam M410R,Kyocera Finecam M410R
 KYOCERA,FC-S3,Kyocera Finecam S3
+KYOCERA,Finecam S3L,Kyocera Finecam S3L
 KYOCERA,Finecam S3R,Kyocera Finecam S3R
 KYOCERA,FC-S3x,Kyocera Finecam S3x
 KYOCERA,FC-S4,Kyocera Finecam S4
@@ -3778,6 +3785,7 @@ Minolta,Scan Dual III,Category:Scanned with Minolta Dimage Scan Dual III
 Minolta,Scan Dual IV,Category:Scanned with Konica Minolta Dimage Scan Dual IV
 KONICA MINOLTA,DS_Dual4 1.0,Category:Scanned with Konica Minolta Dimage Scan Dual IV
 Minolta,Scan Elite 5400,Category:Scanned with Konica Minolta Dimage Scan Elite 5400
+MINOLTA,Dimage V,Minolta Dimage V
 "MINOLTA CO.,LTD",DiMAGE X,Minolta Dimage X
 KONICA MINOLTA,DiMAGE X1,Konica Minolta Dimage X1
 "Minolta Co., Ltd.",DiMAGE X20,Minolta Dimage X20
@@ -4921,6 +4929,7 @@ OLYMPUS CORPORATION,"u10D,S300D,u300D",Olympus u10D / S-300D / u300D
 OLYMPUS CORPORATION,u15D,Olympus u15D
 OLYMPUS CORPORATION,"u20D,S400D,u400D",Olympus u20D / S-400D / u400D
 "OLYMPUS OPTICAL CO.,LTD","u20D,S400D,u400D",Olympus u20D / S-400D / u400D
+OLYMPUS CORPORATION,u25D,Olympus u25D
 OLYMPUS CORPORATION,"u30D,S410D,u410D",Olympus u30D / S-410D / u410D
 OLYMPUS IMAGING CORP.,"u40D,S500,uD500",Olympus u40D / S-500 / uD500
 OLYMPUS IMAGING CORP.,"u550WP,S550WP",Olympus u550WP / S-550WP
@@ -5400,6 +5409,7 @@ Panasonic,SDR-S70,Panasonic SDR-S70
 Panasonic,SDR-SW20,Panasonic SDR-SW20
 Panasonic,SV-AS3,Panasonic D-Snap SV-AS3
 Panasonic,SV-AS10,Panasonic SV-AS10
+Panasonic,SV-AS30,Panasonic SV-AS30
 Panasonic,SV-AV30,Panasonic SV-AV30
 PANASONIC,Panasonic T31,Panasonic T31
 Panasonic,VDR-D250,Panasonic VDR-D250
@@ -5855,6 +5865,7 @@ RICOH,Caplio RR30,Ricoh Caplio RR30
 RICOH,Caplio RR120,Ricoh Caplio RR120
 RICOH,Caplio RR230,Ricoh Caplio RR230
 Caplio,RR330,Ricoh Caplio RR330
+RICOH,Caplio RR430,Ricoh Caplio RR430
 RICOH,Caplio RR530,Ricoh Caplio RR530
 RICOH,Caplio RX,Ricoh Caplio RX
 RICOH,Caplio RZ1,Ricoh Caplio RZ1
@@ -6772,7 +6783,6 @@ SAMSUNG,SAMSUNG IT100 / VLUU IT100 / SAMSUNG SL820,Samsung IT100
 SAMSUNG Electronics,SGH-i637,Samsung Jack SGH-i637
 SAMSUNG,GT-S8000,Samsung Jet GT-S8000
 SAMSUNG,SGH-T739,Samsung Katalyst SGH-T739
-Sanyo,KATANA Eclipse,Sanyo KATANA Eclipse
 "SAMSUNG TECHWIN CO., LTD.",Digimax L50 / KENOX X1,Samsung L50
 Samsung Techwin,Digimax L55W / Kenox X15 WIDE,Samsung L55W
 "SAMSUNG TECHWIN CO., LTD.",Digimax L60,Samsung L60
@@ -7082,6 +7092,8 @@ SAMSUNG,SAMSUNG WP10 / VLUU WP10 / SAMSUNG AQ100,Samsung WP10
 SAMSUNG,SM-Z130H,Samsung Z1
 Samsung Electronics,Z40,Samsung Z40
 "SANYO Electric Co.,Ltd.",SR6,Sanyo DSC-V100
+"SANYO Electric Co.,Ltd.",IDC-1000Z,Sanyo IDC-1000Z
+Sanyo,KATANA Eclipse,Sanyo KATANA Eclipse
 "SANYO Electric Co., Ltd.",S750,Sanyo S750
 "SANYO Electric Co.,Ltd.",SR66,Sanyo SR66
 "SANYO Electric Co.,Ltd.",SR662,Sanyo SR662
@@ -7161,6 +7173,7 @@ REALVIEW 0 1 1 1,ScanMate F6,Category:Scanned with ScanView ScanMate F6
 REALVIEW 0 0 1 0,ScanMate F6,Category:Scanned with ScanView ScanMate F6
 REALVIEW 0 1 1 1,ScanMate F8 Plus,Category:Scanned with ScanView ScanMate F8 Plus
 REALVIEW 0 1 1 0,ScanMate F8 Plus,Category:Scanned with ScanView ScanMate F8 Plus
+SeaLife,DC300/DC310,SeaLife DC300 / DC310
 SeaLife,DC500,SeaLife DC500
 SeaLife,DC600,SeaLife DC600
 SeaLife,DC1400,SeaLife DC1400
@@ -7296,10 +7309,13 @@ SONY,DCR-HC40,Sony DCR-HC40
 SONY,DCR-HC40E,Sony DCR-HC40
 SONY,DCR-HC42,Sony DCR-HC42
 SONY,DCR-HC42E,Sony DCR-HC42
+SONY,DCR-HC85,Sony DCR-HC85
+SONY,DCR-HC85E,Sony DCR-HC85
 SONY,DCR-HC90,Sony DCR-HC90
 SONY,DCR-HC90E,Sony DCR-HC90
 SONY,DCR-HC96,Sony DCR-HC96
 SONY,DCR-HC96E,Sony DCR-HC96
+SONY,DCR-IP1E,Sony DCR-IP1
 SONY,DCR-IP220E,Sony DCR-IP220
 SONY,DCR-PC3,Sony DCR-PC3
 SONY,DCR-PC9,Sony DCR-PC9
@@ -7367,6 +7383,8 @@ SONY,DCR-TRV620,Sony DCR-TRV620
 SONY,DCR-TRV730E,Sony DCR-TRV730E
 SONY,DCR-TRV740,Sony DCR-TRV740
 SONY,DCR-TRV740E,Sony DCR-TRV740
+SONY,DCR-TRV820,Sony DCR-TRV820
+SONY,DCR-TRV820E,Sony DCR-TRV820
 SONY,DCR-TRV828E,Sony DCR-TRV828E
 SONY,DCR-VX2000,Sony DCR-VX2000
 SONY,DCR-VX2100,Sony DCR-VX2100
@@ -8458,7 +8476,6 @@ Cajcn,,Cajcn
 CEC,DV,CEC DV
 d-gate Output: bmc-to-xml,,d-gate Output: bmc-to-xml
 DC-30,DC-30,DC-30
-,DC2000,DC2000
 DIGITAL CAMERA,1.0,Digital Camera 1.0
 Digital Camera,3M,Digital Camera 3M
 Digital MultiCam II,DC310L,Digital MultiCam II DC310L
