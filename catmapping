@@ -121,6 +121,7 @@ TCT,ONE TOUCH 4015N,Alcatel One Touch Pop C1
 TCT,ONE TOUCH 4015X,Alcatel One Touch Pop C1
 TCT,ONE TOUCH 4016A,Alcatel One Touch Pop C1
 TCT,ONE TOUCH 4016X,Alcatel One Touch Pop C1
+TCT,4032D,Alcatel One Touch Pop C2
 TCT,ONE TOUCH 4033A,Alcatel One Touch Pop C3
 TCT,ONE TOUCH 4033D,Alcatel One Touch Pop C3
 TCT,ONE TOUCH 4033X,Alcatel One Touch Pop C3
@@ -680,6 +681,7 @@ Canon,Canon EOS 5D Mark II,Canon EOS 5D Mark II
 ,Canon EOS 5D Mark II,Canon EOS 5D Mark II
 Canon,EOS 5D Mark II,Canon EOS 5D Mark II
 """Canon""","""Canon EOS 5D Mark II""",Canon EOS 5D Mark II
+canon 5D mark II,,Canon EOS 5D Mark II
 Canon,Canon EOS 5D Mark III,Canon EOS 5D Mark III
 ,Canon EOS 5D Mark III,Canon EOS 5D Mark III
 CANON,5D Mark III,Canon EOS 5D Mark III
@@ -1054,6 +1056,7 @@ Canon Inc.,CanoScan 8600F,Category:Scanned with Canon CanoScan 8600F
 Canon,CanoScan 8800F,Category:Scanned with Canon CanoScan 8800F
 ,CanoScan 8800F,Category:Scanned with Canon CanoScan 8800F
 IF,CanoScan 8800F,Category:Scanned with Canon CanoScan 8800F
+Canon,8800F,Category:Scanned with Canon CanoScan 8800F
 Canon,CanoScan 9000F,Category:Scanned with Canon CanoScan 9000F
 CanoScan,9000F,Category:Scanned with Canon CanoScan 9000F
 ,CanoScan 9000F,Category:Scanned with Canon CanoScan 9000F
@@ -2359,6 +2362,7 @@ HP,Photosmart B110 series,Category:Scanned with HP Photosmart B110
 Hewlett-Packard Company,PhotoSmart C30 Camera,HP PhotoSmart C30
 Hewlett-Packard Company,PhotoSmart C200,HP PhotoSmart C200
 Photosmart,Prem C410 series,Category:Scanned with HP Photosmart Premium C410
+HP,Photosmart Prem C410 series,Category:Scanned with HP Photosmart Premium C410
 Hewlett Packard,HP PhotoSmart C500 (V01.00),HP PhotoSmart C500
 Hewlett-Packard,HP PhotoSmart C812 (V08.23),HP PhotoSmart C812
 Hewlett-Packard,HP PhotoSmart C812 (V08.33),HP PhotoSmart C812
@@ -4039,6 +4043,7 @@ LG Electronics,VS920 4G,LG Spectrum
 LG Electronics,LG-H440,LG Spirit
 LG Electronics,LG-H440AR,LG Spirit
 LG Electronics,LG-H440n,LG Spirit
+LG Electronics,T320,LG T320
 LG Electronics,T385,LG T385
 LG Electronics,LG-T565b,LG-T565
 LG Electronics,LGLS660,LG Tribute
@@ -5130,6 +5135,7 @@ DoCoMo,D903i,NTT DoCoMo Mitsubishi D903i
 DoCoMo,D903iTV,NTT DoCoMo Mitsubishi D903iTV
 DoCoMo,F01C,NTT DoCoMo F01C
 DoCoMo,F04B,NTT DoCoMo Fujitsu F04B
+DoCoMo,F04D,NTT DoCoMo Fujitsu F04D
 DoCoMo,F06B,NTT DoCoMo F06B
 DoCoMo,F07F,NTT DoCoMo Fujitsu F07F
 DoCoMo,F09A,NTT DoCoMo F09A
@@ -7211,6 +7217,7 @@ SAMSUNG,SGH-I727R,Samsung Galaxy S II
 SAMSUNG,SGH-I927,Samsung Galaxy S II
 SAMSUNG,SAMSUNG-SGH-I777,Samsung Galaxy S II
 SAMSUNG,SPH-D710,Samsung Galaxy S II
+SAMSUNG,SPH-D710BST,Samsung Galaxy S II
 SAMSUNG,ISW11SC,Samsung Galaxy S II WiMAX ISW11SC
 SAMSUNG,SGH-I727,Samsung Galaxy S II Skyrocket SGH-i727
 SAMSUNG,SGH-I757M,Samsung Galaxy S II HD LTE
@@ -9368,6 +9375,7 @@ ZTE,Skate Pro,ZTE Skate Pro
 ZTE,N9130,ZTE Speed
 ZTE,ZTE-T U880,ZTE U880
 ZTE,ZTE V5 with 13 MP Camera,ZTE V5
+ZTE,ZTE V765M,ZTE V765M
 ZTE,V881,ZTE V881
 ZTE,N9810,ZTE Vital
 ZTE,N860,ZTE Warp
@@ -9390,6 +9398,7 @@ Unknown,1.3M Digital CAM,1.3M Digital CAM
 unknow,5M DigitalCAM,unknow 5M DigitalCAM
 5.0M Digital CAM,DigitalCAM,5.0M Digital CAM
 ,5.0M DigitalCAM,5.0M Digital CAM
+6M 3X Digital Camera,PW6320Z,6M 3X Digital Camera PW6320Z
 ,6M DSC,6M DSC
 ,6.0M DigitalCAM,6.0M Digital CAM
 742AV MSD,DV 3500,742AV MSD DV 3500
@@ -9759,6 +9768,7 @@ SAMSANG,GS400,skip - irregular spelling not found elsewhere
 ,Samsung S860>,skip - corrupt / modified
 SAMSUNG,,skip - no model
 SAMSUNG,SAMSUNG,skip - no model
+SAMSUNG ELECTRONICS,SAMSUNG,skip - no model
 SAMSUNG,TASSVE,skip - related to Cyanogenmod?
 SAMSVNG,UC550,skip - doesn't seem to be a valid model
 SAMSUNG,X-M1,skip - Fujifilm model
