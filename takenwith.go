@@ -58,7 +58,6 @@ func addCategory(page string, category string, client *mwclient.Client) {
 		if saveError == nil {
 			break
 		}
-
 	}
 	if saveError != nil {
 		panic(fmt.Sprintf("Failed to save %v %v", page, saveError))
@@ -433,6 +432,18 @@ func usage(progName string) {
 	log.Fatal("Usage: \n", progName, " File:f\n", progName, " User:u [timestamp]\n", progName, " Category:c [timestamp]\n", progName, " Random\n", progName, " All timestamp\n", progName, " CanonS100\n", "-help: display options.")
 }
 
+// Handler for processing to be done when bot is terminating.
+func EndProc(client *mwclient.Client, stats stats) {
+	// Cookies can change while the bot is running, so save the latest values for the next run.
+	mwlib.WriteCookies(client.DumpCookies())
+	
+	if stats.examined > 1 {
+		fmt.Println()
+		stats.print()
+	}
+}
+
+
 func main() {
 	flags := parseFlags()
 	client, err := mwclient.New("https://commons.wikimedia.org/w/api.php", "takenwith "+flags.user)
@@ -462,6 +473,8 @@ func main() {
 		removeSmallCounts(catCounts, flags.catFileLimit)
 	}
 
+	defer EndProc(client, stats)
+	
 	args := flag.Args()
 	numArgs := len(args)
 	if numArgs == 0 || numArgs > 2 {
@@ -530,9 +543,5 @@ func main() {
 		canons100.ProcessCategory(canons100.CatInfo{ExifModel: "Canon PowerShot S110", UnidCategory: "Category:Taken with unidentified Canon PowerShot S110", PowershotCategory: "Category:Taken with Canon PowerShot S110", IxusCategory: "Category:Taken with Canon Digital IXUS v"}, client, flags.verbose)
 	} else {
 		usage(os.Args[0])
-	}
-	if stats.examined > 1 {
-		fmt.Println()
-		stats.print()
 	}
 }

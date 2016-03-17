@@ -46,16 +46,5 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	cookies := client.DumpCookies()
-	cookieFile := mwlib.GetWorkingDir() + "/cookies"
-	writer, err := os.Create(cookieFile)
-	if err != nil {
-		panic(err)
-	}
-	for i := range cookies {
-		writer.WriteString(cookies[i].Name)
-		writer.WriteString(" ")
-		writer.WriteString(cookies[i].Value)
-		writer.WriteString("\n")
-	}
+	mwlib.WriteCookies(client.DumpCookies())
 }

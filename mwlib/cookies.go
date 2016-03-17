@@ -33,3 +33,18 @@ func ReadCookies() []*http.Cookie {
 		cookies = append(cookies, &http.Cookie{Name: name, Value: value})
 	}
 }
+
+func WriteCookies(cookies []*http.Cookie) {
+	cookieFile := GetWorkingDir() + "/cookies"
+	writer, err := os.Create(cookieFile)
+	if err != nil {
+		panic(err)
+	}
+	defer writer.Close()
+	for i := range cookies {
+		writer.WriteString(cookies[i].Name)
+		writer.WriteString(" ")
+		writer.WriteString(cookies[i].Value)
+		writer.WriteString("\n")
+	}
+}
