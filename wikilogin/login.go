@@ -2,11 +2,11 @@ package main
 
 import (
 	"bufio"
+	mwclient "cgt.name/pkg/go-mwclient"
 	"flag"
 	"fmt"
-	"github.com/vharitonsky/iniflags"
-	mwclient "cgt.name/pkg/go-mwclient"
 	"github.com/garyhouston/takenwith/mwlib"
+	"github.com/vharitonsky/iniflags"
 	"log"
 	"os"
 )
@@ -27,7 +27,7 @@ func main() {
 	if len(os.Args) != 1 {
 		log.Fatal("Usage: ", os.Args[0], " -help: display options")
 	}
-	client, err := mwclient.New("https://commons.wikimedia.org/w/api.php", "wikilogin " + userinfo)
+	client, err := mwclient.New("https://commons.wikimedia.org/w/api.php", "wikilogin "+userinfo)
 	if err != nil {
 		panic(err)
 	}
@@ -39,7 +39,7 @@ func main() {
 	fmt.Print("Password: ")
 	scanner.Scan()
 	password := scanner.Text()
-	
+
 	client.Maxlag.On = true
 
 	err = client.Login(user, password)
