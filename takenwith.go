@@ -433,7 +433,7 @@ func usage(progName string) {
 }
 
 // Handler for processing to be done when bot is terminating.
-func EndProc(client *mwclient.Client, stats stats) {
+func EndProc(client *mwclient.Client, stats *stats) {
 	// Cookies can change while the bot is running, so save the latest values for the next run.
 	mwlib.WriteCookies(client.DumpCookies())
 	
@@ -473,7 +473,7 @@ func main() {
 		removeSmallCounts(catCounts, flags.catFileLimit)
 	}
 
-	defer EndProc(client, stats)
+	defer EndProc(client, &stats)
 	
 	args := flag.Args()
 	numArgs := len(args)
