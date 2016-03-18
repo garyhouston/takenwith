@@ -89,6 +89,7 @@ func addCategories(pages []fileTarget, client *mwclient.Client, verbose bool, ca
 			if catFileLimit > 0 && catCounts[pages[i].category] == 0 {
 				fmt.Println(pages[i].title)
 				fmt.Println("Adding to empty", pages[i].category)
+				stats.warnings++
 			} else if verbose {
 				fmt.Println(pages[i].title)
 				fmt.Println("Adding to", pages[i].category, " (", catCounts[pages[i].category], " files)")
@@ -128,7 +129,7 @@ func filterCatLimit(cats []fileTarget, client *mwclient.Client, verbose bool, ca
 		if !found {
 			fmt.Println(cats[i].title)
 			fmt.Println("Mapped category doesn't exist:", cats[i].category)
-			stats.errors++
+			stats.warnings++
 			continue
 		}
 		if count >= catFileLimit {
@@ -163,7 +164,7 @@ func filterFiles(pages []exifcamera.FileCamera, client *mwclient.Client, verbose
 		if !ok {
 			fmt.Println(pages[i].Title)
 			fmt.Printf("No category for %v,%v\n", pages[i].Make, pages[i].Model)
-			stats.errors++
+			stats.warnings++
 			continue
 		}
 		if strings.HasPrefix(catMapped, "skip ") {
@@ -213,7 +214,7 @@ func filterCategories(files []fileTarget, client *mwclient.Client, verbose bool,
 					break
 				}
 				if strings.HasPrefix(cats[j], "Category:Taken ") || strings.HasPrefix(cats[j], "Category:Scanned ") {
-					stats.errors++
+					stats.warnings++
 					fmt.Println(files[i].title)
 					fmt.Println("Already in unknown:", cats[j])
 					found = true
@@ -290,7 +291,7 @@ func processGenerator(params params.Values, client *mwclient.Client, flags flags
 		if flags.fileLimit > 0 && stats.examined >= flags.fileLimit {
 			break
 		}
-		if flags.errorLimit > 0 && stats.errors >= flags.errorLimit {
+		if flags.warningLimit > 0 && stats.warnings >= flags.warningLimit {
 			break
 		}
 	}
@@ -404,7 +405,7 @@ type flags struct {
 	ignoreCurrentCats bool
 	back              bool
 	fileLimit         int32
-	errorLimit        int32
+	warningLimit        int32
 }
 
 func parseFlags() flags {
@@ -419,12 +420,12 @@ func parseFlags() flags {
 	flag.BoolVar(&flags.back, "back", false, "Process backwards in time, from newer files to older files.")
 	var fileLimit int
 	flag.IntVar(&fileLimit, "fileLimit", 10000, "Stop after examining at least this many files. No limit if zero.")
-	var errorLimit int
-	flag.IntVar(&errorLimit, "errorLimit", 100, "Stop after printing at least this many errors. No limit if zero.")
+	var warningLimit int
+	flag.IntVar(&warningLimit, "warningLimit", 100, "Stop after printing at least this many warnings. No limit if zero.")
 	iniflags.Parse()
 	flags.catFileLimit = int32(catFileLimit)
 	flags.fileLimit = int32(fileLimit)
-	flags.errorLimit = int32(errorLimit)
+	flags.warningLimit = int32(warningLimit)
 	return flags
 }
 
