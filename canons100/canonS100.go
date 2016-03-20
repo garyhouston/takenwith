@@ -61,6 +61,29 @@ func moveFile(file string, powershot bool, cat CatInfo, client *mwclient.Client,
 	}
 }
 
+func checkSpeedRatings(metadata []*jason.Object) bool {
+	for i := 0; i < len(metadata); i++ {
+		name, err := metadata[i].GetString("name")
+		if err != nil {
+			panic(err)
+		}
+		if name == "ISOSpeedRatings" {
+			return true
+		}
+		if name == "metadata" {
+			// MediaWiki can return strange embedded metadata
+			// arrays for PNG files.
+			// E.g., File:Plaza_in_Front_of_BEXCO.png
+			obj, err := metadata[i].GetObjectArray("value")
+			// Ignore if not an object array.
+			if err == nil && checkSpeedRatings(obj) {
+				return true
+			}
+		}
+	}
+	return false
+}
+
 func processFile(pageObj *jason.Object, cat CatInfo, client *mwclient.Client, verbose bool) {
 	title, err := pageObj.GetString("title")
 	if err != nil {
@@ -78,17 +101,7 @@ func processFile(pageObj *jason.Object, cat CatInfo, client *mwclient.Client, ve
 		if err != nil {
 			panic(err)
 		}
-		found := false
-		for i := 0; i < len(metadata); i++ {
-			name, err := metadata[i].GetString("name")
-			if err != nil {
-				panic(err)
-			}
-			if name == "ISOSpeedRatings" {
-				found = true
-			}
-		}
-		if found {
+		if checkSpeedRatings(metadata) {
 			moveFile(title, true, cat, client, verbose)
 		} else {
 			moveFile(title, false, cat, client, verbose)
