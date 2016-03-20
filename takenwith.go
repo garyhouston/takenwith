@@ -11,40 +11,27 @@ import (
 	"github.com/vharitonsky/iniflags"
 	"log"
 	"os"
-	"regexp"
 	"strconv"
 	"strings"
 )
 
-// Find the position in the text following the last category.
-func afterCategories(page string, text *string) int {
-	regex, error := regexp.Compile("\\[\\[[Cc]ategory:[^\\]]*\\]\\]")
-	if error != nil {
-		panic(error)
-	}
-	matches := regex.FindAllIndex([]byte(*text), -1)
-	noMatches := len(matches)
-	if noMatches == 0 {
-		// No existing categories, use the last byte of the page.
-		return len(*text)
-	}
-	lastMatch := matches[len(matches)-1]
-	return lastMatch[1]
-}
-
 func addCategory(page string, category string, client *mwclient.Client) {
-	// There's a small chance that saving a page may fail due to an
-	// edit conflict. It also occasionally fails with
-	// "badtoken: Invalid token" for unknown reason. Try up
-	// to 3 times before giving up.
+	// There's a small chance that saving a page may fail due to
+	// an edit conflict or other transient error. Try up to 3
+	// times before giving up.
 	var saveError error
 	for i := 0; i < 3; i++ {
 		text, timestamp, err := client.GetPageByName(page)
 		if err != nil {
 			panic(fmt.Sprintf("%v %v", page, err))
 		}
-		last := afterCategories(page, &text)
+		// Add the category at the end of the text, since categories
+		// are supposed to be at the end anyway. A previous version
+		// tried to add after the last existing category, but that
+		// can fail when the text contains comments.
+		last := len(text)
 		text = text[0:last] + "\n[[" + category + "]]" + text[last:]
+		panic(text)
 		editcfg := map[string]string{
 			"action":        "edit",
 			"title":         page,
@@ -405,7 +392,7 @@ type flags struct {
 	ignoreCurrentCats bool
 	back              bool
 	fileLimit         int32
-	warningLimit        int32
+	warningLimit      int32
 }
 
 func parseFlags() flags {
@@ -437,13 +424,12 @@ func usage(progName string) {
 func EndProc(client *mwclient.Client, stats *stats) {
 	// Cookies can change while the bot is running, so save the latest values for the next run.
 	mwlib.WriteCookies(client.DumpCookies())
-	
+
 	if stats.examined > 1 {
 		fmt.Println()
 		stats.print()
 	}
 }
-
 
 func main() {
 	flags := parseFlags()
@@ -475,7 +461,7 @@ func main() {
 	}
 
 	defer EndProc(client, &stats)
-	
+
 	args := flag.Args()
 	numArgs := len(args)
 	if numArgs == 0 || numArgs > 2 {
