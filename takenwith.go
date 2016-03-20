@@ -31,7 +31,6 @@ func addCategory(page string, category string, client *mwclient.Client) {
 		// can fail when the text contains comments.
 		last := len(text)
 		text = text[0:last] + "\n[[" + category + "]]" + text[last:]
-		panic(text)
 		editcfg := map[string]string{
 			"action":        "edit",
 			"title":         page,
