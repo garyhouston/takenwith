@@ -43,6 +43,7 @@ AGFA DWS D-SCAN,,Category:Scanned with AgfaPhoto d-scan
 AgfaPhoto,Compact 100,AgfaPhoto Compact 100
 AgfaPhoto,AP Compact 104,AgfaPhoto Compact 104
 7M 3X Digital Camera,DC-733i,AgfaPhoto DC-733i
+AGFAPHOTO,DC-833m,AgfaPhoto DC-833m
 AgfaPhoto,DC 1030,AgfaPhoto DC-1030
 AGFAPHOTO,DC-1033m,AgfaPhoto DC-1033m
 Agfa,SP2,Agfa Easy Pix SP2
@@ -74,6 +75,7 @@ DV 5900,,AIPTEK DV 5900
 AIPTEK,DV 6800,Category:Photos taken with AIPTEK DV 6800 S
 AIPTEK,DV 6800S,Category:Photos taken with AIPTEK DV 6800 S
 AIPTEK,DV 8800,AIPTEK DV 8800
+AIPTEK,DV Z1,Aiptek DV Z1
 AIPTEK,DV Z2,Aiptek DV Z2
 AIPTEK,HDDV 8300,AIPTEK HD DV 8300
 Aiptek International Inc.,DZO-V59,AIPTEK DZO-V59
@@ -118,6 +120,7 @@ TCL,ALCATEL ONE TOUCH P320X,Alcatel One Touch Pop 8
 TCT,ONE TOUCH 4015A,Alcatel One Touch Pop C1
 TCT,ONE TOUCH 4015D,Alcatel One Touch Pop C1
 TCT,ONE TOUCH 4015N,Alcatel One Touch Pop C1
+TCT,ALCATEL 4015T,Alcatel One Touch Pop C1
 TCT,ONE TOUCH 4015X,Alcatel One Touch Pop C1
 TCT,ONE TOUCH 4016A,Alcatel One Touch Pop C1
 TCT,ONE TOUCH 4016X,Alcatel One Touch Pop C1
@@ -152,6 +155,7 @@ Allview,A6 Quad,Allview A6 Quad
 Allview,AX4Nano,Allview AX4 Nano
 ALLVIEW,ALLVIEW V1_ViperS,Allview V1 Viper S
 alps,A10,Alps A10
+alps,M1_Pro,Alps M1 Pro
 Altek,AL730,Altek AL730
 Amazon,Fire,Amazon Fire Phone
 AMOI,WP-S1,Amoi 3 Skypephone
@@ -175,6 +179,7 @@ Apple,iPhone 4,iPhone 4
 camera360,iPhone4,iPhone 4
 Apple,iPhone 4S,iPhone 4S
 ,iPhone 4S,iPhone 4S
+camera360,iPhone4S,iPhone 4S
 Apple,iPhone 5,iPhone 5
 camera360,iPhone5,iPhone 5
 Apple,"iPhone5,2 N42AP",iPhone 5
@@ -189,6 +194,7 @@ Apple,iPhone 5S,iPhone 5s
 Apple,iPhone 5s (Global),iPhone 5s
 ,iPhone 5S,iPhone 5s
 Apple,"iPhone6,2",iPhone 5s
+camera360,iPhone5S,iPhone 5s
 Apple,iPhone 6,iPhone 6
 camera360,iPhone6,iPhone 6
 Apple,"iPhone7,2",iPhone 6
@@ -234,6 +240,7 @@ ASUS,Z00D,ASUS ZenFone 2
 ASUS,Zenfone2,ASUS ZenFone 2
 ASUS,ASUS_Z00ED,ASUS ZenFone 2 Laser
 ASUS,ASUS_Z00LD,ASUS ZenFone 2 Laser
+ASUS,ASUS_Z00TD,ASUS ZenFone 2 Laser
 ASUS,ASUS ZenFone 2E,ASUS ZenFone 2E
 ASUS,ASUS_T00I,ASUS ZenFone 4
 ASUS,ASUS_T00Q,ASUS ZenFone 4 A450CG
@@ -249,6 +256,7 @@ ASUS,Z002,ASUS ZenFone 6
 ASUS,Z007,ASUS ZenFone C
 asus,ASUS_Z00VD,ASUS ZenFone Go
 ASUS,ASUS_Z00UD,ASUS ZenFone Selfie
+asus,P01Y,Asus ZenPad C 7.0
 Audiovox,CDM-8915VM,Audiovox Pantech CDM-8915VM
 Avvio,Avvio L500 Claro,Avvio L500 Claro
 "Baze Co.,Ltd.",BDC-330,Baze BDC-330
@@ -261,6 +269,7 @@ BENQ,BENQ DC2410,BenQ DC 2410
 BenQ Corporation,AC100,BenQ AC100
 BenQ Corporation,AC105,BenQ AC105
 BenQ Corporation,AE100,BenQ AE100
+BenQ,AE110,BenQ AE110
 BenQ Corporation,AE200,BenQ AE200
 BenQ,DC C50,BenQ DC C50
 BenQ,DC C60,BenQ DC C60
@@ -310,6 +319,7 @@ BenQ Corporation,DC E1480,BenQ DC E1480
 BenQ-Siemens,EF 81,BenQ-Siemens EF 81
 BenQ Corporation,GH65X,BenQ GH65X
 BenQ Corporation,GH600,BenQ GH600
+BenQ Corporation,GH700,BenQ GH700
 HITACHI,Hitachi HBC161E,BenQ GH600
 BenQ Corporation,GH800series,BenQ GH800
 BenQ Corporation,DC L1050,BenQ DC L1050
@@ -318,6 +328,7 @@ BenQ Corporation,LR10X,BenQ LR100
 BenQ,DC P500,BenQ DC P500
 BenQ,DC P1410,BenQ P1410
 BenQ-Siemens,S88,BenQ-Siemens S88
+BenQ Corporation,BenQ DC T700,BenQ DC T700
 BenQ Corporation,BenQ DC T800,BenQ DC T800
 BenQ Corporation,DC T1460,BenQ DC T1460
 BenQ,DC X600,BenQ DC X600
@@ -326,6 +337,7 @@ BenQ Corporation,BenQ DC X735,BenQ DC X735
 Better Light,Model 6000,Better Light 6000
 Better Light,Model Super6k,Better Light Super 6K-HS
 Better Light,Model Super8k,Better Light Super 8K-HS
+Bitel,B8502,Bitel B8502
 RIM,BlackBerry 8100 Series,BlackBerry 8100
 Research In Motion,BlackBerry 8120,BlackBerry Pearl 8120
 Research In Motion,BlackBerry 8130,BlackBerry Pearl 8130
@@ -398,6 +410,7 @@ bq,Aquaris 5 HD,Bq Aquaris 5 HD
 bq,bq Aquaris 5 HD,Bq Aquaris 5 HD
 bq,bq Aquaris 5.7,Bq Aquaris 5.7
 bq,Aquaris 5.7,Bq Aquaris 5.7
+bq,Aquaris A4.5,Bq Aquaris A4.5
 bq,Aquaris E4,Bq Aquaris E4
 bq,Aquaris E4.5,Bq Aquaris E4.5
 bq,Aquaris E5,Bq Aquaris E5
@@ -418,6 +431,7 @@ Brother,HL-2280DW,Category:Scanned with Brother HL-2280DW
 Brother,MFC-6490CW,Category:Scanned with Brother MFC-6490CW
 Brother,MFC-7320,Category:Scanned with Brother MFC-7320
 Brother,MFC-7360N,Category:Scanned with Brother MFC-7360N
+Brother,MFC-7420,Category:Scanned with Brother MFC-7420
 Brother,MFC-9420CN,Category:Scanned with Brother MFC-9420CN
 ,Brother MFC-9420CN,Category:Scanned with Brother MFC-9420CN
 Brother,MFC-J6510DW,Category:Scanned with Brother MFC-J6510DW
@@ -682,6 +696,7 @@ Canon,Canon EOS 5D Mark II,Canon EOS 5D Mark II
 Canon,EOS 5D Mark II,Canon EOS 5D Mark II
 """Canon""","""Canon EOS 5D Mark II""",Canon EOS 5D Mark II
 canon 5D mark II,,Canon EOS 5D Mark II
+Canon,Canon 5D MARK II,Canon EOS 5D Mark II
 Canon,Canon EOS 5D Mark III,Canon EOS 5D Mark III
 ,Canon EOS 5D Mark III,Canon EOS 5D Mark III
 CANON,5D Mark III,Canon EOS 5D Mark III
@@ -838,9 +853,10 @@ Canon,Canon LEGRIA HF S10,Canon Legria HF S10
 Canon,Canon iVIS HF S11,Canon HF S11
 Canon,Canon LEGRIA HF S11,Canon HF S11
 Canon,Canon VIXIA HF S11,Canon HF S11
-Canon,Canon LEGRIA HF S20,Canon Legria HF S20 / S21 /S200
-Canon,Canon LEGRIA HF S21,Canon Legria HF S20 / S21 /S200
-Canon,Canon LEGRIA HF S200,Canon Legria HF S20 / S21 /S200
+Canon,Canon LEGRIA HF S20,Canon HF S20 / S21 / S200
+Canon,Canon LEGRIA HF S21,Canon HF S20 / S21 / S200
+Canon,Canon LEGRIA HF S200,Canon HF S20 / S21 / S200
+Canon,Canon VIXIA HF S200,Canon HF S20 / S21 / S200
 Canon,Canon MV5i MC,Canon MV5i MC
 Canon,Canon MV630i,Canon MV630i
 Canon,Canon MV850i,Canon MV850i / ZR300
@@ -1052,6 +1068,7 @@ Canon,CanoScan 5600F,Category:Scanned with Canon CanoScan 5600F
 ,CanoScan 5600F,Category:Scanned with Canon CanoScan 5600F
 Canon,CanoScan 8400F,Category:Scanned with Canon CanoScan 8400F
 Canon Inc.,CanoScan 8400F,Category:Scanned with Canon CanoScan 8400F
+CanoScan,8400F,Category:Scanned with Canon CanoScan 8400F
 Canon,CanoScan 8600F,Category:Scanned with Canon CanoScan 8600F
 Canon Inc.,CanoScan 8600F,Category:Scanned with Canon CanoScan 8600F
 Canon,CanoScan 8800F,Category:Scanned with Canon CanoScan 8800F
@@ -1119,6 +1136,7 @@ Canon,Canon MF4800 Series,Category:Scanned with Canon ImageClass MF4800
 Canon,MF4800 Series,Category:Scanned with Canon ImageClass MF4800
 Canon,Canon MF5750,Category:Scanned with Canon ImageClass MF5750
 Canon,Canon MD130,Canon MD130
+Canon,Canon MD160,Canon MD160
 Canon,Canon iR1018/1022/1023,Category:Scanned with Canon iR1018 / iR1022 / iR1023
 Canon,Canon iR1020/1024/1025,Category:Scanned with Canon iR1020
 Canon,Canon MB5000 series Network,Category:Scanned with Canon Maxify MB5000
@@ -1142,6 +1160,7 @@ Canon,Canon MG4200 series,Category:Scanned with Canon Pixma MG4200
 Canon,Canon MG4200 series Network,Category:Scanned with Canon Pixma MG4200
 Canon,MG5100 series,Category:Scanned with Canon Pixma MG5100
 Canon,MG5200 series,Category:Scanned with Canon Pixma MG5200
+Canon,Canon MG5200 series,Category:Scanned with Canon Pixma MG5200
 Canon,MG5300 series,Category:Scanned with Canon MG5300
 Canon,Canon MG5300 series Network,Category:Scanned with Canon MG5300
 ,Canon MG5300 series,Category:Scanned with Canon MG5300
@@ -1235,6 +1254,7 @@ Canon,Canon MX880 series Network,Category:Scanned with Canon Pixma MX880
 Canon,MX890 series,Category:Scanned with Canon Pixma MX890
 Canon,Canon MX920 series,Category:Scanned with Canon Pixma MX920
 Canon,MX920 series,Category:Scanned with Canon Pixma MX920
+Canon,Canon MX920 series Network,Category:Scanned with Canon Pixma MX920
 Canon,MX7600 series,Category:Scanned with Canon Pixma MX7600
 Canon,Canon DV 001,Canon DV 001
 Canon,Canon DV 012,Canon DV 012
@@ -1248,6 +1268,7 @@ Canon,Canon iVIS HF10,Canon Vixia HF10
 Canon,Canon VIXIA HF20,Canon Vixia HF20
 Canon,Canon VIXIA HF100,Canon Vixia HF100
 Canon,Canon HF100,Canon Vixia HF100
+Canon,Canon HG10,Canon HG10
 Canon,Canon HG20,Canon Vixia HG20
 Canon,Canon HV10,Canon HV10
 Canon,Canon HV30,Canon Vixia HV30
@@ -1366,6 +1387,7 @@ CASIO,GV-10,Casio GV-10
 "CASIO COMPUTER CO.,LTD.",EX-Z700,Casio Exilim EX-Z700
 "CASIO COMPUTER CO.,LTD.",EX-Z790,Casio Exilim EX-Z790
 "CASIO COMPUTER CO.,LTD",EX-Z750,Casio Exilim EX-Z750
+"CASIO COMPUTER CO.,LTD.",EX-Z780,Casio Exilim EX-Z780
 "CASIO COMPUTER CO.,LTD.",EX-Z800,Casio Exilim EX-Z800
 "CASIO COMPUTER CO.,LTD.",EX-Z850,Casio Exilim EX-Z850
 "CASIO COMPUTER CO.,LTD.",EX-Z1000,Casio Exilim EX-Z1000
@@ -1426,6 +1448,7 @@ CASIO,QV-8000SX,Casio QV-8000SX
 "CASIO COMPUTER CO.,LTD.",QV-R200,Casio QV-R200
 "CASIO COMPUTER CO.,LTD.",QV-R300,Casio QV-R300
 CASIO,XV-3,Casio XV-3
+Casper,Casper_VIA_V8,Casper Via V8
 Casper,Casper_VIA_V8C,Casper Via V8C
 CCE,CCE-SC452TV,CCE Motion Plus SC452TV
 Celkon,Advance,Celkon Advance
@@ -1497,6 +1520,8 @@ Daisy Multimedia,DM334,Daisy PhotoClip DM334
 Daisy Multimedia Ltd,DM425Zr,Daisy DM425Zr
 DANTAX,SX4130Z8,Dantax SX 4130Z8
 DELL,Streak,Category:Captured with Dell Streak
+Dell,Venue 7,Dell Venue 7
+DELL,Venue 8,Dell Venue 8
 Dewav,n3466,Dewav n3466
 DigiLife,DG-M6,DigiLife DG-M6
 Digimaster,HAPPYCAM 5010,Digimaster Happycam 5010
@@ -1506,6 +1531,7 @@ DJI,FC300S,DJI FC300S
 DJI,FC300X,DJI FC300X
 DJI,FC350,DJI FC350
 DJI,FC550,DJI FC550
+DNS,S4505,DNS S4505
 DOOGEE,DAGGER-DG550E,Doogee Dagger DG550
 HOMTOM,HT6,Doogee Homtom HT6
 DOOGEE,TURB02 DG900,Doogee Turbo2 DG900
@@ -1526,6 +1552,8 @@ E-boda,Eruption V200,E-Boda Eruption V200
 elephone,Elephone P7000,Elephone P7000
 Energy Sistem,Energy Phone Colors,Energy Sistem Energy Phone Colors
 DV,3MP-9UU,Category:Photos taken with Energy Sistem Ennvision 3600
+EPSON,EPSON Artisan710/PX710/TX710,Category:Scanned with Epson Artisan 710
+SEIKO EPSON CORP.,Artisan 710,Category:Scanned with Epson Artisan 710
 SEIKO EPSON CORP.,Artisan 720,Category:Scanned with Epson Artisan 720
 Epson,Artisan 725,Category:Scanned with Epson Artisan 725
 SEIKO EPSON CORP.,Artisan 730,Category:Scanned with Epson Artisan 730
@@ -1567,6 +1595,7 @@ EPSON,GT-15000,Category:Scanned with Epson GT-15000
 Epson,GT-15000,Category:Scanned with Epson GT-15000
 Epson,GT-20000,Category:Scanned with Epson GT-20000
 EPSON,GT-20000,Category:Scanned with Epson GT-20000
+Epson,Perfection610,Category:Scanned with Epson Perfection 610
 EPSON,Perfection 1240,Category:Scanned with Epson Perfection 1240U
 Epson,Perfection1240,Category:Scanned with Epson Perfection 1240U
 ,EPSON Perfection 1240,Category:Scanned with Epson Perfection 1240U
@@ -1574,6 +1603,7 @@ Epson,Perfection1240,Category:Scanned with Epson Perfection 1240U
 EPSON,Perfection 1260,Category:Scanned with Epson Perfection 1260
 EPSON,Perfection 1640,Category:Scanned with Epson Perfection 1640SU
 Epson,Perfection1660,Category:Scanned with Epson Perfection 1660
+,EPSON Perfection 2400,Category:Scanned with Epson Perfection 2400
 Epson,Perfection2450,Category:Scanned with Epson Perfection 2450
 EPSON,Perfection 2450,Category:Scanned with Epson Perfection 2450
 Epson,Perf2450 GT-9700,Category:Scanned with Epson Perfection 2450
@@ -1810,6 +1840,7 @@ FUJIFILM,FinePix C20,Fujifilm FinePix C20
 FUJIFILM,DS-7,Fujifilm DS-7
 FUJIFILM,DX-5,Fujifilm DX-5
 FUJIFILM,DX-7,Fujifilm DX-7
+FUJIFILM,DS-20,Fujifilm DX-7
 FUJIFILM,DS-30,Fujifilm DX-9
 FUJIFILM,DX-10,Fujifilm DX-10
 FUJIFILM,FinePix E500,Fujifilm FinePix E500
@@ -2114,6 +2145,7 @@ FUJIFILM,Digital Q1 3M,Fujifilm Digital Q1 3M
 FFEI,C-550 Lanovia,Category:Scanned with Fujifilm Lanovia C-550
 "FUJI PHOTO FILM CO., LTD.",SLP800,Category:Scanned with Fujifilm SLP800
 "FUJI PHOTO FILM CO., LTD.",SLP1000SE,Category:Scanned with Fujifilm SLP-1000SE
+"FUJI PHOTO FILM CO., LTD.",SP500,Category:Scanned with Fujifilm SP-500
 "FUJI PHOTO FILM CO., LTD.",SP-1000-2780062-01,Category:Scanned with Fujifilm SP-1000
 "FUJI PHOTO FILM CO., LTD.",SP-1000-2780062-02,Category:Scanned with Fujifilm SP-1000
 "FUJI PHOTO FILM CO., LTD.",SP-1000-2780079-01,Category:Scanned with Fujifilm SP-1000
@@ -2186,7 +2218,9 @@ General Imaging Co.,E1040,GE E1040
 GENERAL IMAGING CO.,DV1,GE DV1
 General Imaging Co.,E840s,GE E840s
 General Imaging Co.,E850,GE E850
+General Imaging Co.,E1055W,GE E1055W
 GENERAL IMAGING CO.,E1250 TW,GE E1250 TW
+GENERAL IMAGING CO.,E1255W,GE E1255W
 GENERAL IMAGING CO.,E1480W,GE E1480W
 General Imaging Co.,G2,GE G2
 GENERAL IMAGING CO.,J1050,GE J1050
@@ -2203,6 +2237,7 @@ GENIUS CORPORATION,GENIUS 1,Genius 1
 KYE Systems Corp.,G-Shot A435,Genius G-Shot A435
 Genius,G-Shot 1400,Genius G-Shot 1400
 GIONEE,E7mini,Gionee Elife E7 Mini
+GIONEE,S5.1,Gionee Elife S5.1
 GIONEE,GIONEE Gpad_G1 camera,Gionee Gpad G1
 GIONEE,G3,Gionee Gpad G3
 GIONEE,M2,Gionee M2
@@ -2237,6 +2272,7 @@ Gopro,HD3,Category:Photos taken with GoPro HERO3 White Edition
 GoPro,Hero3-Black Edition,Category:Photos taken with GoPro HERO3 Black Edition
 GoPro,Hero3-Silver Edition,Category:Photos taken with GoPro HERO3 Silver Edition
 GoPro,HERO3+ Black Edition,Category:Photos taken with GoPro HERO3+ Black Edition
+Gopro HD Hero 3+ Black Edition,,Category:Photos taken with GoPro HERO3+ Black Edition
 GoPro,HERO3+ Silver Edition,Category:Photos taken with GoPro HERO3+ Silver Edition
 GoPro,HERO3+Silver Edition,Category:Photos taken with GoPro HERO3+ Silver Edition
 GoPro,HERO3+ Black Edition,Category:Photos taken with GoPro HERO3+ Black Edition
@@ -2284,6 +2320,7 @@ Hasselblad,Hasselblad H5D-50c,Hasselblad H5D-50c
 Hasselblad,Hasselblad H5D-50c MS,Hasselblad H5D-50c MS
 Hasselblad,Hasselblad H5D-60,Hasselblad H5D-60
 Hasselblad,Hasselblad H5D-200MS,Hasselblad H5D-200MS
+HASSELBLAD,HV,Hasselblad HV
 Hasselblad/Imacon,Ixpress 96 - Hasselblad CW,Hasselblad Imacon Ixpress 96
 Hasselblad/Imacon,Ixpress 96 - Mamiya RZ67,Hasselblad Imacon Ixpress 96
 Hasselblad,Ixpress 96 - Hasselblad ELX,Hasselblad Imacon Ixpress 96
@@ -2470,6 +2507,7 @@ HP,Photosmart C4600 series,Category:Scanned with HP PhotoSmart C4600
 s,Photosmart C4600 series,Category:Scanned with HP PhotoSmart C4600
 HP,HP pst_p02b,Category:Scanned with HP PhotoSmart C4600
 ,Photosmart C4700 series,Category:Scanned with HP PhotoSmart C4700
+HP,Photosmart C4700 series,Category:Scanned with HP PhotoSmart C4700
 HP,HP pst_p02c,Category:Scanned with HP PhotoSmart C4700
 HP,HP pstc5100,Category:Scanned with HP PhotoSmart C5100
 Photosmart,C5100 series,Category:Scanned with HP PhotoSmart C5100
@@ -2496,6 +2534,7 @@ Photosmart,D110 series,Category:Scanned with HP Photosmart D110
 HP,Photosmart D110 series,Category:Scanned with HP Photosmart D110
 HP,HP pst_p04a,Category:Scanned with HP Photosmart D110
 HP,HP pst_p04b,Category:Scanned with HP pst p04b
+HP,HP pst_p04f,Category:Scanned with HP pst p04f
 HP,HP pst_p04h,Category:Scanned with HP pst p04h
 HP,HP pst_p04i,Category:Scanned with HP pst p04i
 Hewlett-Packard,HP Photosmart E217,HP PhotoSmart E217
@@ -2558,6 +2597,7 @@ Hewlett-Packard,HP Photosmart R960  (V01.00)d,HP PhotoSmart R960
 Hewlett-Packard,HP Photosmart R960  (V01.00)+,HP PhotoSmart R960
 highscreen,Ice 2,Highscreen Ice 2
 highscreen,Zera F,Highscreen Zera F
+Hisense,Hisense E602M,Hisense E602M
 Hisense,HS-T970,Hisense HS-T970
 Hisense,Smartfren Andromax AD688G,Hisense Smartfren Andromax C2
 Hisense,Andromax AD687G,Hisense Smartfren Andromax G
@@ -2592,6 +2632,7 @@ HP,Officejet 6300 series,Category:Scanned with HP OfficeJet 6300
 HP,HP Scanjet e709a,Category:Scanned with HP OfficeJet 6500
 HP,HP Scanjet e709n,Category:Scanned with HP OfficeJet 6500
 HP,Officejet 6500 E709n,Category:Scanned with HP OfficeJet 6500
+HP,Officejet 6700,Category:Scanned with HP OfficeJet 6700
 HP,HP oj7200,Category:Scanned with HP OfficeJet 7200
 HP,HP oj7300,Category:Scanned with HP OfficeJet 7300
 ,HP Officejet 7300 series,Category:Scanned with HP OfficeJet 7300
@@ -2692,8 +2733,10 @@ HP,HP Scanjet G4010,Category:Scanned with HP ScanJet G4010
 HPHPHP,HP Scanjet G4010,Category:Scanned with HP ScanJet G4010
 ,HP Scanjet G4010,Category:Scanned with HP ScanJet G4010
 HP,HP Scanjet G4050,Category:Scanned with HP ScanJet G4050
+@,ScanJet G4050,Category:Scanned with HP ScanJet G4050
 HP,HP Scanjet G3010,Category:Scanned with HP ScanJet G3010
 HP,hp dvc t200,HP T200
+Hewlett-Packard,HP DVC V5040u,HP V5040u
 HTC,7 Mozart,HTC 7 Mozart
 HTC,T7575,HTC 7 Pro
 HTC,T8788,HTC 7 Surround
@@ -2941,6 +2984,7 @@ HUAWEI,G620S-L02,Huawei Ascend G620s
 HUAWEI,G621-TL00,Huawei Ascend G621
 HUAWEI,HUAWEI G700-U10,Huawei Ascend G700
 HUAWEI,HUAWEI G700-U20,Huawei Ascend G700
+HUAWEI,HUAWEI G730-U10,Huawei Ascend G730
 HUAWEI,HUAWEI MT1-U06,Huawei Ascend Mate
 HUAWEI,HUAWEI MT7-J1,Huawei Ascend Mate 7
 HUAWEI,HUAWEI MT7-L09,Huawei Ascend Mate 7
@@ -2973,6 +3017,7 @@ HUAWEI,HUAWEI Y530-U00,Huawei Ascend Y530
 HUAWEI,HUAWEI Y530-U051,Huawei Ascend Y530
 HUAWEI,HUAWEI Y550-L01,Huawei Ascend Y550
 HUAWEI,HUAWEI Y550-L02,Huawei Ascend Y550
+HUAWEI,HUAWEI Y560-L01,Huawei Y560
 HUAWEI,HUAWEI B199,Huawei B199
 HUAWEI,U8350,Huawei Boulder U8350
 HUAWEI,C8600,Huawei C8600
@@ -3026,6 +3071,8 @@ HUAWEI,MediaPad T1 8.0,Huawei MediaPad T1 8.0
 HUAWEI,MediaPad X1 7.0,Huawei MediaPad X1 7.0
 HUAWEI,HUAWEI P6-U06,Huawei P6
 HUAWEI,P6-U06,Huawei P6
+,HUAWEI P6-U06,Huawei P6
+HUAWEI,HUAWEI P6 S-U06,Huawei P6
 HUAWEI,HUAWEI GRA-L09,Huawei P8
 HUAWEI,HUAWEI GRA-TL00,Huawei P8
 HUAWEI,HUAWEI GRA-UL00,Huawei P8
@@ -3054,6 +3101,7 @@ HUAWEI,HUAWEI Y300-0151,Huawei Y300
 HUAWEI,Ascend Y300,Huawei Y300
 HUAWEI,Huawei Y301A2,Huawei Vitria Y301-A2
 HuaWei,Y320-U10,Huawei Y320
+HuaWei,Y320-U30,Huawei Y320
 HUAWEI,HUAWEI Y336-U02,Huawei Y336
 HUAWEI,Y360,Huawei Y360
 HUAWEI,HUAWEI Y625-U13,Huawei Y625
@@ -3526,6 +3574,8 @@ KDDI-KC,W65K,KDDI Kyocera W65K
 KYOCERA,WX310K,Kyocera WX310K
 KDDI-KC,KYY22,KDDI Kyocera Urbano L02
 KYOCERA,KYY23,KDDI Kyocera Urbano L03
+KYOCERA,KYV31,KDDI Kyocera Urbano V01
+KYOCERA,KYV34,KDDI Kyocera Urbano V02
 KDDI-KC,URBANO PROGRESSO,KDDI Kyocera Urbano Progresso
 Lanix,llium S120,Lanix Ilium S120
 Lanix,ILIUM S410,Lanix Ilium S410
@@ -3542,6 +3592,7 @@ Lava,iris SELFIE50,Lava Iris Selfie 50
 Lava,iris X5,Lava Iris X5
 Lava,iris X8,Lava Iris X8
 LAVA,PixelV1,Lava Pixel V1
+Leaf,Leaf AFi-II 7(LF13096    )/Large Format,Leaf AFi-II 7
 Leaf,Leaf Aptus 17(LF11588    )/Mamiya 645 AFD,Leaf Aptus 17
 ,Leaf Aptus 17(LF4965     )/Mamiya 645 AFD,Leaf Aptus 17
 Leaf,Leaf Aptus 17(LF4965     )/Mamiya 645 AFD,Leaf Aptus 17
@@ -3621,6 +3672,7 @@ Leica Microsystems,Camera= DFC295; Microscope= M165C;,Leica DFC295
 Leica Microsystems,Camera= DFC 420;,Leica DFC420
 Leica Microsystems,Camera= DFC 420 C; Microscope= DM6000B;,Leica DFC420
 Leica Microsystems,Camera= DFC 420; Microscope= M165C;,Leica DFC420
+Leica Microsystems,??????= DFC425 C; ?????????= DM2500;,Leica DFC425
 Leica Microsystems,Camera= DFC450; Microscope= DM2500;,Leica DFC450
 Leica Microsystems,Camera= DFC450; Microscope= DMI3000;,Leica DFC450
 LEICA,Digilux1,Leica Digilux 1
@@ -3662,6 +3714,7 @@ Lenovo,Lenovo A3300-H,Lenovo A7-30 A3300
 Lenovo,Lenovo A3300-HV,Lenovo A7-30 A3300
 Lenovo,Lenovo 2 A7-30HC,Lenovo A7-30 A3300
 LENOVO,Lenovo TAB 2 A7-30HC,Lenovo A7-30 A3300
+Lenovo,A5500-HV,Lenovo A8-50 A5500
 Lenovo,A7600-F,Lenovo A10-70 A7600
 Lenovo,A7600-H,Lenovo A10-70 A7600
 Lenovo,A60,Lenovo A60
@@ -3678,12 +3731,14 @@ Lenovo,A656,Lenovo A656
 Lenovo,A706_ROW,Lenovo A706
 Lenovo,Lenovo A706_ROW,Lenovo A706
 Lenovo,A750,Lenovo A750
+Lenovo,A766,Lenovo A766
 Lenovo,A789,Lenovo A789
 Lenovo,A820,Lenovo A820
 Lenovo,A850,Lenovo A850
 Lenovo,A850_ROW,Lenovo A850
 Lenovo,A859_ROW,Lenovo A859
 Lenovo,A889,Lenovo A889
+Lenovo,A3800-d,Lenovo A3800
 Lenovo,A5000,Lenovo A5000
 Lenovo,A6000,Lenovo A6000
 LENOVO,Lenovo A6000,Lenovo A6000
@@ -3708,6 +3763,7 @@ Lenovo,Lenovo S60-a,Lenovo S60
 Lenovo,Lenovo S90-A,Lenovo Sisley S90
 Lenovo,Lenovo S650,Lenovo S650
 Lenovo,S660,Lenovo S660
+Lenovo,S720,Lenovo S720
 Lenovo,S750,Lenovo S750
 Lenovo,Lenovo S820,Lenovo S820
 Lenovo,S820_ROW,Lenovo S820
@@ -3804,6 +3860,7 @@ LG Electronics,LG-D858HK,LG G3
 LG Electronics,LG-F400K,LG G3
 LG Electronics,LG-F400L,LG G3
 LG Electronics,LG-F400S,LG G3
+LG Electronics,LG-F460S,LG G3
 LG Electronics,LGLS990,LG G3
 LG Electronics,VS985 4G,LG G3
 LG Electronics,LG-VS985,LG G3
@@ -3827,6 +3884,7 @@ LG Electronics,LG-H811,LG G4
 LG Electronics,LG-H815,LG G4
 LG Mobile,LG-H815,LG G4
 LG Electronics,VS986,LG G4
+LG Electronics,G4,LG G4
 LG Electronics,LG-H735,LG G4 Beat
 LG Electronics,LG-H736P,LG G4 Beat
 LG Electronics,LG-H630D,LG G4 Stylus
@@ -3950,13 +4008,15 @@ LG Electronics,LG-F240S,LG Optimus G Pro
 LG Electronics,GT540,LG Optimus GT540
 LG Electronics,LG-E510,LG Optimus Hub
 LG Electronics,LG-E510f,LG Optimus Hub
-LG Electronics,L-05D,LG Optimus it
+LG Electronics,L-05D,LG Optimus it L-05D
+LG Electronics,L-05E,LG Optimus it L-05E
 LG Electronics,L-01D,LG Optimus LTE
 LG Electronics,LG-SU640,LG Optimus LTE
 LG Electronics,LG-F160LV,LG Optimus LTE II
 LG Electronics,LG-F160S,LG Optimus LTE II
 LG Electronics,LG-F260S,LG Optimus LTE III
 LG Electronics,LG-E410,LG Optimus L1 II
+LG Electronics,LG-E410f,LG Optimus L1 II
 LG Electronics,LG-E410g,LG Optimus L1 II
 LG Electronics,LG-E410i,LG Optimus L1 II
 LG Electronics,LG-E411g,LG Optimus L1 II
@@ -4086,6 +4146,7 @@ LUMICRON,LDC-4013,Lumicron LDC-4013
 LUMICRON,LDC-4028,Lumicron LDC-4028
 M4TEL,SS990,M4 E-Motion SS990
 M4,SS4040,M4 In Touch SS4040
+M4,SS4045,M4 Style SS4045
 ,MagicScan,Category:Scanned with MagicScan
 Maginon,Maginon Fun,Maginon Fun
 Maginon,MS-7100,Category:Scanned with Maginon MS-7100
@@ -4127,6 +4188,7 @@ Medion AG,MD86123,Medion Life P43001 MD 86123
 Medion AG,MD86127,Medion Life S42000 MD 86127
 MEDION,MD 86216,Medion Life S41008 MD 86216
 Medion AG,MD86222,Medion Life E43022 MD 86222
+MEDION,MD 86240,Medion Life P43003 MD 86240
 Medion AG,MD86243,Medion Life E43008 MD 86243
 Medion AG,MD86276,Medion Life P43008 MD 86276
 Medion AG,MD86295,Medion Life P43005 MD 86295
@@ -4150,10 +4212,12 @@ Medion AG,MD86830,Medion MD86830
 MEDION AG,MD86888,Medion Life X44088 MD 86888
 MEDION AG,MD86929,Medion Life P44029 MD 86929
 MEDION AG,MD 87028,Medion Life S43028 MD 87028
+MEDION,E4503,Medion Life E4503 MD 99476
 Meizu,m1,Meizu m1
 Meizu,m1 note,Meizu m1 note
 Meizu,m2,Meizu m2
 Meizu,m2 note,Meizu m2 note
+"MeiZu Technology Co.,Ltd",MeiZu M8,Meizu M8
 Meizu,MX(030),Meizu MX
 Meizu,MX(040),Meizu MX2
 Meizu,MX(35),Meizu MX3
@@ -4193,12 +4257,14 @@ Micromax,Micromax A99,Micromax Canvas Express A99
 Micromax,Micromax_A093,Micromax Canvas Fire A093
 Micromax,Micromax_A104,Micromax Canvas Fire 2 A104
 Micromax,Micromax A107,Micromax Canvas Fire 4 A107
+Micromax,Micromax A63,Micromax Canvas Fun A63
 Micromax A76,Micromax A76,Micromax Canvas Fun A76
 Micromax,Micromax_A177,Micromax Canvas Juice A177
 Micromax,Micromax AQ5001,Micromax Canvas Juice 2 AQ5001
 Micromax,Micromax A350,Micromax Canvas Knight A350
 Micromax,Micromax A290,Micromax Canvas Knight Cameo A290
 Micromax,Micromax A310,Micromax Canvas Nitro A310
+Micromax,Micromax A311,Micromax Canvas Nitro A311
 Micromax,Micromax E311,Micromax Canvas Nitro 2 E311
 Micromax,Micromax Q355,Micromax Canvas Play Q355
 Micromax,A96,Micromax Canvas Power A96
@@ -4213,6 +4279,7 @@ Micromax,Micromax A106,Micromax Unite 2 A106
 Micromax,Micromax Q372,Micromax Unite 3 Q372
 YU,AO5510,Micromax Yu Yureka
 YU,YUREKA,Micromax Yu Yureka
+YU,YU Yureka,Micromax Yu Yureka
 Microsoft,Lumia 430 Dual SIM,Microsoft Lumia 430
 Microsoft,Lumia 435,Microsoft Lumia 435
 Microsoft,Lumia 435 Dual SIM,Microsoft Lumia 435
@@ -4223,6 +4290,7 @@ Microsoft,Lumia 535 Dual SIM,Microsoft Lumia 535
 Microsoft,RM-1090,Microsoft Lumia 535
 Microsoft,RM-1092,Microsoft Lumia 535
 Microsoft,Lumia 540 Dual SIM,Microsoft Lumia 540
+Microsoft,Lumia 550,Microsoft Lumia 550
 Microsoft,Lumia 640 LTE,Microsoft Lumia 640
 Microsoft,Lumia 640 LTE Dual SIM,Microsoft Lumia 640
 Microsoft,Lumia 640 Dual SIM,Microsoft Lumia 640
@@ -4354,6 +4422,7 @@ Motorola,DROID2 7d500001fff80000015d7bca0901f029,Motorola Droid 2
 Motorola,DROID2 GLOBAL,Motorola Droid 2
 Motorola,A953 23300022ffd80000015f4a641202800f,Motorola Droid 2
 Motorola,A953 77880001ffd800000160880b1803601a,Motorola Droid 2
+Motorola,A953 67b00002ffd800000160a3e00e00d023,Motorola Droid 2
 motorola,DROID3,Motorola Droid 3
 motorola,XT860,Motorola Droid 3
 Motorola,DROID4,Motorola Droid 4
@@ -4392,12 +4461,14 @@ Motorola,MB525 64500002ffdc0000016b3b791401301d,Motorola MB525 DEFY
 Motorola,MB525 3a0a0002ffdc00000163dd9103021025,Motorola MB525 DEFY
 Motorola,MB526,Motorola MB526 DEFY+
 motorola,MB526,Motorola MB526 DEFY+
+Motorola,XT320,Motorola Defy Mini
 Motorola,XT535,Motorola Defy XT
 Motorola,XT311,Motorola Fire XT311
 Motorola,XT531,Motorola Fire XT XT531
 Motorola,Megapixel,Motorola Megapixel
 Motorola,MilestoneXT720,Motorola Milestone XT720
 Motorola,XT800,Motorola Milestone XT800
+Motorola,XT830C,Motorola Moto E (first generation)
 Motorola,XT1021,Motorola Moto E (first generation)
 Motorola,XT1022,Motorola Moto E (first generation)
 Motorola,XT1023,Motorola Moto E (first generation)
@@ -4475,6 +4546,7 @@ Motorola,Phone,unidentified Motorola phone
 MOTO,1.2 MP,Motorola V710
 Motorola,Motorola VE66 655554ba141b15090909090909090909,Motorola VE66
 Motorola,Motorola VE66 49d065ba121c02090909090909090909,Motorola VE66
+Motorola,VGA,Motorola VGA
 Motorola,XT319,Motorola XT319
 MOTOROLA,XT390,Motorola XT390
 Motorola,ZN5,Motorola Zine ZN5
@@ -4498,6 +4570,7 @@ DSC IMAGE,DV,Mustek mini DV
 MyPhone,MyPhone A919 Duo,MyPhone A919 Duo
 MyPhone,MyPhone Agua Infinity,MyPhone Aqua Infinity
 myPhone,Cube,MyPhone Cube
+MyPhone,MyPhone UNO,MyPhone Uno
 NHJ,DX350,NHJ Mach Power DX350
 NEC,931N,NEC 931N
 NEC,N-01D,NEC Medias PP N-01D
@@ -4636,6 +4709,7 @@ NIKON,COOLPIX P900,Nikon Coolpix P900
 NIKON,COOLPIX P5000,Nikon Coolpix P5000
 NIKON,COOLPIX P5100,Nikon Coolpix P5100
 NIKON,COOLPIX P6000,Nikon Coolpix P6000
+NIKON CORPORATION,NIKON COOLPIX P6000,Nikon Coolpix P6000
 NIKON,COOLPIX P7000,Nikon Coolpix P7000
 ,COOLPIX P7000,Nikon Coolpix P7000
 NIKON,COOLPIX P7100,Nikon Coolpix P7100
@@ -4691,6 +4765,7 @@ NIKON,COOLPIX S2500,Nikon Coolpix S2500
 OLYMPUS IMAGING CORP.,COOLPIX S2500,Nikon Coolpix S2500
 NIKON,COOLPIX S2550,Nikon Coolpix S2550
 NIKON,COOLPIX S2600,Nikon Coolpix S2600
+Nikon,Coolpix S2600,Nikon Coolpix S2600
 NIKON,COOLPIX S2700,Nikon Coolpix S2700
 NIKON,COOLPIX S2750,Nikon Coolpix S2750
 NIKON,COOLPIX S2800,Nikon Coolpix S2800
@@ -4888,6 +4963,7 @@ Nikon,Nikon SUPER COOLSCAN 9000 ED,Category:Scanned with Nikon Super Coolscan 90
 Nikon,LS-9000,Category:Scanned with Nikon Super Coolscan 9000 ED
 Nintendo,NintendoDS,Nintendo DS
 XXX,NOA H43,Noa H43
+Nokia,110,Nokia 110
 Nokia,112,Nokia 112
 Nokia,113,Nokia 113
 Nokia,200,Nokia 200
@@ -4948,6 +5024,7 @@ Nokia,5610d-1,Nokia 5610
 Nokia,5630d-1,Nokia 5630
 Nokia,5678,Nokia 5678
 Nokia,5700,Nokia 5700 XpressMusic
+Nokia,5730S-1,Nokia 5730 XpressMusic
 Nokia,5800 Xpres,Nokia 5800
 Nokia,603,Nokia 603
 Nokia,6110,Nokia 6110 Navigator
@@ -5071,6 +5148,7 @@ Nokia,Lumia 822,Nokia Lumia 822
 Nokia,Lumia 830,Nokia Lumia 830
 Nokia,Nokia Lumia 900,Nokia Lumia 900
 Nokia,Lumia 920,Nokia Lumia 920
+,Lumia 920,Nokia Lumia 920
 Nokia,Lumia 925,Nokia Lumia 925
 Nokia,Nokia 925,Nokia Lumia 925
 Nokia,Lumia 928,Nokia Lumia 928
@@ -5081,6 +5159,7 @@ Nokia,Lumia 1020,Nokia Lumia 1020
 ,Lumia 1020,Nokia Lumia 1020
 Nokia,Nokia 1020,Nokia Lumia 1020
 Nokia,Lumia 1320,Nokia Lumia 1320
+Nokia,Nokia 1320,Nokia Lumia 1320
 Nokia,Lumia 1520,Nokia Lumia 1520
 Nokia,N8-00,Nokia N8
 Nokia,N9,Nokia N9
@@ -5654,6 +5733,7 @@ Palm,Pre,Palm Pre
 ,Palm Treo 700p,Palm Treo 700p
 Palm,Palm Zire 71,Palm Zire 71
 Panasonic,AG-AC7,Panasonic AG-AC7
+Panasonic,AG-AC90,Panasonic AG-AC90
 "Panasonic Communications Co., Ltd.",DP-C266,Category:Scanned with Panasonic DP-C266
 Panasonic,ELUGA A,Panasonic Eluga A
 PANASONIC,dL1,Panasonic Eluga DL1
@@ -5775,6 +5855,7 @@ Panasonic,DMC-FZ5,Panasonic Lumix DMC-FZ5
 Canon,DMC-FZ5,Panasonic Lumix DMC-FZ5
 Panasonic,DMC-FZ7,Panasonic Lumix DMC-FZ7
 Panasonic,DMC-FZ8,Panasonic Lumix DMC-FZ8
+OLYMPUS IMAGING CORP.,DMC-FZ8,Panasonic Lumix DMC-FZ8
 Panasonic,DMC-FZ10,Panasonic Lumix DMC-FZ10
 Panasonic,DMC-FZ15,Panasonic Lumix DMC-FZ15
 Panasonic,DMC-FZ18,Panasonic Lumix DMC-FZ18
@@ -5810,6 +5891,7 @@ Panasonic,DMC-G3,Panasonic Lumix DMC-G3
 Panasonic,DMC-G5,Panasonic Lumix DMC-G5
 Panasonic,DMC-G6,Panasonic Lumix DMC-G6
 Panasonic,DMC-G7,Panasonic Lumix DMC-G7
+Panasonic,DMC-G70,Panasonic Lumix DMC-G7
 Panasonic,DMC-G10,Panasonic Lumix DMC-G10
 Panasonic,DMC-GF1,Panasonic Lumix DMC-GF1
 Panasonic,DMC-GF2,Panasonic Lumix DMC-GF2
@@ -6049,6 +6131,7 @@ PANTECH,ADR910L,Pantech Marauder ADR910L
 PANTECH,P6030,Pantech Renue P6030
 PANTECH,IM-U585S,Pantech Sky IM-U585S
 PANTECH,SKY IM-A650S,Pantech Vega IM-A650S
+KDDI-PT,IS06,Pantech Vega IM-A650S
 PANTECH,IM-A870K,Pantech Vega Iron
 PANTECH,IM-A870L,Pantech Vega Iron
 PANTECH,IM-A870S,Pantech Vega Iron
@@ -6071,6 +6154,7 @@ PENTAGRAM,Phot41,Pentagram Photon 41
 ,4MDSC,Pentagram Photon 434
 Pentax,Pentax 67,Pentax 67
 Pentax,67II,Pentax 67II
+PENTAX / Epson,67II / GT-X970,Pentax 67II
 PENTAX,PENTAX 645D,Pentax 645D
 "RICOH IMAGING COMPANY, LTD.",PENTAX 645Z,Pentax 645Z
 "Asahi Optical Co.,Ltd",PENTAX DB100,Pentax DigiBino DB100
@@ -6170,6 +6254,7 @@ PENTAX Corporation,PENTAX Optio L40,Pentax Optio L40
 PENTAX Corporation,PENTAX Optio L50,Pentax Optio L50
 PENTAX,PENTAX Optio L60,Pentax Optio L60
 PENTAX,PENTAX Optio LS465,Pentax Optio LS465
+PENTAX,PENTAX Optio LS1000,Pentax Optio LS1000
 PENTAX Corporation,PENTAX Optio M10,Pentax Optio M10
 PENTAX Corporation,PENTAX Optio M20,Pentax Optio M20
 PENTAX Corporation,PENTAX Optio M30,Pentax Optio M30
@@ -6287,6 +6372,7 @@ Philips,CAM100GY,Philips CAM100GY
 Philips,CAM110,Philips CAM110
 Philips Consumer Electronics Co. Ltd,Keyring 019,Philips Key019
 Philips,Philips S398,Philips S398
+Philips,X806,Philips Xenium X806
 Plum,Z350,Plum Gator Plus
 Polaroid,5MP Digital Camera,Polaroid 5MP Digital Camera
 Polaroid,6MP DSC,Polaroid 6MP DSC
@@ -6307,6 +6393,7 @@ Polaroid,Polaroid i832,Polaroid i832
 Polaroid,i834,Polaroid i834
 Polaroid,Speed star i835,Polaroid Speed Star i835
 Polaroid,i936,Polaroid i936
+PLA100Z,Polaroid i1032,Polaroid i1032
 Polaroid,i1035,Polaroid i1035
 Polaroid,i1036,Polaroid i1036
 Polaroid,i1037,Polaroid i1037
@@ -6341,6 +6428,8 @@ Polaroid,t1031,Polaroid t1031
 Polaroid,t1035,Polaroid t1035
 Polaroid,x530,Polaroid x530
 WIA,OpticBook 3800,Category:Scanned with Plustek OpticBook 3800
+"Plustek Inc.,",Plustek OpticBook A300,Category:Scanned with Plustek OpticBook A300
+"Plustek Inc.,",OpticBook A300,Category:Scanned with Plustek OpticBook A300
 Plustek,OpticFilm 120,Category:Scanned with Plustek OpticFilm 120
 Plustek,OpticFilm 7200,Category:Scanned with Plustek OpticFilm 7200
 Plustek,OpticFilm 7200i,Category:Scanned with Plustek OpticFilm 7200i
@@ -6353,6 +6442,7 @@ Plustek,OpticFilm7600i,Category:Scanned with Plustek OpticFilm 7600i
 Plustek,OpticFilm 8100,Category:Scanned with Plustek OpticFilm 8100
 Plustek,OpticFilm 8200i,Category:Scanned with Plustek OpticFilm 8200i
 PENTACON,Scan5000,Category:Scanned with Pentacon Scan 5000
+POLYTRON,POLYTRON R2452,Polytron R2452
 POLYTRON,W1400,Polytron W1400
 5MP Digital Camera,5MP Digital Camera,Praktica 5MP
 PENTACON,DC60,Praktica DC 60
@@ -6371,6 +6461,7 @@ PENTACON,DPix 530Z,Praktica DPix 530Z
 PENTACON,DPIX 540Z,Praktica DPix 540Z
 PENTACON,DPix 750Z,Praktica DPix 750Z
 Pentacon,Dpix 820Z,Praktica DPix 820Z
+PENTACON,DPix 1000Z,Praktica DPix 1000Z
 PENTACON,DP1027,Praktica DPix 1027
 PENTACON,PENTACON Dpix 1100Z,Praktica DPix 1100Z
 PENTACON,DVC5.1HD,Praktica DVC 5.1 HD
@@ -6508,6 +6599,7 @@ RCA,CC9390,RCA CC9390
 RED,EPIC-X,Red Epic
 ProScan,7200,Category:Scanned with Reflecta Proscan 7200
 Rekam_Inc.,Rekam_iLook_S800,Rekam iLook S800
+,SP C231SF/C232SF Network,Category:Scanned with Ricoh Aficio SP C231SF / C232SF
 RICOH,Caplio400Gwide,Ricoh Caplio 400G Wide
 RICOH,Caplio 500SE,Ricoh Caplio 500SE
 RICOH,Caplio500Gwide,Ricoh Caplio 500G wide
@@ -6555,6 +6647,7 @@ RICOH,DC-4U,Ricoh DC-4U
 RICOH,GR10,Ricoh GR10
 RICOH,GR Digital,Ricoh GR Digital
 PENTAX RICOH IMAGING,GR,Ricoh GR Digital
+RICOH,RICOH THETA S,Ricoh Theta S
 PictureVision,Photonet Central Lab Scanner 4B-100,Category:Scanned with PictureVision 4B-100
 PictureVision,PhotoNet Central Lab Scanner 4B-150,Category:Scanned with PictureVision 4B-150
 PictureVision,Photonet Central Lab Scanner 4B150-35A,Category:Scanned with PictureVision 4B-150
@@ -6656,12 +6749,14 @@ Samsung Techwin,Digimax A400,Samsung A400
 "Samsung Techwin co., Ltd.",Digimax A502,Samsung A502
 "Samsung Techwin co., Ltd.",Digimax A503 / Kenox D503,Samsung A503
 "Samsung Techwin co., Ltd",Digimax A503 / Kenox D50,Samsung A503
+SAMSUNG,SAMSUNG AU75C,Samsung AU75C
 SAMSUNG,SCH-R720,Samsung Admire SCH-R720
 SAMSUNG,Samsung SCH-U750,Samsung Alias 2 SCH-U750
 SAMSUNG Electronics,Anycall SCH-W410,Samsung Anycall SCH-W410
 SAMSUNG Electronics,Anycall SPH-W2500,Samsung Anycall SPH-W2500
 SAMSUNG Electronics,Anycall SPH-W2900,Samsung Anycall SPH-W2900
 Samsung Electronics,SGH-T919,Samsung Behold SGH-T919
+Samsung,SCX-3200 Series,Category:Scanned with Samsung SCX-3200
 Samsung,SCX-3400 Series,Category:Scanned with Samsung SCX-3400
 ,Samsung SCX-3400 Series,Category:Scanned with Samsung SCX-3400
 SAMSUNG,SCH-B900,Samsung SCH-B900
@@ -6670,6 +6765,7 @@ SAMSUNG,M3510,Samsung Beat b GT-M3510
 SAMSUNG,SCH-U660,Samsung Convoy 2 SCH-U660
 SAMSUNG,SCH-U680,Samsung Convoy 3 SCH-U680
 Samsung Techwin,<Digimax D53>,Samsung D53
+Samsung,GT-S7070,Samsung Diva
 SAMSUNG,SAMSUNG DV100 / SAMSUNG DV90 / SAMSUNG DV101 / SAMSUNG DV50,Samsung DV100
 SAMSUNG,SAMSUNG DV100,Samsung DV100
 SAMSUNG,SAMSUNG DV100 / SAMSUNG DV90 / SAMSUNG DV101,Samsung DV100
@@ -6703,6 +6799,7 @@ SAMSUNG,ES99,Samsung ES99
 SAMSUNG,EX1,Samsung EX1 (TL500)
 SAMSUNG,EX2F,Samsung EX2F
 SAMSUNG,SGH-T679,Samsung Exhibit II
+Samsung Electronics,G80L,Samsung G80L
 SAMSUNG,B2100,Samsung GT-B2100
 SAMSUNG,GT-B2710,Samsung GT-B2710
 Samsung,GT-B5310,Samsung GT-B5310
@@ -6789,6 +6886,7 @@ SAMSUNG,GT-M8800,Samsung Pixon GT-M8800
 SAMSUNG,GT-M8910,Samsung Pixon12 GT-M8910
 SAMSUNG,GT-N7000,Samsung GT-N7000
 samsung,GT-N7000,Samsung GT-N7000
+Samsung,GT-N7000,Samsung GT-N7000
 SAMSUNG,GT-N7100,Samsung GT-N7100
 samsung,GT-N7100,Samsung GT-N7100
 SAMSUNG,GT-N7105,Samsung GT-N7105
@@ -6805,7 +6903,6 @@ SAMSUNG,GT-P1000M,Samsung GT-P1000
 SAMSUNG,GT-P1000N,Samsung GT-P1000
 SAMSUNG,GT-P1000R,Samsung GT-P1000
 SAMSUNG,GT-P1000T,Samsung GT-P1000
-SAMSUNG,GT-P6800,Samsung GT-P6800
 SAMSUNG,GT-P7100,Samsung GT-P7100
 SAMSUNG,GT-P7350,Samsung GT-P7350
 SAMSUNG,S3110,Samsung GT-S3110
@@ -6819,6 +6916,7 @@ SAMSUNG,SAMSUNG GT-C3222,Samsung Ch@t 322 GT-S3222
 SAMSUNG,GT-S3350,Samsung Ch@t 335
 SAMSUNG,GT-S3353,Samsung Ch@t 335
 SAMSUNG,GT-S3370,Samsung Corby 3G GT-S3370
+Samsung Electronics,GT-S3500,Samsung GT-S3500
 SAMSUNG,GT-S3600I,Samsung GT-S3600
 SAMSUNG,GT-S3650,Samsung Corby
 Samsung,GT-S3650,Samsung Corby
@@ -6828,6 +6926,8 @@ Samsung,GT-M3710,Samsung Corby Beat GT-M3710
 SAMSUNG,GT-B3410,Samsung Corby Plus GT-B3410
 SAMSUNG,GT-B3210,Samsung Corby TXT GT-B3210
 SAMSUNG,S5200,Samsung GT-S5200
+Samsung,GT-S5560,Samsung Marvel GT-S5560
+SAMSUNG,GT-S5560i,Samsung Marvel GT-S5560i
 SAMSUNG,SCH-U820,Samsung Reality SCH-U820
 SAMSUNG,GT-C3312R,Samsung Rex 60
 SAMSUNG,GT-S3802W,Samsung Rex 70
@@ -6844,43 +6944,37 @@ SAMSUNG,GT-S5220,Samsung Star 3
 SAMSUNG,GT-S5222,Samsung Star 3
 SAMSUNG,GT-S5222R,Samsung Star 3
 Samsung,GT-I6220,Samsung Star TV
-SAMSUNG,GT-S5250,Samsung GT-S5250
-SAMSUNG,GT-S5253,Samsung GT-S5253
 SAMSUNG,GT-S5260,Samsung Star II GT-S5260
 SAMSUNG,GT-S5292,Samsung Star Deluxe Duos GT-S5292
 "Samsung Electronics Co., Ltd.",C3050,Samsung Stratus
+SAMSUNG,GT-S7350i,Samsung Ultra GT-S7350
+SAMSUNG,GT-S8530,Samsung Wave II
+SAMSUNG,SHW-M210S,Samsung Wave II
+SAMSUNG,GT-S8600,Samsung Wave 3
+SAMSUNG,GT-S5250,Samsung Wave 525
+SAMSUNG,GT-S5253,Samsung Wave 525
 SAMSUNG,GT-S5330,Samsung Wave 533
 SAMSUNG,GT-S5333,Samsung Wave 533
-Samsung,GT-S5560,Samsung Marvel GT-S5560
-SAMSUNG,GT-S5560i,Samsung Marvel GT-S5560i
-SAMSUNG,GT-S5570,Samsung GT-S5570
-SAMSUNG,GT-S5570B,Samsung GT-S5570
-SAMSUNG,GT-S5570I,Samsung GT-S5570
-SAMSUNG,GT-S5570L,Samsung GT-S5570
 Samsung,GT-S5380,Samsung Wave Y
 Samsung,GT-S5380D,Samsung Wave Y
-SAMSUNG,GT-S5610,Samsung GT-S5610
-SAMSUNG,GT-S5610K,Samsung GT-S5610
-SAMSUNG,GT-S5620,Samsung GT-S5620
 Samsung,GT-S5750E,Samsung Wave 575
 SAMSUNG,GT-S5750E,Samsung Wave 575
 Samsung,GT-S5753E,Samsung Wave 575
 SAMSUNG,GT-S5780,Samsung Wave 578
+Samsung,GT-S7230E,Samsung Wave 723
+Samsung,GT-S7233E,Samsung Wave 723
+Samsung,GT-S7250,Samsung Wave M
+Samsung,GT-S7250D,Samsung Wave M
+SAMSUNG,GT-S5610,Samsung GT-S5610
+SAMSUNG,GT-S5610K,Samsung GT-S5610
+SAMSUNG,GT-S5620,Samsung GT-S5620
 SAMSUNG,GT-S6500,Samsung GT-S6500
 SAMSUNG,GT-S6500D,Samsung GT-S6500
 SAMSUNG,GT-S6500L,Samsung GT-S6500
 SAMSUNG,GT-S6500T,Samsung GT-S6500
 Samsung,GT-S6700C,Samsung GT-S6700
-Samsung,GT-S7230E,Samsung Wave 723
-Samsung,GT-S7233E,Samsung Wave 723
-Samsung,GT-S7250,Samsung Wave M
-Samsung,GT-S7250D,Samsung Wave M
-SAMSUNG,GT-S7350i,Samsung Ultra GT-S7350
 SAMSUNG,GT-S8500,Samsung GT-S8500
 SAMSUNG,GT-S8500M,Samsung GT-S8500
-SAMSUNG,GT-S8530,Samsung Wave II
-SAMSUNG,SHW-M210S,Samsung Wave II
-SAMSUNG,GT-S8600,Samsung Wave 3
 SAMSUNG,GT-i7500,Samsung Galaxy (original)
 SAMSUNG,GT-I7500,Samsung Galaxy (original)
 SAMSUNG,SM-A300F,Samsung Galaxy A3
@@ -6891,6 +6985,7 @@ SAMSUNG,SM-A300H,Samsung Galaxy A3
 samsung,SM-A300H,Samsung Galaxy A3
 SAMSUNG,SM-A300M,Samsung Galaxy A3
 SAMSUNG,SM-A300Y,Samsung Galaxy A3
+SAMSUNG,SM-A300YZ,Samsung Galaxy A3
 SAMSUNG,SM-A500F,Samsung Galaxy A5
 SAMSUNG,SM-A500FU,Samsung Galaxy A5
 samsung,SM-A500FU,Samsung Galaxy A5
@@ -6924,6 +7019,7 @@ SAMSUNG,SM-G313HN,Samsung Galaxy Ace 4
 SAMSUNG,SM-G313M,Samsung Galaxy Ace 4
 SAMSUNG,SM-G313MU,Samsung Galaxy Ace 4
 SAMSUNG,SM-G318ML,Samsung Galaxy Ace 4 Neo
+SAMSUNG,SMX-F50BP,Samsung SMX-F50
 SAMSUNG,GT-S6802,Samsung Galaxy Ace Duos GT-S6802
 SAMSUNG,GT-S6802B,Samsung Galaxy Ace Duos GT-S6802
 SAMSUNG,SCH-i589,Samsung Galaxy Ace Duos SCH-i589
@@ -6963,12 +7059,14 @@ SAMSUNG,EK-GN120,Samsung EK-GN120
 SAMSUNG,EK-GN120A,Samsung EK-GN120
 SAMSUNG,GT-I8530,Samsung Galaxy Beam
 ,GT-I8530,Samsung Galaxy Beam
+SAMSUNG,SGH-C414,Samsung SGH-C414
 SAMSUNG,SCH-S738C,Samsung Galaxy Centura
 Samsung,GT-B5330,Samsung Galaxy Chat GT-B5330
 Samsung,GT-B5330L,Samsung Galaxy Chat GT-B5330
 SAMSUNG,GT-I8260,Samsung Galaxy Core
 SAMSUNG,GT-I8260L,Samsung Galaxy Core
 SAMSUNG,GT-I8262,Samsung Galaxy Core
+samsung,GT-I8262,Samsung Galaxy Core
 SAMSUNG,GT-I8262B,Samsung Galaxy Core
 SAMSUNG,SM-G386F,Samsung Galaxy Core
 SAMSUNG,SM-G386W,Samsung Galaxy Core
@@ -6986,6 +7084,7 @@ SAMSUNG,SM-G3502,Samsung Galaxy Core Plus
 SAMSUNG,SM-G3502T,Samsung Galaxy Core Plus
 SAMSUNG,SM-G360F,Samsung Galaxy Core Prime
 SAMSUNG,SM-G360G,Samsung Galaxy Core Prime
+SAMSUNG,SM-G360GY,Samsung Galaxy Core Prime
 samsung,SM-G360H,Samsung Galaxy Core Prime
 SAMSUNG,SM-G360H,Samsung Galaxy Core Prime
 samsung,SM-G360HU,Samsung Galaxy Core Prime
@@ -7060,10 +7159,13 @@ SAMSUNG,SM-J100H,Samsung Galaxy J1
 samsung,SM-J100ML,Samsung Galaxy J1
 SAMSUNG,SM-J100ML,Samsung Galaxy J1
 SAMSUNG,SM-J100MU,Samsung Galaxy J1
+samsung,SM-J100VPP,Samsung Galaxy J1
 SAMSUNG,SM-J100Y,Samsung Galaxy J1
 samsung,SM-J500F,Samsung Galaxy J5
 samsung,SM-J500FN,Samsung Galaxy J5
+,SM-J500FN,Samsung Galaxy J5
 samsung,SM-J500H,Samsung Galaxy J5
+samsung,SM-J500M,Samsung Galaxy J5
 samsung,SM-J500N0,Samsung Galaxy J5
 samsung,SM-J5007,Samsung Galaxy J5
 samsung,SM-J700F,Samsung Galaxy J7
@@ -7083,6 +7185,10 @@ SAMSUNG,SHV-E310L,Samsung Galaxy Mega 6.3
 SAMSUNG,SHV-E310K,Samsung Galaxy Mega 6.3
 SAMSUNG,SM-G750F,Samsung Galaxy Mega 2
 SAMSUNG,SM-G7508Q,Samsung Galaxy Mega 2
+SAMSUNG,GT-S5570,Samsung Galaxy Mini
+SAMSUNG,GT-S5570B,Samsung Galaxy Mini
+SAMSUNG,GT-S5570I,Samsung Galaxy Mini
+SAMSUNG,GT-S5570L,Samsung Galaxy Mini
 Samsung,GT-S6010,Samsung Galaxy Music
 Samsung,GT-S6012B,Samsung Galaxy Music
 SAMSUNG,SGH-I717,Samsung Galaxy Note (original)
@@ -7107,6 +7213,7 @@ SAMSUNG,SM-N900L,Samsung Galaxy Note 3
 SAMSUNG,SM-N900P,Samsung Galaxy Note 3
 SAMSUNG,SM-N900S,Samsung Galaxy Note 3
 SAMSUNG,SM-N900T,Samsung Galaxy Note 3
+SAMSUNG,SM-N900U,Samsung Galaxy Note 3
 SAMSUNG,SM-N900V,Samsung Galaxy Note 3
 SAMSUNG,SM-N900W8,Samsung Galaxy Note 3
 samsung,SM-N900W8,Samsung Galaxy Note 3
@@ -7131,6 +7238,7 @@ samsung,SM-N910H,Samsung Galaxy Note 4
 SAMSUNG,SM-N910H,Samsung Galaxy Note 4
 samsung,SM-N910K,Samsung Galaxy Note 4
 samsung,SM-N910L,Samsung Galaxy Note 4
+SAMSUNG,SM-N910P,Samsung Galaxy Note 4
 SAMSUNG,SM-N910S,Samsung Galaxy Note 4
 samsung,SM-N910S,Samsung Galaxy Note 4
 samsung,SM-N910T,Samsung Galaxy Note 4
@@ -7155,9 +7263,11 @@ SAMSUNG,GT-N5110,Samsung Galaxy Note 8.0
 SAMSUNG,GT-N5120,Samsung Galaxy Note 8.0
 SAMSUNG,SAMSUNG-SGH-I467,Samsung Galaxy Note 8.0
 SAMSUNG,SGH-I467M,Samsung Galaxy Note 8.0
+SAMSUNG,GT-N8005,Samsung Galaxy Note 10.1
 SAMSUNG,SM-P600,Samsung Galaxy Note 10.1 2014 Edition
 SAMSUNG,SM-P601,Samsung Galaxy Note 10.1 2014 Edition
 SAMSUNG,SM-P605,Samsung Galaxy Note 10.1 2014 Edition
+samsung,SM-P605,Samsung Galaxy Note 10.1 2014 Edition
 SAMSUNG,SCL24,Samsung Galaxy Note Edge
 SAMSUNG,SM-N915F,Samsung Galaxy Note Edge
 samsung,SM-N915F,Samsung Galaxy Note Edge
@@ -7309,6 +7419,7 @@ samsung,SM-G900H,Samsung Galaxy S5
 SAMSUNG,SM-G900I,Samsung Galaxy S5
 samsung,SM-G900I,Samsung Galaxy S5
 SAMSUNG,SM-G900K,Samsung Galaxy S5
+samsung,SM-G900K,Samsung Galaxy S5
 SAMSUNG,SM-G900M,Samsung Galaxy S5
 samsung,SM-G900M,Samsung Galaxy S5
 samsung,SM-G900MD,Samsung Galaxy S5
@@ -7342,6 +7453,7 @@ SAMSUNG,SM-G800M,Samsung Galaxy S5 Mini
 SAMSUNG,SM-G800Y,Samsung Galaxy S5 Mini
 samsung,SM-G903F,Samsung Galaxy S5 Neo
 samsung,SM-G860P,Samsung Galaxy S5 Sport
+SAMSUNG,SM-G860P,Samsung Galaxy S5 Sport
 samsung,SAMSUNG-SM-G920A,Samsung Galaxy S6
 samsung,SAMSUNG-SM-G920AZ,Samsung Galaxy S6
 samsung,SM-G920F,Samsung Galaxy S6
@@ -7376,6 +7488,7 @@ SAMSUNG,GT-S7582,Samsung Galaxy S Duos 2 GT-S7582
 samsung,GT-S7582,Samsung Galaxy S Duos 2 GT-S7582
 SAMSUNG,7582,Samsung Galaxy S Duos 2 GT-S7582
 SAMSUNG,SM-G313HU,Samsung Galaxy S Duos 3
+samsung,SM-G313HU,Samsung Galaxy S Duos 3
 SAMSUNG,GT-I9001,Samsung Galaxy S Plus GT-I9001
 SAMSUNG,SGH-T699,Samsung Galaxy S Relay
 SAMSUNG,GT-I9003,Samsung Galaxy SL GT-I9003
@@ -7397,6 +7510,7 @@ SAMSUNG,SCH-I800,Samsung Galaxy Tab 7.0
 sprint,SPH-P100,Samsung Galaxy Tab 7.0
 SAMSUNG,GT-P6200,Samsung Galaxy Tab 7.0 Plus
 SAMSUNG,GT-P6210,Samsung Galaxy Tab 7.0 Plus
+SAMSUNG,GT-P6800,Samsung Galaxy Tab 7.7
 SAMSUNG,GT-P7300,Samsung Galaxy Tab 8.9
 SAMSUNG,GT-P7310,Samsung GT-P7310
 SAMSUNG,GT-P7500,Samsung Galaxy Tab 10.1
@@ -7881,6 +7995,7 @@ SANYO,WX310SA,Sanyo WX310SA
 "SANYO Electric Co.,Ltd.",C5,Sanyo Xacti VPC-C5
 "SANYO Electric Co.,Ltd.",C6,Sanyo Xacti VPC-C6
 "SANYO Electric Co.,Ltd.",C40,Sanyo Xacti VPC-C40
+"SANYO Electric Co.,Ltd.",CA6,Sanyo Xacti VPC-CA6
 "SANYO Electric Co.,Ltd.",CA9,Sanyo Xacti VPC-CA9
 "SANYO Electric Co.,Ltd.",CA65,Sanyo Xacti VPC-CA65
 "SANYO Electric Co.,Ltd.",CG6,Sanyo Xacti VPC-CG6
@@ -8256,6 +8371,7 @@ SONY,DSC-HX10V,Sony DSC-HX10
 ,DSC-HX10V,Sony DSC-HX10V
 SONY,DSC-HX20,Sony DSC-HX20
 SONY,DSC-HX20V,Sony DSC-HX20V
+SONY,DSC-HX30,Sony DSC-HX30
 SONY,DSC-HX30V,Sony DSC-HX30V
 SONY,DSC-HX50,Sony DSC-HX50
 SONY,DSC-HX50V,Sony DSC-HX50V
@@ -8301,6 +8417,7 @@ SONY,DSC-QX100,Sony DSC-QX100
 SONY,DSC-R1,Sony DSC-R1
 SONY,DSC-RX1,Sony DSC-RX1
 SONY,DSC-RX1R,Sony DSC-RX1R
+SONY,DSC-RX1RM2,Sony DSC-RX1R II
 SONY,DSC-RX10,Sony DSC-RX10
 SONY,DSC-RX10M2,Sony DSC-RX10 II
 SONY,DSC-RX100,Sony DSC-RX100
@@ -8381,6 +8498,7 @@ SONY,DSC-U50,Sony DSC-U50
 SONY,DSC-U60,Sony DSC-U60
 SONY,DSC-V1,Sony DSC-V1
 SONY,DSC-V3,Sony DSC-V3
+,DSC-V3,Sony DSC-V3
 SONY,DSC-W1,Sony DSC-W1
 SONY,DSC-W5,Sony DSC-W5
 SONY,DSC-W7,Sony DSC-W7
@@ -8477,6 +8595,7 @@ SONY,DSLR-A350,Sony DSLR-A350
 Sony,DSLR-A350,Sony DSLR-A350
 SONY,DSLR-A380,Sony DSLR-A380
 SONY,DSLR-A390,Sony DSLR-A390
+,DSLR-A390,Sony DSLR-A390
 SONY,DSLR-A450,Sony DSLR-A450
 SONY,DSLR-A500,Sony DSLR-A500
 ,DSLR-A500,Sony DSLR-A500
@@ -8545,6 +8664,8 @@ SONY,HDR-HC3E,Sony HDR-HC3
 SONY,HDR-HC5,Sony HDR-HC5
 SONY,HDR-HC5E,Sony HDR-HC5
 SONY,HDR-HC9E,Sony HDR-HC9E
+SONY,HDR-PJ10,Sony HDR-PJ10
+SONY,HDR-PJ10E,Sony HDR-PJ10
 SONY,HDR-PJ50E,Sony HDR-PJ50E
 SONY,HDR-PJ200,Sony HDR-PJ200
 SONY,HDR-PJ200E,Sony HDR-PJ200
@@ -8677,15 +8798,18 @@ SONY,SLT-A77V,Sony SLT-A77
 SONY,SLT-A99,Sony SLT-A99
 SONY,SLT-A99V,Sony SLT-A99
 ,SLT-A99V,Sony SLT-A99
-SONY,Sony Tablet,Sony Tablet P
+SONY,Sony Tablet,Sony Tablet
+Sony,Sony Tablet,Sony Tablet
 Sony,SO-04E,Sony Xperia A
 Sony,SO-04F,Sony Xperia A2
 Sony,SO-01E,Sony Xperia AX
 Sony,C2305,Sony Xperia C
+Sony,S39h,Sony Xperia C
 Sony,D2502,Sony Xperia C3
 Sony,D2533,Sony Xperia C3
 Sony,S55t,Sony Xperia C3
 SONY,E5303,Sony Xperia C4
+SONY,E5306,Sony Xperia C4
 SONY,E5363,Sony Xperia C4
 SONY,C1504,Sony Xperia E
 SONY,C1505,Sony Xperia E
@@ -9002,9 +9126,11 @@ Sony Ericsson,Z1010,Sony Ericsson Z1010
 Sony Ericsson,W20,Sony Ericsson Zylo W20
 Sony Ericsson,W20a,Sony Ericsson Zylo W20
 Sony Ericsson,W20i,Sony Ericsson Zylo W20
+Spice,Mi-514,Spice Mi-514
 Spice,MI-516,Spice Stellar Mi-516
 Spice,Mi-495,Spice Stellar Virtuoso Mi-495
 Spice,Spice Mi-498,Spice Dream Uno Mi-498
+Starmobile KNIGHT,Starmobile KNIGHT,Starmobile Knight
 Starmobile,KNIGHT X,Starmobile Knight X
 Starmobile,Up Snap,Starmobile Up Snap
 Stealth Cam,STC-P12,Stealth Cam STC-P12
@@ -9031,6 +9157,7 @@ Symphony,Symphony W70,Symphony Xplorer W70
 Symphony,Xplorer W71,Symphony Xplorer W71
 Symphony,W72,Symphony Xplorer W72
 Dewav,W75,Symphony Xplorer W75
+Symphony,W82,Symphony Xplorer W82
 Symphony,W92,Symphony Xplorer W92
 Symphony,W128,Symphony Xplorer W128
 Symphony,Symphony Xplorer W140,Symphony Xplorer W140
@@ -9039,6 +9166,7 @@ XXXXX Corporation,CoolPhoto 1.0,TCL CoolPhoto 1.0
 TCL Corporation,CoolPhoto 1.0,TCL CoolPhoto 1.0
 TCL,D776HD,TCL D776HD
 TCL,TCL P335M,TCL P335M
+Teclast,P80 3G(A5LL),Teclast P80
 TECNO,TECNO-C8,Tecno Camon C8
 TECNO,TECNO H5,Tecno H5
 Tecno,Tecno H6,Tecno H6
@@ -9218,6 +9346,7 @@ Vodafone,Vodafone 785,Vodafone Smart 4 Mini
 Vodafone,Vodafone 985N,Vodafone Smart 4 Power
 Vodafone,Vodafone Smart 4G,Vodafone Smart 4G
 Vodafone,Vodafone Smart 4 turbo,Vodafone Smart 4 Turbo
+Vodafone,Vodafone 890N,Vodafone Smart 4 Turbo
 Vodafone,VF-895N,Vodafone Smart Prime 6
 TCT,Vodafone 875,Vodafone Smart mini 875
 Vodafone,Vodafone Smart ultra 6,Vodafone Smart Ultra 6
@@ -9308,6 +9437,7 @@ Xiaomi,Redmi Note 2,Xiaomi Redmi Note 2
 XIAOYI,YDXJ 1,Xiaomi Yi
 XOLO,A500s,Xolo A500s
 XOLO,Play 6X-1000,Xolo Play 6X-1000
+XOLO,Q600,Xolo Q600
 XOLO,Q700,Xolo Q700
 XOLO,Q700S,Xolo Q700s
 XOLO,XOLO Q1000 Camera,Xolo Q1000
@@ -9337,6 +9467,7 @@ Z Camera,,Z Camera
 Zeutschel,OS 10000,Category:Scanned with Zeutschel OS 10000
 ,Zeutschel OS 10000/14000,Category:Scanned with Zeutschel OS 10000
 ,"Zeutschel OS14000 A2, SN 53962, Omniscan V12.0 (1210)",Category:Scanned with Zeutschel OS 14000 A2
+Scanner Zeutschel,OS14000_A1 56276,Category:Scanned with Zeutschel OS 14000 A1
 ,AxioCamERc5s,Zeiss AxioCam ER C5s
 ,AxioCamHR,Zeiss AxioCam HR
 ,AxioCamHR3,Zeiss AxioCam HR 3
@@ -9388,6 +9519,7 @@ ZTE,ZTE V765M,ZTE V765M
 ZTE,V881,ZTE V881
 ZTE,N9810,ZTE Vital
 ZTE,N860,ZTE Warp
+ZTE,N9510,ZTE Warp 4G
 ZTE,Z667T,ZTE Zinger
 ZTE,Z970,ZTE ZMax
 ATT_AM_Z432V2.0.9B01-S,Novatek NT99252 2.0 MP YUV,ZTE Z432
@@ -9528,6 +9660,7 @@ Apple,Candy Camera 1.55.7 (32),skip - software
 Apple,Candy Camera 1.55.8 (33),skip - software
 Apple,ClassicToy,skip - software
 Apple,Unknown iPhone,skip - no model
+Barco Graphics,,skip - no model
 Canon,Unknown iPhone,skip - no model
 Applied Graphics Technologies,Digital Link,skip - software
 Arcsoft,PhotoStitch,skip - software
@@ -9550,9 +9683,11 @@ CAMERA,DIGITAL CAMERA,skip - no information
 Camera,Digital,skip - no information
 CAMERA MAKE,MODEL,skip - ambiguous
 Camera Obscura,Alhazen,skip - not a device
+Camera Plus,,skip - maybe a phone app
 Camera ZOOM FX,Camera ZOOM FX for Android,skip - software
 Cameringo,XT1254,skip - software - on Motorola Droid Turbo?
 Canon,,skip - no model
+canon,canon,skip - no model
 Canon,Canon,skip - no model
 Canon,CYBERSHOT,skip - Canon/Sony mix
 CANON INC.,Canon FilmGet FS 1.0 for Windows,skip - software
@@ -9564,6 +9699,7 @@ Canon,unknown,skip - no model
 ch 6.2.0.2,,skip - no idea
 ,ClassicPAN,skip - IOS app
 ,"COH IMAGING COMPANY,",skip - corruption of RICOH?
+CONTAX,,skip - no model
 ,CORPORATI,skip - no information
 ,CORPORATIO,skip - no information
 ,CS2 Windows,skip - software
@@ -9585,6 +9721,7 @@ Digital Camera,DigitalCAM,skip - ambiguous
 DIGITAL CAMERA,,skip - ambiguous
 Digital Camera Mfr,Digital Camera,skip - ambiguous
 ,Digital Camera,skip - ambiguous
+Digital Camera,Vivicam,skip - no model
 Unknown,DigitalCam Pro,skip - ambiguous
 ,CORPORATION,skip - corrupt or meaningless
 Digital,Digital,skip - ambiguous
@@ -9671,6 +9808,7 @@ Hipstamatic,279,skip - IOS app
 Hipstamatic,280,skip - IOS app
 Hipstamatic,301,skip - IOS app
 Hipstamatic,302,skip - IOS app
+Hipstamatic,305,skip -IOS app
 Hipstamatic,Oggl,skip - IOS app
 Hisense,GT-I9500,skip - Samsung model
 hop CS,2 Windows,skip - software?
@@ -9695,7 +9833,8 @@ Jag.gr,6X6 for iPhone,skip - IOS app.
 Jag.gr,645 PRO Mk II for Apple iPhone 5,skip - IOS app.
 Jag.gr,645 PRO Mk III for Apple iPhone 5,skip - IOS app.
 jBrout,,skip - software
-JellyBus,iPod Touch 4G,skip - software
+JellyBus,iPhone 6 Plus,skip - photo editing software
+JellyBus,iPod Touch 4G,skip - photo editing software
 KTH,Pudding Camera,skip - Android app.
 Kodak,,skip - no model
 KONICA MINOLTA D,IGITAL CAM,skip - no model
@@ -9703,6 +9842,7 @@ KONICA MINOLTA D,IGITAL CAM,skip - no model
 Layout from Instagram,,skip - software
 Leaf,,skip - no model
 Leica,,skip - no model
+Leica Camera AG,Unknown,skip - no model
 Linhof,Ektachrome,skip - no model
 Lotogram,iPhone 5 (GSM),skip - software
 Made by LAFOT Studio,,skip - software
@@ -9762,6 +9902,7 @@ http://photogrid.org/,,skip - software
 http://photogrid.org,,skip - software
 PIXELA CORPORATION,MediaBrowser,skip - software
 Polaroid,,skip - no model
+Prestigio,Prestigio,skip - no model
 ProCaptura,,skip - no model
 ,Portable Scanner,skip - no model
 Protected,Protected,skip - presumably not a device
@@ -9781,6 +9922,7 @@ SAMSUNG ELECTRONICS,SAMSUNG,skip - no model
 SAMSUNG,TASSVE,skip - related to Cyanogenmod?
 SAMSVNG,UC550,skip - doesn't seem to be a valid model
 SAMSUNG,X-M1,skip - Fujifilm model
+,SANE,skip - scanner driver?
 SEIKO EPSON CORP.,EPSON scanner,skip - no model
 SHARP,,skip - no model
 "SHUOYING INDUSTRIAL CO., LTD",Camera,skip - no model
@@ -9792,6 +9934,7 @@ somy,RUBIK,skip - no idea
 SONY,,skip - no model
 Sony,,skip - no model
 Sony Computer Entertainment Inc.,PlayStation(R)Vita,skip - software
+Sony Corporation,TLib,skip - possibly software
 SONY,DPP-FP70(AF1),skip - printer with photo editing
 SONY,DPP-FP70(AF3),skip - printer with photo editing
 SONY,DPP-FP90(AF3),skip - printer with photo editing
