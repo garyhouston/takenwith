@@ -17,8 +17,8 @@ type stats struct {
 func (s stats) print() {
 	fmt.Println("Total files examined: ", s.examined)
 	fmt.Println("Files with camera details in Exif: ", s.withCamera)
+	fmt.Println("Files skipped due to CatFileLimit: ", s.populated)
 	fmt.Println("Files with warnings printed: ", s.warnings)
 	fmt.Println("Files already categorised: ", s.inCat)
-	fmt.Println("Files skipped due to CatFileLimit: ", s.populated)
 	fmt.Println("Files attempted to edit: ", s.edited)
 }
