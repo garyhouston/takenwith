@@ -237,11 +237,9 @@ func processFiles(fileArray []exifcamera.FileCamera, client *mwclient.Client, fl
 
 func processGenerator(params params.Values, client *mwclient.Client, flags flags, categoryMap map[string]string, allCategories map[string]bool, catCounts map[string]int32, stats *stats) {
 	lastFileProcessed := ""
-	fmt.Println(params)
 	query := client.NewQuery(params)
 	for query.Next() {
 		json := query.Resp()
-		fmt.Println(json)
 		pages, err := json.GetObject("query", "pages")
 		if err != nil {
 			// result set may be empty due to "miser mode" in the
