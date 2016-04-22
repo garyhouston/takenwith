@@ -287,10 +287,14 @@ func processGenerator(params params.Values, client *mwclient.Client, flags flags
 		fmt.Println("Last file processed: ", lastFileProcessed)
 		msg := query.Err().Error()
 		if strings.Contains(msg, "This result was truncated") {
-			// This is a nuisance. Some files have enormous Exif
-			// data and the batch may exceed a limit of
+			// This shouldn't happen now that we request
+			// commonmetadata instead of metadata.
+			// pdf / djvu files may contain complete text in
+			// metadata, and a batch may exceed a limit of
 			// 12,582,912 bytes for a single request.
 			// E.g., File:Congressional Record Volume 81 Part 1.pdf
+			// and its related files or
+			// File:Boiste_-_Dictionnaire_universel,_1851.djvu
 			fmt.Println(msg)
 			fmt.Println("The combined Exif data was too large when processing a batch of files. Try running from the time of the last file processed with a smaller -batchSize.")
 		} else {
@@ -315,7 +319,7 @@ func processUser(user string, ts timestamp, client *mwclient.Client, flags flags
 		"gaidir":    backString(flags.back),
 		"gailimit":  strconv.Itoa(flags.batchSize),
 		"prop":      "imageinfo",
-		"iiprop":    "metadata",
+		"iiprop":    "commonmetadata",
 	}
 	if ts.valid {
 		params["gaistart"] = ts.string
@@ -334,7 +338,7 @@ func processCategory(category string, ts timestamp, client *mwclient.Client, fla
 		"gcmdir":       backString(flags.back),
 		"gcmlimit":     strconv.Itoa(flags.batchSize),
 		"prop":         "imageinfo",
-		"iiprop":       "metadata",
+		"iiprop":       "commonmetadata",
 	}
 	if ts.valid {
 		params["gcmstart"] = ts.string
@@ -353,7 +357,7 @@ func processRandom(client *mwclient.Client, flags flags, categoryMap map[string]
 			"grnnamespace": "6", // namespace 6 for files on Commons.
 			"grnlimit":     strconv.Itoa(batchSize),
 			"prop":         "imageinfo",
-			"iiprop":       "metadata",
+			"iiprop":       "commonmetadata",
 		}
 		processGenerator(params, client, flags, categoryMap, allCategories, catCounts, stats)
 	}
@@ -373,7 +377,7 @@ func processAll(ts timestamp, client *mwclient.Client, flags flags, categoryMap 
 		"gaistart":  ts.string,
 		"gailimit":  strconv.Itoa(flags.batchSize),
 		"prop":      "imageinfo",
-		"iiprop":    "metadata",
+		"iiprop":    "commonmetadata",
 	}
 	processGenerator(params, client, flags, categoryMap, allCategories, catCounts, stats)
 }

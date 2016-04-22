@@ -97,7 +97,7 @@ func processFile(pageObj *jason.Object, cat CatInfo, client *mwclient.Client, ve
 			fmt.Println("Skipping due to wrong model in Exif")
 			return
 		}
-		metadata, err := imageinfo[0].GetObjectArray("metadata")
+		metadata, err := imageinfo[0].GetObjectArray("commonmetadata")
 		if err != nil {
 			panic(err)
 		}
@@ -117,7 +117,7 @@ func ProcessCategory(cat CatInfo, client *mwclient.Client, verbose bool) {
 		"gcmsort":   "sortkey",
 		"gcmlimit":  "100", // Maximum files per batch, API allows 5k with bot flag.
 		"prop":      "imageinfo",
-		"iiprop":    "metadata",
+		"iiprop":    "commonmetadata",
 	}
 	query := client.NewQuery(params)
 	for query.Next() {

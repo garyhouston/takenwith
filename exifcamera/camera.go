@@ -14,7 +14,7 @@ func requestExif(pages []string, client *mwclient.Client) *jason.Object {
 		"action":    "query",
 		"titles":    mwlib.MakeTitleString(pages),
 		"prop":      "imageinfo",
-		"iiprop":    "metadata",
+		"iiprop":    "commonmetadata",
 		"redirects": "", // follow redirects
 		"continue":  "",
 	}
@@ -64,7 +64,7 @@ func findCamera(metadata []*jason.Object) (string, string) {
 
 // Return device make/model from json imageinfo object.
 func ExtractCamera(imageinfo *jason.Object) (string, string) {
-	metadata, err := imageinfo.GetObjectArray("metadata")
+	metadata, err := imageinfo.GetObjectArray("commonmetadata")
 	if err != nil {
 		// metadata is null in some cases
 		return "", ""
