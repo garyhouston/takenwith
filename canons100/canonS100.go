@@ -59,6 +59,9 @@ func moveFile(file string, powershot bool, cat CatInfo, client *mwclient.Client,
 			break
 		}
 	}
+	if saveError != nil {
+		panic(fmt.Sprintf("Failed to save %v %v", file, saveError))
+	}
 }
 
 func checkSpeedRatings(metadata []*jason.Object) bool {
