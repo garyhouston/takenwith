@@ -390,7 +390,7 @@ func processOneFile(page string, client *mwclient.Client, flags flags, categoryM
 type flags struct {
 	Verbose           bool   `short:"v" long:"verbose" env:"takenwith_verbose" description:"Print action for every file"`
 	CatFileLimit      int32  `short:"c" long:"catfilelimit" env:"takenwith_catfilelimit" description:"Don't add to categories with at least this many files. No limit if zero" default:"100"`
-	User              string `long:"user" env:"takenwith_user" description:"Operator's email address or Wiki user name" default:"nobody@example.com"`
+	Operator          string `long:"operator" env:"takenwith_operator" description:"Operator's email address or Wiki user name"`
 	BatchSize         int    `short:"s" long:"batchsize" env:"takenwith_batchsize" description:"Number of files to process per server request" default:"100"`
 	IgnoreCurrentCats bool   `short:"i" long:"ignorecurrentcats" env:"takenwith_ignorecurrentcats" description:"Add to mapped categories even if already in a relevant category"`
 	Back              bool   `short:"b" long:"back" env:"takenwith_back" description:"Process backwards in time, from newer files to older files"`
@@ -422,7 +422,10 @@ func EndProc(client *mwclient.Client, stats *stats) {
 
 func main() {
 	args, flags := parseFlags()
-	client, err := mwclient.New("https://commons.wikimedia.org/w/api.php", "takenwith "+flags.User)
+	if flags.Operator == "" {
+		log.Fatal("Operator email / username not set.")
+	}
+	client, err := mwclient.New("https://commons.wikimedia.org/w/api.php", "takenwith "+flags.Operator)
 	if err != nil {
 		panic(err)
 	}
