@@ -28,7 +28,7 @@ func addCategory(page string, category string, client *mwclient.Client) {
 		// tried to add after the last existing category, but that
 		// can fail when the text contains comments.
 		last := len(text)
-		text = text[0:last] + "\n[[" + category + "]]" + text[last:]
+		text = text[0:last] + "\n[[" + category + "]]"
 		editcfg := map[string]string{
 			"action":        "edit",
 			"title":         page,
