@@ -2,18 +2,18 @@ package main
 
 import (
 	"bufio"
-	goflags "github.com/jessevdk/go-flags"
 	mwclient "cgt.name/pkg/go-mwclient"
 	"fmt"
 	"github.com/garyhouston/takenwith/mwlib"
+	goflags "github.com/jessevdk/go-flags"
 	"log"
 	"os"
 )
 
 // Get the user email address / Wiki name, from command line or environment variable.
-func getUser() string {
+func getOperator() string {
 	var flags struct {
-		User  string `long:"user" env:"takenwith_user" description:"Operator's email address or Wiki user name" default:"nobody@example.com"`
+		Operator string `long:"user" env:"takenwith_user" description:"Operator's email address or Wiki user name"`
 	}
 	parser := goflags.NewParser(&flags, goflags.HelpFlag)
 	args, err := parser.Parse()
@@ -23,14 +23,17 @@ func getUser() string {
 	if len(args) != 0 {
 		log.Fatal("Unexpected argument.")
 	}
-	return flags.User
+	return flags.Operator
 }
 
 // This login program must be run before using the main bot. It saves
 // cookies into a file in the bot's directory.
 func main() {
-	userinfo := getUser()
-	client, err := mwclient.New("https://commons.wikimedia.org/w/api.php", "wikilogin "+userinfo)
+	operator := getOperator()
+	if operator == "" {
+		log.Fatal("Operator email / username not set.")
+	}
+	client, err := mwclient.New("https://commons.wikimedia.org/w/api.php", "wikilogin "+operator)
 	if err != nil {
 		panic(err)
 	}
