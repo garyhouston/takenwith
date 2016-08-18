@@ -53,17 +53,14 @@ type fileTarget struct {
 	category string
 }
 
-func addCategories(pages []fileTarget, client *mwclient.Client, verbose bool, catFileLimit int32, allCategories map[string]bool, catCounts map[string]int32, stats *stats) {
+func addCategories(pages []fileTarget, client *mwclient.Client, verbose func(...string), catFileLimit int32, allCategories map[string]bool, catCounts map[string]int32, stats *stats) {
 	for i := range pages {
 		// The cat size limit needs to be checked again, since adding
 		// previous files in the batch may have pushed it over the
 		// limit.
 		if catFileLimit > 0 && catCounts[pages[i].category] >= catFileLimit {
 			stats.populated++
-			if verbose {
-				fmt.Println(pages[i].title)
-				fmt.Println("Already populated:", pages[i].category)
-			}
+			verbose(pages[i].title, "\n", "Already populated: ", pages[i].category)
 		} else {
 			// Identifying emtpy categories may help identify
 			// when we are adding a file to a redirect page
@@ -71,12 +68,10 @@ func addCategories(pages []fileTarget, client *mwclient.Client, verbose bool, ca
 			// regardless of catFileLimit, but counts aren't
 			// maintained if it's zero.
 			if catFileLimit > 0 && catCounts[pages[i].category] == 0 {
-				fmt.Println(pages[i].title)
-				fmt.Println("Adding to empty", pages[i].category)
+				warn(pages[i].title, "\n", "Adding to empty ", pages[i].category)
 				stats.warnings++
-			} else if verbose {
-				fmt.Println(pages[i].title)
-				fmt.Println("Adding to", pages[i].category, " (", catCounts[pages[i].category], " files)")
+			} else {
+				verbose(pages[i].title, "\n", "Adding to ", pages[i].category, " (", strconv.Itoa(int(catCounts[pages[i].category])), " files)")
 			}
 			stats.edited++
 			addCategory(pages[i].title, pages[i].category, client)
@@ -88,7 +83,7 @@ func addCategories(pages []fileTarget, client *mwclient.Client, verbose bool, ca
 }
 
 // Remove files where the category already has more than catFileLimt members.
-func filterCatLimit(cats []fileTarget, client *mwclient.Client, verbose bool, catFileLimit int32, catCounts map[string]int32, stats *stats) []fileTarget {
+func filterCatLimit(cats []fileTarget, client *mwclient.Client, verbose func(...string), catFileLimit int32, catCounts map[string]int32, stats *stats) []fileTarget {
 	// Identify categories where the size isn't already cached.
 	lookup := make([]string, 0, len(cats))
 	lookupIdx := 0
@@ -111,17 +106,13 @@ func filterCatLimit(cats []fileTarget, client *mwclient.Client, verbose bool, ca
 	for i := range cats {
 		count, found := catCounts[cats[i].category]
 		if !found {
-			fmt.Println(cats[i].title)
-			fmt.Println("Mapped category doesn't exist:", cats[i].category)
+			warn(cats[i].title, "\n", "Mapped category doesn't exist: ", cats[i].category)
 			stats.warnings++
 			continue
 		}
 		if count >= catFileLimit {
 			stats.populated++
-			if verbose {
-				fmt.Println(cats[i].title)
-				fmt.Println("Already populated:", cats[i].category)
-			}
+			verbose(cats[i].title, "\n", "Already populated: ", cats[i].category)
 			continue
 		}
 		result = result[0 : resultIdx+1]
@@ -131,31 +122,24 @@ func filterCatLimit(cats []fileTarget, client *mwclient.Client, verbose bool, ca
 	return result
 }
 
-func filterFiles(pages []exifcamera.FileCamera, client *mwclient.Client, verbose bool, categoryMap map[string]string, stats *stats) []fileTarget {
+func filterFiles(pages []exifcamera.FileCamera, client *mwclient.Client, verbose func(...string), categoryMap map[string]string, stats *stats) []fileTarget {
 	count := 0
 	result := make([]fileTarget, 0, len(pages))
 	for i := range pages {
 		if pages[i].Make == "" && pages[i].Model == "" {
-			if verbose {
-				fmt.Println(pages[i].Title)
-				fmt.Println("No camera details in Exif")
-			}
+			verbose(pages[i].Title, "\n", "No camera details in Exif")
 			continue
 		}
 		stats.withCamera++
 		var catMapped string
 		catMapped, ok := categoryMap[pages[i].Make+pages[i].Model]
 		if !ok {
-			fmt.Println(pages[i].Title)
-			fmt.Printf("No category for %v,%v\n", pages[i].Make, pages[i].Model)
+			warn(pages[i].Title, "\n", fmt.Sprintf("No category for %v,%v\n", pages[i].Make, pages[i].Model))
 			stats.warnings++
 			continue
 		}
 		if strings.HasPrefix(catMapped, "skip ") {
-			if verbose {
-				fmt.Println(pages[i].Title)
-				fmt.Println("Skipping", pages[i].Make, pages[i].Model)
-			}
+			verbose(pages[i].Title, "\n", "Skipping ", pages[i].Make, pages[i].Model)
 			continue
 		}
 		result = result[0 : count+1]
@@ -166,7 +150,7 @@ func filterFiles(pages []exifcamera.FileCamera, client *mwclient.Client, verbose
 }
 
 // Remove files which are already in a relevant category.
-func filterCategories(files []fileTarget, client *mwclient.Client, verbose bool, ignoreCurrentCats bool, allCategories map[string]bool, stats *stats) []fileTarget {
+func filterCategories(files []fileTarget, client *mwclient.Client, verbose func(...string), ignoreCurrentCats bool, allCategories map[string]bool, stats *stats) []fileTarget {
 	fileArray := make([]string, len(files))
 	for i := range files {
 		fileArray[i] = files[i].title
@@ -180,10 +164,7 @@ func filterCategories(files []fileTarget, client *mwclient.Client, verbose bool,
 		for j := range cats {
 			if files[i].category == cats[j] {
 				stats.inCat++
-				if verbose {
-					fmt.Println(files[i].title)
-					fmt.Println("Already in mapped:", files[i].category)
-				}
+				verbose(files[i].title, "\n", "Already in mapped: ", files[i].category)
 				found = true
 				break
 			}
@@ -191,16 +172,12 @@ func filterCategories(files []fileTarget, client *mwclient.Client, verbose bool,
 				_, found = allCategories[cats[j]]
 				if found {
 					stats.inCat++
-					if verbose {
-						fmt.Println(files[i].title)
-						fmt.Println("Already in known:", cats[j])
-					}
+					verbose(files[i].title, "\n", "Already in known: ", cats[j])
 					break
 				}
 				if strings.HasPrefix(cats[j], "Category:Taken ") || strings.HasPrefix(cats[j], "Category:Scanned ") {
+					warn(files[i].title, "\n", "Already in unknown: ", cats[j])
 					stats.warnings++
-					fmt.Println(files[i].title)
-					fmt.Println("Already in unknown:", cats[j])
 					found = true
 					break
 				}
@@ -215,25 +192,25 @@ func filterCategories(files []fileTarget, client *mwclient.Client, verbose bool,
 	return result
 }
 
-func processFiles(fileArray []exifcamera.FileCamera, client *mwclient.Client, flags flags, categoryMap map[string]string, allCategories map[string]bool, catCounts map[string]int32, stats *stats) {
-	selected := filterFiles(fileArray, client, flags.Verbose, categoryMap, stats)
+func processFiles(fileArray []exifcamera.FileCamera, client *mwclient.Client, flags flags, verbose func(...string), categoryMap map[string]string, allCategories map[string]bool, catCounts map[string]int32, stats *stats) {
+	selected := filterFiles(fileArray, client, verbose, categoryMap, stats)
 	if len(selected) == 0 {
 		return
 	}
 	if flags.CatFileLimit > 0 {
-		selected = filterCatLimit(selected, client, flags.Verbose, flags.CatFileLimit, catCounts, stats)
+		selected = filterCatLimit(selected, client, verbose, flags.CatFileLimit, catCounts, stats)
 		if len(selected) == 0 {
 			return
 		}
 	}
-	selected = filterCategories(selected, client, flags.Verbose, flags.IgnoreCurrentCats, allCategories, stats)
+	selected = filterCategories(selected, client, verbose, flags.IgnoreCurrentCats, allCategories, stats)
 	if len(selected) == 0 {
 		return
 	}
-	addCategories(selected, client, flags.Verbose, flags.CatFileLimit, allCategories, catCounts, stats)
+	addCategories(selected, client, verbose, flags.CatFileLimit, allCategories, catCounts, stats)
 }
 
-func processGenerator(params params.Values, client *mwclient.Client, flags flags, categoryMap map[string]string, allCategories map[string]bool, catCounts map[string]int32, stats *stats) {
+func processGenerator(params params.Values, client *mwclient.Client, flags flags, verbose func(...string), categoryMap map[string]string, allCategories map[string]bool, catCounts map[string]int32, stats *stats) {
 	lastFileProcessed := ""
 	query := client.NewQuery(params)
 	for query.Next() {
@@ -272,7 +249,7 @@ func processGenerator(params params.Values, client *mwclient.Client, flags flags
 				stats.examined++
 			}
 			lastFileProcessed = pageArray[len(pageArray)-1].Title
-			processFiles(pageArray, client, flags, categoryMap, allCategories, catCounts, stats)
+			processFiles(pageArray, client, flags, verbose, categoryMap, allCategories, catCounts, stats)
 		}
 		if flags.FileLimit > 0 && stats.examined >= flags.FileLimit {
 			break
@@ -309,7 +286,7 @@ func backString(back bool) string {
 	}
 }
 
-func processUser(user string, ts timestamp, client *mwclient.Client, flags flags, categoryMap map[string]string, allCategories map[string]bool, catCounts map[string]int32, stats *stats) {
+func processUser(user string, ts timestamp, client *mwclient.Client, flags flags, verbose func(...string), categoryMap map[string]string, allCategories map[string]bool, catCounts map[string]int32, stats *stats) {
 	params := params.Values{
 		"generator": "allimages",
 		"gaiuser":   strings.TrimPrefix(user, "User:"),
@@ -322,10 +299,10 @@ func processUser(user string, ts timestamp, client *mwclient.Client, flags flags
 	if ts.valid {
 		params["gaistart"] = ts.string
 	}
-	processGenerator(params, client, flags, categoryMap, allCategories, catCounts, stats)
+	processGenerator(params, client, flags, verbose, categoryMap, allCategories, catCounts, stats)
 }
 
-func processCategory(category string, ts timestamp, client *mwclient.Client, flags flags, categoryMap map[string]string, allCategories map[string]bool, catCounts map[string]int32, stats *stats) {
+func processCategory(category string, ts timestamp, client *mwclient.Client, flags flags, verbose func(...string), categoryMap map[string]string, allCategories map[string]bool, catCounts map[string]int32, stats *stats) {
 	// Sorting is by the last modification of the file page. Image upload
 	// time would be preferable.
 	params := params.Values{
@@ -341,10 +318,10 @@ func processCategory(category string, ts timestamp, client *mwclient.Client, fla
 	if ts.valid {
 		params["gcmstart"] = ts.string
 	}
-	processGenerator(params, client, flags, categoryMap, allCategories, catCounts, stats)
+	processGenerator(params, client, flags, verbose, categoryMap, allCategories, catCounts, stats)
 }
 
-func processRandom(client *mwclient.Client, flags flags, categoryMap map[string]string, allCategories map[string]bool, catCounts map[string]int32, stats *stats) {
+func processRandom(client *mwclient.Client, flags flags, verbose func(...string), categoryMap map[string]string, allCategories map[string]bool, catCounts map[string]int32, stats *stats) {
 	batchSize := 20 // max accepted by random API.
 	if flags.BatchSize < 20 {
 		batchSize = flags.BatchSize
@@ -357,11 +334,11 @@ func processRandom(client *mwclient.Client, flags flags, categoryMap map[string]
 			"prop":         "imageinfo",
 			"iiprop":       "commonmetadata",
 		}
-		processGenerator(params, client, flags, categoryMap, allCategories, catCounts, stats)
+		processGenerator(params, client, flags, verbose, categoryMap, allCategories, catCounts, stats)
 	}
 }
 
-func processAll(ts timestamp, client *mwclient.Client, flags flags, categoryMap map[string]string, allCategories map[string]bool, catCounts map[string]int32, stats *stats) {
+func processAll(ts timestamp, client *mwclient.Client, flags flags, verbose func(...string), categoryMap map[string]string, allCategories map[string]bool, catCounts map[string]int32, stats *stats) {
 	var direction string
 	if flags.Back {
 		direction = "descending"
@@ -377,14 +354,14 @@ func processAll(ts timestamp, client *mwclient.Client, flags flags, categoryMap 
 		"prop":      "imageinfo",
 		"iiprop":    "commonmetadata",
 	}
-	processGenerator(params, client, flags, categoryMap, allCategories, catCounts, stats)
+	processGenerator(params, client, flags, verbose, categoryMap, allCategories, catCounts, stats)
 }
 
-func processOneFile(page string, client *mwclient.Client, flags flags, categoryMap map[string]string, allCategories map[string]bool, catCounts map[string]int32, stats *stats) {
+func processOneFile(page string, client *mwclient.Client, flags flags, verbose func(...string), categoryMap map[string]string, allCategories map[string]bool, catCounts map[string]int32, stats *stats) {
 	pageArray := make([]string, 1)
 	pageArray[0] = page
 	camArray := exifcamera.GetCameraInfo(pageArray, client)
-	processFiles(camArray, client, flags, categoryMap, allCategories, catCounts, stats)
+	processFiles(camArray, client, flags, verbose, categoryMap, allCategories, catCounts, stats)
 }
 
 type flags struct {
@@ -420,11 +397,30 @@ func EndProc(client *mwclient.Client, stats *stats) {
 	}
 }
 
+func warn(msgs ...string) {
+	for _, msg := range msgs {
+		fmt.Print(msg)
+	}
+	fmt.Print("\n")
+}
+
+// Return the function to be used for displaying (or not displaying) verbose
+// messages.
+func get_verbose(verbose bool) func(...string) {
+	if verbose {
+		return warn
+	} else {
+		/* Noop function. */
+		return func(msgs ...string) {}
+	}
+}
+
 func main() {
 	args, flags := parseFlags()
 	if flags.Operator == "" {
 		log.Fatal("Operator email / username not set.")
 	}
+	verbose := get_verbose(flags.Verbose)
 	client, err := mwclient.New("https://commons.wikimedia.org/w/api.php", "takenwith "+flags.Operator)
 	if err != nil {
 		panic(err)
@@ -462,7 +458,7 @@ func main() {
 		if numArgs > 1 {
 			log.Fatal("Unexpected option.")
 		}
-		processOneFile(args[0], client, flags, categoryMap, allCategories, catCounts, &stats)
+		processOneFile(args[0], client, flags, verbose, categoryMap, allCategories, catCounts, &stats)
 	} else if strings.HasPrefix(args[0], "User:") {
 		var ts timestamp
 		if numArgs > 2 {
@@ -474,7 +470,7 @@ func main() {
 			ts, err = newTimestamp("", false)
 		}
 		if err == nil {
-			processUser(args[0], ts, client, flags, categoryMap, allCategories, catCounts, &stats)
+			processUser(args[0], ts, client, flags, verbose, categoryMap, allCategories, catCounts, &stats)
 		} else {
 			printBadTimestamp()
 		}
@@ -489,7 +485,7 @@ func main() {
 			ts, err = newTimestamp("", false)
 		}
 		if err == nil {
-			processCategory(args[0], ts, client, flags, categoryMap, allCategories, catCounts, &stats)
+			processCategory(args[0], ts, client, flags, verbose, categoryMap, allCategories, catCounts, &stats)
 		} else {
 			printBadTimestamp()
 		}
@@ -497,7 +493,7 @@ func main() {
 		if numArgs > 1 {
 			log.Fatal("Unexpected option.")
 		} else {
-			processRandom(client, flags, categoryMap, allCategories, catCounts, &stats)
+			processRandom(client, flags, verbose, categoryMap, allCategories, catCounts, &stats)
 		}
 	} else if args[0] == "All" {
 		if numArgs != 2 {
@@ -505,7 +501,7 @@ func main() {
 		}
 		ts, err := newTimestamp(args[1], true)
 		if err == nil {
-			processAll(ts, client, flags, categoryMap, allCategories, catCounts, &stats)
+			processAll(ts, client, flags, verbose, categoryMap, allCategories, catCounts, &stats)
 		} else {
 			printBadTimestamp()
 		}
@@ -513,9 +509,9 @@ func main() {
 		if numArgs != 1 {
 			log.Fatal("Unexpected option.")
 		}
-		canons100.ProcessCategory(canons100.CatInfo{ExifModel: "Canon PowerShot S100", UnidCategory: "Category:Taken with unidentified Canon PowerShot S100", PowershotCategory: "Category:Taken with Canon PowerShot S100", IxusCategory: "Category:Taken with Canon Digital IXUS"}, client, flags.Verbose)
+		canons100.ProcessCategory(canons100.CatInfo{ExifModel: "Canon PowerShot S100", UnidCategory: "Category:Taken with unidentified Canon PowerShot S100", PowershotCategory: "Category:Taken with Canon PowerShot S100", IxusCategory: "Category:Taken with Canon Digital IXUS"}, client, verbose)
 
-		canons100.ProcessCategory(canons100.CatInfo{ExifModel: "Canon PowerShot S110", UnidCategory: "Category:Taken with unidentified Canon PowerShot S110", PowershotCategory: "Category:Taken with Canon PowerShot S110", IxusCategory: "Category:Taken with Canon Digital IXUS v"}, client, flags.Verbose)
+		canons100.ProcessCategory(canons100.CatInfo{ExifModel: "Canon PowerShot S110", UnidCategory: "Category:Taken with unidentified Canon PowerShot S110", PowershotCategory: "Category:Taken with Canon PowerShot S110", IxusCategory: "Category:Taken with Canon Digital IXUS v"}, client, verbose)
 	} else {
 		log.Fatal("Command [option] expected.")
 	}
