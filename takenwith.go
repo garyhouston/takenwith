@@ -134,7 +134,7 @@ func filterFiles(pages []exifcamera.FileCamera, client *mwclient.Client, verbose
 		var catMapped string
 		catMapped, ok := categoryMap[pages[i].Make+pages[i].Model]
 		if !ok {
-			warn(pages[i].Title, "\n", fmt.Sprintf("No category for %v,%v\n", pages[i].Make, pages[i].Model))
+			warn(pages[i].Title, "\n", fmt.Sprintf("No category for %v,%v", pages[i].Make, pages[i].Model))
 			stats.warnings++
 			continue
 		}
