@@ -9,6 +9,7 @@ import (
 	mwlib "github.com/garyhouston/takenwith/mwlib"
 	goflags "github.com/jessevdk/go-flags"
 	"log"
+	"os"
 	"strconv"
 	"strings"
 )
@@ -452,67 +453,47 @@ func main() {
 
 	numArgs := len(args)
 	if numArgs == 0 || numArgs > 2 {
-		log.Fatal("Command [option] expected.")
+		log.Fatal("Command [timestamp] expected.")
 	}
 	if strings.HasPrefix(args[0], "File:") {
 		if numArgs > 1 {
-			log.Fatal("Unexpected option.")
+			log.Fatal("Unexpected parameter.")
 		}
 		processOneFile(args[0], client, flags, verbose, categoryMap, allCategories, catCounts, &stats)
-	} else if strings.HasPrefix(args[0], "User:") {
-		var ts timestamp
-		if numArgs > 2 {
-			log.Fatal("Command [option] expected.")
-		}
-		if numArgs == 2 {
-			ts, err = newTimestamp(args[1], true)
-		} else {
-			ts, err = newTimestamp("", false)
-		}
-		if err == nil {
-			processUser(args[0], ts, client, flags, verbose, categoryMap, allCategories, catCounts, &stats)
-		} else {
-			printBadTimestamp()
-		}
-	} else if strings.HasPrefix(args[0], "Category:") {
-		if numArgs > 2 {
-			log.Fatal("Command [option] expected.")
-		}
-		var ts timestamp
-		if numArgs == 2 {
-			ts, err = newTimestamp(args[1], true)
-		} else {
-			ts, err = newTimestamp("", false)
-		}
-		if err == nil {
-			processCategory(args[0], ts, client, flags, verbose, categoryMap, allCategories, catCounts, &stats)
-		} else {
-			printBadTimestamp()
-		}
 	} else if args[0] == "Random" {
 		if numArgs > 1 {
-			log.Fatal("Unexpected option.")
-		} else {
-			processRandom(client, flags, verbose, categoryMap, allCategories, catCounts, &stats)
+			log.Fatal("Unexpected parameter.")
 		}
-	} else if args[0] == "All" {
-		if numArgs != 2 {
-			log.Fatal("All TIMESTAMP expected.")
-		}
-		ts, err := newTimestamp(args[1], true)
-		if err == nil {
-			processAll(ts, client, flags, verbose, categoryMap, allCategories, catCounts, &stats)
-		} else {
-			printBadTimestamp()
-		}
+		processRandom(client, flags, verbose, categoryMap, allCategories, catCounts, &stats)
 	} else if args[0] == "CanonS100" {
 		if numArgs != 1 {
-			log.Fatal("Unexpected option.")
+			log.Fatal("Unexpected parameter.")
 		}
 		canons100.ProcessCategory(canons100.CatInfo{ExifModel: "Canon PowerShot S100", UnidCategory: "Category:Taken with unidentified Canon PowerShot S100", PowershotCategory: "Category:Taken with Canon PowerShot S100", IxusCategory: "Category:Taken with Canon Digital IXUS"}, client, verbose)
 
 		canons100.ProcessCategory(canons100.CatInfo{ExifModel: "Canon PowerShot S110", UnidCategory: "Category:Taken with unidentified Canon PowerShot S110", PowershotCategory: "Category:Taken with Canon PowerShot S110", IxusCategory: "Category:Taken with Canon Digital IXUS v"}, client, verbose)
 	} else {
-		log.Fatal("Command [option] expected.")
+		var ts timestamp
+		if numArgs == 2 {
+			ts, err = newTimestamp(args[1], true)
+		} else {
+			ts, err = newTimestamp("", false)
+		}
+		if err != nil {
+			printBadTimestamp()
+			os.Exit(1)
+		}
+		if strings.HasPrefix(args[0], "User:") {
+			processUser(args[0], ts, client, flags, verbose, categoryMap, allCategories, catCounts, &stats)
+		} else if strings.HasPrefix(args[0], "Category:") {
+			processCategory(args[0], ts, client, flags, verbose, categoryMap, allCategories, catCounts, &stats)
+		} else if args[0] == "All" {
+			if numArgs != 2 {
+				log.Fatal("Timestamp required.")
+			}
+			processAll(ts, client, flags, verbose, categoryMap, allCategories, catCounts, &stats)
+		} else {
+			log.Fatal("Unknown command.")
+		}
 	}
 }
