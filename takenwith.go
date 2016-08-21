@@ -212,7 +212,6 @@ func processFiles(fileArray []exifcamera.FileCamera, client *mwclient.Client, fl
 }
 
 func processGenerator(params params.Values, client *mwclient.Client, flags flags, verbose func(...string), categoryMap map[string]string, allCategories map[string]bool, catCounts map[string]int32, stats *stats) {
-	lastFileProcessed := ""
 	query := client.NewQuery(params)
 	for query.Next() {
 		json := query.Resp()
@@ -249,7 +248,6 @@ func processGenerator(params params.Values, client *mwclient.Client, flags flags
 				idx++
 				stats.examined++
 			}
-			lastFileProcessed = pageArray[len(pageArray)-1].Title
 			processFiles(pageArray, client, flags, verbose, categoryMap, allCategories, catCounts, stats)
 		}
 		if flags.FileLimit > 0 && stats.examined >= flags.FileLimit {
@@ -260,22 +258,7 @@ func processGenerator(params params.Values, client *mwclient.Client, flags flags
 		}
 	}
 	if query.Err() != nil {
-		fmt.Println("Last file processed: ", lastFileProcessed)
-		msg := query.Err().Error()
-		if strings.Contains(msg, "This result was truncated") {
-			// This shouldn't happen now that we request
-			// commonmetadata instead of metadata.
-			// pdf / djvu files may contain complete text in
-			// metadata, and a batch may exceed a limit of
-			// 12,582,912 bytes for a single request.
-			// E.g., File:Congressional Record Volume 81 Part 1.pdf
-			// and its related files or
-			// File:Boiste_-_Dictionnaire_universel,_1851.djvu
-			fmt.Println(msg)
-			fmt.Println("The combined Exif data was too large when processing a batch of files. Try running from the time of the last file processed with a smaller -batchSize.")
-		} else {
-			panic(query.Err())
-		}
+		panic(query.Err())
 	}
 }
 
