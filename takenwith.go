@@ -4,9 +4,10 @@ import (
 	mwclient "cgt.name/pkg/go-mwclient"
 	"cgt.name/pkg/go-mwclient/params"
 	"fmt"
+	"github.com/antonholmquist/jason"
 	"github.com/garyhouston/takenwith/canons100"
 	"github.com/garyhouston/takenwith/exifcamera"
-	mwlib "github.com/garyhouston/takenwith/mwlib"
+	"github.com/garyhouston/takenwith/mwlib"
 	goflags "github.com/jessevdk/go-flags"
 	"log"
 	"os"
@@ -123,33 +124,6 @@ func filterCatLimit(cats []fileTarget, client *mwclient.Client, verbose func(...
 	return result
 }
 
-func filterFiles(pages []exifcamera.FileCamera, client *mwclient.Client, verbose func(...string), categoryMap map[string]string, stats *stats) []fileTarget {
-	count := 0
-	result := make([]fileTarget, 0, len(pages))
-	for i := range pages {
-		if pages[i].Make == "" && pages[i].Model == "" {
-			verbose(pages[i].Title, "\n", "No camera details in Exif")
-			continue
-		}
-		stats.withCamera++
-		var catMapped string
-		catMapped, ok := categoryMap[pages[i].Make+pages[i].Model]
-		if !ok {
-			warn(pages[i].Title, "\n", fmt.Sprintf("No category for %v,%v", pages[i].Make, pages[i].Model))
-			stats.warnings++
-			continue
-		}
-		if strings.HasPrefix(catMapped, "skip ") {
-			verbose(pages[i].Title, "\n", "Skipping ", pages[i].Make, pages[i].Model)
-			continue
-		}
-		result = result[0 : count+1]
-		result[count] = fileTarget{pages[i].Title, catMapped}
-		count++
-	}
-	return result
-}
-
 // Remove files which are already in a relevant category.
 func filterCategories(files []fileTarget, client *mwclient.Client, verbose func(...string), ignoreCurrentCats bool, allCategories map[string]bool, stats *stats) []fileTarget {
 	fileArray := make([]string, len(files))
@@ -193,13 +167,10 @@ func filterCategories(files []fileTarget, client *mwclient.Client, verbose func(
 	return result
 }
 
-func processFiles(fileArray []exifcamera.FileCamera, client *mwclient.Client, flags flags, verbose func(...string), categoryMap map[string]string, allCategories map[string]bool, catCounts map[string]int32, stats *stats) {
-	selected := filterFiles(fileArray, client, verbose, categoryMap, stats)
-	if len(selected) == 0 {
-		return
-	}
+func processFiles(fileArray []fileTarget, client *mwclient.Client, flags flags, verbose func(...string), categoryMap map[string]string, allCategories map[string]bool, catCounts map[string]int32, stats *stats) {
+	var selected []fileTarget
 	if flags.CatFileLimit > 0 {
-		selected = filterCatLimit(selected, client, verbose, flags.CatFileLimit, catCounts, stats)
+		selected = filterCatLimit(fileArray, client, verbose, flags.CatFileLimit, catCounts, stats)
 		if len(selected) == 0 {
 			return
 		}
@@ -209,6 +180,37 @@ func processFiles(fileArray []exifcamera.FileCamera, client *mwclient.Client, fl
 		return
 	}
 	addCategories(selected, client, verbose, flags.CatFileLimit, allCategories, catCounts, stats)
+}
+
+// Determine Commons category from imageinfo (Exif) data, if possible.
+func mapCategory(pageObj *jason.Object, verbose func(...string), categoryMap map[string]string, stats *stats) (fileTarget, bool) {
+	title, err := pageObj.GetString("title")
+	if err != nil {
+		panic(err)
+	}
+	imageinfo, err := pageObj.GetObjectArray("imageinfo")
+	var make, model string
+	if err == nil {
+		make, model = exifcamera.ExtractCamera(imageinfo[0])
+	}
+	if err != nil || (make == "" && model == "") {
+		verbose(title, "\n", "No camera details in Exif")
+		return fileTarget{}, false
+	}
+	stats.withCamera++
+
+	var catMapped string
+	catMapped, ok := categoryMap[make+model]
+	if !ok {
+		warn(title, "\n", fmt.Sprintf("No category for %v,%v", make, model))
+		stats.warnings++
+		return fileTarget{}, false
+	}
+	if strings.HasPrefix(catMapped, "skip ") {
+		verbose(title, "\n", "Skipping ", make, model)
+		return fileTarget{}, false
+	}
+	return fileTarget{title, catMapped}, true
 }
 
 func processGenerator(params params.Values, client *mwclient.Client, flags flags, verbose func(...string), categoryMap map[string]string, allCategories map[string]bool, catCounts map[string]int32, stats *stats) {
@@ -223,7 +225,7 @@ func processGenerator(params params.Values, client *mwclient.Client, flags flags
 		}
 		pagesMap := pages.Map()
 		if len(pagesMap) > 0 {
-			pageArray := make([]exifcamera.FileCamera, len(pagesMap))
+			fileArray := make([]fileTarget, len(pagesMap))
 			idx := 0
 			for id, page := range pagesMap {
 				if id == "-1" {
@@ -234,21 +236,17 @@ func processGenerator(params params.Values, client *mwclient.Client, flags flags
 				if err != nil {
 					panic(err)
 				}
-				title, err := pageObj.GetString("title")
-				if err != nil {
-					panic(err)
+				var found bool
+				fileArray[idx], found = mapCategory(pageObj, verbose, categoryMap, stats)
+				if found {
+					idx++
 				}
-				imageinfo, err := pageObj.GetObjectArray("imageinfo")
-				if err != nil {
-					pageArray[idx] = exifcamera.FileCamera{Title: title}
-				} else {
-					make, model := exifcamera.ExtractCamera(imageinfo[0])
-					pageArray[idx] = exifcamera.FileCamera{Title: title, Make: make, Model: model}
-				}
-				idx++
 				stats.examined++
 			}
-			processFiles(pageArray, client, flags, verbose, categoryMap, allCategories, catCounts, stats)
+			fileArray = fileArray[0:idx]
+			if idx > 0 {
+				processFiles(fileArray, client, flags, verbose, categoryMap, allCategories, catCounts, stats)
+			}
 		}
 		if flags.FileLimit > 0 && stats.examined >= flags.FileLimit {
 			break
@@ -341,11 +339,35 @@ func processAll(ts timestamp, client *mwclient.Client, flags flags, verbose func
 	processGenerator(params, client, flags, verbose, categoryMap, allCategories, catCounts, stats)
 }
 
+// Return a json object containing page title and imageinfo (Exif) data.
+func GetImageinfo(page string, client *mwclient.Client) *jason.Object {
+	params := params.Values{
+		"action":    "query",
+		"titles":    page,
+		"prop":      "imageinfo",
+		"iiprop":    "commonmetadata",
+		"redirects": "", // follow redirects
+		"continue":  "",
+	}
+	json, err := client.Get(params)
+	if err != nil {
+		panic(err)
+	}
+	return mwlib.GetJsonPage(json)
+}
+
 func processOneFile(page string, client *mwclient.Client, flags flags, verbose func(...string), categoryMap map[string]string, allCategories map[string]bool, catCounts map[string]int32, stats *stats) {
-	pageArray := make([]string, 1)
-	pageArray[0] = page
-	camArray := exifcamera.GetCameraInfo(pageArray, client)
-	processFiles(camArray, client, flags, verbose, categoryMap, allCategories, catCounts, stats)
+	pageObj := GetImageinfo(page, client)
+	if pageObj == nil {
+		warn(page, " does not exist, possibly deleted.")
+		return
+	}
+	target, found := mapCategory(pageObj, verbose, categoryMap, stats)
+	if found {
+		fileTargets := make([]fileTarget, 1)
+		fileTargets[0] = target
+		processFiles(fileTargets, client, flags, verbose, categoryMap, allCategories, catCounts, stats)
+	}
 }
 
 type flags struct {

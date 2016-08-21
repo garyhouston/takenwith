@@ -20,7 +20,7 @@ type CatInfo struct {
 	IxusCategory      string
 }
 
-func moveFile(file string, powershot bool, cat CatInfo, client *mwclient.Client, verbose func(... string)) {
+func moveFile(file string, powershot bool, cat CatInfo, client *mwclient.Client, verbose func(...string)) {
 	var target string
 	var reason string
 	if powershot {
@@ -85,7 +85,7 @@ func checkSpeedRatings(metadata []*jason.Object) bool {
 	return false
 }
 
-func processFile(pageObj *jason.Object, cat CatInfo, client *mwclient.Client, verbose func(... string)) {
+func processFile(pageObj *jason.Object, cat CatInfo, client *mwclient.Client, verbose func(...string)) {
 	title, err := pageObj.GetString("title")
 	if err != nil {
 		panic(err)
@@ -110,7 +110,7 @@ func processFile(pageObj *jason.Object, cat CatInfo, client *mwclient.Client, ve
 	}
 }
 
-func ProcessCategory(cat CatInfo, client *mwclient.Client, verbose func(... string)) {
+func ProcessCategory(cat CatInfo, client *mwclient.Client, verbose func(...string)) {
 	params := params.Values{
 		"generator": "categorymembers",
 		"gcmtitle":  cat.UnidCategory,
