@@ -13,7 +13,7 @@ import (
 // Get the user email address / Wiki name, from command line or environment variable.
 func getOperator() string {
 	var flags struct {
-		Operator string `long:"user" env:"takenwith_user" description:"Operator's email address or Wiki user name"`
+		Operator string `long:"operator" env:"takenwith_operator" description:"Operator's email address or Wiki user name"`
 	}
 	parser := goflags.NewParser(&flags, goflags.HelpFlag)
 	args, err := parser.Parse()
