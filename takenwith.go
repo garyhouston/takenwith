@@ -423,6 +423,19 @@ func get_verbose(verbose bool) func(...string) {
 	}
 }
 
+// Check that bot is logged in.
+func checkLogin(client *mwclient.Client) {
+	params := params.Values{
+		"action":   "query",
+		"assert":   "user",
+		"continue": "",
+	}
+	json, err := client.Get(params)
+	if err != nil {
+		panic(err)
+	}
+}
+
 func main() {
 	args, flags := parseFlags()
 	if flags.Operator == "" {
@@ -437,6 +450,8 @@ func main() {
 
 	cookies := mwlib.ReadCookies()
 	client.LoadCookies(cookies)
+
+	checkLogin(client)
 
 	categoryMap := fillCategoryMap() // makemodel -> category
 
