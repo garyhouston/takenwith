@@ -1,4 +1,4 @@
-package exifcamera
+package main
 
 import (
 	"github.com/antonholmquist/jason"
@@ -43,7 +43,7 @@ func findCamera(metadata []*jason.Object) (string, string) {
 }
 
 // Return device make/model from json imageinfo object.
-func ExtractCamera(imageinfo *jason.Object) (string, string) {
+func extractCamera(imageinfo *jason.Object) (string, string) {
 	metadata, err := imageinfo.GetObjectArray("commonmetadata")
 	if err != nil {
 		// metadata is null in some cases

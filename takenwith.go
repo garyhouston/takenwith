@@ -5,8 +5,6 @@ import (
 	"cgt.name/pkg/go-mwclient/params"
 	"fmt"
 	"github.com/antonholmquist/jason"
-	"github.com/garyhouston/takenwith/canons100"
-	"github.com/garyhouston/takenwith/exifcamera"
 	"github.com/garyhouston/takenwith/mwlib"
 	goflags "github.com/jessevdk/go-flags"
 	"log"
@@ -193,7 +191,7 @@ func mapCategory(pageObj *jason.Object, verbose func(...string), categoryMap map
 	imageinfo, err := pageObj.GetObjectArray("imageinfo")
 	var make, model string
 	if err == nil {
-		make, model = exifcamera.ExtractCamera(imageinfo[0])
+		make, model = extractCamera(imageinfo[0])
 	}
 	if err != nil || (make == "" && model == "") {
 		verbose(title, "\n", "No camera details in Exif")
@@ -211,6 +209,11 @@ func mapCategory(pageObj *jason.Object, verbose func(...string), categoryMap map
 	if strings.HasPrefix(catMapped, "skip ") {
 		verbose(title, "\n", "Skipping ", make, model)
 		return fileTarget{}, false
+	}
+	if catMapped == "Category:CanonS100 (special case)" {
+		catMapped = mapCanonS100(imageinfo)
+	} else if catMapped == "Category:CanonS110 (special case)" {
+		catMapped = mapCanonS110(imageinfo)
 	}
 	return fileTarget{title, catMapped}, true
 }
@@ -386,7 +389,7 @@ type flags struct {
 func parseFlags() ([]string, flags) {
 	var flags flags
 	parser := goflags.NewParser(&flags, goflags.HelpFlag)
-	parser.Usage = "[OPTIONS] File:f | User:u [timestamp] | Category:c [timestamp] | Random | All timestamp | CanonS100"
+	parser.Usage = "[OPTIONS] File:f | User:u [timestamp] | Category:c [timestamp] | Random | All timestamp"
 	args, err := parser.Parse()
 	if err != nil {
 		log.Fatal(err)
@@ -487,13 +490,6 @@ func main() {
 			log.Fatal("Unexpected parameter.")
 		}
 		processRandom(client, flags, verbose, categoryMap, allCategories, catCounts, &stats)
-	} else if args[0] == "CanonS100" {
-		if numArgs != 1 {
-			log.Fatal("Unexpected parameter.")
-		}
-		canons100.ProcessCategory(canons100.CatInfo{ExifModel: "Canon PowerShot S100", UnidCategory: "Category:Taken with unidentified Canon PowerShot S100", PowershotCategory: "Category:Taken with Canon PowerShot S100", IxusCategory: "Category:Taken with Canon Digital IXUS"}, client, verbose)
-
-		canons100.ProcessCategory(canons100.CatInfo{ExifModel: "Canon PowerShot S110", UnidCategory: "Category:Taken with unidentified Canon PowerShot S110", PowershotCategory: "Category:Taken with Canon PowerShot S110", IxusCategory: "Category:Taken with Canon Digital IXUS v"}, client, verbose)
 	} else {
 		var ts timestamp
 		if numArgs == 2 {
