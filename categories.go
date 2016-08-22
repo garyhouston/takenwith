@@ -22,29 +22,6 @@ func requestCategories(page string, client *mwclient.Client) *jason.Object {
 	return json
 }
 
-func getPageCategoriesOld(page string, client *mwclient.Client) []string {
-	json := requestCategories(page, client)
-	pageObj := mwlib.GetJsonPage(json)
-	if pageObj == nil {
-		panic(fmt.Sprintf("page %v not found", page))
-	}
-	catJson, err := pageObj.GetObjectArray("categories")
-	if err != nil {
-		// Image has no categories? may be able to return empty
-		// array.
-		panic(fmt.Sprintf("No categories? json: %v ", json))
-	}
-	var categories = make([]string, 0, 20)
-	for i := range catJson {
-		title, err := catJson[i].GetString("title")
-		if err != nil {
-			panic(err)
-		}
-		categories = append(categories, title)
-	}
-	return categories
-}
-
 // Given an array of page titles, return a mapping from page title to the array
 // of categories which the page is a member of.
 // If the page doesn't exist, no entry is added to the map.
