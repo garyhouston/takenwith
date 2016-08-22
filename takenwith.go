@@ -174,6 +174,8 @@ func processFiles(fileArray []fileTarget, client *mwclient.Client, flags flags, 
 		if len(selected) == 0 {
 			return
 		}
+	} else {
+		selected = fileArray
 	}
 	selected = filterCategories(selected, client, verbose, flags.IgnoreCurrentCats, allCategories, stats)
 	if len(selected) == 0 {
