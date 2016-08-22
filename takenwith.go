@@ -430,7 +430,7 @@ func checkLogin(client *mwclient.Client) {
 		"assert":   "user",
 		"continue": "",
 	}
-	json, err := client.Get(params)
+	_, err := client.Get(params)
 	if err != nil {
 		panic(err)
 	}
