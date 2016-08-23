@@ -248,8 +248,8 @@ func processGenerator(params params.Values, client *mwclient.Client, flags flags
 				}
 				stats.examined++
 			}
-			fileArray = fileArray[0:idx]
 			if idx > 0 {
+				fileArray = fileArray[0:idx]
 				processFiles(fileArray, client, flags, verbose, categoryMap, allCategories, catCounts, stats)
 			}
 		}
