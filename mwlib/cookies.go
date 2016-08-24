@@ -40,6 +40,10 @@ func WriteCookies(cookies []*http.Cookie) {
 	if err != nil {
 		panic(err)
 	}
+	err = os.Chmod(cookieFile, 0600)
+	if err != nil {
+		panic(err)
+	}
 	defer writer.Close()
 	for i := range cookies {
 		writer.WriteString(cookies[i].Name)
