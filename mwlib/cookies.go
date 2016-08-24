@@ -11,7 +11,7 @@ func ReadCookies() []*http.Cookie {
 	cookieFile := GetWorkingDir() + "/cookies"
 	file, err := os.Open(cookieFile)
 	if err != nil {
-		panic(err)
+		return nil
 	}
 	defer file.Close()
 	reader := bufio.NewReader(file)

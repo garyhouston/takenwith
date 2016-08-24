@@ -426,23 +426,41 @@ func get_verbose(verbose bool) func(...string) {
 	}
 }
 
-// Check that bot is logged in.
-func checkLogin(client *mwclient.Client) {
+// Return true if the client is logged in.
+func checkLogin(client *mwclient.Client) bool {
 	params := params.Values{
 		"action":   "query",
 		"assert":   "user",
 		"continue": "",
 	}
 	_, err := client.Get(params)
-	if err != nil {
-		panic(err)
+	return err == nil
+}
+
+func login(client *mwclient.Client, flags flags) bool {
+	username := os.Getenv("takenwith_username")
+	if username == "" {
+		warn("Username for login not set in environment.")
+		return false
 	}
+	password := os.Getenv("takenwith_password")
+	if password == "" {
+		warn("Password for login not set in environment.")
+		return false
+	}
+	err := client.Login(username, password)
+	if err != nil {
+		log.Print(err)
+		return false
+	}
+	return true
 }
 
 func main() {
 	args, flags := parseFlags()
 	if flags.Operator == "" {
-		log.Fatal("Operator email / username not set.")
+		warn("Operator email / username not set.")
+		return
 	}
 	verbose := get_verbose(flags.Verbose)
 	client, err := mwclient.New("https://commons.wikimedia.org/w/api.php", "takenwith "+flags.Operator)
@@ -453,8 +471,6 @@ func main() {
 
 	cookies := mwlib.ReadCookies()
 	client.LoadCookies(cookies)
-
-	checkLogin(client)
 
 	categoryMap := fillCategoryMap() // makemodel -> category
 
@@ -476,18 +492,27 @@ func main() {
 
 	defer EndProc(client, &stats)
 
+	if !checkLogin(client) {
+		if !login(client, flags) {
+			return
+		}
+	}
+
 	numArgs := len(args)
 	if numArgs == 0 || numArgs > 2 {
-		log.Fatal("Command [timestamp] expected.")
+		warn("Command [timestamp] expected.")
+		return
 	}
 	if strings.HasPrefix(args[0], "File:") {
 		if numArgs > 1 {
-			log.Fatal("Unexpected parameter.")
+			warn("Unexpected parameter.")
+			return
 		}
 		processOneFile(args[0], client, flags, verbose, categoryMap, allCategories, catCounts, &stats)
 	} else if args[0] == "Random" {
 		if numArgs > 1 {
-			log.Fatal("Unexpected parameter.")
+			warn("Unexpected parameter.")
+			return
 		}
 		processRandom(client, flags, verbose, categoryMap, allCategories, catCounts, &stats)
 	} else {
@@ -507,11 +532,13 @@ func main() {
 			processCategory(args[0], ts, client, flags, verbose, categoryMap, allCategories, catCounts, &stats)
 		} else if args[0] == "All" {
 			if numArgs != 2 {
-				log.Fatal("Timestamp required.")
+				warn("Timestamp required.")
+				return
 			}
 			processAll(ts, client, flags, verbose, categoryMap, allCategories, catCounts, &stats)
 		} else {
-			log.Fatal("Unknown command.")
+			warn("Unknown command.")
+			return
 		}
 	}
 }
