@@ -8,6 +8,7 @@ import (
 	"github.com/garyhouston/takenwith/mwlib"
 	goflags "github.com/jessevdk/go-flags"
 	"log"
+	"net/http"
 	"os"
 	"strconv"
 	"strings"
@@ -437,7 +438,28 @@ func checkLogin(client *mwclient.Client) bool {
 	return err == nil
 }
 
+func clearSession(client *mwclient.Client) {
+	cookies := make([]*http.Cookie, 2)
+
+	cookies[0] = &http.Cookie{
+		Name:   "commonswikiSession",
+		Value:  "",
+		Path:   "",
+		MaxAge: -1,
+	}
+	cookies[1] = &http.Cookie{
+		Name:   "commonswiki_BPsession",
+		Value:  "",
+		Path:   "",
+		MaxAge: -1,
+	}
+	client.LoadCookies(cookies)
+}
+
 func login(client *mwclient.Client, flags flags) bool {
+	// Clear old session cookies, otherwise they remain in the cookiejar
+	// as duplicates and remain in use.
+	clearSession(client)
 	username := os.Getenv("takenwith_username")
 	if username == "" {
 		warn("Username for login not set in environment.")
