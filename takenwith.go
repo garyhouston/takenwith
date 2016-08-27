@@ -53,6 +53,10 @@ type fileTarget struct {
 	category string
 }
 
+func incCatCount(category string, catCounts map[string]int32) {
+	catCounts[category] = catCounts[category] + 1
+}
+
 func addCategories(pages []fileTarget, client *mwclient.Client, verbose func(...string), catFileLimit int32, allCategories map[string]bool, catCounts map[string]int32, stats *stats) {
 	for i := range pages {
 		// The cat size limit needs to be checked again, since adding
@@ -79,6 +83,14 @@ func addCategories(pages []fileTarget, client *mwclient.Client, verbose func(...
 				incCatCount(pages[i].category, catCounts)
 			}
 		}
+	}
+}
+
+// Add entries to catCounts for the specified categories.
+func setCatCounts(categories []string, client *mwclient.Client, catCounts map[string]int32) {
+	cats, counts := catNumFiles(categories, client)
+	for i := range cats {
+		catCounts[cats[i]] = counts[i]
 	}
 }
 
@@ -218,7 +230,8 @@ func mapCategory(pageObj *jason.Object, verbose func(...string), categoryMap map
 	return fileTarget{title, catMapped}, true
 }
 
-func processGenerator(params params.Values, client *mwclient.Client, flags flags, verbose func(...string), categoryMap map[string]string, allCategories map[string]bool, catCounts map[string]int32, stats *stats) {
+func processGenerator(params params.Values, client *mwclient.Client, flags flags, verbose func(...string), categoryMap map[string]string, allCategories map[string]bool, stats *stats) {
+	var catCounts map[string]int32
 	query := client.NewQuery(params)
 	for query.Next() {
 		json := query.Resp()
@@ -273,7 +286,7 @@ func backString(back bool) string {
 	}
 }
 
-func processUser(user string, ts timestamp, client *mwclient.Client, flags flags, verbose func(...string), categoryMap map[string]string, allCategories map[string]bool, catCounts map[string]int32, stats *stats) {
+func processUser(user string, ts timestamp, client *mwclient.Client, flags flags, verbose func(...string), categoryMap map[string]string, allCategories map[string]bool, stats *stats) {
 	params := params.Values{
 		"generator": "allimages",
 		"gaiuser":   strings.TrimPrefix(user, "User:"),
@@ -286,10 +299,10 @@ func processUser(user string, ts timestamp, client *mwclient.Client, flags flags
 	if ts.valid {
 		params["gaistart"] = ts.string
 	}
-	processGenerator(params, client, flags, verbose, categoryMap, allCategories, catCounts, stats)
+	processGenerator(params, client, flags, verbose, categoryMap, allCategories, stats)
 }
 
-func processCategory(category string, ts timestamp, client *mwclient.Client, flags flags, verbose func(...string), categoryMap map[string]string, allCategories map[string]bool, catCounts map[string]int32, stats *stats) {
+func processCategory(category string, ts timestamp, client *mwclient.Client, flags flags, verbose func(...string), categoryMap map[string]string, allCategories map[string]bool, stats *stats) {
 	// Sorting is by the last modification of the file page. Image upload
 	// time would be preferable.
 	params := params.Values{
@@ -305,10 +318,10 @@ func processCategory(category string, ts timestamp, client *mwclient.Client, fla
 	if ts.valid {
 		params["gcmstart"] = ts.string
 	}
-	processGenerator(params, client, flags, verbose, categoryMap, allCategories, catCounts, stats)
+	processGenerator(params, client, flags, verbose, categoryMap, allCategories, stats)
 }
 
-func processRandom(client *mwclient.Client, flags flags, verbose func(...string), categoryMap map[string]string, allCategories map[string]bool, catCounts map[string]int32, stats *stats) {
+func processRandom(client *mwclient.Client, flags flags, verbose func(...string), categoryMap map[string]string, allCategories map[string]bool, stats *stats) {
 	batchSize := 20 // max accepted by random API.
 	if flags.BatchSize < 20 {
 		batchSize = flags.BatchSize
@@ -321,11 +334,11 @@ func processRandom(client *mwclient.Client, flags flags, verbose func(...string)
 			"prop":         "imageinfo",
 			"iiprop":       "commonmetadata",
 		}
-		processGenerator(params, client, flags, verbose, categoryMap, allCategories, catCounts, stats)
+		processGenerator(params, client, flags, verbose, categoryMap, allCategories, stats)
 	}
 }
 
-func processAll(ts timestamp, client *mwclient.Client, flags flags, verbose func(...string), categoryMap map[string]string, allCategories map[string]bool, catCounts map[string]int32, stats *stats) {
+func processAll(ts timestamp, client *mwclient.Client, flags flags, verbose func(...string), categoryMap map[string]string, allCategories map[string]bool, stats *stats) {
 	var direction string
 	if flags.Back {
 		direction = "descending"
@@ -341,7 +354,7 @@ func processAll(ts timestamp, client *mwclient.Client, flags flags, verbose func
 		"prop":      "imageinfo",
 		"iiprop":    "commonmetadata",
 	}
-	processGenerator(params, client, flags, verbose, categoryMap, allCategories, catCounts, stats)
+	processGenerator(params, client, flags, verbose, categoryMap, allCategories, stats)
 }
 
 // Return a json object containing page title and imageinfo (Exif) data.
@@ -361,7 +374,8 @@ func GetImageinfo(page string, client *mwclient.Client) *jason.Object {
 	return mwlib.GetJsonPage(json)
 }
 
-func processOneFile(page string, client *mwclient.Client, flags flags, verbose func(...string), categoryMap map[string]string, allCategories map[string]bool, catCounts map[string]int32, stats *stats) {
+func processOneFile(page string, client *mwclient.Client, flags flags, verbose func(...string), categoryMap map[string]string, allCategories map[string]bool, stats *stats) {
+	var catCounts map[string]int32
 	pageObj := GetImageinfo(page, client)
 	if pageObj == nil {
 		warn(page, " does not exist, possibly deleted.")
@@ -489,17 +503,7 @@ func main() {
 	// with "Taken with".
 	allCategories := fillCategories(categoryMap)
 
-	// Counts of files in each category.
-	catCounts := loadCatCounts()
-
-	// Processing statistics.
 	var stats stats
-
-	if flags.CatFileLimit > 0 {
-		// Remove category counts for categories that we may need to update,
-		// since the count may have changed since the bot last ran.
-		removeSmallCounts(catCounts, flags.CatFileLimit)
-	}
 
 	defer EndProc(client, &stats)
 
@@ -519,13 +523,13 @@ func main() {
 			warn("Unexpected parameter.")
 			return
 		}
-		processOneFile(args[0], client, flags, verbose, categoryMap, allCategories, catCounts, &stats)
+		processOneFile(args[0], client, flags, verbose, categoryMap, allCategories, &stats)
 	} else if args[0] == "Random" {
 		if numArgs > 1 {
 			warn("Unexpected parameter.")
 			return
 		}
-		processRandom(client, flags, verbose, categoryMap, allCategories, catCounts, &stats)
+		processRandom(client, flags, verbose, categoryMap, allCategories, &stats)
 	} else {
 		var ts timestamp
 		if numArgs == 2 {
@@ -538,15 +542,15 @@ func main() {
 			os.Exit(1)
 		}
 		if strings.HasPrefix(args[0], "User:") {
-			processUser(args[0], ts, client, flags, verbose, categoryMap, allCategories, catCounts, &stats)
+			processUser(args[0], ts, client, flags, verbose, categoryMap, allCategories, &stats)
 		} else if strings.HasPrefix(args[0], "Category:") {
-			processCategory(args[0], ts, client, flags, verbose, categoryMap, allCategories, catCounts, &stats)
+			processCategory(args[0], ts, client, flags, verbose, categoryMap, allCategories, &stats)
 		} else if args[0] == "All" {
 			if numArgs != 2 {
 				warn("Timestamp required.")
 				return
 			}
-			processAll(ts, client, flags, verbose, categoryMap, allCategories, catCounts, &stats)
+			processAll(ts, client, flags, verbose, categoryMap, allCategories, &stats)
 		} else {
 			warn("Unknown command.")
 			return
