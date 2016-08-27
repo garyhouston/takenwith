@@ -231,7 +231,7 @@ func mapCategory(pageObj *jason.Object, verbose func(...string), categoryMap map
 }
 
 func processGenerator(params params.Values, client *mwclient.Client, flags flags, verbose func(...string), categoryMap map[string]string, allCategories map[string]bool, stats *stats) {
-	var catCounts map[string]int32
+	catCounts := make(map[string]int32)
 	query := client.NewQuery(params)
 	for query.Next() {
 		json := query.Resp()
@@ -375,7 +375,7 @@ func GetImageinfo(page string, client *mwclient.Client) *jason.Object {
 }
 
 func processOneFile(page string, client *mwclient.Client, flags flags, verbose func(...string), categoryMap map[string]string, allCategories map[string]bool, stats *stats) {
-	var catCounts map[string]int32
+	catCounts := make(map[string]int32)
 	pageObj := GetImageinfo(page, client)
 	if pageObj == nil {
 		warn(page, " does not exist, possibly deleted.")
