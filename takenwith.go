@@ -140,7 +140,7 @@ func filterCategories(files []fileTarget, client *mwclient.Client, verbose func(
 		fileArray[i] = files[i].title
 	}
 	fileCats := getPageCategories(fileArray, client)
-	result := make([]fileTarget, 0, len(files))
+	result := make([]fileTarget, len(files))
 	resultIdx := 0
 	for i := range files {
 		found := false
@@ -168,11 +168,11 @@ func filterCategories(files []fileTarget, client *mwclient.Client, verbose func(
 			}
 		}
 		if !found {
-			result = result[0 : resultIdx+1]
 			result[resultIdx] = files[i]
 			resultIdx++
 		}
 	}
+	result = result[0:resultIdx]
 	return result
 }
 

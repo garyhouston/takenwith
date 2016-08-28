@@ -26,8 +26,8 @@ func catNumFiles(categories []string, client *mwclient.Client) ([]string, []int3
 		panic(err)
 	}
 	pageMap := pages.Map()
-	var resultCats = make([]string, 0, len(pageMap))
-	var resultCounts = make([]int32, 0, len(pageMap))
+	var resultCats = make([]string, len(pageMap))
+	var resultCounts = make([]int32, len(pageMap))
 	var idx int32 = 0
 	for pageId, page := range pageMap {
 		pageObj, err := page.Object()
@@ -35,8 +35,6 @@ func catNumFiles(categories []string, client *mwclient.Client) ([]string, []int3
 			panic(err)
 		}
 		if pageId[0] != '-' {
-			resultCats = resultCats[0 : idx+1]
-			resultCounts = resultCounts[0 : idx+1]
 			resultCats[idx], err = pageObj.GetString("title")
 			if err != nil {
 				panic(err)
@@ -54,5 +52,7 @@ func catNumFiles(categories []string, client *mwclient.Client) ([]string, []int3
 			idx++
 		}
 	}
+	resultCats = resultCats[0:idx]
+	resultCounts = resultCounts[0:idx]
 	return resultCats, resultCounts
 }
