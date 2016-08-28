@@ -109,11 +109,10 @@ func cacheCatCounts(files []fileTarget, client *mwclient.Client, catCounts map[s
 	}
 }
 
-// Remove files where the category already has more than catFileLimt members.
+// Filter a file list to remove those where the category is missing or
+// already populated.
 func filterCatLimit(files []fileTarget, client *mwclient.Client, verbose func(...string), catFileLimit int32, catCounts map[string]int32, stats *stats) []fileTarget {
-	// Filter the category list to remove those where the category is
-	// missing or already populated.
-	result := make([]fileTarget, 0, len(files))
+	result := make([]fileTarget, len(files))
 	resultIdx := 0
 	for i := range files {
 		count, found := catCounts[files[i].category]
@@ -127,10 +126,10 @@ func filterCatLimit(files []fileTarget, client *mwclient.Client, verbose func(..
 			verbose(files[i].title, "\n", "Already populated: ", files[i].category)
 			continue
 		}
-		result = result[0 : resultIdx+1]
 		result[resultIdx] = files[i]
 		resultIdx++
 	}
+	result = result[0:resultIdx]
 	return result
 }
 
