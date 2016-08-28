@@ -219,7 +219,7 @@ func mapCategory(pageObj *jason.Object, verbose func(...string), categoryMap map
 		return fileTarget{}, false
 	}
 	if strings.HasPrefix(catMapped, "skip ") {
-		verbose(title, "\n", "Skipping ", make, model)
+		verbose(title, "\n", "Skipping ", make, " ", model)
 		return fileTarget{}, false
 	}
 	if catMapped == "Category:CanonS100 (special case)" {
