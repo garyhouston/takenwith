@@ -82,49 +82,53 @@ func addCategories(pages []fileTarget, client *mwclient.Client, verbose func(...
 	}
 }
 
-// Add entries to catCounts for the specified categories.
-func setCatCounts(categories []string, client *mwclient.Client, catCounts map[string]int32) {
-	cats, counts := catNumFiles(categories, client)
-	for i := range cats {
-		catCounts[cats[i]] = counts[i]
+// For each file, cache the file count for its category if we don't already
+// have it.
+func cacheCatCounts(files []fileTarget, client *mwclient.Client, catCounts map[string]int32) {
+	// Identify categories where the size isn't already cached. Use a map
+	// to combine duplicates.
+	lookup := make(map[string]bool)
+	for i := range files {
+		_, found := catCounts[files[i].category]
+		if !found {
+			lookup[files[i].category] = true
+		}
+	}
+	// Try to cache the uncached
+	if len(lookup) > 0 {
+		cats := make([]string, len(lookup))
+		idx := 0
+		for key := range lookup {
+			cats[idx] = key
+			idx++
+		}
+		files, counts := catNumFiles(cats, client)
+		for i := range files {
+			catCounts[files[i]] = counts[i]
+		}
 	}
 }
 
 // Remove files where the category already has more than catFileLimt members.
-func filterCatLimit(cats []fileTarget, client *mwclient.Client, verbose func(...string), catFileLimit int32, catCounts map[string]int32, stats *stats) []fileTarget {
-	// Identify categories where the size isn't already cached.
-	lookup := make([]string, 0, len(cats))
-	lookupIdx := 0
-	for i := range cats {
-		_, found := catCounts[cats[i].category]
-		if !found {
-			lookup = lookup[0 : lookupIdx+1]
-			lookup[lookupIdx] = cats[i].category
-			lookupIdx++
-		}
-	}
-	// Try to cache the uncached
-	if lookupIdx > 0 {
-		setCatCounts(lookup, client, catCounts)
-	}
+func filterCatLimit(files []fileTarget, client *mwclient.Client, verbose func(...string), catFileLimit int32, catCounts map[string]int32, stats *stats) []fileTarget {
 	// Filter the category list to remove those where the category is
 	// missing or already populated.
-	result := make([]fileTarget, 0, len(cats))
+	result := make([]fileTarget, 0, len(files))
 	resultIdx := 0
-	for i := range cats {
-		count, found := catCounts[cats[i].category]
+	for i := range files {
+		count, found := catCounts[files[i].category]
 		if !found {
-			warn(cats[i].title, "\n", "Mapped category doesn't exist: ", cats[i].category)
+			warn(files[i].title, "\n", "Mapped category doesn't exist: ", files[i].category)
 			stats.warnings++
 			continue
 		}
 		if catFileLimit > 0 && count >= catFileLimit {
 			stats.populated++
-			verbose(cats[i].title, "\n", "Already populated: ", cats[i].category)
+			verbose(files[i].title, "\n", "Already populated: ", files[i].category)
 			continue
 		}
 		result = result[0 : resultIdx+1]
-		result[resultIdx] = cats[i]
+		result[resultIdx] = files[i]
 		resultIdx++
 	}
 	return result
@@ -174,6 +178,7 @@ func filterCategories(files []fileTarget, client *mwclient.Client, verbose func(
 }
 
 func processFiles(fileArray []fileTarget, client *mwclient.Client, flags flags, verbose func(...string), categoryMap map[string]string, allCategories map[string]bool, catCounts map[string]int32, stats *stats) {
+	cacheCatCounts(fileArray, client, catCounts)
 	selected := filterCatLimit(fileArray, client, verbose, flags.CatFileLimit, catCounts, stats)
 	if len(selected) == 0 {
 		return
