@@ -66,12 +66,10 @@ func addCategories(pages []fileTarget, client *mwclient.Client, verbose func(...
 			stats.populated++
 			verbose(pages[i].title, "\n", "Already populated: ", pages[i].category)
 		} else {
-			// Identifying emtpy categories may help identify
+			// Identifying emtpy categories helps identify
 			// when we are adding a file to a redirect page
-			// for a renamed category. Ideally this would be done
-			// regardless of catFileLimit, but counts aren't
-			// maintained if it's zero.
-			if catFileLimit > 0 && catCounts[pages[i].category] == 0 {
+			// for a renamed category.
+			if catCounts[pages[i].category] == 0 {
 				warn(pages[i].title, "\n", "Adding to empty ", pages[i].category)
 				stats.warnings++
 			} else {
@@ -79,9 +77,7 @@ func addCategories(pages []fileTarget, client *mwclient.Client, verbose func(...
 			}
 			stats.edited++
 			addCategory(pages[i].title, pages[i].category, client)
-			if catFileLimit > 0 {
-				incCatCount(pages[i].category, catCounts)
-			}
+			incCatCount(pages[i].category, catCounts)
 		}
 	}
 }
@@ -122,7 +118,7 @@ func filterCatLimit(cats []fileTarget, client *mwclient.Client, verbose func(...
 			stats.warnings++
 			continue
 		}
-		if count >= catFileLimit {
+		if catFileLimit > 0 && count >= catFileLimit {
 			stats.populated++
 			verbose(cats[i].title, "\n", "Already populated: ", cats[i].category)
 			continue
@@ -178,14 +174,9 @@ func filterCategories(files []fileTarget, client *mwclient.Client, verbose func(
 }
 
 func processFiles(fileArray []fileTarget, client *mwclient.Client, flags flags, verbose func(...string), categoryMap map[string]string, allCategories map[string]bool, catCounts map[string]int32, stats *stats) {
-	var selected []fileTarget
-	if flags.CatFileLimit > 0 {
-		selected = filterCatLimit(fileArray, client, verbose, flags.CatFileLimit, catCounts, stats)
-		if len(selected) == 0 {
-			return
-		}
-	} else {
-		selected = fileArray
+	selected := filterCatLimit(fileArray, client, verbose, flags.CatFileLimit, catCounts, stats)
+	if len(selected) == 0 {
+		return
 	}
 	selected = filterCategories(selected, client, verbose, flags.IgnoreCurrentCats, allCategories, stats)
 	if len(selected) == 0 {
