@@ -3,6 +3,7 @@ package mwlib
 import (
 	"bufio"
 	"io"
+	"io/ioutil"
 	"net/http"
 	"os"
 )
@@ -35,20 +36,28 @@ func ReadCookies() []*http.Cookie {
 }
 
 func WriteCookies(cookies []*http.Cookie) {
-	cookieFile := GetWorkingDir() + "/cookies"
-	writer, err := os.Create(cookieFile)
+	// Write to a temp file to avoid corruption if another instance writes simultaneously
+	// (we don't care which one wins.)
+	writer, err := ioutil.TempFile(GetWorkingDir(), "cookies")
+	tmpFile := writer.Name()
 	if err != nil {
 		panic(err)
 	}
-	err = os.Chmod(cookieFile, 0600)
+	err = os.Chmod(tmpFile, 0600) // Protect session cookies.
 	if err != nil {
 		panic(err)
 	}
-	defer writer.Close()
 	for i := range cookies {
 		writer.WriteString(cookies[i].Name)
 		writer.WriteString(" ")
 		writer.WriteString(cookies[i].Value)
 		writer.WriteString("\n")
 	}
+	writer.Close()
+	cookieFile := GetWorkingDir() + "/cookies"
+	err = os.Rename(tmpFile, cookieFile)
+	if err != nil {
+		panic(err)
+	}
+
 }
