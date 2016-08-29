@@ -39,10 +39,10 @@ func WriteCookies(cookies []*http.Cookie) {
 	// Write to a temp file to avoid corruption if another instance writes simultaneously
 	// (we don't care which one wins.)
 	writer, err := ioutil.TempFile(GetWorkingDir(), "cookies")
-	tmpFile := writer.Name()
 	if err != nil {
 		panic(err)
 	}
+	tmpFile := writer.Name()
 	err = os.Chmod(tmpFile, 0600) // Protect session cookies.
 	if err != nil {
 		panic(err)
