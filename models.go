@@ -4,17 +4,10 @@ import (
 	"bufio"
 	"encoding/csv"
 	"fmt"
-	"github.com/garyhouston/takenwith/mwlib"
 	"io"
 	"os"
 	"strings"
 )
-
-// CSV file containing mapping from make/model to commons category
-var modelFile = "catmapping"
-
-// File containing subcategories that categorised files may be in.
-var exceptionFile = "catexceptions"
 
 func convertCategory(field string) string {
 	if strings.HasPrefix(field, "Category:") {
@@ -25,15 +18,15 @@ func convertCategory(field string) string {
 		return field
 	} else if strings.HasPrefix(field, "Taken with") {
 		// avoid accidental "Taken with Taken with".
-		panic(fmt.Sprintf("Bad record in %v: %v", modelFile, field))
+		panic(fmt.Sprintf("Bad record in category mapping file: %v", field))
 	} else {
 		return "Category:Taken with " + field
 	}
 }
 
 // fill map with relations of makemodel -> Commons category
-func fillCategoryMap() map[string]string {
-	file, err := os.Open(mwlib.GetWorkingDir() + "/" + modelFile)
+func fillCategoryMap(mappingFile string) map[string]string {
+	file, err := os.Open(mappingFile)
 	if err != nil {
 		panic(err)
 	}
@@ -54,13 +47,13 @@ func fillCategoryMap() map[string]string {
 }
 
 // Fill the complete set of relevant Commons Categories.
-func fillCategories(categoryMap map[string]string) map[string]bool {
+func fillCategories(categoryMap map[string]string, exceptionFile string) map[string]bool {
 	var categories = make(map[string]bool)
 	for _, v := range categoryMap {
 		categories[v] = true
 	}
 	// Read the categories that don't start with "Taken ".
-	file, err := os.Open(mwlib.GetWorkingDir() + "/" + exceptionFile)
+	file, err := os.Open(exceptionFile)
 	if err != nil {
 		panic(err)
 	}

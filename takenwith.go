@@ -388,6 +388,9 @@ type flags struct {
 	Verbose           bool   `short:"v" long:"verbose" env:"takenwith_verbose" description:"Print action for every file"`
 	CatFileLimit      int32  `short:"c" long:"catfilelimit" env:"takenwith_catfilelimit" description:"Don't add to categories with at least this many files. No limit if zero" default:"100"`
 	Operator          string `long:"operator" env:"takenwith_operator" description:"Operator's email address or Wiki user name"`
+	MappingFile       string `long:"mappingfile" env:"takenwith_mappingfile" description:"Path of the catmapping file"`
+	ExceptionFile     string `long:"exceptionfile" env:"takenwith_exceptionfile" description:"Path of the catexceptions file"`
+	CookieFile        string `long:"cookiefile" env:"takenwith_cookiefile" description:"Path of the cookies cache file"`
 	BatchSize         int    `short:"s" long:"batchsize" env:"takenwith_batchsize" description:"Number of files to process per server request" default:"100"`
 	IgnoreCurrentCats bool   `short:"i" long:"ignorecurrentcats" env:"takenwith_ignorecurrentcats" description:"Add to mapped categories even if already in a relevant category"`
 	Back              bool   `short:"b" long:"back" env:"takenwith_back" description:"Process backwards in time, from newer files to older files"`
@@ -407,9 +410,9 @@ func parseFlags() ([]string, flags) {
 }
 
 // Handler for processing to be done when bot is terminating.
-func EndProc(client *mwclient.Client, stats *stats) {
+func EndProc(client *mwclient.Client, stats *stats, cookieFile string) {
 	// Cookies can change while the bot is running, so save the latest values for the next run.
-	mwlib.WriteCookies(client.DumpCookies())
+	mwlib.WriteCookies(client.DumpCookies(), cookieFile)
 
 	if stats.examined > 1 {
 		fmt.Println()
@@ -446,8 +449,8 @@ func checkLogin(client *mwclient.Client) bool {
 	return err == nil
 }
 
-func clearCookies(client *mwclient.Client) {
-	cookies := mwlib.ReadCookies()
+func clearCookies(client *mwclient.Client, cookieFile string) {
+	cookies := mwlib.ReadCookies(cookieFile)
 	for idx, _ := range cookies {
 		cookies[idx].MaxAge = -1
 	}
@@ -457,7 +460,7 @@ func clearCookies(client *mwclient.Client) {
 func login(client *mwclient.Client, flags flags) bool {
 	// Clear old session cookies, otherwise they remain in the cookiejar
 	// as duplicates and remain in use.
-	clearCookies(client)
+	clearCookies(client, flags.CookieFile)
 	username := os.Getenv("takenwith_username")
 	if username == "" {
 		warn("Username for login not set in environment.")
@@ -482,6 +485,18 @@ func main() {
 		warn("Operator email / username not set.")
 		return
 	}
+	if flags.MappingFile == "" {
+		warn("Category mapping file path not set.")
+		return
+	}
+	if flags.ExceptionFile == "" {
+		warn("Category exception file path not set.")
+		return
+	}
+	if flags.CookieFile == "" {
+		warn("Cookie cache file path not set.")
+		return
+	}
 	verbose := get_verbose(flags.Verbose)
 	client, err := mwclient.New("https://commons.wikimedia.org/w/api.php", "takenwith "+flags.Operator)
 	if err != nil {
@@ -489,18 +504,18 @@ func main() {
 	}
 	client.Maxlag.On = true
 
-	cookies := mwlib.ReadCookies()
+	cookies := mwlib.ReadCookies(flags.CookieFile)
 	client.LoadCookies(cookies)
 
-	categoryMap := fillCategoryMap() // makemodel -> category
+	categoryMap := fillCategoryMap(flags.MappingFile) // makemodel -> category
 
 	// All known categories, including subcategories that don't start
 	// with "Taken with".
-	allCategories := fillCategories(categoryMap)
+	allCategories := fillCategories(categoryMap, flags.ExceptionFile)
 
 	var stats stats
 
-	defer EndProc(client, &stats)
+	defer EndProc(client, &stats, flags.CookieFile)
 
 	if !checkLogin(client) {
 		if !login(client, flags) {

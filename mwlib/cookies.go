@@ -6,10 +6,10 @@ import (
 	"io/ioutil"
 	"net/http"
 	"os"
+	"path/filepath"
 )
 
-func ReadCookies() []*http.Cookie {
-	cookieFile := GetWorkingDir() + "/cookies"
+func ReadCookies(cookieFile string) []*http.Cookie {
 	file, err := os.Open(cookieFile)
 	if err != nil {
 		return nil
@@ -35,10 +35,11 @@ func ReadCookies() []*http.Cookie {
 	}
 }
 
-func WriteCookies(cookies []*http.Cookie) {
+func WriteCookies(cookies []*http.Cookie, cookieFile string) {
 	// Write to a temp file to avoid corruption if another instance writes simultaneously
 	// (we don't care which one wins.)
-	writer, err := ioutil.TempFile(GetWorkingDir(), "cookies")
+	dir, file := filepath.Split(cookieFile)
+	writer, err := ioutil.TempFile(dir, file)
 	if err != nil {
 		panic(err)
 	}
@@ -54,7 +55,6 @@ func WriteCookies(cookies []*http.Cookie) {
 		writer.WriteString("\n")
 	}
 	writer.Close()
-	cookieFile := GetWorkingDir() + "/cookies"
 	err = os.Rename(tmpFile, cookieFile)
 	if err != nil {
 		panic(err)
