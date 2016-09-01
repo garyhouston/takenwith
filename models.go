@@ -13,9 +13,6 @@ func convertCategory(field string) string {
 	if strings.HasPrefix(field, "Category:") {
 		// use name as-is.
 		return field
-	} else if strings.HasPrefix(field, "skip ") {
-		// keyword for entry to be ignored.
-		return field
 	} else if strings.HasPrefix(field, "Taken with") {
 		// avoid accidental "Taken with Taken with".
 		panic(fmt.Sprintf("Bad record in category mapping file: %v", field))
