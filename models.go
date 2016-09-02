@@ -49,7 +49,7 @@ func fillCategories(categoryMap map[string]string, exceptionFile string) map[str
 	for _, v := range categoryMap {
 		categories[v] = true
 	}
-	// Read the categories that don't start with "Taken ".
+	// Add the categories that aren't catmapping targets.
 	file, err := os.Open(exceptionFile)
 	if err != nil {
 		panic(err)

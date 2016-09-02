@@ -505,8 +505,8 @@ func main() {
 
 	categoryMap := fillCategoryMap(flags.MappingFile) // makemodel -> category
 
-	// All known categories, including subcategories that don't start
-	// with "Taken with".
+	// All known categories, including those that aren't catmapping
+	// targets.
 	allCategories := fillCategories(categoryMap, flags.ExceptionFile)
 
 	var stats stats
