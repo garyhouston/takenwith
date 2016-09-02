@@ -14,6 +14,7 @@ import (
 )
 
 func addCategory(page string, category string, client *mwclient.Client) {
+	return
 	// There's a small chance that saving a page may fail due to
 	// an edit conflict or other transient error. Try up to 3
 	// times before giving up.
@@ -115,21 +116,54 @@ func filterCatLimit(files []fileTarget, client *mwclient.Client, verbose func(..
 	result := make([]fileTarget, len(files))
 	resultIdx := 0
 	for i := range files {
-		count, found := catCounts[files[i].category]
-		if !found {
-			warn(files[i].title, "\n", "Mapped category doesn't exist: ", files[i].category)
-			stats.warnings++
-			continue
-		}
-		if catFileLimit > 0 && count >= catFileLimit {
-			stats.populated++
-			verbose(files[i].title, "\n", "Already populated: ", files[i].category)
-			continue
+		// Ignore the delayed error case from mapCategory: ignore.
+		if files[i].category[0:4] != "FAIL" {
+			count, found := catCounts[files[i].category]
+			if !found {
+				warn(files[i].title, "\n", "Mapped category doesn't exist: ", files[i].category)
+				stats.warnings++
+				continue
+			}
+			if catFileLimit > 0 && count >= catFileLimit {
+				stats.populated++
+				verbose(files[i].title, "\n", "Already populated: ", files[i].category)
+				continue
+			}
 		}
 		result[resultIdx] = files[i]
 		resultIdx++
 	}
 	result = result[0:resultIdx]
+	return result
+}
+
+// Determine if any of cats (a file's current categories) match either the
+// Exif target category, any known target category, or any unknown category
+// that's named like a target category.
+func matchCategories(title string, cats []string, mapped string, verbose func(...string), ignoreCurrentCats bool, allCategories map[string]bool, stats *stats) bool {
+	result := false
+	for _, cat := range cats {
+		if mapped == cat {
+			stats.inCat++
+			verbose(title, "\n", "Already in mapped: ", mapped)
+			result = true
+			break
+		}
+		if !ignoreCurrentCats {
+			if allCategories[cat] {
+				result = true
+				stats.inCat++
+				verbose(title, "\n", "Already in known: ", cat)
+				break
+			}
+			if strings.HasPrefix(cat, "Category:Taken ") || strings.HasPrefix(cat, "Category:Scanned ") {
+				result = true
+				warn(title, "\n", "Already in unknown: ", cat)
+				stats.warnings++
+				break
+			}
+		}
+	}
 	return result
 }
 
@@ -143,33 +177,18 @@ func filterCategories(files []fileTarget, client *mwclient.Client, verbose func(
 	result := make([]fileTarget, len(files))
 	resultIdx := 0
 	for i := range files {
-		found := false
 		cats := fileCats[files[i].title]
-		for j := range cats {
-			if files[i].category == cats[j] {
-				stats.inCat++
-				verbose(files[i].title, "\n", "Already in mapped: ", files[i].category)
-				found = true
-				break
+		if !matchCategories(files[i].title, cats, files[i].category, verbose, ignoreCurrentCats, allCategories, stats) {
+			if files[i].category[0:4] == "FAIL" {
+				// Handle the delayed error case from
+				// mapCategory, now that we know it's not in
+				// a relevant category.
+				warn(files[i].title, "\n", files[i].category[5:])
+				stats.warnings++
+			} else {
+				result[resultIdx] = files[i]
+				resultIdx++
 			}
-			if !ignoreCurrentCats {
-				_, found = allCategories[cats[j]]
-				if found {
-					stats.inCat++
-					verbose(files[i].title, "\n", "Already in known: ", cats[j])
-					break
-				}
-				if strings.HasPrefix(cats[j], "Category:Taken ") || strings.HasPrefix(cats[j], "Category:Scanned ") {
-					warn(files[i].title, "\n", "Already in unknown: ", cats[j])
-					stats.warnings++
-					found = true
-					break
-				}
-			}
-		}
-		if !found {
-			result[resultIdx] = files[i]
-			resultIdx++
 		}
 	}
 	result = result[0:resultIdx]
@@ -209,9 +228,10 @@ func mapCategory(pageObj *jason.Object, verbose func(...string), categoryMap map
 	var catMapped string
 	catMapped, ok := categoryMap[make+model]
 	if !ok {
-		warn(title, "\n", fmt.Sprintf("No category for %v,%v", make, model))
-		stats.warnings++
-		return fileTarget{}, false
+		// Continue processing this file to determine its current
+		// categories before displaying any warning. Save the warning
+		// in catMapped for now.
+		catMapped = fmt.Sprintf("FAIL No category for %v,%v", make, model)
 	}
 	if catMapped == "Category:CanonS100 (special case)" {
 		catMapped = mapCanonS100(imageinfo)
