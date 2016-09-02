@@ -14,7 +14,6 @@ import (
 )
 
 func addCategory(page string, category string, client *mwclient.Client) {
-	return
 	// There's a small chance that saving a page may fail due to
 	// an edit conflict or other transient error. Try up to 3
 	// times before giving up.
