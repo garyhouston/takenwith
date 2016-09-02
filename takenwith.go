@@ -116,7 +116,7 @@ func filterCatLimit(files []fileTarget, client *mwclient.Client, verbose func(..
 	result := make([]fileTarget, len(files))
 	resultIdx := 0
 	for i := range files {
-		// Ignore the delayed error case from mapCategory: ignore.
+		// Ignore the delayed error case from mapCategory.
 		if files[i].category[0:4] != "FAIL" {
 			count, found := catCounts[files[i].category]
 			if !found {
