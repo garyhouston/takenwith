@@ -48,50 +48,49 @@ func addCategory(page string, category string, client *mwclient.Client) {
 	}
 }
 
-type fileTarget struct {
-	title    string
-	category string
-}
-
 func incCatCount(category string, catCounts map[string]int32) {
 	catCounts[category] = catCounts[category] + 1
 }
 
-func addCategories(pages []fileTarget, client *mwclient.Client, verbose func(...string), catFileLimit int32, allCategories map[string]bool, catCounts map[string]int32, stats *stats) {
-	for i := range pages {
+func addCategories(files []fileData, client *mwclient.Client, verbose func(...string), catFileLimit int32, allCategories map[string]bool, catCounts map[string]int32, stats *stats) {
+	for i := range files {
+		if files[i].processed {
+			continue
+		}
 		// The cat size limit needs to be checked again, since adding
 		// previous files in the batch may have pushed it over the
 		// limit.
-		if catFileLimit > 0 && catCounts[pages[i].category] >= catFileLimit {
+		if catFileLimit > 0 && catCounts[files[i].catMapped] >= catFileLimit {
 			stats.populated++
-			verbose(pages[i].title, "\n", "Already populated: ", pages[i].category)
+			verbose(files[i].title, "\n", "Already populated: ", files[i].catMapped)
 		} else {
 			// Identifying emtpy categories helps identify
 			// when we are adding a file to a redirect page
 			// for a renamed category.
-			if catCounts[pages[i].category] == 0 {
-				warn(pages[i].title, "\n", "Adding to empty ", pages[i].category)
+			if catCounts[files[i].catMapped] == 0 {
+				warn(files[i].title, "\n", "Adding to empty ", files[i].catMapped)
 				stats.warnings++
 			} else {
-				verbose(pages[i].title, "\n", "Adding to ", pages[i].category, " (", strconv.Itoa(int(catCounts[pages[i].category])), " files)")
+				verbose(files[i].title, "\n", "Adding to ", files[i].catMapped, " (", strconv.Itoa(int(catCounts[files[i].catMapped])), " files)")
 			}
 			stats.edited++
-			addCategory(pages[i].title, pages[i].category, client)
-			incCatCount(pages[i].category, catCounts)
+			addCategory(files[i].title, files[i].catMapped, client)
+			incCatCount(files[i].catMapped, catCounts)
 		}
+		files[i].processed = true
 	}
 }
 
 // For each file, cache the file count for its category if we don't already
 // have it.
-func cacheCatCounts(files []fileTarget, client *mwclient.Client, catCounts map[string]int32) {
+func cacheCatCounts(files []fileData, client *mwclient.Client, catCounts map[string]int32) {
 	// Identify categories where the size isn't already cached. Use a map
 	// to combine duplicates.
 	lookup := make(map[string]bool)
 	for i := range files {
-		_, found := catCounts[files[i].category]
+		_, found := catCounts[files[i].catMapped]
 		if !found {
-			lookup[files[i].category] = true
+			lookup[files[i].catMapped] = true
 		}
 	}
 	// Try to cache the uncached
@@ -109,31 +108,25 @@ func cacheCatCounts(files []fileTarget, client *mwclient.Client, catCounts map[s
 	}
 }
 
-// Filter a file list to remove those where the category is missing or
-// already populated.
-func filterCatLimit(files []fileTarget, client *mwclient.Client, verbose func(...string), catFileLimit int32, catCounts map[string]int32, stats *stats) []fileTarget {
-	result := make([]fileTarget, len(files))
-	resultIdx := 0
+// Process files where the category is missing or already populated.
+func filterCatLimit(files []fileData, client *mwclient.Client, verbose func(...string), catFileLimit int32, catCounts map[string]int32, stats *stats) {
 	for i := range files {
-		// Ignore the delayed error case from mapCategory.
-		if files[i].category[0:4] != "FAIL" {
-			count, found := catCounts[files[i].category]
+		if !files[i].processed && files[i].catMapped != "" {
+			count, found := catCounts[files[i].catMapped]
 			if !found {
-				warn(files[i].title, "\n", "Mapped category doesn't exist: ", files[i].category)
+				warn(files[i].title, "\n", "Mapped category doesn't exist: ", files[i].catMapped)
 				stats.warnings++
+				files[i].processed = true
 				continue
 			}
 			if catFileLimit > 0 && count >= catFileLimit {
 				stats.populated++
-				verbose(files[i].title, "\n", "Already populated: ", files[i].category)
+				verbose(files[i].title, "\n", "Already populated: ", files[i].catMapped)
+				files[i].processed = true
 				continue
 			}
 		}
-		result[resultIdx] = files[i]
-		resultIdx++
 	}
-	result = result[0:resultIdx]
-	return result
 }
 
 // Determine if any of cats (a file's current categories) match either the
@@ -166,78 +159,88 @@ func matchCategories(title string, cats []string, mapped string, verbose func(..
 	return result
 }
 
-// Remove files which are already in a relevant category.
-func filterCategories(files []fileTarget, client *mwclient.Client, verbose func(...string), ignoreCurrentCats bool, allCategories map[string]bool, stats *stats) []fileTarget {
-	fileArray := make([]string, len(files))
+// Process files which are already in a relevant category.
+func filterCategories(files []fileData, client *mwclient.Client, verbose func(...string), ignoreCurrentCats bool, allCategories map[string]bool, stats *stats) {
+	titles := make([]string, len(files))
+	idx := 0
 	for i := range files {
-		fileArray[i] = files[i].title
+		if !files[i].processed {
+			titles[idx] = files[i].title
+			idx++
+		}
 	}
-	fileCats := getPageCategories(fileArray, client)
-	result := make([]fileTarget, len(files))
-	resultIdx := 0
+	if idx == 0 {
+		return
+	}
+	titles = titles[0:idx]
+	fileCats := getPageCategories(titles, client)
 	for i := range files {
+		if files[i].processed {
+			continue
+		}
 		cats := fileCats[files[i].title]
-		if !matchCategories(files[i].title, cats, files[i].category, verbose, ignoreCurrentCats, allCategories, stats) {
-			if files[i].category[0:4] == "FAIL" {
+		if matchCategories(files[i].title, cats, files[i].catMapped, verbose, ignoreCurrentCats, allCategories, stats) {
+			files[i].processed = true
+		} else {
+			if files[i].catMapped == "" {
 				// Handle the delayed error case from
 				// mapCategory, now that we know it's not in
 				// a relevant category.
-				warn(files[i].title, "\n", files[i].category[5:])
+				warn(files[i].title, "\n", fmt.Sprintf("No category for %v,%v", files[i].make, files[i].model))
 				stats.warnings++
-			} else {
-				result[resultIdx] = files[i]
-				resultIdx++
+				files[i].processed = true
 			}
 		}
 	}
-	result = result[0:resultIdx]
-	return result
-}
-
-func processFiles(fileArray []fileTarget, client *mwclient.Client, flags flags, verbose func(...string), categoryMap map[string]string, allCategories map[string]bool, catCounts map[string]int32, stats *stats) {
-	cacheCatCounts(fileArray, client, catCounts)
-	selected := filterCatLimit(fileArray, client, verbose, flags.CatFileLimit, catCounts, stats)
-	if len(selected) == 0 {
-		return
-	}
-	selected = filterCategories(selected, client, verbose, flags.IgnoreCurrentCats, allCategories, stats)
-	if len(selected) == 0 {
-		return
-	}
-	addCategories(selected, client, verbose, flags.CatFileLimit, allCategories, catCounts, stats)
 }
 
 // Determine Commons category from imageinfo (Exif) data, if possible.
-func mapCategory(pageObj *jason.Object, verbose func(...string), categoryMap map[string]string, stats *stats) (fileTarget, bool) {
-	title, err := pageObj.GetString("title")
-	if err != nil {
-		panic(err)
-	}
-	imageinfo, err := pageObj.GetObjectArray("imageinfo")
-	var make, model string
-	if err == nil {
-		make, model = extractCamera(imageinfo[0])
-	}
-	if err != nil || (make == "" && model == "") {
-		verbose(title, "\n", "No camera details in Exif")
-		return fileTarget{}, false
-	}
-	stats.withCamera++
+func mapCategories(files []fileData, verbose func(...string), categoryMap map[string]string, stats *stats) {
+	for i := range files {
+		var err error
+		files[i].title, err = files[i].pageObj.GetString("title")
+		if err != nil {
+			panic(err)
+		}
+		imageinfo, err := files[i].pageObj.GetObjectArray("imageinfo")
+		if err == nil {
+			files[i].make, files[i].model = extractCamera(imageinfo[0])
+		}
+		if err != nil || (files[i].make == "" && files[i].model == "") {
+			verbose(files[i].title, "\n", "No camera details in Exif")
+			files[i].processed = true
+			continue
+		}
+		stats.withCamera++
+		// If mapping fails, processing continues with blank catMapped
+		// to determine file's current categories before displaying any
+		// warning.
+		files[i].catMapped, _ = categoryMap[files[i].make+files[i].model]
 
-	var catMapped string
-	catMapped, ok := categoryMap[make+model]
-	if !ok {
-		// Continue processing this file to determine its current
-		// categories before displaying any warning. Save the warning
-		// in catMapped for now.
-		catMapped = fmt.Sprintf("FAIL No category for %v,%v", make, model)
+		if files[i].catMapped == "Category:CanonS100 (special case)" {
+			files[i].catMapped = mapCanonS100(imageinfo)
+		} else if files[i].catMapped == "Category:CanonS110 (special case)" {
+			files[i].catMapped = mapCanonS110(imageinfo)
+		}
 	}
-	if catMapped == "Category:CanonS100 (special case)" {
-		catMapped = mapCanonS100(imageinfo)
-	} else if catMapped == "Category:CanonS110 (special case)" {
-		catMapped = mapCanonS110(imageinfo)
-	}
-	return fileTarget{title, catMapped}, true
+}
+
+func processFiles(files []fileData, client *mwclient.Client, flags flags, verbose func(...string), categoryMap map[string]string, allCategories map[string]bool, catCounts map[string]int32, stats *stats) {
+	mapCategories(files, verbose, categoryMap, stats)
+	cacheCatCounts(files, client, catCounts)
+	filterCatLimit(files, client, verbose, flags.CatFileLimit, catCounts, stats)
+	filterCategories(files, client, verbose, flags.IgnoreCurrentCats, allCategories, stats)
+	addCategories(files, client, verbose, flags.CatFileLimit, allCategories, catCounts, stats)
+}
+
+// Data obtained about a single Wiki file page.
+type fileData struct {
+	pageObj   *jason.Object // Result of a query pages request that includes imageinfo.
+	title     string        // Title of the Wiki file page.
+	make      string        // Equipment make from Exif.
+	model     string        // Equipment model from Exif.
+	catMapped string        // Category name	mapped from Exif equipment make/model, or blank if the lookup fails.
+	processed bool          // True once file has been fully processed.
 }
 
 func processGenerator(params params.Values, client *mwclient.Client, flags flags, verbose func(...string), categoryMap map[string]string, allCategories map[string]bool, stats *stats) {
@@ -253,27 +256,22 @@ func processGenerator(params params.Values, client *mwclient.Client, flags flags
 		}
 		pagesMap := pages.Map()
 		if len(pagesMap) > 0 {
-			fileArray := make([]fileTarget, len(pagesMap))
+			files := make([]fileData, len(pagesMap))
 			idx := 0
 			for id, page := range pagesMap {
 				if id == "-1" {
 					// Empty result set.
 					return
 				}
-				pageObj, err := page.Object()
+				files[idx].pageObj, err = page.Object()
 				if err != nil {
 					panic(err)
 				}
-				var found bool
-				fileArray[idx], found = mapCategory(pageObj, verbose, categoryMap, stats)
-				if found {
-					idx++
-				}
+				idx++
 				stats.examined++
 			}
 			if idx > 0 {
-				fileArray = fileArray[0:idx]
-				processFiles(fileArray, client, flags, verbose, categoryMap, allCategories, catCounts, stats)
+				processFiles(files, client, flags, verbose, categoryMap, allCategories, catCounts, stats)
 			}
 		}
 		if flags.FileLimit > 0 && stats.examined >= flags.FileLimit {
@@ -386,17 +384,13 @@ func GetImageinfo(page string, client *mwclient.Client) *jason.Object {
 
 func processOneFile(page string, client *mwclient.Client, flags flags, verbose func(...string), categoryMap map[string]string, allCategories map[string]bool, stats *stats) {
 	catCounts := make(map[string]int32)
-	pageObj := GetImageinfo(page, client)
-	if pageObj == nil {
+	files := make([]fileData, 1)
+	files[0].pageObj = GetImageinfo(page, client)
+	if files[0].pageObj == nil {
 		warn(page, " does not exist, possibly deleted.")
 		return
 	}
-	target, found := mapCategory(pageObj, verbose, categoryMap, stats)
-	if found {
-		fileTargets := make([]fileTarget, 1)
-		fileTargets[0] = target
-		processFiles(fileTargets, client, flags, verbose, categoryMap, allCategories, catCounts, stats)
-	}
+	processFiles(files, client, flags, verbose, categoryMap, allCategories, catCounts, stats)
 }
 
 type flags struct {
