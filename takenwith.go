@@ -88,9 +88,11 @@ func cacheCatCounts(files []fileData, client *mwclient.Client, catCounts map[str
 	// to combine duplicates.
 	lookup := make(map[string]bool)
 	for i := range files {
-		_, found := catCounts[files[i].catMapped]
-		if !found {
-			lookup[files[i].catMapped] = true
+		if !files[i].processed && files[i].catMapped != "" {
+			_, found := catCounts[files[i].catMapped]
+			if !found {
+				lookup[files[i].catMapped] = true
+			}
 		}
 	}
 	// Try to cache the uncached
