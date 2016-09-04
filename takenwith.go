@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bytes"
 	mwclient "cgt.name/pkg/go-mwclient"
 	"cgt.name/pkg/go-mwclient/params"
 	"fmt"
@@ -69,6 +70,7 @@ func addCategories(files []fileData, client *mwclient.Client, verbose func(...st
 			// for a renamed category.
 			if catCounts[files[i].catMapped] == 0 {
 				warn(files[i].title, "\n", "Adding to empty ", files[i].catMapped)
+				files[i].warning = "Added to empty category"
 				stats.warnings++
 			} else {
 				verbose(files[i].title, "\n", "Adding to ", files[i].catMapped, " (", strconv.Itoa(int(catCounts[files[i].catMapped])), " files)")
@@ -117,6 +119,7 @@ func filterCatLimit(files []fileData, client *mwclient.Client, verbose func(...s
 			count, found := catCounts[files[i].catMapped]
 			if !found {
 				warn(files[i].title, "\n", "Mapped category doesn't exist: ", files[i].catMapped)
+				files[i].warning = files[i].catMapped + " doesn't exist"
 				stats.warnings++
 				files[i].processed = true
 				continue
@@ -134,12 +137,12 @@ func filterCatLimit(files []fileData, client *mwclient.Client, verbose func(...s
 // Determine if any of cats (a file's current categories) match either the
 // Exif target category, any known target category, or any unknown category
 // that's named like a target category.
-func matchCategories(title string, cats []string, mapped string, verbose func(...string), ignoreCurrentCats bool, allCategories map[string]bool, stats *stats) bool {
+func matchCategories(file *fileData, cats []string, mapped string, verbose func(...string), ignoreCurrentCats bool, allCategories map[string]bool, stats *stats) bool {
 	result := false
 	for _, cat := range cats {
 		if mapped == cat {
 			stats.inCat++
-			verbose(title, "\n", "Already in mapped: ", mapped)
+			verbose(file.title, "\n", "Already in mapped: ", mapped)
 			result = true
 			break
 		}
@@ -147,12 +150,13 @@ func matchCategories(title string, cats []string, mapped string, verbose func(..
 			if allCategories[cat] {
 				result = true
 				stats.inCat++
-				verbose(title, "\n", "Already in known: ", cat)
+				verbose(file.title, "\n", "Already in known: ", cat)
 				break
 			}
 			if strings.HasPrefix(cat, "Category:Taken ") || strings.HasPrefix(cat, "Category:Scanned ") {
 				result = true
-				warn(title, "\n", "Already in unknown: ", cat)
+				warn(file.title, "\n", "Already in unknown: ", cat)
+				file.warning = "In unknown " + cat
 				stats.warnings++
 				break
 			}
@@ -181,7 +185,7 @@ func filterCategories(files []fileData, client *mwclient.Client, verbose func(..
 			continue
 		}
 		cats := fileCats[files[i].title]
-		if matchCategories(files[i].title, cats, files[i].catMapped, verbose, ignoreCurrentCats, allCategories, stats) {
+		if matchCategories(&files[i], cats, files[i].catMapped, verbose, ignoreCurrentCats, allCategories, stats) {
 			files[i].processed = true
 		} else {
 			if files[i].catMapped == "" {
@@ -189,6 +193,7 @@ func filterCategories(files []fileData, client *mwclient.Client, verbose func(..
 				// mapCategory, now that we know it's not in
 				// a relevant category.
 				warn(files[i].title, "\n", fmt.Sprintf("No category for %v,%v", files[i].make, files[i].model))
+				files[i].warning = files[i].make + " " + files[i].model
 				stats.warnings++
 				files[i].processed = true
 			}
@@ -243,10 +248,61 @@ type fileData struct {
 	model     string        // Equipment model from Exif.
 	catMapped string        // Category name	mapped from Exif equipment make/model, or blank if the lookup fails.
 	processed bool          // True once file has been fully processed.
+	warning   string        // Brief warning string.
+}
+
+type warning struct {
+	title   string
+	warning string
+}
+
+func copyWarnings(files []fileData, warnings *[]warning) {
+	for i := range files {
+		if files[i].warning != "" {
+			*warnings = append(*warnings, warning{files[i].title, files[i].warning})
+		}
+	}
+}
+
+// Create a gallery showing all the files with warnings. Page must already
+// exist and will be replaced.
+func createWarningGallery(gallery string, warnings []warning, client *mwclient.Client) {
+	var saveError error
+	for i := 0; i < 3; i++ {
+		_, timestamp, err := client.GetPageByName(gallery)
+		if err != nil {
+			panic(fmt.Sprintf("%v %v", gallery, err))
+		}
+		// Blank the page and create a fresh gallery
+		var buffer bytes.Buffer
+		buffer.WriteString("<gallery>\n")
+		for w := range warnings {
+			buffer.WriteString(warnings[w].title)
+			buffer.WriteByte('|')
+			buffer.WriteString(warnings[w].warning)
+			buffer.WriteByte('\n')
+		}
+		buffer.WriteString("</gallery>")
+		editcfg := map[string]string{
+			"action":        "edit",
+			"title":         gallery,
+			"text":          buffer.String(),
+			"bot":           "",
+			"basetimestamp": timestamp,
+		}
+		saveError = client.Edit(editcfg)
+		if saveError == nil {
+			break
+		}
+	}
+	if saveError != nil {
+		panic(fmt.Sprintf("Failed to save %v %v", gallery, saveError))
+	}
 }
 
 func processGenerator(params params.Values, client *mwclient.Client, flags flags, verbose func(...string), categoryMap map[string]string, allCategories map[string]bool, stats *stats) {
 	catCounts := make(map[string]int32)
+	warnings := make([]warning, 0, 200)
 	query := client.NewQuery(params)
 	for query.Next() {
 		json := query.Resp()
@@ -274,6 +330,7 @@ func processGenerator(params params.Values, client *mwclient.Client, flags flags
 			}
 			if idx > 0 {
 				processFiles(files, client, flags, verbose, categoryMap, allCategories, catCounts, stats)
+				copyWarnings(files, &warnings)
 			}
 		}
 		if flags.FileLimit > 0 && stats.examined >= flags.FileLimit {
@@ -285,6 +342,9 @@ func processGenerator(params params.Values, client *mwclient.Client, flags flags
 	}
 	if query.Err() != nil {
 		panic(query.Err())
+	}
+	if flags.Gallery != "" && len(warnings) > 0 {
+		createWarningGallery(flags.Gallery, warnings, client)
 	}
 }
 
@@ -419,6 +479,7 @@ type flags struct {
 	Back              bool   `short:"b" long:"back" env:"takenwith_back" description:"Process backwards in time, from newer files to older files"`
 	FileLimit         int32  `short:"f" long:"filelimit" env:"takenwith_filelimit" description:"Stop after examining at least this many files. No limit if zero" default:"10000"`
 	WarningLimit      int32  `short:"w" long:"warninglimit" env:"takenwith_warninglimit" description:"Stop after printing at least this many warnings. No limit if zero" default:"100"`
+	Gallery           string `long:"gallery" env:"takenwith_gallery" description:"Gallery page in which to display files with warnings"`
 }
 
 func parseFlags() ([]string, flags) {
