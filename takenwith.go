@@ -348,6 +348,18 @@ func processRandom(client *mwclient.Client, flags flags, verbose func(...string)
 	}
 }
 
+// Process the images embedded in a page, e.g., a gallery.
+func processPage(page string, client *mwclient.Client, flags flags, verbose func(...string), categoryMap map[string]string, allCategories map[string]bool, stats *stats) {
+	params := params.Values{
+		"generator": "images",
+		"titles":    page,
+		"gimlimit":  strconv.Itoa(flags.BatchSize),
+		"prop":      "imageinfo",
+		"iiprop":    "commonmetadata",
+	}
+	processGenerator(params, client, flags, verbose, categoryMap, allCategories, stats)
+}
+
 func processAll(ts timestamp, client *mwclient.Client, flags flags, verbose func(...string), categoryMap map[string]string, allCategories map[string]bool, stats *stats) {
 	var direction string
 	if flags.Back {
@@ -412,7 +424,7 @@ type flags struct {
 func parseFlags() ([]string, flags) {
 	var flags flags
 	parser := goflags.NewParser(&flags, goflags.HelpFlag)
-	parser.Usage = "[OPTIONS] File:f | User:u [timestamp] | Category:c [timestamp] | Random | All timestamp"
+	parser.Usage = "[OPTIONS] File:f | User:u [timestamp] | Category:c [timestamp] | Random | Page:p | All timestamp"
 	args, err := parser.Parse()
 	if err != nil {
 		log.Fatal(err)
@@ -551,6 +563,12 @@ func main() {
 			return
 		}
 		processRandom(client, flags, verbose, categoryMap, allCategories, &stats)
+	} else if strings.HasPrefix(args[0], "Page:") {
+		if numArgs > 1 {
+			warn("Unexpected parameter.")
+			return
+		}
+		processPage(args[0][5:], client, flags, verbose, categoryMap, allCategories, &stats)
 	} else {
 		var ts timestamp
 		if numArgs == 2 {
