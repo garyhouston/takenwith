@@ -10,6 +10,7 @@ import (
 	goflags "github.com/jessevdk/go-flags"
 	"log"
 	"os"
+	"sort"
 	"strconv"
 	"strings"
 )
@@ -256,7 +257,22 @@ type warning struct {
 	warning string
 }
 
-func copyWarnings(files []fileData, warnings *[]warning) {
+type warnings []warning
+
+// Sort interface functions.
+func (this warnings) Len() int {
+	return len(this)
+}
+
+func (this warnings) Less(i, j int) bool {
+	return this[i].warning < this[j].warning
+}
+
+func (this warnings) Swap(i, j int) {
+	this[i], this[j] = this[j], this[i]
+}
+
+func copyWarnings(files []fileData, warnings *warnings) {
 	for i := range files {
 		if files[i].warning != "" {
 			*warnings = append(*warnings, warning{files[i].title, files[i].warning})
@@ -266,8 +282,9 @@ func copyWarnings(files []fileData, warnings *[]warning) {
 
 // Create a gallery showing all the files with warnings. Page must already
 // exist and will be replaced.
-func createWarningGallery(gallery string, warnings []warning, client *mwclient.Client) {
+func createWarningGallery(gallery string, warnings warnings, client *mwclient.Client) {
 	var saveError error
+	sort.Sort(warnings)
 	for i := 0; i < 3; i++ {
 		_, timestamp, err := client.GetPageByName(gallery)
 		if err != nil {
@@ -302,7 +319,7 @@ func createWarningGallery(gallery string, warnings []warning, client *mwclient.C
 
 func processGenerator(params params.Values, client *mwclient.Client, flags flags, verbose func(...string), categoryMap map[string]string, allCategories map[string]bool, stats *stats) {
 	catCounts := make(map[string]int32)
-	warnings := make([]warning, 0, 200)
+	warnings := make(warnings, 0, 200)
 	query := client.NewQuery(params)
 	for query.Next() {
 		json := query.Resp()
