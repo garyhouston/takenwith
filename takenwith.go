@@ -1,7 +1,6 @@
 package main
 
 import (
-	"bytes"
 	mwclient "cgt.name/pkg/go-mwclient"
 	"cgt.name/pkg/go-mwclient/params"
 	"fmt"
@@ -10,7 +9,6 @@ import (
 	goflags "github.com/jessevdk/go-flags"
 	"log"
 	"os"
-	"sort"
 	"strconv"
 	"strings"
 )
@@ -252,71 +250,6 @@ type fileData struct {
 	warning   string        // Brief warning string.
 }
 
-type warning struct {
-	title   string
-	warning string
-}
-
-type warnings []warning
-
-// Sort interface functions.
-func (this warnings) Len() int {
-	return len(this)
-}
-
-func (this warnings) Less(i, j int) bool {
-	return this[i].warning < this[j].warning
-}
-
-func (this warnings) Swap(i, j int) {
-	this[i], this[j] = this[j], this[i]
-}
-
-func copyWarnings(files []fileData, warnings *warnings) {
-	for i := range files {
-		if files[i].warning != "" {
-			*warnings = append(*warnings, warning{files[i].title, files[i].warning})
-		}
-	}
-}
-
-// Create a gallery showing all the files with warnings. Page must already
-// exist and will be replaced.
-func createWarningGallery(gallery string, warnings warnings, client *mwclient.Client) {
-	var saveError error
-	sort.Sort(warnings)
-	for i := 0; i < 3; i++ {
-		_, timestamp, err := client.GetPageByName(gallery)
-		if err != nil {
-			panic(fmt.Sprintf("%v %v", gallery, err))
-		}
-		// Blank the page and create a fresh gallery
-		var buffer bytes.Buffer
-		buffer.WriteString("<gallery>\n")
-		for w := range warnings {
-			buffer.WriteString(warnings[w].title)
-			buffer.WriteByte('|')
-			buffer.WriteString(warnings[w].warning)
-			buffer.WriteByte('\n')
-		}
-		buffer.WriteString("</gallery>")
-		editcfg := map[string]string{
-			"action":        "edit",
-			"title":         gallery,
-			"text":          buffer.String(),
-			"bot":           "",
-			"basetimestamp": timestamp,
-		}
-		saveError = client.Edit(editcfg)
-		if saveError == nil {
-			break
-		}
-	}
-	if saveError != nil {
-		panic(fmt.Sprintf("Failed to save %v %v", gallery, saveError))
-	}
-}
-
 func processGenerator(params params.Values, client *mwclient.Client, flags flags, verbose func(...string), categoryMap map[string]string, allCategories map[string]bool, stats *stats) {
 	catCounts := make(map[string]int32)
 	warnings := make(warnings, 0, 200)
@@ -347,7 +280,7 @@ func processGenerator(params params.Values, client *mwclient.Client, flags flags
 			}
 			if idx > 0 {
 				processFiles(files, client, flags, verbose, categoryMap, allCategories, catCounts, stats)
-				copyWarnings(files, &warnings)
+				warnings.Append(files)
 			}
 		}
 		if flags.FileLimit > 0 && stats.examined >= flags.FileLimit {
@@ -361,7 +294,7 @@ func processGenerator(params params.Values, client *mwclient.Client, flags flags
 		panic(query.Err())
 	}
 	if flags.Gallery != "" && len(warnings) > 0 {
-		createWarningGallery(flags.Gallery, warnings, client)
+		warnings.createGallery(flags.Gallery, client)
 	}
 }
 
