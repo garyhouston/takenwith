@@ -5,11 +5,13 @@ import (
 	mwclient "cgt.name/pkg/go-mwclient"
 	"fmt"
 	"sort"
+	"strings"
 )
 
 type warning struct {
-	title   string
-	warning string
+	title        string
+	warning      string
+	warningLower string // Lower case version for string-insensitive sort.
 }
 
 type warnings []warning
@@ -20,7 +22,7 @@ func (warnings warnings) Len() int {
 }
 
 func (warnings warnings) Less(i, j int) bool {
-	return warnings[i].warning < warnings[j].warning
+	return warnings[i].warningLower < warnings[j].warningLower
 }
 
 func (warnings warnings) Swap(i, j int) {
@@ -30,7 +32,7 @@ func (warnings warnings) Swap(i, j int) {
 func (warnings *warnings) Append(files []fileData) {
 	for i := range files {
 		if files[i].warning != "" {
-			*warnings = append(*warnings, warning{files[i].title, files[i].warning})
+			*warnings = append(*warnings, warning{files[i].title, files[i].warning, strings.ToLower(files[i].warning)})
 		}
 	}
 }
