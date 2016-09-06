@@ -32,7 +32,7 @@ func (warnings warnings) Swap(i, j int) {
 func (warnings *warnings) Append(files []fileData) {
 	for i := range files {
 		if files[i].warning != "" {
-			*warnings = append(*warnings, warning{files[i].title, files[i].warning, strings.ToLower(files[i].warning)})
+			*warnings = append(*warnings, warning{files[i].title, files[i].warning, strings.ToLower(strings.TrimSpace(files[i].warning))})
 		}
 	}
 }
