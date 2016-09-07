@@ -28,21 +28,25 @@ func readCSV(mappingFile string, convert func(record []string)) {
 	}
 }
 
+func convertTarget(in string) string {
+	var out string
+	if strings.HasPrefix(in, "Category:") {
+		// use name as-is.
+		out = in
+	} else if strings.HasPrefix(in, "Taken with") {
+		// avoid accidental "Taken with Taken with".
+		panic("Bad record in mapping file: " + in)
+	} else {
+		out = "Category:Taken with " + in
+	}
+	return out
+}
+
 // Fill map with relations of makemodel -> Commons category
 func fillCategoryMap(mappingFile string) map[string]string {
 	categories := make(map[string]string)
 	convert := func(record []string) {
-		var mapped string
-		if strings.HasPrefix(record[2], "Category:") {
-			// use name as-is.
-			mapped = record[2]
-		} else if strings.HasPrefix(record[2], "Taken with") {
-			// avoid accidental "Taken with Taken with".
-			panic("Bad record in category mapping file: " + record[2])
-		} else {
-			mapped = "Category:Taken with " + record[2]
-		}
-		categories[record[0]+record[1]] = mapped
+		categories[record[0]+record[1]] = convertTarget(record[2])
 	}
 	readCSV(mappingFile, convert)
 	return categories
@@ -61,7 +65,7 @@ func fillRegex(regexFile string) []catRegex {
 		if err != nil {
 			panic(err)
 		}
-		regexes = append(regexes, catRegex{regex, record[1]})
+		regexes = append(regexes, catRegex{regex, convertTarget(record[1])})
 	}
 	readCSV(regexFile, convert)
 	return regexes
