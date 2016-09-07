@@ -121,6 +121,7 @@ AIRIS,AIRIS TM400 camera,Airis TM400
 TCT,ALCATEL ONE TOUCH 991,Alcatel One Touch 991
 TCT,ALCATEL ONE TOUCH 997D,Alcatel One Touch 997D
 TCL,7040N,Alcatel One Touch Fierce 2
+TCL,7040T,Alcatel One Touch Fierce 2
 Alcatel Mobile Phones,One Touch Fire E,Alcatel One Touch Fire E
 TCL,6042D,Alcatel One Touch Flash
 TCL,Alcatel_7049D,Alcatel One Touch Flash 2
@@ -132,9 +133,11 @@ TCT,ALCATEL ONE TOUCH 6030D,Alcatel One Touch Idol
 TCT,ALCATEL ONE TOUCH 6030X,Alcatel One Touch Idol
 TCT,ALCATEL_ONE_TOUCH_6030X_Orange,Alcatel One Touch Idol
 TCL,6037B,Alcatel One Touch Idol 2
+TCT,ALCATEL ONE TOUCH 6037B,Alcatel One Touch Idol 2
 TCL,6037Y,Alcatel One Touch Idol 2
 TCT,ALCATEL ONETOUCH IDOL 2 MINI,Alcatel One Touch Idol 2 Mini
 ALCATEL ONETOUCH,6036A,Alcatel One Touch Idol 2 Mini S
+ALCATEL ONETOUCH,6036Y,Alcatel One Touch Idol 2 Mini S
 TCL,6036Y,Alcatel One Touch Idol 2 Mini S
 TCL,6039J,Alcatel One Touch Idol 3 4.7
 TCL,6039Y,Alcatel One Touch Idol 3 4.7
@@ -226,6 +229,7 @@ alps,M1_Pro,Alps M1 Pro
 alps,S100,Alps S100
 alps,X9,Alps X9
 alps,iris X9,Alps X9
+alps,MX_Base,Mlais MX Base
 Altek,AL730,Altek AL730
 Altek,AL830,Altek AL830
 Amazon,Fire HD,Amazon Fire HD
@@ -2133,6 +2137,7 @@ EPSON,Perfection 1640,Category:Scanned with Epson Perfection 1640SU
 ,EPSON Perfection1640,Category:Scanned with Epson Perfection 1640SU
 EPSON,Perfection 1650,Category:Scanned with Epson Perfection 1650
 Epson,Perfection1660,Category:Scanned with Epson Perfection 1660
+EPSON,EPSON Perfection 1670,Category:Scanned with Epson Perfection 1670
 ,EPSON Perfection 2400,Category:Scanned with Epson Perfection 2400
 EPSON,Perfection 2400,Category:Scanned with Epson Perfection 2400
 Epson,Perfection2450,Category:Scanned with Epson Perfection 2450
@@ -2603,6 +2608,7 @@ FUJIFILM,FinePix S602 ZOOM,Fujifilm FinePix S602 ZOOM
 FUJIFILM,FinePix S1000fd,Fujifilm FinePix S1000fd
 ,FinePix S1000fd,Fujifilm FinePix S1000fd
 FUJIFILM,FinePix S1500,Fujifilm FinePix S1500
+FUJIFILM,FinePix S1500fd,Fujifilm FinePix S1500
 FUJIFILM,FinePix S1600,Fujifilm FinePix S1600
 FUJIFILM,FinePix S1700,Fujifilm FinePix S1700
 FUJIFILM,FinePix S1730,Fujifilm FinePix S1730
@@ -2638,6 +2644,7 @@ FUJIFILM,FinePix S4200,Fujifilm FinePix S4200
 FUJIFILM,FinePix S4230,Fujifilm FinePix S4230
 FUJIFILM,FinePix S4300,Fujifilm FinePix S4300
 FUJIFILM,FinePix S4400,Fujifilm FinePix S4400
+FUJIFILM,FinePix S4430,Fujifilm FinePix S4430
 FUJIFILM,FinePix S4500,Fujifilm FinePix S4500
 FUJIFILM,FinePix S4530,Fujifilm FinePix S4500
 FUJIFILM,FinePix S4600,Fujifilm FinePix S4600
@@ -3209,6 +3216,7 @@ Hewlett-Packard,HP PhotoSmart C935 (V03.80),HP PhotoSmart C935
 Hewlett-Packard,HP PhotoSmart C935 (V03.81),HP PhotoSmart C935
 Hewlett-Packard,HP PhotoSmart C935 (V03.82),HP PhotoSmart C935
 Hewlett-Packard,HP PhotoSmart C935 (V03.88),HP PhotoSmart C935
+Hewlett-Packard,HP PhotoSmart C935 (V03.89),HP PhotoSmart C935
 Hewlett-Packard,HP PhotoSmart C945 (V01.12),HP PhotoSmart C945
 Hewlett-Packard,HP PhotoSmart C945 (V01.25),HP PhotoSmart C945
 Hewlett-Packard,HP PhotoSmart C945 (V01.39),HP PhotoSmart C945
@@ -3625,6 +3633,7 @@ htc,HTC Desire 516 dual sim,HTC Desire 516
 HTC,HTC Desire 526G,HTC Desire 526G
 HTC,HTC Desire 526GPLUS dual sim,HTC Desire 526G+
 HTC,HTC Desire 526G dual sim,HTC Desire 526G+
+HTC,HTC Desire 530,HTC Desire 530
 HTC,HTC Desire 600,HTC Desire 600
 HTC,HTC Desire 600 dual sim,HTC Desire 600
 HTC,HTC Desire 601,HTC Desire 601
@@ -3882,6 +3891,8 @@ HUAWEI,G7-L01,Huawei Ascend G7
 HUAWEI,HUAWEI G7-L01,Huawei Ascend G7
 HUAWEI,HUAWEI G7-L03,Huawei Ascend G7
 HUAWEI,HUAWEI G7,Huawei Ascend G7
+HUAWEI,HUAWEI U8815,Huawei Ascend G300
+HUAWEI,Ascend G300,Huawei Ascend G300
 HUAWEI,HUAWEI U8825-1,Huawei Ascend G330
 HUAWEI,HUAWEI U8825D,Huawei Ascend G330
 HUAWEI,HUAWEI G510-0100,Huawei Ascend G510
@@ -4081,7 +4092,6 @@ HUAWEI,Vodafone 858,Huawei U8160 / Vodafone 858
 HUAWEI,U8230,Huawei U8230
 huawei,U8651T,Huawei U8651
 Huawei,U8667,Huawei U8667
-HUAWEI,HUAWEI U8815,Huawei U8815
 HUAWEI,U8815,Huawei U8815
 HUAWEI,UM840,Huawei UM840
 HUAWEI,Huawei Y301A1,Huawei Valiant Y301A1
@@ -4761,6 +4771,7 @@ LAVA,Flair Z1,Lava Flair Z1
 lava,IRIS402,Lava Iris 402
 XOLO,iris405+,Lava Iris 405+
 Lava,iris 450,Lava Iris 450
+XOLO,iris456,Lava Iris 456
 lava,iris 500,Lava Iris 500
 LAVA,IRIS_501,Lava Iris 501
 er,IRIS_501,Lava Iris 501
@@ -4931,6 +4942,7 @@ Leica Camera AG,LEICA M MONOCHROM (Typ 246),Leica M Monochrom
 Leica Camera AG,LEICA M (Typ 240),Leica M Typ 240
 ,LEICA M (Typ 240),Leica M Typ 240
 """Leica Camera AG""","""LEICA M (Typ 240)""",Leica M Typ 240
+Leica Camera AG,LEICA M (Typ 262),Leica M (Typ 262)
 Leica Camera AG,LEICA M-D (Typ 262),Leica M-D (Typ 262)
 Leica Camera AG,M8 Digital Camera,Leica M8
 Leica Camera AG,M9 Digital Camera,Leica M9
@@ -5047,6 +5059,7 @@ Lenovo P780,Lenovo P780,Lenovo P780
 LENOVO,Lenovo PB1-750M,Lenovo PB1-750M
 Lenovo,Lenovo PB1-770M,Lenovo PB1-770M
 Lenovo,Lenovo S60-a,Lenovo S60
+LENOVO,Lenovo S60-a,Lenovo S60
 Lenovo,Lenovo S90-A,Lenovo Sisley S90
 Lenovo,S560,Lenovo S560
 Lenovo,Lenovo S580,Lenovo S580
@@ -5096,6 +5109,7 @@ Lenovo,YOGA TABLET,Lenovo Yoga Tablet
 Lenovo,Lenovo B8080-H,Lenovo Yoga Tablet 10 HD+
 LENOVO,YOGA Tablet 2-830F,Lenovo Yoga Tablet 2 8.0
 Lenovo,YOGA Tablet 2-830F,Lenovo Yoga Tablet 2 8.0
+Lenovo,YOGA Tablet 2-830LC,Lenovo Yoga Tablet 2 8.0
 LENOVO,YOGA Tablet 2-1050L,Lenovo Yoga Tablet 2 10.1
 LENOVO,Lenovo YT3-X90L,Lenovo Yoga Tab 3 Pro 10.1
 ZUK,ZUK Z1,Lenovo Zuk Z1
@@ -7552,6 +7566,7 @@ OPPO,R1011,Oppo Joy Plus R1011
 OPPO,1201,Oppo Neo 5 R1201
 OPPO,A33f,Oppo Neo 7 A33F
 OPPO,A33w,Oppo Neo 7 A33W
+OPPO,R8206,Oppo R1x
 OPPO,R7f,Oppo R7
 OPPO,R7g,Oppo R7
 OPPO,R7kf,Oppo R7 Lite
@@ -8098,6 +8113,7 @@ PANTECH,IM-A830L,Pantech Vega Racer 2
 PANTECH,IM-A840S,Pantech Vega S5 IM-A840S
 PANTECH,IM-A840SP,Pantech Vega S5 IM-A840S
 PANTECH,IM-A890K,Pantech Vega Secret Note
+PANTECH,IM-A900L,Pantech Vega Secret Up
 PANTECH,IM-A900S,Pantech Vega Secret Up
 PANTECH,IM-A850K,Pantech Vega R3 IM-A850
 PANTECH,IM-A850L,Pantech Vega R3 IM-A850
@@ -8395,6 +8411,7 @@ Polaroid,i531,Polaroid i531
 Polaroid,Polaroid i532,Polaroid i532
 Polaroid,i533,Polaroid i533
 Polaroid,i630,Polaroid i630
+Polaroid,i633,Polaroid i633
 Polaroid,i639,Polaroid i639
 Polaroid,i733,Polaroid i733
 Polaroid,Polaroid i832,Polaroid i832
@@ -8667,6 +8684,7 @@ QMobile,QMobile X25,QMobile Noir X25
 QMobile,X300,QMobile Noir X300
 QMobile,X400,QMobile Noir X400
 QMobile,X500,QMobile Noir X500
+QMobile,QMobile X700 PRO,QMobile Noir X700 Pro
 QMobile,QMobile X700i,QMobile Noir X700i
 QMobile,X800,QMobile Noir X800
 QMobile,Z4,QMobile Noir Z4
@@ -8879,6 +8897,7 @@ Samsung Techwin,Digimax A400,Samsung A400
 "Samsung Techwin co., Ltd.",Digimax A502,Samsung A502
 "Samsung Techwin co., Ltd.",Digimax A503 / Kenox D503,Samsung A503
 "Samsung Techwin co., Ltd",Digimax A503 / Kenox D50,Samsung A503
+Samsung Electronics,A412,Samsung SGH-A412
 Samsung Electronics,SGH-A561,Samsung SGH-A561
 SAMSUNG,SGH-A687,Samsung Strive SGH-A687
 Samsung Electronics,A707,Samsung SGH-A707
@@ -9208,6 +9227,7 @@ SAMSUNG,SM-A700H,Samsung Galaxy A7
 SAMSUNG,SM-A700S,Samsung Galaxy A7
 SAMSUNG,SM-A7000,Samsung Galaxy A7
 samsung,SM-A710F,Samsung Galaxy A7 (2016)
+samsung,SM-A710M,Samsung Galaxy A7 (2016)
 samsung,SM-A7100,Samsung Galaxy A7 (2016)
 samsung,SM-A800F,Samsung Galaxy A8
 samsung,SM-A800I,Samsung Galaxy A8
@@ -10935,6 +10955,7 @@ SONY,DCR-TRV320E,Sony DCR-TRV320
 SONY,DCR-TRV330,Sony DCR-TRV330
 SONY,DCR-TRV340,Sony DCR-TRV340
 SONY,DCR-TRV340E,Sony DCR-TRV340
+SONY,DCR-TRV350,Sony DCR-TRV350
 SONY,DCR-TRV351,Sony DCR-TRV351
 SONY,DCR-TRV355E,Sony DCR-TRV355E
 SONY,DCR-TRV420E,Sony DCR-TRV420E
@@ -11971,6 +11992,7 @@ Technika,SH-8360,Technika SH-8360
 TECHNIKA,SH-Z625,Technika SH-Z625
 Teclast,P80 3G(A5LL),Teclast P80
 TECNO,TECNO-C8,Tecno Camon C8
+TECNO,G9,Tecno G9 Phantom Pad 2
 TECNO,TECNO H5,Tecno H5
 Tecno,Tecno H6,Tecno H6
 TECNO,TECNO-J7,Tecno Boom J7
@@ -12196,6 +12218,7 @@ vivitar,ViviCam T25,Vivitar ViviCam T25
 Vivitar Corporation,V3935 Digital Camera,Vivitar ViviCam V3935
 ViviCam,V5022,Vivitar ViviCam V5022
 Vivicam,V8018,Vivitar ViviCam V8018
+ViviCam,V8025,Vivitar ViviCam V8025
 Vivitar,ViviCam X30,Vivitar ViviCam X30
 vivo,vivo V1,Vivo V1
 vivo,vivo V1Max,Vivo V1 Max
@@ -12266,6 +12289,7 @@ WALTON,WALTON Primo E2 Camera,Walton Primo E2
 WALTON,Primo E2,Walton Primo E2
 Walton,Primo F6,Walton Primo F6
 WALTON,WALTON Primo G5 Camera,Walton Primo G5
+WALTON,WALTON Primo GH Camera,Walton Primo GH
 WALTON,Primo-GH2,Walton Primo GH2
 WALTON,Primo GH5,Walton Primo GH5
 WALTON,Primo GH6,Walton Primo GH6
@@ -13125,6 +13149,7 @@ Protected,Protected,Category:Invalid equipment in Exif
 RA,,Category:Invalid equipment in Exif
 RA,CORPORATION,Category:Invalid equipment in Exif
 RENVIEW 32 1.1.6.0,archive SN: 130,Category:Software as equipment in Exif
+RENVIEW 64 1.2.0.0,superfineart SN: 164,Category:Software as equipment in Exif
 Retro Camera Android,The FudgeCan,Category:Software as equipment in Exif
 RICOH,,Category:Ambiguous equipment in Exif
 RICOH,Caplio,Category:Ambiguous equipment in Exif
