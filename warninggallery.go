@@ -54,7 +54,12 @@ func (warnings warnings) createGallery(gallery string, client *mwclient.Client) 
 		for w := range warnings {
 			buffer.WriteString(warnings[w].title)
 			buffer.WriteByte('|')
-			buffer.WriteString(warnings[w].warning)
+			if len(warnings[w].warning) > 200 {
+				buffer.WriteString(warnings[w].warning[0:200])
+				buffer.WriteString("...")
+			} else {
+				buffer.WriteString(warnings[w].warning)
+			}
 			buffer.WriteByte('\n')
 		}
 		buffer.WriteString("</gallery>")
