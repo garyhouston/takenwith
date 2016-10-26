@@ -473,13 +473,13 @@ func EndProc(client *mwclient.Client, stats *stats, cookieFile string) {
 	}
 }
 
-var warn = log.New(os.Stderr, "", 0)
+var warn = log.New(os.Stdout, "", 0)
 
 // Return the logger to be used for displaying (or not displaying) verbose
 // messages.
 func get_verbose(verbose bool) *log.Logger {
 	if verbose {
-		return log.New(os.Stderr, "", 0)
+		return log.New(os.Stdout, "", 0)
 	} else {
 		/* Noop logger. */
 		return log.New(ioutil.Discard, "", 0)
