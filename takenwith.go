@@ -268,9 +268,19 @@ type fileData struct {
 	warning   string        // Brief warning string.
 }
 
+func checkWarnings(gallery string, warnings *warnings, client *mwclient.Client) {
+	if len(*warnings) > 0 {
+		warnings.createGallery(gallery, client)
+	}
+}
+
 func processGenerator(params params.Values, client *mwclient.Client, flags flags, verbose *log.Logger, categoryMap map[string]string, allCategories map[string]bool, catRegex []catRegex, stats *stats) {
 	catCounts := make(map[string]int32)
 	warnings := make(warnings, 0, 200)
+	if flags.Gallery != "" {
+		// try to write gallery even if there's a panic while processing files.
+		defer checkWarnings(flags.Gallery, &warnings, client)
+	}
 	query := client.NewQuery(params)
 	for query.Next() {
 		json := query.Resp()
@@ -310,9 +320,6 @@ func processGenerator(params params.Values, client *mwclient.Client, flags flags
 	}
 	if query.Err() != nil {
 		panic(query.Err())
-	}
-	if flags.Gallery != "" && len(warnings) > 0 {
-		warnings.createGallery(flags.Gallery, client)
 	}
 }
 
