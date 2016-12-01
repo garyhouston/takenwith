@@ -24,7 +24,10 @@ Hipstamatic.*,Category:Software as equipment in Exif
 .*Leaf Valeo 22\(.*,Leaf Valeo 22
 "\d\d \d\d\:\d\d\:\d\dM CO\.\, L",Category:Invalid equipment in Exif
 MotorolaDROIDX [[:xdigit:]]+,Motorola Droid X
+MotorolaDROID2 [[:xdigit:]]+,Motorola Droid 2
+MotorolaA953 [[:xdigit:]]+,Motorola Droid 2
 MotorolaMB525 [[:xdigit:]]+,Motorola MB525 DEFY
+MotorolaMotorola EM35 [[:xdigit:]]+,Motorola ROKR EM35
 NewcolorV2[0-9\. ]*,NewcolorV2
 REALVIEW.*ScanMate 11000,Category:Scanned with ScanView ScanMate 11000
 "i2S, Corp.SupraScanQuartzA1.*",Category:Scanned with i2s Suprascan Quartz A1
