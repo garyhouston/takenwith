@@ -14,7 +14,7 @@ import (
 	"strings"
 )
 
-func addCategory(page string, category string, client *mwclient.Client) {
+func addCategory(page string, category string, client *mwclient.Client) error {
 	// There's a small chance that saving a page may fail due to
 	// an edit conflict or other transient error. Try up to 3
 	// times before giving up.
@@ -43,10 +43,14 @@ func addCategory(page string, category string, client *mwclient.Client) {
 		if saveError == nil {
 			break
 		}
+		if strings.Contains(saveError.Error(), "protectedpage") {
+			return saveError
+		}
 	}
 	if saveError != nil {
 		panic(fmt.Sprintf("Failed to save %v %v", page, saveError))
 	}
+	return nil
 }
 
 func incCatCount(category string, catCounts map[string]int32) {
@@ -75,9 +79,15 @@ func addCategories(files []fileData, client *mwclient.Client, verbose *log.Logge
 			} else {
 				verbose.Printf("%s\nAdding to %s (%d files)", files[i].title, files[i].catMapped, int(catCounts[files[i].catMapped]))
 			}
-			stats.edited++
-			addCategory(files[i].title, files[i].catMapped, client)
-			incCatCount(files[i].catMapped, catCounts)
+			err := addCategory(files[i].title, files[i].catMapped, client)
+			if err == nil {
+				stats.edited++
+				incCatCount(files[i].catMapped, catCounts)
+			} else {
+				warn.Print(files[i].title, "\n", err.Error(), "\n")
+				files[i].warning = err.Error()
+				stats.warnings++
+			}
 		}
 		files[i].processed = true
 	}

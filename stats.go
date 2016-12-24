@@ -11,7 +11,7 @@ type stats struct {
 	warnings   int32 // Number of files with a warning printed to output
 	inCat      int32 // Number of files already in a relevant category.
 	populated  int32 // Number of files skipped because of catFileLimit.
-	edited     int32 // Number of files with attempt to edit.
+	edited     int32 // Number of files edited.
 }
 
 func (s stats) print() {
@@ -20,5 +20,5 @@ func (s stats) print() {
 	fmt.Println("Files skipped due to CatFileLimit: ", s.populated)
 	fmt.Println("Files with warnings printed: ", s.warnings)
 	fmt.Println("Files already categorised: ", s.inCat)
-	fmt.Println("Files attempted to edit: ", s.edited)
+	fmt.Println("Files edited: ", s.edited)
 }
