@@ -39,13 +39,12 @@ func getPageCategories(pages []string, client *mwclient.Client) map[string][]str
 		fmt.Println(params)
 		panic(err)
 	}
-	pageData, err := json.GetObject("query", "pages")
+	pagesArray, err := json.GetObjectArray("query", "pages")
 	if err != nil {
 		panic(err)
 	}
-	pageMap := pageData.Map()
 	result := make(map[string][]string)
-	for pageId, page := range pageMap {
+	for _, page := range pagesArray {
 		pageObj, err := page.Object()
 		if err != nil {
 			panic(err)
@@ -53,11 +52,6 @@ func getPageCategories(pages []string, client *mwclient.Client) map[string][]str
 		title, err := pageObj.GetString("title")
 		if err != nil {
 			panic(err)
-		}
-		if pageId[0] == '-' {
-			fmt.Println(title)
-			fmt.Println("File does not exist, possibly deleted.")
-			continue
 		}
 		categories, err := pageObj.GetObjectArray("categories")
 		if err != nil {

@@ -229,6 +229,14 @@ func mapCategories(files []fileData, verbose *log.Logger, categoryMap map[string
 		if err != nil {
 			panic(err)
 		}
+		missing, err := files[i].pageObj.GetBoolean("missing")
+		if err == nil && missing {
+			warn.Print(files[i].title, "\n", "File not found; may have been deleted.\n")
+			files[i].warning = "File not found"
+			stats.warnings++
+			files[i].processed = true
+			continue
+		}
 		imageinfo, err := files[i].pageObj.GetObjectArray("imageinfo")
 		if err == nil {
 			files[i].make, files[i].model = extractCamera(imageinfo[0])
@@ -294,32 +302,24 @@ func processGenerator(params params.Values, client *mwclient.Client, flags flags
 	query := client.NewQuery(params)
 	for query.Next() {
 		json := query.Resp()
-		pages, err := json.GetObject("query", "pages")
+		pages, err := json.GetObjectArray("query", "pages")
 		if err != nil {
-			// result set may be empty due to "miser mode" in the
-			// the Mediawiki server.
-			continue
+			fmt.Println(json)
+			panic(err)
 		}
-		pagesMap := pages.Map()
-		if len(pagesMap) > 0 {
-			files := make([]fileData, len(pagesMap))
-			idx := 0
-			for id, page := range pagesMap {
-				if id == "-1" {
-					// Empty result set.
-					return
-				}
-				files[idx].pageObj, err = page.Object()
+		if len(pages) == 0 {
+			break
+		} else {
+			files := make([]fileData, len(pages))
+			for i, _ := range pages {
+				files[i].pageObj, err = pages[i].Object()
 				if err != nil {
 					panic(err)
 				}
-				idx++
 				stats.examined++
 			}
-			if idx > 0 {
-				processFiles(files, client, flags, verbose, categoryMap, allCategories, catRegex, catCounts, stats)
-				warnings.Append(files)
-			}
+			processFiles(files, client, flags, verbose, categoryMap, allCategories, catRegex, catCounts, stats)
+			warnings.Append(files)
 		}
 		if flags.FileLimit > 0 && stats.examined >= flags.FileLimit {
 			break
@@ -438,7 +438,21 @@ func GetImageinfo(page string, client *mwclient.Client) *jason.Object {
 	if err != nil {
 		panic(err)
 	}
-	return mwlib.GetJsonPage(json)
+	pages, err := json.GetObjectArray("query", "pages")
+	if err != nil {
+		fmt.Println(json)
+		panic(err)
+	}
+	obj, err := pages[0].Object()
+	if err != nil {
+		fmt.Println(json)
+		panic(err)
+	}
+	missing, err := obj.GetBoolean("missing")
+	if err == nil && missing {
+		return nil
+	}
+	return obj
 }
 
 func processOneFile(page string, client *mwclient.Client, flags flags, verbose *log.Logger, categoryMap map[string]string, allCategories map[string]bool, catRegex []catRegex, stats *stats) {

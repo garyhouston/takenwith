@@ -21,38 +21,31 @@ func catNumFiles(categories []string, client *mwclient.Client) ([]string, []int3
 	if err != nil {
 		panic(err)
 	}
-	pages, err := json.GetObject("query", "pages")
+	pages, err := json.GetObjectArray("query", "pages")
 	if err != nil {
 		panic(err)
 	}
-	pageMap := pages.Map()
-	var resultCats = make([]string, len(pageMap))
-	var resultCounts = make([]int32, len(pageMap))
-	var idx int32 = 0
-	for pageId, page := range pageMap {
-		pageObj, err := page.Object()
+	var resultCats = make([]string, len(pages))
+	var resultCounts = make([]int32, len(pages))
+	for idx, _ := range pages {
+		pageObj, err := pages[idx].Object()
 		if err != nil {
 			panic(err)
 		}
-		if pageId[0] != '-' {
-			resultCats[idx], err = pageObj.GetString("title")
+		resultCats[idx], err = pageObj.GetString("title")
+		if err != nil {
+			panic(err)
+		}
+		info, err := pageObj.GetObject("categoryinfo")
+		// An error here means that the category is probably
+		// empty, so just leave count at 0.
+		if err == nil {
+			files, err := info.GetInt64("files")
 			if err != nil {
 				panic(err)
 			}
-			info, err := pageObj.GetObject("categoryinfo")
-			// An error here means that the category is probably
-			// empty, so just leave count at 0.
-			if err == nil {
-				files, err := info.GetInt64("files")
-				if err != nil {
-					panic(err)
-				}
-				resultCounts[idx] = int32(files)
-			}
-			idx++
+			resultCounts[idx] = int32(files)
 		}
 	}
-	resultCats = resultCats[0:idx]
-	resultCounts = resultCounts[0:idx]
 	return resultCats, resultCounts
 }
