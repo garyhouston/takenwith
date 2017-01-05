@@ -2094,6 +2094,7 @@ CASIO,GV-10,Casio GV-10
 "CASIO COMPUTER CO.,LTD.",EX-H10,Casio Exilim EX-H10
 "CASIO COMPUTER CO.,LTD.",EX-H15,Casio Exilim EX-H15
 "CASIO COMPUTER CO.,LTD.",EX-H20G,Casio Exilim EX-H20G
+,EX-H20G,Casio Exilim EX-H20G
 "CASIO COMPUTER CO.,LTD.",EX-H30,Casio Exilim EX-H30
 "CASIO COMPUTER CO.,LTD.",EX-H50,Casio Exilim EX-H50
 "CASIO COMPUTER CO.,LTD.",EX-H60,Casio Exilim EX-H60
@@ -2796,6 +2797,8 @@ Fly,Fly IQ446 camera,Fly IQ446 Magic
 Fly,Fly IQ447,Fly IQ447 Era Life 1
 Fly,IQ450_Quattro,Fly IQ450 Quattro
 Fly,IQ451,Fly IQ451 Vista
+Fly,Ego Art 2,Fly IQ455 Ego Art 2
+Fly,Evo Tech 2,Fly IQ458 Evo Tech 2
 Fly,IQ4403,Fly IQ4403 Energy 3
 Fly,IQ4404,Fly IQ4404 Spark
 Fly,IQ4410 Quad,Fly IQ4410 Quad
@@ -2808,7 +2811,6 @@ Fly,Era Life 3,Fly Era Life 3
 Fly,Era Style 3,Fly Era Style 3
 Fly,Evo Chic 3,Fly Evo Chic 3
 Fly,Evo Chic 4,Fly Evo Chic 4
-Fly,Evo Tech 2,Fly Evo Tech 2
 Fly,Fly LX500,Fly LX500
 Fly,Fly SX210,Fly SX210
 Plus One Japan Limited,FTJ152C,Freetel Samurai Miyabi
@@ -2999,6 +3001,7 @@ FUJIFILM,FinePix F900EXR,Fujifilm FinePix F900EXR
 FUJIFILM,FinePix F1000EXR,Fujifilm FinePix F1000EXR
 FUJIFILM,FinePix BIGJOB HD-3W,Fujifilm FinePix Big Job HD-3W
 FUJIFILM,FinePix HS10 HS11,Fujifilm FinePix HS10
+,FinePix HS10 HS11,Fujifilm FinePix HS10
 Fuji,HS10,Fujifilm FinePix HS10
 FUJI,HS10,Fujifilm FinePix HS10
 FUJIFILM,HS10,Fujifilm FinePix HS10
@@ -4416,6 +4419,7 @@ HTC,HTC_HD2,HTC HD2
 HTC,Htc Hd2,HTC HD2
 HTC,HTC HD2 T8585,HTC HD2
 HTC,HTC HD2 T9193,HTC HD2
+unknown,HTC HD2,HTC HD2
 HTC,NexusHD2,HTC HD2
 LeoPard,LP_HD2,HTC HD2
 HTC,HTC_LEO,HTC HD2
@@ -5026,6 +5030,7 @@ INTEX,Aqua_LifeIII,Intex Aqua Life III
 INTEX,Aqua_Lions_3G,Intex Aqua Lions 3G
 Intex,Aqua_Power_HD,Intex Aqua Power HD
 Intex,Aqua Power+,Intex Aqua Power+
+Intex,Aqua Speed,Intex Aqua Speed
 Intex,Aqua Style 4.0,Intex Aqua Style 4.0
 intex,Aqua Star 4G,Intex Aqua Star 4G
 Intex,Aqua Star 5.0,Intex Aqua Star 5.0
@@ -5668,6 +5673,7 @@ Kyocera,C6730,Kyocera Hydro Icon
 Kyocera,C6530N,Kyocera Hydro Life
 Kyocera,C6725,Kyocera Hydro Vibe
 KDDI-KC,K006,KDDI Kyocera K006
+KDDI-KC,K007,KDDI Kyocera K007
 KDDI-KC,K009,KDDI Kyocera K009
 KDDI-KC,K011,KDDI Kyocera K011
 KYOCERA,KC-01,Kyocera KC-01
@@ -5946,6 +5952,7 @@ LEGEND,S500,Lenovo Legend S500
 LEGEND,SoShow530,Lenovo Legend SoShow 530
 LEGEND,V30,Lenovo Legend V30
 LEGEND,V50,Lenovo Legend V50
+Lenovo Mobile,Lenovo-O1_OMS1.5,Lenovo O1
 Lenovo,Lenovo P70-A,Lenovo P70
 LENOVO,Lenovo P70-A,Lenovo P70
 ,Lenovo P70-A,Lenovo P70
@@ -6403,6 +6410,7 @@ LG Electronics,GT365,LG Neon
 LG Electronics,VN530,LG Octane VN530
 LG Electronics,LG Optimus 2X,LG Optimus 2X
 LG Electronics,LG-P990,LG Optimus 2X
+LG Electronics,P990,LG Optimus 2X
 LG Electronics,LG-P990h,LG Optimus 2X
 LG Electronics,LG-P990hN,LG Optimus 2X
 LG Electronics,LG-SU660,LG Optimus 2X
@@ -7189,8 +7197,6 @@ motorola,XT1254,Motorola Droid Turbo
 Motorola,XT1580,Motorola Droid Turbo 2
 Motorola,XT1585,Motorola Droid Turbo 2
 Motorola,DROIDX,Motorola Droid X
-Motorola,MotoroiX 5fee0002ffd80000015f07791800a02a,Motorola Droid X
-Motorola,MotoroiX 73a40002ffd80000015f07790d01201b,Motorola Droid X
 Motorola,Milestone X 038c0001ffd800000a3a97301801900f,Motorola Droid X
 Motorola,ME811 3fae0021ffd800000a3aafe00d02501b,Motorola Droid X
 Motorola,DROID X2,Motorola Droid X2
@@ -8014,6 +8020,7 @@ Nokia,5730S-1,Nokia 5730 XpressMusic
 Nokia,5800 Xpres,Nokia 5800
 ,5800 Xpres,Nokia 5800
 Nokia,Nokia 5800,Nokia 5800
+Nokia,5800 Port,Nokia 5800
 Nokia,5800w Xpre,Nokia 5800
 Nokia,5800i Xpre,Nokia 5800i XpressMusic
 Nokia,603,Nokia 603
@@ -10740,6 +10747,7 @@ SAMSUNG,GT-S3100,Samsung GT-S3100
 SAMSUNG,S3110,Samsung GT-S3110
 Samsung,GT-S3310,Samsung GT-S3310
 SAMSUNG,GT-S3310i,Samsung GT-S3310
+Samsung Electronics,GT-S7120U,Samsung GT-S7120U
 SAMSUNG,SAMSUNG GT-E2220,Samsung Ch@t 222
 SAMSUNG,GT-E2220,Samsung Ch@t 222
 SAMSUNG,SAMSUNG GT-E2222,Samsung Ch@t 222
@@ -11782,6 +11790,7 @@ SAMSUNG,SM-P555,Samsung Galaxy Tab A 9.7
 SAMSUNG,SM-T550,Samsung Galaxy Tab A 9.7
 samsung,SM-T550,Samsung Galaxy Tab A 9.7
 SAMSUNG,SM-T555,Samsung Galaxy Tab A 9.7
+samsung,SM-T580,Samsung Galaxy Tab A 10.1 (2016)
 samsung,SM-T585,Samsung Galaxy Tab A 10.1 (2016)
 samsung,SAMSUNG-SM-T377A,Samsung Galaxy Tab E 8.0
 SAMSUNG,SM-T377R4,Samsung Galaxy Tab E 8.0
@@ -13011,6 +13020,7 @@ Sony,DSC-H9,Sony DSC-H9
 ,DSC-H9,Sony DSC-H9
 SONY,DSC-H10,Sony DSC-H10
 ,DSC-H10,Sony DSC-H10
+sony,DSC-H10,Sony DSC-H10
 SONY,DSC-H20,Sony DSC-H20
 SONY,DSC-H50,Sony DSC-H50
 ,DSC-H50,Sony DSC-H50
@@ -13233,6 +13243,7 @@ SONY,DSC-W220,Sony DSC-W220
 SONY,DSC-W230,Sony DSC-W230
 SONY,DSC-W270,Sony DSC-W270
 OLYMPUS CORPORATION,DSC-W270,Sony DSC-W270
+,DSC-W270,Sony DSC-W270
 SONY,DSC-W275,Sony DSC-W275
 SONY,DSC-W290,Sony DSC-W290
 SONY,DSC-W300,Sony DSC-W300
@@ -14176,6 +14187,7 @@ TECNO,TECNO M9,Tecno M9
 TECNO,TECNO P5,Tecno P5
 TECNO,TECNO W4,Tecno W4
 TECNO,Y2,Tecno Y2
+TECNO,TECNO-Y3,Tecno Y3
 TECNO,TECNO-Y5S,Tecno Y5S
 TECNO,TECNO-Y6,Tecno Y6
 TELCEL,S3,Telcel S3
@@ -14880,6 +14892,7 @@ ZTE,T55 M01,ZTE T55
 ZTE,T165+ T05,ZTE Telstra Explorer
 ZTE,ZTE-T U880,ZTE U880
 ZTE,ZTE V5 with 13 MP Camera,ZTE V5
+ZTE,ZTE N939Sc,ZTE V5 Pro
 ZTE,ZTE N939St,ZTE V5 Pro
 CyanogenMod,v9,ZTE V9
 ZTE,ZTE V765M,ZTE V765M
@@ -15175,6 +15188,7 @@ Barco Graphics,,Category:Ambiguous equipment in Exif
 BLU,BLU,Category:Ambiguous equipment in Exif
 camera360,Unknown,Category:Ambiguous equipment in Exif
 Camera make,Camera model,Category:Ambiguous equipment in Exif
+canon,,Category:Ambiguous equipment in Exif
 CANON,,Category:Ambiguous equipment in Exif
 Canon EOS,,Category:Ambiguous equipment in Exif
 Canon,Canon EOS,Category:Ambiguous equipment in Exif
@@ -15404,6 +15418,7 @@ IF,pix Corporation,Category:Invalid equipment in Exif
 if,*,Category:Invalid equipment in Exif
 if,(,Category:Invalid equipment in Exif
 IM\100,HD3,Category:Invalid equipment in Exif
+Intel,AOSP on Intel Platform,Category:Software as equipment in Exif
 Intel,Clovertrail,Category:Invalid equipment in Exif
 ,inPhoto Capture TWAIN,Category:Software as equipment in Exif
 Apple,iPad mini 4G,Category:Ambiguous equipment in Exif
