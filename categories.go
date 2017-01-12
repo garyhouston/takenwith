@@ -24,8 +24,7 @@ func requestCategories(page string, client *mwclient.Client) *jason.Object {
 
 // Given an array of page titles, return a mapping from page title to the array
 // of categories which the page is a member of.
-// If the page doesn't exist, no entry is added to the map.
-// If the page has no categories, it will map to nil.
+// If the page doesn't exist, or has no categories, it will map to nil.
 func getPageCategories(pages []string, client *mwclient.Client) map[string][]string {
 	params := params.Values{
 		"action":   "query",
@@ -55,7 +54,7 @@ func getPageCategories(pages []string, client *mwclient.Client) map[string][]str
 		}
 		categories, err := pageObj.GetObjectArray("categories")
 		if err != nil {
-			// Presumably the page has no categories.
+			// Presumably the page is deleted or has no categories.
 			result[title] = nil
 			continue
 		}
