@@ -27,12 +27,17 @@ func catNumFiles(categories []string, client *mwclient.Client) ([]string, []int3
 	}
 	var resultCats = make([]string, len(pages))
 	var resultCounts = make([]int32, len(pages))
+	found := 0
 	for idx, _ := range pages {
 		pageObj, err := pages[idx].Object()
 		if err != nil {
 			panic(err)
 		}
-		resultCats[idx], err = pageObj.GetString("title")
+		missing, err := pageObj.GetBoolean("missing")
+		if err == nil && missing {
+			continue
+		}
+		resultCats[found], err = pageObj.GetString("title")
 		if err != nil {
 			panic(err)
 		}
@@ -44,8 +49,9 @@ func catNumFiles(categories []string, client *mwclient.Client) ([]string, []int3
 			if err != nil {
 				panic(err)
 			}
-			resultCounts[idx] = int32(files)
+			resultCounts[found] = int32(files)
 		}
+		found++
 	}
 	return resultCats, resultCounts
 }
