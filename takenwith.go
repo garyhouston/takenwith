@@ -25,24 +25,27 @@ func addCategory(page string, category string, remove string, client *mwclient.C
 		if err != nil {
 			panic(fmt.Sprintf("%v %v", page, err))
 		}
+		summary := ""
 		if remove != "" {
 			// Remove a category.
 			regexp := regexp.MustCompile("\\n?\\[\\[[Cc]ategory\\:" + remove + "\\]\\]")
 			text = string(regexp.ReplaceAll([]byte(text), []byte("")))
+			summary = "moved from [[Category:" + remove + "]] to [[" + category + "]]"
+		} else {
+			summary = "added [[" + category + "]]"
 		}
+
 		// Add the category at the end of the text, since categories
 		// are supposed to be at the end anyway. A previous version
 		// tried to add after the last existing category, but that
 		// can fail when the text contains comments.
 		last := len(text)
 		text = text[0:last] + "\n[[" + category + "]]"
-		fmt.Println(text)
-		return nil
 		editcfg := map[string]string{
 			"action":        "edit",
 			"title":         page,
 			"text":          text,
-			"summary":       "added [[" + category + "]]",
+			"summary":       summary,
 			"minor":         "",
 			"bot":           "",
 			"basetimestamp": timestamp,
