@@ -10,11 +10,12 @@ import (
 	"io/ioutil"
 	"log"
 	"os"
+	"regexp"
 	"strconv"
 	"strings"
 )
 
-func addCategory(page string, category string, client *mwclient.Client) error {
+func addCategory(page string, category string, remove string, client *mwclient.Client) error {
 	// There's a small chance that saving a page may fail due to
 	// an edit conflict or other transient error. Try up to 3
 	// times before giving up.
@@ -24,12 +25,19 @@ func addCategory(page string, category string, client *mwclient.Client) error {
 		if err != nil {
 			panic(fmt.Sprintf("%v %v", page, err))
 		}
+		if remove != "" {
+			// Remove a category.
+			regexp := regexp.MustCompile("\\n?\\[\\[[Cc]ategory\\:" + remove + "\\]\\]")
+			text = string(regexp.ReplaceAll([]byte(text), []byte("")))
+		}
 		// Add the category at the end of the text, since categories
 		// are supposed to be at the end anyway. A previous version
 		// tried to add after the last existing category, but that
 		// can fail when the text contains comments.
 		last := len(text)
 		text = text[0:last] + "\n[[" + category + "]]"
+		fmt.Println(text)
+		return nil
 		editcfg := map[string]string{
 			"action":        "edit",
 			"title":         page,
@@ -57,7 +65,7 @@ func incCatCount(category string, catCounts map[string]int32) {
 	catCounts[category] = catCounts[category] + 1
 }
 
-func addCategories(files []fileData, client *mwclient.Client, verbose *log.Logger, catFileLimit int32, allCategories map[string]bool, catCounts map[string]int32, stats *stats) {
+func addCategories(files []fileData, client *mwclient.Client, verbose *log.Logger, catFileLimit int32, remove string, allCategories map[string]bool, catCounts map[string]int32, stats *stats) {
 	for i := range files {
 		if files[i].processed {
 			continue
@@ -79,7 +87,7 @@ func addCategories(files []fileData, client *mwclient.Client, verbose *log.Logge
 			} else {
 				verbose.Printf("%s\nAdding to %s (%d files)", files[i].title, files[i].catMapped, int(catCounts[files[i].catMapped]))
 			}
-			err := addCategory(files[i].title, files[i].catMapped, client)
+			err := addCategory(files[i].title, files[i].catMapped, remove, client)
 			if err == nil {
 				stats.edited++
 				incCatCount(files[i].catMapped, catCounts)
@@ -272,7 +280,7 @@ func processFiles(files []fileData, client *mwclient.Client, flags flags, verbos
 	cacheCatCounts(files, client, catCounts)
 	filterCatLimit(files, client, verbose, flags.CatFileLimit, catCounts, stats)
 	filterCategories(files, client, verbose, flags.IgnoreCurrentCats, allCategories, stats)
-	addCategories(files, client, verbose, flags.CatFileLimit, allCategories, catCounts, stats)
+	addCategories(files, client, verbose, flags.CatFileLimit, flags.Remove, allCategories, catCounts, stats)
 }
 
 // Data obtained about a single Wiki file page.
@@ -480,6 +488,7 @@ type flags struct {
 	FileLimit         int32  `short:"f" long:"filelimit" env:"takenwith_filelimit" description:"Stop after examining at least this many files. No limit if zero" default:"10000"`
 	WarningLimit      int32  `short:"w" long:"warninglimit" env:"takenwith_warninglimit" description:"Stop after printing at least this many warnings. No limit if zero" default:"100"`
 	Gallery           string `long:"gallery" env:"takenwith_gallery" description:"Gallery page in which to display files with warnings"`
+	Remove            string `short:"r" long:"remove" env:"takenwith_remove" description:"When adding a category, remove this category. Do not include a Category: prefix."`
 }
 
 func parseFlags() ([]string, flags) {
