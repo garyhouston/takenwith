@@ -174,7 +174,7 @@ func matchCategories(file *fileData, cats []string, mapped string, verbose *log.
 				verbose.Print(file.title, "\n", "Already in known: ", cat)
 				break
 			}
-			if strings.HasPrefix(cat, "Category:Taken ") || strings.HasPrefix(cat, "Category:Scanned ") {
+			if strings.HasPrefix(cat, "Category:Taken with ") || strings.HasPrefix(cat, "Category:Scanned with ") {
 				result = true
 				warn.Print(file.title, "\n", "Already in unknown: ", cat)
 				file.warning = "In unknown " + cat
