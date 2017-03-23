@@ -315,8 +315,8 @@ func processGenerator(params params.Values, client *mwclient.Client, flags flags
 		json := query.Resp()
 		pages, err := json.GetObjectArray("query", "pages")
 		if err != nil {
-			fmt.Println(json)
-			panic(err)
+			// This happens if the query returns a continuation but no pages, e.g., when processing a category with a lot of subcategories, e.g., Category:Photos taken with Samsung mobile phones
+			continue
 		}
 		if len(pages) == 0 {
 			break
