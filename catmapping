@@ -383,6 +383,7 @@ Apple,iPad,iPad (original)
 ,iPad,iPad (original)
 ,iPad 2G,iPad (original)
 Apple,iPad 3G,iPad (original)
+camera360,iPad,iPad (original)
 Apple,iPad 2,iPad 2
 Apple,iPad 3,iPad 3
 Apple,iPad 3 (Wi-Fi),iPad 3
@@ -505,6 +506,7 @@ Archos,AC45CPL,Archos 45C Platinum
 archos,Archos 50 Diamond,Archos 50 Diamond
 archos,Archos 50 Helium 4G,Archos 50 Helium
 archos,AC50BHE,Archos 50b Helium
+Archos,AC50DHE,Archos 50d Helium
 Archos,AC50EHE,Archos 50e Helium
 A50OX,Archos,Archos 50 Oxygen
 Archos,ARCHOS 50c Neon,Archos 50c Neon
@@ -833,6 +835,7 @@ BLU,Dash 5.5,BLU Dash 5.5
 BLU,BLU DASH M,BLU Dash M
 BLU,BLU DASH MUSIC 4.0,BLU Dash Music 4.0
 BLU,BLU DASH X,BLU Dash X
+BLU,BLU LIFE MARK,BLU Life Mark
 BLU,BLU LIFE ONE M,BLU Life One M
 BLU,LIFE PLAY,BLU LIFE PLAY
 BLU,LIFE PLAY 2,BLU Life Play 2
@@ -1307,6 +1310,7 @@ Canon,EOS 7D,Canon EOS 7D
 CANON,EOS 7D,Canon EOS 7D
 Canon,Canon EOS-7D,Canon EOS 7D
 ,Canon EOS 7D,Canon EOS 7D
+,Canon  EOS 7D,Canon EOS 7D
 Canon,7D,Canon EOS 7D
 MobaPhoto - http://mobaphoto.mobatek.net,Canon EOS 7D,Canon EOS 7D
 """Canon""","""Canon EOS 7D""",Canon EOS 7D
@@ -2617,6 +2621,7 @@ CONTAX,T3,Contax T3
 Condor,TCV-101G,Condor Tab TCV-101G
 TGW710G,TGW710G,Condor Tab TGW-710G
 YULONG,CP5950,Coolpad 5950
+YULONG,CP5951,Coolpad 5951
 Yulong,7295,Coolpad 7295
 yulong,8022,Coolpad 8022
 Coolpad,8190,Coolpad 8190
@@ -2747,6 +2752,7 @@ Drift,Ghost S,Drift Ghost-S
 Drift,HD Ghost,Drift HD Ghost
 EVOLUTION,Durabrand,Durabrand Evolution
 "DXG TECHNOLOGY CO., LTD.",010101,DXG 010101
+DXG Technology Corp.,DXG106,DXG 106
 DXG Corporation.,DXG 409,DXG 409
 DXG,DSC503,DXG 503
 ,DXG518,DXG 518
@@ -3017,6 +3023,7 @@ EPSON,Stylus CX4100/DX4200,Category:Scanned with Epson Stylus DX4200
 ,EPSON Stylus DX4200,Category:Scanned with Epson Stylus DX4200
 EPSON,Stylus DX7400,Category:Scanned with Epson Stylus DX7400
 ,EPSON Stylus DX7400,Category:Scanned with Epson Stylus DX7400
+EPSON,Stylus DX8400,Category:Scanned with Epson Stylus DX8400
 EPSON,NX230/SX235/TX230,Category:Scanned with Epson Stylus NX230 / SX235 / TX230
 ,EPSON NX230/SX235/TX230,Category:Scanned with Epson Stylus NX230 / SX235 / TX230
 Epson,NX230,Category:Scanned with Epson Stylus NX230 / SX235 / TX230
@@ -3193,6 +3200,7 @@ FUJIFILM,FinePix A120,Fujifilm FinePix A120
 FUJIFILM,A150,Fujifilm FinePix A150
 FUJIFILM,Fujifilm A160,Fujifilm FinePix A160
 FUJIFILM,Fujifilm A170 A180,Fujifilm A170
+Fuji,Film Fujifilm A170 A180,Fujifilm A170
 FUJIFILM,Fujifilm A175,Fujifilm A175
 FUJIFILM,FinePix A200,Fujifilm FinePix A200
 FUJIFILM,FinePixA201,Fujifilm FinePix A201
@@ -3608,6 +3616,7 @@ FUJIFILM,FinePix XP30,Fujifilm FinePix XP30
 FUJIFILM,FinePix XP50,Fujifilm FinePix XP50
 FUJIFILM,FinePix XP55/Walmart,Fujifilm FinePix XP50
 FUJIFILM,FinePix XP60,Fujifilm FinePix XP60
+FUJIFILM,FinePix XP65/Walmart,Fujifilm FinePix XP65
 FUJIFILM,FinePix XP70 XP71 XP75,Fujifilm FinePix XP70
 ,FinePix XP70 XP71 XP75,Fujifilm FinePix XP70
 FUJIFILM,FinePix XP80 XP81 XP85,Fujifilm FinePix XP80
@@ -3876,6 +3885,7 @@ Google,Pixel,Google Pixel
 Google,Pixel XL,Google Pixel XL
 GoPro,GDH30,GoPro Digital Hero 3
 GoPro,YHDC5170,GoPro HD HERO
+GoPro,YHDC5170-960,GoPro HD HERO 960
 GoPro,HD2,GoPro HD HERO2
 GoPro,GoPro HD2,GoPro HD HERO2
 GoPro,HD3 Better,GoPro HD3 Better
@@ -3937,6 +3947,7 @@ Hasselblad,Hasselblad CF-39MS - Hasselblad H2,Hasselblad CF-39MS
 Hasselblad,Hasselblad CF-39MS - Hasselblad H2F,Hasselblad CF-39MS
 Hasselblad,Hasselblad CF-39MS,Hasselblad CF-39MS
 Hasselblad,Hasselblad CF II-22 - Hasselblad ELX,Hasselblad CF II-22
+Hasselblad,Hasselblad CFMS - Hasselblad H2,Hasselblad CFMS
 Hasselblad,Hasselblad CFV-39,Hasselblad CFV-39
 Hasselblad,Hasselblad CFV-50,Hasselblad CFV-50
 Hasselblad,Hasselblad CFV-50c/500,Hasselblad CFV-50c
@@ -4714,6 +4725,7 @@ HTC,Ameo,HTC Advantage X7500
 HTC,Athena,HTC Advantage X7500
 HTC,HTC_Amaze_4G,HTC Amaze 4G / Ruby
 HTC,HTC Amaze 4G,HTC Amaze 4G / Ruby
+HTC,Amaze 4G,HTC Amaze 4G / Ruby
 HTC,HTC Ruby,HTC Amaze 4G / Ruby
 HTC,Apache,HTC Apache
 HTC,HTC AQUA,HTC Aqua
@@ -4949,6 +4961,7 @@ HTC,HTC One dual sim,HTC One (M7)
 HTC,HTC One A9,HTC One A9
 HTC,HTC_A9u,HTC One A9
 HTC,2PQ93,HTC One A9
+HTC,HTC One A9s,HTC One A9s
 HTC,HTC One_E8,HTC One E8
 HTC,HTC One_E8 dual sim,HTC One E8
 HTC,0PAJ5,HTC One E8
@@ -5349,6 +5362,7 @@ HUAWEI,Che1-CL20,Huawei Honor 4X
 HUAWEI,Che2-UL00,Huawei Honor 4X
 HUAWEI,Che2-L11,Huawei Honor 4X
 HUAWEI,Che2-L12,Huawei Honor 4X
+HUAWEI,Che2-TL00,Huawei Honor 4X
 HUAWEI,Che2-TL00M,Huawei Honor 4X
 HUAWEI,CAM-TL00H,Huawei Honor 5A
 HUAWEI,HUAWEI LYO-L21,Huawei Honor 5A
@@ -5418,7 +5432,9 @@ HUAWEI,MediaPad T1 8.0 Pro,Huawei MediaPad T1 8.0 Pro
 HUAWEI,T1-A21L,Huawei MediaPad T1 10
 HUAWEI,BGO-DL09,Huawei MediaPad T2 7.0
 HUAWEI,MediaPad X1 7.0,Huawei MediaPad X1 7.0
+HUAWEI,GEM-702L,Huawei MediaPad X2
 HUAWEI,HUAWEI CAZ-AL10,Huawei Nova
+HUAWEI,HUAWEI MLA-L01,Huawei Nova Plus
 HUAWEI,HUAWEI MLA-L11,Huawei Nova Plus
 HUAWEI,X1 7.0,Huawei MediaPad X1 7.0
 HUAWEI,HUAWEI P6-C00,Huawei P6
@@ -5466,6 +5482,7 @@ Huawei,U8820,Huawei Titan
 HUAWEI TECH. Co.,U120,Huawei U120
 HUAWEI TECH. Co.,U121,Huawei U121
 HUAWEI TECHNOLOGY,U3205,Huawei U3205
+Huawei Technology,Huawei U3311,Huawei U3311
 Huawei Technology,HUAWEI U3315,Huawei U3315
 HUAWEI,U8100,Huawei U8100
 HUAWEI,Huawei_8100-9,Huawei U8100
@@ -5477,6 +5494,7 @@ HUAWEI,U8230,Huawei U8230
 HUAWEI,RBM2,Huawei U8230
 huawei,U8651T,Huawei U8651
 Huawei,U8667,Huawei U8667
+Huawei U9100,Huawei U9100,Huawei U9100
 HUAWEI,UM840,Huawei UM840
 HUAWEI,Huawei Y301A1,Huawei Valiant Y301A1
 HUAWEI,HUAWEI-U8850,Huawei Vision U8850
@@ -5518,6 +5536,7 @@ HUAWEI,Y635-L03,Huawei Y635
 HUAWEI,Y635-L21,Huawei Y635
 Hyundai,A8324,Hyundai A8324
 Hyundai,A9325,Hyundai A9325
+HYUNDAI,HD-VFM-D06,Hyundai HD-VFM D06
 HYUNDAI,Ultra Energy Lite,Hyundai Ultra Energy Lite
 I.T. Works,I.T. Works DC-2040,I.T. Works DC-2040
 i2S DigiBook Scanner,CopiBook,Category:Scanned with i2s Digibook CopiBook
@@ -5735,6 +5754,7 @@ JVC,GZ-HD30,JVC Everio GZ-HD30
 VICTOR,GZ-HD30,JVC Everio GZ-HD30
 JVC,GZ-HD40,JVC Everio GZ-HD40
 VICTOR,GZ-HD40,JVC Everio GZ-HD40
+VICTOR,GZ-HD230,JVC Everio GZ-HD230
 JVC,GZ-HM300,JVC Everio GZ-HM300
 JVC,GZ-HM400,JVC Everio GZ-HM400
 JVC,GZ-HM445,JVC Everio GZ-HM445
@@ -6001,6 +6021,7 @@ Eastman Kodak Company,KODAK DC265 ZOOM DIGITAL CAMERA (V01.00),Kodak DC265
 EASTMAN KODAK COMPANY,KODAK DC280 ZOOM DIGITAL CAMERA,Category:Photos taken with Kodak DC280
 Kodak,KODAK DC280 ZOOM DIGITAL CAMERA,Category:Photos taken with Kodak DC280
 Eastman Kodak Company,KODAK DC290 Zoom Digital Camera (V01.00),Category:Photos taken with Kodak DC290
+Eastman Kodak Company,KODAK DC290 Zoom Digital Camera,Category:Photos taken with Kodak DC290
 EASTMAN KODAK COMPANY,KODAK DC3400 ZOOM DIGITAL CAMERA,Kodak DC3400
 EASTMAN KODAK COMPANY,KODAK DC3800 DIGITAL CAMERA,Kodak DC3800
 EASTMAN KODAK COMPANY,KODAK DC4800 ZOOM DIGITAL CAMERA,Kodak DC4800
@@ -6691,6 +6712,7 @@ LENOVO,Lenovo K10a40,Lenovo Vibe C2
 Lenovo,Lenovo A7010a48,Lenovo Vibe K4 Note
 LENOVO,Lenovo A6020a40,Lenovo Vibe K5
 LENOVO,Lenovo A6020l36,Lenovo Vibe K5
+LENOVO,Lenovo A6020l37,Lenovo Vibe K5
 Lenovo,Lenovo A7020a48,Lenovo Vibe K5 Note
 LENOVO,Lenovo A6020a46,Lenovo Vibe K5 Plus
 Lenovo,Lenovo P1a42,Lenovo Vibe P1
@@ -6734,8 +6756,10 @@ Lenovo,Lenovo YT3-X50L,Lenovo Yoga Tab 3 10.1
 LENOVO,Lenovo YT3-X90F,Lenovo Yoga Tab 3 Pro 10.1
 LENOVO,Lenovo YT3-X90L,Lenovo Yoga Tab 3 Pro 10.1
 ZUK,ZUK Z1,Lenovo Zuk Z1
+ZUK,ZUK Z2,Lenovo Zuk Z2
 ZUK,ZUK Z2131,Lenovo Zuk Z2
 LEOTEC,LESPH5009,Leotec Itrium Y150
+,LEXMARK 6300 SERIES,Category:Scanned with Lexmark 6300
 LEXMARK,S300-S400 SERIES,Category:Scanned with Lexmark S300-S400
 LEXMARK,3500-4500 SERIES,Category:Scanned with Lexmark 3500-4500
 LEXMARK,PRO700 SERIES,Category:Scanned with Lexmark Prevail Pro700
@@ -7096,6 +7120,7 @@ LG Electronics,LG-D125,LG L30
 LG Electronics,LG-D150,LG L35
 LG Electronics,LG-D157f,LG L35
 LG Electronics,LG-D160,LG L40
+LG Electronics,LG-D170,LG L40
 LG Electronics,LG-D175f,LG L40
 LG Electronics,LGL34C,LG L40
 LG Electronics,LG-D213AR,LG L50
@@ -7137,6 +7162,7 @@ LG Electronics Inc.,LG LOTUS,LG Lotus
 LG CYON,LP 4300,LG LP4300
 LG CYON,LU9100,LG LU9100
 LG Electronics,VS840,LG Lucid
+LG Electronics,VS840PP,LG Lucid
 LG Electronics,VS840 4G,LG Lucid
 LG Electronics,VS870 4G,LG Lucid 2
 LG Electronics,VS876,LG Lucid 3
@@ -7313,6 +7339,7 @@ LG Electronics,LG-F300L,LG Optimus Vu 3
 LG Electronics,IS11LG,LG Optimus X
 LG CYON,SU950,LG Optimus Z
 LG Electronics,LG-VS410PP,LG Optimus Zone
+LG Electronics,VS425PP,LG Optimus Zone 3
 LG Electronics,LGP350,LG P350
 CyanogenMod,p350,LG P350
 LG Electronics,P520,LG P520
@@ -7921,6 +7948,7 @@ Minolta SRT 100x,Scan Dual II,Minolta SRT 100X / 200
 Minolta SRT 100x,,Minolta SRT 100X / 200
 Minolta,Minolta SR-T 101,Minolta SR-T 101
 Minolta,Uniomat,Minolta Uniomat
+Minolta,X300,Minolta X-300
 Minolta,X-700,Minolta X-700
 Minolta,Minolta XG-M,Minolta XG-M
 Konica,e-miniD,Konica e-miniD
@@ -8011,9 +8039,6 @@ Motorola,DROID BIONIC,Motorola Droid Bionic
 Motorola,XT1565,Motorola Droid Maxx 2
 Motorola,XT1030,Motorola Droid Mini
 Motorola,DROID Pro,Motorola Droid Pro
-Motorola,DROID PRO 18b80021ffd800000a3a866605032016,Motorola Droid Pro
-Motorola,DROID PRO 4f360002ffd80000015f13050a01a030,Motorola Droid Pro
-Motorola,XT610 5afe0001ffd800000a3a9f2504029013,Motorola Droid Pro
 Motorola,XT910,Motorola Droid RAZR
 motorola,XT910,Motorola Droid RAZR
 Motorola,XT910K,Motorola Droid RAZR
@@ -8803,6 +8828,7 @@ Nikon,F601,Nikon F-601
 NIKON CORPORATION,NIKON FE2,Nikon FE2
 Nikon,FE2,Nikon FE2
 ANAM NIKON,NIKON FM2,Nikon FM2
+,Nikon FM2 - Kodak Tri-X 400ASA,Nikon FM2
 Nikon FM2n,Nikon FM2n,Nikon FM2n
 Nikon,New FM2,Nikon FM2n
 NIKON,KeyMission 360,Nikon KeyMission 360
@@ -9260,8 +9286,10 @@ DoCoMo,N01G,NTT DoCoMo NEC N-01G
 DoCoMo,N02A,NTT DoCoMo NEC N-02A
 DoCoMo,N02B,NTT DoCoMo NEC N-02B
 DoCoMo,N03A,NTT DoCoMo NEC N-03A
+DoCoMo,N03B,NTT DoCoMo NEC N-03B
 DoCoMo,N03D,NTT DoCoMo NEC N-03D
 NEC,N-03E,NTT DoCoMo NEC N-03E
+DoCoMo,N04A,NTT DoCoMo NEC N-04A
 DoCoMo,N04B,NTT DoCoMo NEC N-04B
 ,N04B,NTT DoCoMo NEC N-04B
 DoCoMo,N05B,NTT DoCoMo NEC N-05B
@@ -9675,6 +9703,7 @@ OLYMPUS IMAGING CORP.,"FE280,X820,C520",Olympus FE-280 / X-820 / C-520
 OLYMPUS IMAGING CORP.,"FE290,X825",Olympus FE-290 / X-825
 OLYMPUS IMAGING CORP.,"FE300,X830",Olympus FE-300 / X-830
 OLYMPUS IMAGING CORP.,"FE310,X840,C530",Olympus FE-310 / X-840 / C-530
+OLYMPUS IMAGING CORP.,FE310,Olympus FE-310 / X-840 / C-530
 OLYMPUS IMAGING CORP.,"FE320,X835,C540",Olympus FE-320 / X-835 / C-540
 OLYMPUS IMAGING CORP.,"FE330,X845,C550",Olympus FE-330 / X-845 / C-550
 OLYMPUS IMAGING CORP.,"FE340,X855,C560",Olympus FE-340 / X-855 / C-560
@@ -10252,6 +10281,7 @@ Panasonic,DMC-LC80,Panasonic Lumix DMC-LC80
 Panasonic,DMC-LF1,Panasonic Lumix DMC-LF1
 Panasonic,DMC-LS1,Panasonic Lumix DMC-LS1
 Panasonic,DMC-LS2,Panasonic Lumix DMC-LS2
+,DMC-LS2,Panasonic Lumix DMC-LS2
 Panasonic,DMC-LS3,Panasonic Lumix DMC-LS3
 Panasonic,DMC-LS5,Panasonic Lumix DMC-LS5
 Panasonic,LS-5,Panasonic Lumix DMC-LS5
@@ -10510,6 +10540,7 @@ Panasonic,PV-GS31,Panasonic PV-GS31
 Panasonic,PV-GS35,Panasonic PV-GS35
 Panasonic,PV-GS36,Panasonic PV-GS36
 Panasonic,PV-GS39,Panasonic PV-GS39
+Panasonic,PV-GS50,Panasonic PV-GS50
 Panasonic,PV-GS65,Panasonic PV-GS65
 Panasonic,PV-GS70,Panasonic PV-GS70
 Panasonic,PV-GS120,Panasonic PV-GS120
@@ -11235,6 +11266,7 @@ Prestigio,PAP4322DUO,Prestigio MultiPhone 4322 DUO
 Prestigio,PAP4500DUO,Prestigio MultiPhone 4500 DUO
 PAP5503DUO,PAP5503DUO,Prestigio MultiPhone 5503 DUO
 Prestigio,PSP5505DUO,Prestigio MultiPhone 5505 DUO
+Prestigio,PSP7557,Prestigio MultiPhone 7557 Grace
 Prestigio,PSP3504DUO,Prestigio Muze C3
 Prestigio,PSP3530DUO,Prestigio Muze D3
 Prestigio,PSP3531DUO,Prestigio Muze E3
@@ -11517,6 +11549,7 @@ SAGEM,myV-76,Sagem my V-76
 SAGEM,myX6-2,Sagem my X6-2
 SAGEM,myX6-2ege,Sagem my X6-2
 SAGEM,myX-8,Sagem my X-8
+myX-8,SAGEM,Sagem my X-8
 SAGEM,VF527,Sagem Vodafone 527
 SAGEM,VF533,Sagem Vodafone 533
 Sahara,42DC4SC1,Sahara 42DC4SC1
@@ -11589,6 +11622,7 @@ Samsung Electronics,A766,Samsung SGH-A766
 Samsung Electronics,A777,Samsung SGH-A777
 SAMSUNG,SCH-R880,Samsung Acclaim
 SAMSUNG Electronics,Anycall SPH-I325,Samsung Ace
+SAMSUNG Electronics,SPH-I325,Samsung Ace
 SAMSUNG,SCH-R720,Samsung Admire SCH-R720
 SAMSUNG,Samsung SCH-U750,Samsung Alias 2 SCH-U750
 SAMSUNG Electronics,SCH-W550,Samsung Anycall Haptic 2
@@ -11712,6 +11746,7 @@ SAMSUNG,SAMSUNG GT-B5722,Samsung GT-B5722
 SAMSUNG,GT-B7300,Samsung GT-B7300
 SAMSUNG,SPH-M7200,Samsung Omnia Pop
 SAMSUNG,GT-B7320,Samsung Omnia Pro GT-B7320
+SAMSUNG Electronics,GT-B7320L,Samsung Omnia Pro GT-B7320
 SAMSUNG,GT-B7330,Samsung Omnia Pro GT-B7330
 SAMSUNG,GT-B7350,Samsung Omnia Pro 4 GT-B7350
 SAMSUNG,GT-B6520,Samsung Omnia Pro 5 GT-B6520
@@ -11722,6 +11757,7 @@ SAMSUNG,GT-B7722i,Samsung GT-B7722 Star Duos
 SAMSUNG,GT-B9062,Samsung GT-B9062
 "Samsung Electronics Co., Ltd.",GT-C3010,Samsung GT-C3010
 SAMSUNG,GT-C3011,Samsung GT-C3011
+"Samsung Electronics Co., Ltd.",GT-C3060,Samsung GT-C3060
 SAMSUNG,GT-C3212,Samsung GT-C3212
 SAMSUNG,GT-C3322,Samsung GT-C3322
 SAMSUNG,SAMSUNG GT-C3322,Samsung GT-C3322
@@ -11994,37 +12030,37 @@ SAMSUNG,GT-S8500M,Samsung GT-S8500
 SAMSUNG,GT-i7500,Samsung Galaxy (original)
 SAMSUNG,GT-I7500,Samsung Galaxy (original)
 SAMSUNG,SHW-M100S,Samsung Galaxy A
-SAMSUNG,SM-A300F,Samsung Galaxy A3
-samsung,SM-A300F,Samsung Galaxy A3
-SAMSUNG,SM-A300FU,Samsung Galaxy A3
-samsung,SM-A300FU,Samsung Galaxy A3
-,SM-A300FU,Samsung Galaxy A3
-SAMSUNG,SM-A300H,Samsung Galaxy A3
-samsung,SM-A300H,Samsung Galaxy A3
-SAMSUNG,SM-A300M,Samsung Galaxy A3
-samsung,SM-A300M,Samsung Galaxy A3
-SAMSUNG,SM-A300Y,Samsung Galaxy A3
-samsung,SM-A300Y,Samsung Galaxy A3
-SAMSUNG,SM-A300YZ,Samsung Galaxy A3
+SAMSUNG,SM-A300F,Samsung Galaxy A3 (2015)
+samsung,SM-A300F,Samsung Galaxy A3 (2015)
+SAMSUNG,SM-A300FU,Samsung Galaxy A3 (2015)
+samsung,SM-A300FU,Samsung Galaxy A3 (2015)
+,SM-A300FU,Samsung Galaxy A3 (2015)
+SAMSUNG,SM-A300H,Samsung Galaxy A3 (2015)
+samsung,SM-A300H,Samsung Galaxy A3 (2015)
+SAMSUNG,SM-A300M,Samsung Galaxy A3 (2015)
+samsung,SM-A300M,Samsung Galaxy A3 (2015)
+SAMSUNG,SM-A300Y,Samsung Galaxy A3 (2015)
+samsung,SM-A300Y,Samsung Galaxy A3 (2015)
+SAMSUNG,SM-A300YZ,Samsung Galaxy A3 (2015)
 samsung,SM-A310F,Samsung Galaxy A3 (2016)
 samsung,SM-A320FL,Samsung Galaxy A3 (2017)
-SAMSUNG,SM-A500F,Samsung Galaxy A5
-samsung,SM-A500F,Samsung Galaxy A5
-SAMSUNG,SM-A500F1,Samsung Galaxy A5
-SAMSUNG,SM-A500FU,Samsung Galaxy A5
-samsung,SM-A500FU,Samsung Galaxy A5
-SAMSUNG,SM-A500G,Samsung Galaxy A5
-samsung,SM-A500G,Samsung Galaxy A5
-SAMSUNG,SM-A500H,Samsung Galaxy A5
-samsung,SM-A500H,Samsung Galaxy A5
-SAMSUNG,SM-A500L,Samsung Galaxy A5
-SAMSUNG,SM-A500M,Samsung Galaxy A5
-samsung,SM-A500M,Samsung Galaxy A5
-SAMSUNG,SM-A500S,Samsung Galaxy A5
-SAMSUNG,SM-A500W,Samsung Galaxy A5
-SAMSUNG,SM-A500XZ,Samsung Galaxy A5
-SAMSUNG,SM-A500Y,Samsung Galaxy A5
-SAMSUNG,SM-A5000,Samsung Galaxy A5
+SAMSUNG,SM-A500F,Samsung Galaxy A5 (2015)
+samsung,SM-A500F,Samsung Galaxy A5 (2015)
+SAMSUNG,SM-A500F1,Samsung Galaxy A5 (2015)
+SAMSUNG,SM-A500FU,Samsung Galaxy A5 (2015)
+samsung,SM-A500FU,Samsung Galaxy A5 (2015)
+SAMSUNG,SM-A500G,Samsung Galaxy A5 (2015)
+samsung,SM-A500G,Samsung Galaxy A5 (2015)
+SAMSUNG,SM-A500H,Samsung Galaxy A5 (2015)
+samsung,SM-A500H,Samsung Galaxy A5 (2015)
+SAMSUNG,SM-A500L,Samsung Galaxy A5 (2015)
+SAMSUNG,SM-A500M,Samsung Galaxy A5 (2015)
+samsung,SM-A500M,Samsung Galaxy A5 (2015)
+SAMSUNG,SM-A500S,Samsung Galaxy A5 (2015)
+SAMSUNG,SM-A500W,Samsung Galaxy A5 (2015)
+SAMSUNG,SM-A500XZ,Samsung Galaxy A5 (2015)
+SAMSUNG,SM-A500Y,Samsung Galaxy A5 (2015)
+SAMSUNG,SM-A5000,Samsung Galaxy A5 (2015)
 samsung,SM-A510F,Samsung Galaxy A5 (2016)
 samsung,SM-A510M,Samsung Galaxy A5 (2016)
 samsung,SM-A510S,Samsung Galaxy A5 (2016)
@@ -12628,6 +12664,7 @@ SAMSUNG,SGH-T959W,Samsung Galaxy S
 SAMSUNG,SHW-M110S,Samsung Galaxy S
 SAMSUNG,SHW-M130K,Samsung Galaxy S
 SAMSUNG,SHW-M130L,Samsung Galaxy S
+SAMSUNG,SCH-I400,Samsung Galaxy S Continuum
 SAMSUNG,SCH-R910,Samsung Galaxy Indulge
 SAMSUNG,SCH-R915,Samsung Galaxy Indulge
 SAMSUNG,SCH-S720C,Samsung Galaxy Proclaim
@@ -13510,6 +13547,7 @@ SAMSUNG,SPH-M560,Samsung SPH-M560
 MSM6550,SPH-M610,Samsung SPH-M610
 SAMSUNG,SPH-S3900,Samsung SPH-S3900
 SAMSUNG,SAMSUNG ST30,Samsung ST30
+OLYMPUS IMAGING CORP.,SAMSUNG ST30,Samsung ST30
 SAMSUNG,SAMSUNG ST45/ VLUU ST45/ SAMSUNG TL90,Samsung ST45
 SAMSUNG,VLUU ST50/ SAMSUNG ST50,Samsung ST50
 SAMSUNG,SAMSUNG TL100,Samsung ST50
@@ -13841,6 +13879,7 @@ SHARP,SH-M03,Sharp Aquos Mini SH-M03
 SHARP,304SH,Sharp Aquos Xx 304SH
 SHARP,502SH,Sharp Aquos Xx2 502SH
 SHARP,506SH,Sharp Aquos Xx3 506SH
+SHARP,603SH,Sharp Aquos Xx3 Mini 603SH
 SHARP,FS8002,Sharp Aquos Z2
 SHARP,705SH,Sharp 705SH
 ,705SH,Sharp 705SH
@@ -14012,6 +14051,7 @@ Sinar Photography AG,"Sinarback eMotion 75, Sinar eMotion generic camera interfa
 Sinar Photography AG,"Sinarback eMotion 75, Sinar Hy6",Sinarback eMotion 75
 Sinar AG,Hasselblad V/ Sinarback eMotion 75II,Sinarback eMotion 75 LV
 Sinar AG,Sinar Hy6/ Sinarback eMotion 75II,Sinarback eMotion 75 LV
+Sinar AG,X-Contact/ Sinarback eMotion 75II,Sinarback eMotion 75 LV
 Sinar AG,"Sinarback eVolution 75, Hasselblad",Sinarback eVolution 75 H
 Sinar AG,"Sinarback eVolution 75, Rollei",Sinarback eVolution 75 H
 Sinar AG,"Sinarback eVolution 75, Sinar p3 / f3",Sinarback eVolution 75 H
@@ -14674,16 +14714,20 @@ SONY,DSLR-A300,Sony DSLR-A300
 SONY,DSLR-A330,Sony DSLR-A330
 SONY,DSLR-A350,Sony DSLR-A350
 Sony,DSLR-A350,Sony DSLR-A350
+,SONY DSLR-A350,Sony DSLR-A350
 ,DSLR-A350,Sony DSLR-A350
 Sony,Alpha 350,Sony DSLR-A350
 sony,alpha 350,Sony DSLR-A350
 Sony,Alpha350,Sony DSLR-A350
 SONY,Alpha 350,Sony DSLR-A350
 Sony,Alpha  350,Sony DSLR-A350
+Sony,alpha 350,Sony DSLR-A350
 SONY,DSLR-A380,Sony DSLR-A380
 SONY,DSLR-A390,Sony DSLR-A390
 ,DSLR-A390,Sony DSLR-A390
 SONY,DSLR-A450,Sony DSLR-A450
+,SONY DSLR-A450,Sony DSLR-A450
+,DSLR-A450,Sony DSLR-A450
 SONY,DSLR-A500,Sony DSLR-A500
 ,DSLR-A500,Sony DSLR-A500
 SONY,DSLR-A550,Sony DSLR-A550
@@ -15013,7 +15057,6 @@ SONY,SLT-A99V,Sony SLT-A99
 ,SLT-A99V,Sony SLT-A99
 SONY,Sony Tablet,Sony Tablet
 Sony,Sony Tablet,Sony Tablet
-Sony,SO-04E,Sony Xperia A
 Sony,SO-04F,Sony Xperia A2
 Sony,SO-04G,Sony Xperia A4
 Sony,SO-01E,Sony Xperia AX
@@ -15241,6 +15284,7 @@ Sony,SOL25,Sony Xperia ZL2
 Sony,C5502,Sony Xperia ZR
 Sony,C5503,Sony Xperia ZR
 Sony,SO-04E,Sony Xperia ZR
+SONY,SO-04E,Sony Xperia ZR
 Sony Ericsson,ST25a,Sony Xperia U
 SEMC,ST25a,Sony Xperia U
 Sony,ST25a,Sony Xperia U
@@ -15276,6 +15320,7 @@ Sony Ericsson,C901,Sony Ericsson C901
 Sony Ericsson,C902,Sony Ericsson C902
 SONY Ericsson,C902,Sony Ericsson C902
 Sony Ericsson,C903,Sony Ericsson C903
+Sony Ericsson,C903a,Sony Ericsson C903
 Sony Ericsson,C905,Sony Ericsson C905
 ,C905,Sony Ericsson C905
 Sony Ericsson,C905a,Sony Ericsson C905
@@ -15873,6 +15918,7 @@ VIVITAR,DVR-530,Vivitar DVR-530
 Vivitar,DVR850,Vivitar DVR850
 Vivitar,Ultra Wide and Slim,Vivitar Ultra Wide and Slim
 Vivitar,ViviCam 35,Vivitar ViviCam 35
+Vivitar,Vivicam 2005,Vivitar ViviCam 2005
 Vivitar,ViviCam 3105s,Vivitar ViviCam 3105s
 Vivitar,Vivicam 3188,Vivitar ViviCam 3188
 ViviCam,3188,Vivitar ViviCam 3188
@@ -16192,6 +16238,7 @@ Xiaomi,Redmi 3,Xiaomi Redmi 3
 xiaomi,Redmi 3,Xiaomi Redmi 3
 Xiaomi,Redmi 3S,Xiaomi Redmi 3S
 Xiaomi,Redmi 3X,Xiaomi Redmi 3X
+Xiaomi,Redmi 4,Xiaomi Redmi 4
 Xiaomi,Redmi 4A,Xiaomi Redmi 4A
 XIAOMI,HM NOTE,Xiaomi Redmi Note
 Xiaomi,HM NOTE,Xiaomi Redmi Note
@@ -16417,6 +16464,7 @@ ZTE,Skate Pro,ZTE Skate Pro
 ZTE,N9130,ZTE Speed
 ZTE,T55 M01,ZTE T55
 ZTE,T165+ T05,ZTE Telstra Explorer
+ZTE,ZTE T815,ZTE Telstra Tempo
 ZTE,ZTE-T U880,ZTE U880
 ZTE,U880,ZTE U880
 ZTE,ZTE V5 with 13 MP Camera,ZTE V5
@@ -16488,6 +16536,7 @@ Digital Camera,9GF00,9GF00
 a45ti,SLFW,a45ti SLFW
 AAZ10043,Omnivision OV9660 1.3 MP,AAZ10043 Omnivision OV9660 1.3 MP
 ABQ1000,Samsung S5K6AAFX13_EVT3 1.3MP,ABQ1000 Samsung S5K6AAFX13
+ABQ1103,Samsung S5K6AAFX13_EVT3 1.3MP,ABQ1000 Samsung S5K6AAFX13
 ADPK LIMITED,5M DSC,ADPK 5M DSC
 ADPK LIMITED,5M_DSC,ADPK 5M DSC
 ADPK,CD500C3,ADPK CD500C3
@@ -16712,6 +16761,7 @@ Apple,Unknown iPhone,Category:Ambiguous equipment in Exif
 Applied Graphics Technologies,Digital Link,Category:Software as equipment in Exif
 "Fujifilm eSystems, Inc.",Digital Link,Category:Software as equipment in Exif
 Arcsoft,PhotoStitch,Category:Software as equipment in Exif
+Hewlett-Packard Co.,ArcSoft Application,Category:Software as equipment in Exif
 HP,ArcSoft Application,Category:Software as equipment in Exif
 Arimacomm S/W centre,MT9D113,Category:Software as equipment in Exif
 "Asahi Optical Co.,Ltd","Optical Co.,Ltd",Category:Ambiguous equipment in Exif
@@ -16736,10 +16786,12 @@ Ashampoo Photo Commander 8,8.5.0,Category:Software as equipment in Exif
 Ashampoo Photo Commander 9,9.4.3,Category:Software as equipment in Exif
 ,astStone Soft,Category:Invalid equipment in Exif
 A-vec,,Category:Ambiguous equipment in Exif
+Bart,Knipser,Category:Invalid equipment in Exif
 BellaBytes,XCamLG,Category:Software as equipment in Exif
 BenQ Corporation,,Category:Ambiguous equipment in Exif
 ,binuscan,Category:Software as equipment in Exif
 BlackBerry,,Category:Ambiguous equipment in Exif
+BlackBerry,Unknown,Category:Ambiguous equipment in Exif
 Blux Touch,Blux Camera V1.1,Category:Software as equipment in Exif
 Blux Touch,Blux Pro V1.0.7,Category:Software as equipment in Exif
 Blux Touch,Blux Pro V1.1.1,Category:Software as equipment in Exif
@@ -17039,6 +17091,7 @@ NOLTA DIGITAL CAME,RA,Category:Invalid equipment in Exif
 KTH,Pudding Camera,Category:Software as equipment in Exif
 l sigl,o XII,Category:Invalid equipment in Exif
 ,L200,Category:Ambiguous equipment in Exif
+LaserSoft Imaging,SilverFast USB-Scanner-SE (TWAIN),Category:Software as equipment in Exif
 Layout from Instagram,,Category:Software as equipment in Exif
 Leaf,,Category:Ambiguous equipment in Exif
 Leica,,Category:Ambiguous equipment in Exif
@@ -17058,10 +17111,15 @@ LGE,,Category:Ambiguous equipment in Exif
 LGE,HeraNeo,Category:Invalid equipment in Exif
 Library of Congress,Glass negatives,Category:Invalid equipment in Exif
 Library of Congress,Glass negative,Category:Invalid equipment in Exif
+Library of Congress,Negative (photography),Category:Invalid equipment in Exif
 Library of Congress,Photographic print,Category:Invalid equipment in Exif
 Library of Congress,Silkscreen,Category:Invalid equipment in Exif
+Art Tatum,Library of Congress,Category:Invalid equipment in Exif
+Beryl Davis,Library of Congress,Category:Invalid equipment in Exif
 Carl Van Vechten,Library of Congress,Category:Invalid equipment in Exif
 Marjory Collins,Library of Congress,Category:Invalid equipment in Exif
+Tommy Dorsey,Library of Congress,Category:Invalid equipment in Exif
+Three Deuces,Library of Congress,Category:Invalid equipment in Exif
 Liquid Image,Liquid Image,Category:Ambiguous equipment in Exif
 Linecorp,Foodie,Category:Software as equipment in Exif
 if,"M CO., L",Category:Invalid equipment in Exif
