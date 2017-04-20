@@ -29,9 +29,11 @@ MotorolaDROID2 [[:xdigit:]]+,Motorola Droid 2
 MotorolaDROID2 GLOBAL [[:xdigit:]]+,Motorola Droid 2
 MotorolaDROID PRO [[:xdigit:]]+,Motorola Droid Pro
 MotorolaA953 [[:xdigit:]]+,Motorola Droid 2
+MotorolaMotoA953 [[:xdigit:]]+,Motorola Droid 2
 MotorolaMB525 [[:xdigit:]]+,Motorola MB525 DEFY
 MotorolaMotoroiX [[:xdigit:]]+,Motorola Droid X
 MotorolaMotorola EM35 [[:xdigit:]]+,Motorola ROKR EM35
+MotorolaMotorola VE66 [[:xdigit:]]+,Motorola VE66
 NewcolorV2[0-9\. ]*,NewcolorV2
 Pure Digital Technologieslegends \| [[:xdigit:]][[:xdigit:]]\d\d\d\d\d\d\d\d\d\d,Pure Digital Technologies Legends
 REALVIEW.*ScanMate 11000,Category:Scanned with ScanView ScanMate 11000
