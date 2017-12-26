@@ -54,11 +54,14 @@ func (warnings warnings) createGallery(gallery string, client *mwclient.Client) 
 		for w := range warnings {
 			buffer.WriteString(warnings[w].title)
 			buffer.WriteByte('|')
-			if len(warnings[w].warning) > 200 {
-				buffer.WriteString(warnings[w].warning[0:200])
+			// Replace problematic characters.
+			desc := strings.Replace(warnings[w].warning, "|", "<nowiki>|</nowiki>", -1)
+			desc = strings.Replace(desc, "\n", "<br>", -1)
+			if len(desc) > 200 {
+				buffer.WriteString(desc[0:200])
 				buffer.WriteString("...")
 			} else {
-				buffer.WriteString(warnings[w].warning)
+				buffer.WriteString(desc)
 			}
 			buffer.WriteByte('\n')
 		}
