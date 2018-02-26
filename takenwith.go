@@ -15,6 +15,48 @@ import (
 	"strings"
 )
 
+// insertPos finds a position in a page to insert a category: a) after
+// the last existing category b) before an unterminated comment or
+// nowiki c) at the end of the page.
+func insertPos(page string) int {
+	// Assume that comment and nowiki sections don't nest, but
+	// don't assume that a matching end tag is present.
+	startTag := "<!--"
+	endtag := "-->"
+	start := strings.Index(page, startTag)
+	nowikiTag := "<nowiki>"
+	nowikiStart := strings.Index(page, nowikiTag)
+	if nowikiStart >= 0 && (start == -1 || nowikiStart < start) {
+		start = nowikiStart
+		startTag = nowikiTag
+		endtag = "</nowiki>"
+	}
+	unterminated := false
+	if start >= 0 {
+		startTagLen := len(startTag)
+		end := strings.Index(page[start+startTagLen:], endtag)
+		if end == -1 {
+			end = len(page)
+			unterminated = true
+		} else {
+			end += start + startTagLen + len(endtag)
+		}
+		page = page[:start] + strings.Repeat(" ", end-start) + page[end:]
+		if !unterminated {
+			insertPos(page)
+		}
+	}
+	regexp := regexp.MustCompile("\\[\\[[Cc]ategory\\:[^]]*\\]\\]")
+	matches := regexp.FindAllIndex([]byte(page), -1)
+	if len(matches) > 0 {
+		return matches[len(matches)-1][1]
+	}
+	if unterminated {
+		return start
+	}
+	return len(page)
+}
+
 func addCategory(page string, category string, remove string, client *mwclient.Client) error {
 	// There's a small chance that saving a page may fail due to
 	// an edit conflict or other transient error. Try up to 3
@@ -34,13 +76,8 @@ func addCategory(page string, category string, remove string, client *mwclient.C
 		} else {
 			summary = "added [[" + category + "]]"
 		}
-
-		// Add the category at the end of the text, since categories
-		// are supposed to be at the end anyway. A previous version
-		// tried to add after the last existing category, but that
-		// can fail when the text contains comments.
-		last := len(text)
-		text = text[0:last] + "\n[[" + category + "]]"
+		pos := insertPos(text)
+		text = text[0:pos] + "\n[[" + category + "]]" + text[pos:]
 		editcfg := map[string]string{
 			"action":        "edit",
 			"title":         page,
