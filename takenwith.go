@@ -16,40 +16,47 @@ import (
 )
 
 // insertPos finds a position in a page to insert a category: a) after
-// the last existing category b) before an unterminated comment or
-// nowiki c) at the end of the page.
+// the last existing category, ignoring categories in unparsed
+// sections (HTML comments, <pre> etc.) b) before an unterminated
+// unparsed section c) at the end of the page.
 func insertPos(page string) int {
-	// Assume that comment and nowiki sections don't nest, but
-	// don't assume that a matching end tag is present.
-	startTag := "<!--"
-	endtag := "-->"
-	start := strings.Index(page, startTag)
-	nowikiTag := "<nowiki>"
-	nowikiStart := strings.Index(page, nowikiTag)
-	if nowikiStart >= 0 && (start == -1 || nowikiStart < start) {
-		start = nowikiStart
-		startTag = nowikiTag
-		endtag = "</nowiki>"
+	// Assume that unparsed sections don't nest, but don't assume
+	// that a matching end tag is present.
+	page = strings.ToLower(page) // Ignore case when matching tags and category.
+	startTags := []string{"<!--", "<nowiki>", "<pre>", "<math>"}
+	endTags := []string{"-->", "</nowiki>", "</pre>", "</math>"}
+	start := -1
+	startTag := ""
+	endTag := ""
+	// Find the first non-parsed section, if any.
+	for i := 0; i < len(startTags); i++ {
+		pos := strings.Index(page, startTags[i])
+		if pos >= 0 && (start == -1 || pos < start) {
+			start = pos
+			startTag = startTags[i]
+			endTag = endTags[i]
+		}
+
 	}
 	unterminated := false
 	if start >= 0 {
 		startTagLen := len(startTag)
-		end := strings.Index(page[start+startTagLen:], endtag)
+		end := strings.Index(page[start+startTagLen:], endTag)
 		if end == -1 {
 			end = len(page)
 			unterminated = true
 		} else {
-			end += start + startTagLen + len(endtag)
+			end += start + startTagLen + len(endTag)
 		}
 		page = page[:start] + strings.Repeat(" ", end-start) + page[end:]
 		if !unterminated {
 			insertPos(page)
 		}
 	}
-	regexp := regexp.MustCompile("\\[\\[[Cc]ategory\\:[^]]*\\]\\]")
+	regexp := regexp.MustCompile("\\[\\[category\\:[^]]*\\]\\]")
 	matches := regexp.FindAllIndex([]byte(page), -1)
 	if len(matches) > 0 {
-		return matches[len(matches)-1][1]
+		return matches[len(matches)-1][1] // end position of the last match.
 	}
 	if unterminated {
 		return start
