@@ -690,13 +690,13 @@ func main() {
 	} else {
 		var ts timestamp
 		if numArgs == 2 {
-			ts, err = newTimestamp(args[1], true)
+			ts, err = newTimestamp(args[1])
+			if err != nil {
+				warn.Print(err)
+				return
+			}
 		} else {
-			ts, err = newTimestamp("", false)
-		}
-		if err != nil {
-			printBadTimestamp()
-			os.Exit(1)
+			ts = newTimestampEmpty()
 		}
 		if strings.HasPrefix(args[0], "User:") {
 			processUser(args[0], ts, client, flags, verbose, categoryMap, allCategories, catRegex, &stats)

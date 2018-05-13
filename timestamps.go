@@ -2,7 +2,6 @@ package main
 
 import (
 	"errors"
-	"fmt"
 	"strconv"
 )
 
@@ -13,21 +12,21 @@ type timestamp struct {
 	valid  bool
 }
 
-func newTimestamp(input string, valid bool) (timestamp, error) {
-	if !valid {
-		return timestamp{"", false}, nil
+func newTimestampEmpty() timestamp {
+	return timestamp{"", false}
+}
+
+func newTimestamp(input string) (timestamp, error) {
+	makeErr := func() error {
+		return errors.New("Invalid timestamp. Format must be YYYYMMDDHHMMSS.")
 	}
-	// checking is basic, the API will reject invalid values anyway.
+	// Basic checks, the MediaWiki API will reject invalid values anyway.
 	if len(input) != 14 {
-		return timestamp{"", false}, errors.New("invalid timestamp")
+		return newTimestampEmpty(), makeErr()
 	}
 	_, err := strconv.Atoi(input)
 	if err != nil {
-		return timestamp{"", false}, errors.New("invalid timestamp")
+		return newTimestampEmpty(), makeErr()
 	}
 	return timestamp{input, true}, nil
-}
-
-func printBadTimestamp() {
-	fmt.Println("Invalid timestamp. Format is YYYYMMDDHHMMSS.")
 }
