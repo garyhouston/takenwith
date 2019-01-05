@@ -13,7 +13,20 @@ import (
 	"regexp"
 	"strconv"
 	"strings"
+	"time"
 )
+
+// "global" exectution state.
+type state struct {
+	client *mwclient.Client
+	flags flags
+	verbose log.Logger
+	categoryMap map[string]string
+	allCategories map[string]bool
+	catRegex []catRegex
+	stats stats
+	lastEdit time.Time
+}
 
 // insertPos finds a position in a page to insert a category: a) after
 // the last existing category, ignoring categories in unparsed
@@ -64,7 +77,12 @@ func insertPos(page string) int {
 	return len(page)
 }
 
-func addCategory(page string, category string, remove string, client *mwclient.Client) error {
+func addCategory(page string, category string, remove string, client *mwclient.Client, lastEdit *time.Time) error {
+	// Don't attempt to edit more than once per 5 seconds, per Commons bot policy
+	dur := time.Since(*lastEdit)
+	if dur.Seconds() < 5 {
+		time.Sleep(time.Duration(5)*time.Second - dur)
+	}
 	// There's a small chance that saving a page may fail due to
 	// an edit conflict or other transient error. Try up to 3
 	// times before giving up.
@@ -72,6 +90,8 @@ func addCategory(page string, category string, remove string, client *mwclient.C
 	for i := 0; i < 3; i++ {
 		text, timestamp, err := client.GetPageByName(page)
 		if err != nil {
+			fmt.Println(timestamp)
+			fmt.Println(text)
 			panic(fmt.Sprintf("%v %v", page, err))
 		}
 		summary := ""
@@ -105,6 +125,7 @@ func addCategory(page string, category string, remove string, client *mwclient.C
 	if saveError != nil {
 		panic(fmt.Sprintf("Failed to save %v %v", page, saveError))
 	}
+	*lastEdit = time.Now()
 	return nil
 }
 
@@ -112,7 +133,7 @@ func incCatCount(category string, catCounts map[string]int32) {
 	catCounts[category] = catCounts[category] + 1
 }
 
-func addCategories(files []fileData, client *mwclient.Client, verbose *log.Logger, catFileLimit int32, remove string, allCategories map[string]bool, catCounts map[string]int32, stats *stats) {
+func addCategories(files []fileData, catCounts map[string]int32, state *state) {
 	for i := range files {
 		if files[i].processed {
 			continue
@@ -120,9 +141,9 @@ func addCategories(files []fileData, client *mwclient.Client, verbose *log.Logge
 		// The cat size limit needs to be checked again, since adding
 		// previous files in the batch may have pushed it over the
 		// limit.
-		if catFileLimit > 0 && catCounts[files[i].catMapped] >= catFileLimit {
-			stats.populated++
-			verbose.Print(files[i].title, "\n", "Already populated: ", files[i].catMapped)
+		if state.flags.CatFileLimit > 0 && catCounts[files[i].catMapped] >= state.flags.CatFileLimit {
+			state.stats.populated++
+			state.verbose.Print(files[i].title, "\n", "Already populated: ", files[i].catMapped)
 		} else {
 			// Identifying emtpy categories helps identify
 			// when we are adding a file to a redirect page
@@ -130,18 +151,18 @@ func addCategories(files []fileData, client *mwclient.Client, verbose *log.Logge
 			if catCounts[files[i].catMapped] == 0 {
 				warn.Print(files[i].title, "\n", "Adding to empty ", files[i].catMapped)
 				files[i].warning = "Added to empty category"
-				stats.warnings++
+				state.stats.warnings++
 			} else {
-				verbose.Printf("%s\nAdding to %s (%d files)", files[i].title, files[i].catMapped, int(catCounts[files[i].catMapped]))
+				state.verbose.Printf("%s\nAdding to %s (%d files)", files[i].title, files[i].catMapped, int(catCounts[files[i].catMapped]))
 			}
-			err := addCategory(files[i].title, files[i].catMapped, remove, client)
+			err := addCategory(files[i].title, files[i].catMapped, state.flags.Remove, state.client, &state.lastEdit)
 			if err == nil {
-				stats.edited++
+				state.stats.edited++
 				incCatCount(files[i].catMapped, catCounts)
 			} else {
 				warn.Print(files[i].title, "\n", err.Error(), "\n")
 				files[i].warning = err.Error()
-				stats.warnings++
+				state.stats.warnings++
 			}
 		}
 		files[i].processed = true
@@ -277,7 +298,7 @@ func applyRegex(key string, catRegex []catRegex) string {
 }
 
 // Determine Commons category from imageinfo (Exif) data, if possible.
-func mapCategories(files []fileData, verbose *log.Logger, categoryMap map[string]string, catRegex []catRegex, stats *stats) {
+func mapCategories(files []fileData, state *state) {
 	for i := range files {
 		var err error
 		files[i].title, err = files[i].pageObj.GetString("title")
@@ -288,7 +309,7 @@ func mapCategories(files []fileData, verbose *log.Logger, categoryMap map[string
 		if err == nil && missing {
 			warn.Print(files[i].title, "\n", "File not found; may have been deleted.\n")
 			files[i].warning = "File not found"
-			stats.warnings++
+			state.stats.warnings++
 			files[i].processed = true
 			continue
 		}
@@ -297,11 +318,11 @@ func mapCategories(files []fileData, verbose *log.Logger, categoryMap map[string
 			files[i].make, files[i].model = extractCamera(imageinfo[0])
 		}
 		if err != nil || (files[i].make == "" && files[i].model == "") {
-			verbose.Print(files[i].title, "\n", "No camera details in Exif")
+			state.verbose.Print(files[i].title, "\n", "No camera details in Exif")
 			files[i].processed = true
 			continue
 		}
-		stats.withCamera++
+		state.stats.withCamera++
 		// Category mapping: first try the simple map for an exact
 		// match (which is fast), when try each regex match in turn.
 		// If mapping fails, processing continues with blank catMapped
@@ -309,9 +330,9 @@ func mapCategories(files []fileData, verbose *log.Logger, categoryMap map[string
 		// warning.
 		key := files[i].make + files[i].model
 		var found bool
-		files[i].catMapped, found = categoryMap[key]
+		files[i].catMapped, found = state.categoryMap[key]
 		if !found {
-			files[i].catMapped = applyRegex(key, catRegex)
+			files[i].catMapped = applyRegex(key, state.catRegex)
 		}
 
 		if files[i].catMapped == "Category:CanonS100 (special case)" {
@@ -322,12 +343,12 @@ func mapCategories(files []fileData, verbose *log.Logger, categoryMap map[string
 	}
 }
 
-func processFiles(files []fileData, client *mwclient.Client, flags flags, verbose *log.Logger, categoryMap map[string]string, allCategories map[string]bool, catRegex []catRegex, catCounts map[string]int32, stats *stats) {
-	mapCategories(files, verbose, categoryMap, catRegex, stats)
-	cacheCatCounts(files, client, catCounts)
-	filterCatLimit(files, client, verbose, flags.CatFileLimit, catCounts, stats)
-	filterCategories(files, client, verbose, flags.IgnoreCurrentCats, allCategories, stats)
-	addCategories(files, client, verbose, flags.CatFileLimit, flags.Remove, allCategories, catCounts, stats)
+func processFiles(files []fileData, catCounts map[string]int32, state *state) {
+	mapCategories(files, state)
+	cacheCatCounts(files, state.client, catCounts)
+	filterCatLimit(files, state.client, &state.verbose, state.flags.CatFileLimit, catCounts, &state.stats)
+	filterCategories(files, state.client, &state.verbose, state.flags.IgnoreCurrentCats, state.allCategories, &state.stats)
+	addCategories(files, catCounts, state)
 }
 
 // Data obtained about a single Wiki file page.
@@ -347,14 +368,14 @@ func checkWarnings(gallery string, warnings *warnings, client *mwclient.Client) 
 	}
 }
 
-func processGenerator(params params.Values, client *mwclient.Client, flags flags, verbose *log.Logger, categoryMap map[string]string, allCategories map[string]bool, catRegex []catRegex, stats *stats) {
+func processGenerator(params params.Values, state *state) {
 	catCounts := make(map[string]int32)
 	warnings := make(warnings, 0, 200)
-	if flags.Gallery != "" {
+	if state.flags.Gallery != "" {
 		// try to write gallery even if there's a panic while processing files.
-		defer checkWarnings(flags.Gallery, &warnings, client)
+		defer checkWarnings(state.flags.Gallery, &warnings, state.client)
 	}
-	query := client.NewQuery(params)
+	query := state.client.NewQuery(params)
 	for query.Next() {
 		json := query.Resp()
 		pages, err := json.GetObjectArray("query", "pages")
@@ -371,15 +392,15 @@ func processGenerator(params params.Values, client *mwclient.Client, flags flags
 				if err != nil {
 					panic(err)
 				}
-				stats.examined++
+				state.stats.examined++
 			}
-			processFiles(files, client, flags, verbose, categoryMap, allCategories, catRegex, catCounts, stats)
+			processFiles(files, catCounts, state)
 			warnings.Append(files)
 		}
-		if flags.FileLimit > 0 && stats.examined >= flags.FileLimit {
+		if state.flags.FileLimit > 0 && state.stats.examined >= state.flags.FileLimit {
 			break
 		}
-		if flags.WarningLimit > 0 && stats.warnings >= flags.WarningLimit {
+		if state.flags.WarningLimit > 0 && state.stats.warnings >= state.flags.WarningLimit {
 			break
 		}
 	}
@@ -396,23 +417,23 @@ func backString(back bool) string {
 	}
 }
 
-func processUser(user string, ts timestamp, client *mwclient.Client, flags flags, verbose *log.Logger, categoryMap map[string]string, allCategories map[string]bool, catRegex []catRegex, stats *stats) {
+func processUser(user string, ts timestamp, state *state) {
 	params := params.Values{
 		"generator": "allimages",
 		"gaiuser":   strings.TrimPrefix(user, "User:"),
 		"gaisort":   "timestamp",
-		"gaidir":    backString(flags.Back),
-		"gailimit":  strconv.Itoa(flags.BatchSize),
+		"gaidir":    backString(state.flags.Back),
+		"gailimit":  strconv.Itoa(state.flags.BatchSize),
 		"prop":      "imageinfo",
 		"iiprop":    "commonmetadata",
 	}
 	if ts.valid {
 		params["gaistart"] = ts.string
 	}
-	processGenerator(params, client, flags, verbose, categoryMap, allCategories, catRegex, stats)
+	processGenerator(params, state)
 }
 
-func processCategory(category string, ts timestamp, client *mwclient.Client, flags flags, verbose *log.Logger, categoryMap map[string]string, allCategories map[string]bool, catRegex []catRegex, stats *stats) {
+func processCategory(category string, ts timestamp, state *state) {
 	// Sorting is by the last modification of the file page. Image upload
 	// time would be preferable.
 	params := params.Values{
@@ -420,21 +441,21 @@ func processCategory(category string, ts timestamp, client *mwclient.Client, fla
 		"gcmtitle":     category,
 		"gcmnamespace": "6", // namespace 6 for files on Commons.
 		"gcmsort":      "timestamp",
-		"gcmdir":       backString(flags.Back),
-		"gcmlimit":     strconv.Itoa(flags.BatchSize),
+		"gcmdir":       backString(state.flags.Back),
+		"gcmlimit":     strconv.Itoa(state.flags.BatchSize),
 		"prop":         "imageinfo",
 		"iiprop":       "commonmetadata",
 	}
 	if ts.valid {
 		params["gcmstart"] = ts.string
 	}
-	processGenerator(params, client, flags, verbose, categoryMap, allCategories, catRegex, stats)
+	processGenerator(params, state)
 }
 
-func processRandom(client *mwclient.Client, flags flags, verbose *log.Logger, categoryMap map[string]string, allCategories map[string]bool, catRegex []catRegex, stats *stats) {
+func processRandom(state *state) {
 	batchSize := 20 // max accepted by random API.
-	if flags.BatchSize < 20 {
-		batchSize = flags.BatchSize
+	if state.flags.BatchSize < 20 {
+		batchSize = state.flags.BatchSize
 	}
 	for {
 		params := params.Values{
@@ -444,25 +465,25 @@ func processRandom(client *mwclient.Client, flags flags, verbose *log.Logger, ca
 			"prop":         "imageinfo",
 			"iiprop":       "commonmetadata",
 		}
-		processGenerator(params, client, flags, verbose, categoryMap, allCategories, catRegex, stats)
+		processGenerator(params, state)
 	}
 }
 
 // Process the images embedded in a page, e.g., a gallery.
-func processPage(page string, client *mwclient.Client, flags flags, verbose *log.Logger, categoryMap map[string]string, allCategories map[string]bool, catRegex []catRegex, stats *stats) {
+func processPage(page string, state *state) {
 	params := params.Values{
 		"generator": "images",
 		"titles":    page,
-		"gimlimit":  strconv.Itoa(flags.BatchSize),
+		"gimlimit":  strconv.Itoa(state.flags.BatchSize),
 		"prop":      "imageinfo",
 		"iiprop":    "commonmetadata",
 	}
-	processGenerator(params, client, flags, verbose, categoryMap, allCategories, catRegex, stats)
+	processGenerator(params, state)
 }
 
-func processAll(ts timestamp, client *mwclient.Client, flags flags, verbose *log.Logger, categoryMap map[string]string, allCategories map[string]bool, catRegex []catRegex, stats *stats) {
+func processAll(ts timestamp, state *state) {
 	var direction string
-	if flags.Back {
+	if state.flags.Back {
 		direction = "descending"
 	} else {
 		direction = "ascending"
@@ -472,11 +493,11 @@ func processAll(ts timestamp, client *mwclient.Client, flags flags, verbose *log
 		"gaisort":   "timestamp",
 		"gaidir":    direction,
 		"gaistart":  ts.string,
-		"gailimit":  strconv.Itoa(flags.BatchSize),
+		"gailimit":  strconv.Itoa(state.flags.BatchSize),
 		"prop":      "imageinfo",
 		"iiprop":    "commonmetadata",
 	}
-	processGenerator(params, client, flags, verbose, categoryMap, allCategories, catRegex, stats)
+	processGenerator(params, state)
 }
 
 // Return a json object containing page title and imageinfo (Exif) data.
@@ -510,15 +531,15 @@ func GetImageinfo(page string, client *mwclient.Client) *jason.Object {
 	return obj
 }
 
-func processOneFile(page string, client *mwclient.Client, flags flags, verbose *log.Logger, categoryMap map[string]string, allCategories map[string]bool, catRegex []catRegex, stats *stats) {
+func processOneFile(page string, state *state) {
 	catCounts := make(map[string]int32)
 	files := make([]fileData, 1)
-	files[0].pageObj = GetImageinfo(page, client)
+	files[0].pageObj = GetImageinfo(page, state.client)
 	if files[0].pageObj == nil {
 		warn.Print(page, " does not exist, possibly deleted.")
 		return
 	}
-	processFiles(files, client, flags, verbose, categoryMap, allCategories, catRegex, catCounts, stats)
+	processFiles(files, catCounts, state)
 }
 
 type flags struct {
@@ -615,51 +636,52 @@ func login(client *mwclient.Client, flags flags) bool {
 }
 
 func main() {
-	args, flags := parseFlags()
-	if flags.Operator == "" {
+	var state state
+	var args []string
+	args, state.flags = parseFlags()
+	if state.flags.Operator == "" {
 		warn.Print("Operator email / username not set.")
 		return
 	}
-	if flags.MappingFile == "" {
+	if state.flags.MappingFile == "" {
 		warn.Print("Category mapping file path not set.")
 		return
 	}
-	if flags.ExceptionFile == "" {
+	if state.flags.ExceptionFile == "" {
 		warn.Print("Category exception file path not set.")
 		return
 	}
-	if flags.RegexFile == "" {
+	if state.flags.RegexFile == "" {
 		warn.Print("Category regex file path not set.")
 		return
 	}
-	if flags.CookieFile == "" {
+	if state.flags.CookieFile == "" {
 		warn.Print("Cookie cache file path not set.")
 		return
 	}
-	verbose := get_verbose(flags.Verbose)
-	client, err := mwclient.New("https://commons.wikimedia.org/w/api.php", "takenwith "+flags.Operator)
+	state.verbose = *get_verbose(state.flags.Verbose)
+	var err error
+	state.client, err = mwclient.New("https://commons.wikimedia.org/w/api.php", "takenwith "+state.flags.Operator)
 	if err != nil {
 		panic(err)
 	}
-	client.Maxlag.On = true
+	state.client.Maxlag.On = true
 
-	cookies := mwlib.ReadCookies(flags.CookieFile)
-	client.LoadCookies(cookies)
+	cookies := mwlib.ReadCookies(state.flags.CookieFile)
+	state.client.LoadCookies(cookies)
 
-	categoryMap := fillCategoryMap(flags.MappingFile) // makemodel -> category
+	state.categoryMap = fillCategoryMap(state.flags.MappingFile) // makemodel -> category
 
 	// All known categories, including those that aren't catmapping
 	// targets.
-	allCategories := fillCategories(categoryMap, flags.ExceptionFile)
+	state.allCategories = fillCategories(state.categoryMap, state.flags.ExceptionFile)
 
-	catRegex := fillRegex(flags.RegexFile)
+	state.catRegex = fillRegex(state.flags.RegexFile)
 
-	var stats stats
+	defer EndProc(state.client, &state.stats, state.flags.CookieFile)
 
-	defer EndProc(client, &stats, flags.CookieFile)
-
-	if !checkLogin(client) {
-		if !login(client, flags) {
+	if !checkLogin(state.client) {
+		if !login(state.client, state.flags) {
 			return
 		}
 	}
@@ -674,19 +696,19 @@ func main() {
 			warn.Print("Unexpected parameter.")
 			return
 		}
-		processOneFile(args[0], client, flags, verbose, categoryMap, allCategories, catRegex, &stats)
+		processOneFile(args[0], &state)
 	} else if args[0] == "Random" {
 		if numArgs > 1 {
 			warn.Print("Unexpected parameter.")
 			return
 		}
-		processRandom(client, flags, verbose, categoryMap, allCategories, catRegex, &stats)
+		processRandom(&state)
 	} else if strings.HasPrefix(args[0], "Page:") {
 		if numArgs > 1 {
 			warn.Print("Unexpected parameter.")
 			return
 		}
-		processPage(args[0][5:], client, flags, verbose, categoryMap, allCategories, catRegex, &stats)
+		processPage(args[0][5:], &state)
 	} else {
 		var ts timestamp
 		if numArgs == 2 {
@@ -699,15 +721,15 @@ func main() {
 			ts = newTimestampEmpty()
 		}
 		if strings.HasPrefix(args[0], "User:") {
-			processUser(args[0], ts, client, flags, verbose, categoryMap, allCategories, catRegex, &stats)
+			processUser(args[0], ts, &state)
 		} else if strings.HasPrefix(args[0], "Category:") {
-			processCategory(args[0], ts, client, flags, verbose, categoryMap, allCategories, catRegex, &stats)
+			processCategory(args[0], ts, &state)
 		} else if args[0] == "All" {
 			if numArgs != 2 {
 				warn.Print("Timestamp required.")
 				return
 			}
-			processAll(ts, client, flags, verbose, categoryMap, allCategories, catRegex, &stats)
+			processAll(ts, &state)
 		} else {
 			warn.Print("Unknown command.")
 			return
