@@ -54,8 +54,12 @@ func (warnings warnings) createGallery(gallery string, client *mwclient.Client) 
 		for w := range warnings {
 			buffer.WriteString(warnings[w].title)
 			buffer.WriteByte('|')
-			// Replace problematic characters.
-			desc := strings.Replace(warnings[w].warning, "|", "<nowiki>|</nowiki>", -1)
+			// Replace problematic text
+			desc := warnings[w].warning
+			if strings.Contains(desc, "http:") {
+				desc = "URL omitted" // Some URLs are blacklisted and gallery won't save
+			}
+			desc = strings.Replace(desc, "|", "<nowiki>|</nowiki>", -1)
 			desc = strings.Replace(desc, "\n", "<br>", -1)
 			if len(desc) > 200 {
 				buffer.WriteString(desc[0:200])
