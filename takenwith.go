@@ -18,14 +18,14 @@ import (
 
 // "global" exectution state.
 type state struct {
-	client *mwclient.Client
-	flags flags
-	verbose log.Logger
-	categoryMap map[string]string
+	client        *mwclient.Client
+	flags         flags
+	verbose       log.Logger
+	categoryMap   map[string]string
 	allCategories map[string]bool
-	catRegex []catRegex
-	stats stats
-	lastEdit time.Time
+	catRegex      []catRegex
+	stats         stats
+	lastEdit      time.Time
 }
 
 // insertPos finds a position in a page to insert a category: a) after
@@ -118,7 +118,7 @@ func addCategory(page string, category string, remove string, client *mwclient.C
 		if saveError == nil {
 			break
 		}
-		if strings.Contains(saveError.Error(), "protectedpage") {
+		if strings.Contains(saveError.Error(), "protected") {
 			return saveError
 		}
 	}
