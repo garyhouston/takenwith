@@ -2,12 +2,12 @@ package mwlib
 
 // Write an array of titles into a piped request string.
 func MakeTitleString(titles []string) string {
-	var result string = ""
+	result := make([]byte, 0, 500)
 	for i := range titles {
 		if i > 0 {
-			result += "|"
+			result = append(result, '|')
 		}
-		result += titles[i]
+		result = append(result, titles[i]...)
 	}
-	return result
+	return string(result)
 }
