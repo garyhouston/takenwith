@@ -78,6 +78,9 @@ func (warnings warnings) createGallery(gallery string, client *mwclient.Client) 
 			"basetimestamp": timestamp,
 		}
 		saveError = client.Edit(editcfg)
+		if strings.Contains(saveError.Error(), "edit successful, but did not change page") {
+			saveError = nil
+		}
 		if saveError == nil {
 			break
 		}
