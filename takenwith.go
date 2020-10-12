@@ -405,6 +405,8 @@ func processGenerator(params params.Values, state *state) {
 		}
 	}
 	if query.Err() != nil {
+		// A cryptic error here like "invalid character '<' looking for beginning of value" can typically be avoided by
+		// reducing the batch size (-s option).
 		panic(query.Err())
 	}
 }
