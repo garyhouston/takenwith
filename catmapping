@@ -349,6 +349,7 @@ TCL,5033Y_EEA,Alcatel 1
 TCL,5002D_EEA,Alcatel 1B
 TCL,5002D_RU,Alcatel 1B
 TCL,5002E,Alcatel 1B
+TCL,5002F,Alcatel 1B
 TCL,5003D_EEA,Alcatel 1C
 TCL,5003U,Alcatel 1C
 TCL,5009A,Alcatel 1C
@@ -380,6 +381,7 @@ TCL,5052D,Alcatel 3
 TCL,5052D_RU,Alcatel 3
 TCL,5052Y,Alcatel 3
 TCL,5053Y_RU,Alcatel 3
+TCL,5053K,Alcatel 3 2019
 TCL,5006D,Alcatel 3C
 TCL,5026D,Alcatel 3C
 TCL,5034D,Alcatel 3L
@@ -1164,6 +1166,7 @@ Apple,"iPhone13,3 - 15.1.1",iPhone 12 Pro
 Apple,iPhone 12 Pro Max,iPhone 12 Pro Max
 iPhone 12 Pro Max,,iPhone 12 Pro Max
 Iphone 12 Pro Max,Iphone 12 Pro Max,iPhone 12 Pro Max
+Apple,"iPhone13,4 - 15.2.1",iPhone 12 Pro Max
 Apple,iPhone 13,iPhone 13
 Apple,iPhone 13 mini,iPhone 13 Mini
 Apple,iPhone 13 Pro,iPhone 13 Pro
@@ -1251,6 +1254,7 @@ unknown,TSD Octa A0520P,ArmPhone 0520
 Ultima Electronics Corp.,ARTEC AM12E Plus,Category:Scanned with Artec AM12E Plus
 Adi 5S,Adi 5S,Artel Adi 5S
 ARTEL,ARTEL P1,Artel P1
+ARTEL,U3,Artel U3
 ASIADROID_AF92,ASIADROID_AF92,Asiafone Asiadroid AF92
 ASK,ASK SP511 4G,Ask SP511
 alps,ASK SP618,Ask SP618
@@ -1558,6 +1562,7 @@ AXIS,Q1798-LE,Axis Q1798-LE
 AXIS,Q6055-E,Axis Q6055-E
 www.axisoft.com,H-10,Axisoft MobiDV H10
 Azumi,Azumi A4,Azumi A4
+Azumi,V5,Azumi V5
 Azumi,A35C_Lite,Azumi A35C Lite
 AZUMI,A50TQ,Azumi A50TQ
 Azumi,Azumi_IRO_A5_Q,Azumi Iro A5Q
@@ -3148,6 +3153,7 @@ Canon,1100D,Canon EOS 1100D
 CANON,1100D,Canon EOS 1100D
 OLYMPUS CORPORATION,Canon EOS 1100D,Canon EOS 1100D
 Canon,Canon EOS REBEL T3,Canon EOS 1100D
+Canon,EOS REBEL T3,Canon EOS 1100D
 ,Canon EOS REBEL T3,Canon EOS 1100D
 """Canon""","""Canon EOS REBEL T3""",Canon EOS 1100D
 Canon,Canon EOS Kiss X50,Canon EOS 1100D
@@ -4368,6 +4374,7 @@ Canon,MX510 series,Category:Scanned with Canon Pixma MX510
 Canon,Canon MX520 series Network,Category:Scanned with Canon Pixma MX520
 Canon,MX520 series,Category:Scanned with Canon Pixma MX520
 Canon,Canon MX530 series,Category:Scanned with Canon Pixma MX530
+,Canon MX530 series,Category:Scanned with Canon Pixma MX530
 Canon,MX530 series,Category:Scanned with Canon Pixma MX530
 Canon,Canon MX530 series Network,Category:Scanned with Canon Pixma MX530
 Canon,MX700 series,Category:Scanned with Canon Pixma MX700
@@ -4412,6 +4419,7 @@ Canon,T70,Canon T70
 Canon,TR4500 series,Category:Scanned with Canon Pixma TR4500
 Canon,Canon TR4500 series Network,Category:Scanned with Canon Pixma TR4500
 ,Canon TR4500 series Network,Category:Scanned with Canon Pixma TR4500
+Canon,Canon TR4500 series,Category:Scanned with Canon Pixma TR4500
 Canon,Canon TR7500 series Network,Category:Scanned with Canon Pixma TR7500
 Canon,Canon TR7500 series,Category:Scanned with Canon Pixma TR7500
 ,Canon TR7500 series,Category:Scanned with Canon Pixma TR7500
@@ -5122,6 +5130,7 @@ Cross,A11,Cross A11
 CROSS,A26,Cross A26
 CROSS,A88,Cross A88
 CROSSCALL,Action-X3,Crosscall Action-X3
+Crosscall Action X3,,Crosscall Action-X3
 CROSSCALL,Action-X3 Pro,Crosscall Action-X3 Pro
 CROSSCALL,Core-X3,Crosscall Core-X3
 Crosscall,Core-X4,Crosscall Core-X4
@@ -6279,6 +6288,7 @@ Fairphone,FP1,Fairphone 1
 Fairphone,FP2,Fairphone 2
 Fairphone 2-AA,QCAM-AA,Fairphone 2
 Fairphone,FP3,Fairphone 3
+Fairphone,FP4,Fairphone 4
 FCNT,F-41B,FCNT Arrows Be4 Plus
 FED,2,FED 2
 FED 5 V,,FED 5V
@@ -7308,6 +7318,7 @@ Genius,V1010,Genius G-Shot V1010
 GEOTEL Note,GEOTEL Note,Geotel Note
 MID,GHIA 27214P,Ghia Any 7 27214P
 Gigaset,E940-2795-00,Gigaset GS4
+Gigaset,E940-2796-00,Gigaset GS5
 Gigaset,GS110,Gigaset GS110
 Gigaset,Gigaset GS160,Gigaset GS160
 Gigaset,Gigaset GS170,Gigaset GS170
@@ -7365,6 +7376,7 @@ GiONEE,M5_lite,Gionee Marathon M5 Lite
 GiONEE,M5 mini,Gionee Marathon M5 Mini
 GIONEE,M5 Plus,Gionee Marathon M5 Plus
 GiONEE,GN8001,Gionee Marathon M5 Plus
+GIONEE,GN8003,Gionee M6
 GIONEE,M6 mini,Gionee M6 Mini
 GIONEE,M6 mirror,Gionee M6 Mirror
 GIONEE,GN8002S,Gionee M6 Plus
@@ -9372,6 +9384,7 @@ HTC,HTC One_M8 dual sim,HTC One M8
 htc,One M8,HTC One M8
 htc,m8,HTC One M8
 HTC,m8,HTC One M8
+HTC,HTC M8t,HTC One M8
 HTC,HTC_M8x,HTC One M8
 HTC,HTC6525LVW,HTC One M8
 HT,HTC6525LV,HTC One M8
@@ -9655,6 +9668,7 @@ HTC,HTC U11 plus,HTC U11 Plus
 HTC,U12 life,HTC U12 Life
 HTC,HTC 2Q55100,HTC U12+
 HTC,HTC U12+,HTC U12+
+HTC,HTC 2Q7A100,HTC U19e
 HTC,Universal,HTC Universal
 HTC,HTC Velocity 4G,HTC Velocity 4G
 HTC,HTC PH39100,HTC Vivid
@@ -10286,6 +10300,7 @@ HUAWEI,HUAWEI CRR-UL00,Huawei Mate S
 HUAWEI,HUAWEI CRR-UL20,Huawei Mate S
 HUAWEI,BND-L34,Huawei Mate SE
 HUAWEI,BAH3-L09,Huawei MatePad 10.4
+HUAWEI,BAH3-W59,Huawei MatePad 10.4
 HUAWEI,SCMR-W09,Huawei MatePad 10.8
 HUAWEI,KOB2-L09,Huawei MatePad T8
 HUAWEI,KOB2-W09,Huawei MatePad T8
@@ -10755,6 +10770,7 @@ HYUNDAI,Ultra Sync,Hyundai Ultra Sync
 I.T. Works,I.T. Works DC-2040,I.T. Works DC-2040
 i2S - Digibook,CopiBook COBALT #343503,Category:Scanned with i2s CopiBook Cobalt
 ,CopiBook ONYX,Category:Scanned with i2s CopiBook Onyx
+"i2S, Corp.",CopiBook Onyx [SN: ] - Eagle 35mm [SN: 383803],Category:Scanned with i2s CopiBook Onyx
 ,CopiBook ONYX #314760,Category:Scanned with i2s CopiBook Onyx
 ,CopiBook ONYX #320702,Category:Scanned with i2s CopiBook Onyx
 n/a,CopiBook ONYX #320310,Category:Scanned with i2s CopiBook Onyx
@@ -10927,8 +10943,10 @@ INFINIX MOBILITY LIMITED,Infinix X682C,Infinix Hot 10
 INFINIX MOBILITY LIMITED,Infinix X688B,Infinix Hot 10 Play
 INFINIX MOBILITY LIMITED,Infinix X688C,Infinix Hot 10 Play
 Infinix,Infinix PR652B,Infinix Hot 10i
+INFINIX MOBILITY LIMITED,Infinix X658E,Infinix Hot 10i
 INFINIX MOBILITY LIMITED,Infinix X689,Infinix Hot 10s
 INFINIX MOBILITY LIMITED,Infinix X689C,Infinix Hot 10T
+INFINIX MOBILITY LIMITED,Infinix X689F,Infinix Hot 11
 INFINIX MOBILITY LIMITED,Infinix X6812,Infinix Hot 11s
 Infinix,Infinix HOT S,Infinix Hot S X521
 Infinix,Infinix-X521,Infinix Hot S X521
@@ -11207,6 +11225,7 @@ ITEL MOBILE LIMITED,itel L6006,itel A48
 ITEL MOBILE LIMITED,itel L6006L,itel A48
 ITEL MOBILE LIMITED,itel A52S Lite,itel A52S Lite
 itel,itel W6003,itel A55
+ITEL MOBILE LIMITED,itel L6004,itel A56
 ITEL MOBILE LIMITED,itel W6004,itel A56
 ITEL MOBILE LIMITED,itel W6004P,itel A56 Pro
 itel,itel W5503,itel Alpha
@@ -11248,6 +11267,7 @@ itel,P32,itel P32
 itel,itel W5504,itel P33
 itel,itel W6001,itel P33 Plus
 itel,itel W6501,itel P36
+itel,itel P651W,itel P37
 itel,itel P51,itel P51
 itel,itel it1703,itel Prime 3 it1703
 itel,itel Prime 4,itel Prime 4
@@ -12162,6 +12182,7 @@ EASTMAN KODAK COMPANY,PIXPRO FZ151,Kodak Pixpro FZ151
 EASTMAN KODAK COMPANY,PIXPRO SP1,Kodak Pixpro SP1
 "JK Imaging, Ltd.",KODAK PIXPRO SP360,Kodak Pixpro SP360
 EASTMAN KODAK COMPANY,PIXPRO SPZ1,Kodak Pixpro SPZ1
+"JK Imaging, Ltd.",KODAK PIXPRO WPZ2,Kodak Pixpro WPZ2
 EASTMAN KODAK COMPANY,PIXPRO X52,Kodak Pixpro X52
 "JK Imaging, Ltd.",KODAK PIXPRO X53,Kodak Pixpro X53
 "JK Imaging, Ltd.",KODAK PIXPRO X54,Kodak Pixpro X54
@@ -12726,6 +12747,7 @@ Leica Camera AG,LEICA M10-D,Leica M10-D
 Leica Camera AG,LEICA M10-P,Leica M10-P
 Leica Camera AG,LEICA M10-R,Leica M10-R
 Leica Camera AG,LEICA M10 MONOCHROM,Leica M10 Monochrom
+Leica Camera AG,LEICA M11,Leica M11
 Leica Microsystems,???= MC120 HD; ???= DM6B-Z;,Leica MC120
 Leica Microsystems,MC120 HD,Leica MC120
 Leica Microsystems,MC170 HD,Leica MC170 HD
@@ -14174,6 +14196,7 @@ LG Electronics,LM-Q925S,LG Q9
 LGE,LM-Q520N,LG Q52
 LGE,LM-X525,LG Q60
 LGE,LM-Q620,LG Q70
+LGE,LM-Q920N,LG Q92
 LG Electronics,LGV33,LG Qua phone PX
 LG Electronics,LG-C900,LG Quantum
 LGE,LGV33,LG Qua phone PX
@@ -15460,6 +15483,7 @@ Mobicell,GEM,Mobicel Gem
 Mobicel,HERO_DS,Mobicel Hero
 Mobicel,HYPE,Mobicel Hype
 Mobicell,ICE,Mobicel Ice
+Mobicel,Legend,Mobicel Legend
 MOBICEL,MOBICEL Matrix,Mobicel Matrix
 Mobicel,ONYX,Mobicel Onyx
 Mobicel,Mobicel_R1,Mobicel R1
@@ -15475,6 +15499,7 @@ Mobicel,RUBY,Mobicel Ruby
 Mobicell,SHIFT,Mobicel Shift
 Mobicel,Switch GO,Mobicel Switch Go
 Mobicel,TANGO_LITE,Mobicel Tango Lite
+Mobicel,Titan_1,Mobicel Titan
 Mobicel,TRENDY PLUS,Mobicel Trendy Plus
 Mobicel,ULTRA,Mobicel Ultra
 Mobicel,V4,Mobicel V4
@@ -15589,6 +15614,7 @@ MOTOROLA,E770,Motorola E770
 MOTOROLA,E770v,Motorola E770
 motorola,motorola edge,Motorola Edge
 motorola,motorola edge (2021),Motorola Edge (2021)
+motorola,motorola edge 5G UW (2021),Motorola Edge 5G UW (2021)
 motorola,motorola edge 20,Motorola Edge 20
 motorola,motorola edge 20 fusion,Motorola Edge 20 Fusion
 motorola,motorola edge 20 lite,Motorola Edge 20 Lite
@@ -15773,6 +15799,7 @@ motorola,moto g(10) power,Motorola Moto G10 Power
 motorola,moto g(20),Motorola Moto G20
 motorola,moto g(30),Motorola Moto G30
 motorola,moto g31,Motorola Moto G31
+motorola,moto g(40) fusion,Motorola Moto G40 Fusion
 motorola,moto g(50),Motorola Moto G50
 motorola,moto g(60),Motorola Moto G60
 motorola,moto g(60)s,Motorola Moto G60s
@@ -16424,6 +16451,7 @@ OLYMPUS IMAGING CORP.,COOLPIX S2500,Nikon Coolpix S2500
 NIKON,COOLPIX S2550,Nikon Coolpix S2550
 NIKON,COOLPIX S2600,Nikon Coolpix S2600
 Nikon,Coolpix S2600,Nikon Coolpix S2600
+MobaPhoto - http://mobaphoto.mobatek.net,COOLPIX S2600,Nikon Coolpix S2600
 NIKON,COOLPIX S2700,Nikon Coolpix S2700
 NIKON,COOLPIX S2750,Nikon Coolpix S2750
 NIKON,COOLPIX S2800,Nikon Coolpix S2800
@@ -16738,6 +16766,7 @@ NIKON CORPORATION,NIKON D850,Nikon D850
 NIKON CORPORATION,[NIKON D850],Nikon D850
 NIKON,NIKON D850,Nikon D850
 Nikon,D850,Nikon D850
+NIKON,D850,Nikon D850
 Metis Systems srl,METIS EDS Gamma integrated with a : Nikon D850 Digital Camera,Nikon D850
 NIKON CORPORATION,NIKON D3000,Nikon D3000
 NIKON CORPORATION,Nikon D3000,Nikon D3000
@@ -18678,6 +18707,8 @@ OnePlus,KB2000 (OnePlus8T),OnePlus 8T
 OnePlus,KB2001,OnePlus 8T
 OnePlus,KB2003,OnePlus 8T
 OnePlus,KB2005,OnePlus 8T
+OnePlus,OnePlus 9,OnePlus 9 5G
+OnePlus,OnePlus 9 5G,OnePlus 9 5G
 OnePlus,LE2110,OnePlus 9 5G
 OnePlus,LE2111,OnePlus 9 5G
 OnePlus,LE2113,OnePlus 9 5G
@@ -18741,6 +18772,7 @@ OPPO,A31u,Oppo A31
 OPPO,CPH2015,Oppo A31
 OPPO,OPPO A32,Oppo A32
 OPPO,OPPO A33,Oppo A33
+OPPO,OPPO A33m,Oppo A33
 OPPO,A37f,Oppo A37
 OPPO,A37fw,Oppo A37
 OPPO,OPPO A37m,Oppo A37
@@ -18753,6 +18785,7 @@ OPPO,OPPO A53s,Oppo A53s
 OPPO,OPPO A53s 5G,Oppo A53s 5G
 OPPO,OPPO A54,Oppo A54
 OPPO,OPPO A54 5G,Oppo A54 5G
+OPPO,OPPO A55,Oppo A55
 OPPO,OPPO A55 5G,Oppo A55 5G
 OPPO,CPH1701,Oppo A57
 OPPO,OPPO A57,Oppo A57
@@ -18843,6 +18876,7 @@ OPPO,Finder,Oppo Finder
 OPPO,OPPO K1,Oppo K1
 OPPO,OPPO K3,Oppo K3
 OPPO,OPPO K5,Oppo K5
+OPPO,OPPO K7,Oppo K7
 OPPO,OPPO K9 5G,Oppo K9 5G
 OPPO,3001,Oppo Mirror 3
 OPPO,3006,Oppo Mirror 3
@@ -18969,6 +19003,7 @@ realme,realme 8 5G,Realme 8 5G
 realme,realme 8 Pro,Realme 8 Pro
 realme,RMX3081 (RMX3081L1),Realme 8 Pro
 realme,realme 8i,Realme 8i
+realme,realme 9i,Realme 9i
 OPPO,Realme C1,Oppo Realme C1
 OPPO,realme C1,Oppo Realme C1
 Realme,realme C2,Oppo Realme C2
@@ -19070,6 +19105,7 @@ OPPO,OPPO Reno6,Oppo Reno6
 OPPO,OPPO Reno6 5G,Oppo Reno6 5G
 OPPO,OPPO Reno6 Pro 5G,Oppo Reno6 Pro 5G
 OPPO,OPPO Reno6 Pro+ 5G,Oppo Reno6 Pro+ 5G
+OPPO,OPPO Reno6 Z 5G,Oppo Reno6 Z 5G
 OPPO,OPPO Reno 5G,Oppo Reno 5G
 OPPO,OPPO Reno 10x Zoom,Oppo Reno 10x Zoom
 OPPO,CPH1919,Oppo Reno 10x Zoom
@@ -20673,6 +20709,7 @@ Polaroid,Polaroid CUBE,Polaroid Cube
 made by Polaroid,DigitalCAM,Polaroid DigitalCAM
 """Polaroid""",DVF130,Polaroid DVF-130
 Polaroid,DVG720,Polaroid DVG-720
+Polaroid,Go,Polaroid Go
 Polaroid,i531,Polaroid i531
 Polaroid,Polaroid i532,Polaroid i532
 Polaroid,i533,Polaroid i533
@@ -20842,6 +20879,7 @@ Pentacon,luxmedia 14-Z5OS,Praktica luxmedia 14-Z50S
 Pentacon,luxmedia 14-Z5 OS,Praktica luxmedia 14-Z50S
 Pentacon,luxmedia 14-Z51,Praktica luxmedia 14-Z51
 Pentacon,luxmedia 14-Z80S,Praktica luxmedia 14-Z80S
+luxmedia 16-Z12S,luxmedia 16-Z12S,Praktica luxmedia 16-Z12S
 Pentacon,luxmedia 16-Z21C,Praktica luxmedia 16-Z21C
 Pentacon,luxmedia 16-Z21S,Praktica luxmedia 16-Z21S
 Pentacon,Luxmedia 16-Z21s,Praktica luxmedia 16-Z21S
@@ -22162,6 +22200,8 @@ samsung,SM-A025M,Samsung Galaxy A02s
 samsung,SM-A025U,Samsung Galaxy A02s
 samsung,SM-A025U1,Samsung Galaxy A02s
 samsung,SM-A025V,Samsung Galaxy A02s
+samsung,SM-S124DL,Samsung Galaxy A02s
+samsung,SM-A032F,Samsung Galaxy A03 Core
 samsung,SM-A037F,Samsung Galaxy A03s
 samsung,SM-A037G,Samsung Galaxy A03s
 samsung,SM-A260F,Samsung Galaxy A2 Core
@@ -22346,6 +22386,7 @@ samsung,SC-42A,Samsung Galaxy A21
 samsung,SM-A215U,Samsung Galaxy A21
 samsung,SM-A215U1,Samsung Galaxy A21
 samsung,SM-S215DL,Samsung Galaxy A21
+samsung,SCV49,Samsung Galaxy A21 Simple
 samsung,SM-A217F,Samsung Galaxy A21s
 samsung,SM-A217M,Samsung Galaxy A21s
 samsung,SM-A217N,Samsung Galaxy A21s
@@ -23997,6 +24038,9 @@ samsung,SM-G996U,Samsung Galaxy S21+ 5G
 samsung,SM-G996U1,Samsung Galaxy S21+ 5G
 samsung,SM-G996W,Samsung Galaxy S21+ 5G
 samsung,SM-G9960,Samsung Galaxy S21+ 5G
+samsung,SM-S908E,Samsung Galaxy S22 Ultra 5G
+samsung,SM-S908U1,Samsung Galaxy S22 Ultra 5G
+samsung,SM-S906W,Samsung Galaxy S22+ 5G
 SAMSUNG,GT-I9070,Samsung Galaxy S Advance GT-I9070
 samsung,GT-I9070,Samsung Galaxy S Advance GT-I9070
 SAMSUNG,GT-I9070P,Samsung Galaxy S Advance GT-I9070
@@ -24183,6 +24227,7 @@ samsung,SM-T510,Samsung Galaxy Tab A 10.1 (2019)
 samsung,SM-T515,Samsung Galaxy Tab A 10.1 (2019)
 samsung,SM-T590,Samsung Galaxy Tab A 10.5
 samsung,SM-T595,Samsung Galaxy Tab A 10.5
+samsung,Galaxy Tab A7,Samsung Galaxy Tab A7
 samsung,SM-T500,Samsung Galaxy Tab A7
 samsung,SM-T505,Samsung Galaxy Tab A7
 samsung,SM-T220,Samsung Galaxy Tab A7 Lite
@@ -24375,6 +24420,7 @@ samsung,SM-F916N,Samsung Galaxy Z Fold2 5G
 samsung,SM-F916U,Samsung Galaxy Z Fold2 5G
 samsung,SM-F916W,Samsung Galaxy Z Fold2 5G
 samsung,SM-F926B,Samsung Galaxy Z Fold3 5G
+samsung,SM-F926U,Samsung Galaxy Z Fold3 5G
 SAMSUNG,GT-C3510,Samsung Genoa GT-C3510
 SAMSUNG,SAMSUNG GT-C3510,Samsung Genoa GT-C3510
 SAMSUNG,GT-E3210,Samsung GT-E3210
@@ -28117,6 +28163,7 @@ TCL,T790S,TCL 10 5G UW
 TCL,T766H_EEA,TCL 10 SE
 TCL,T770H,TCL 10L
 TCL,T671H,TCL 20 SE
+TCL,6156D,TCL 20Y
 TCL,Alpha 20,TCL A1 Alpha 20
 XXXXX Corporation,CoolPhoto 1.0,TCL CoolPhoto 1.0
 TCL Corporation,CoolPhoto 1.0,TCL CoolPhoto 1.0
@@ -28273,8 +28320,10 @@ TECNO MOBILE LIMITED,TECNO BB4,Tecno Pop 3 Plus
 TECNO MOBILE LIMITED,TECNO BC1s,Tecno Pop 4
 TECNO MOBILE LIMITED,TECNO BC2,Tecno Pop 4
 TECNO MOBILE LIMITED,TECNO BC2c,Tecno Pop 4
+TECNO MOBILE LIMITED,TECNO BC1,Tecno Pop 4 Air
 TECNO MOBILE LIMITED,TECNO BC3,Tecno Pop 4 Pro
 TECNO MOBILE LIMITED,TECNO BD2,Tecno Pop 5
+TECNO MOBILE LIMITED,TECNO BD4j,Tecno Pop 5 Pro
 TECNO,TECNO LA6,Tecno Pouvoir 1
 TECNO MOBILE LIMITED,TECNO LA7,Tecno Pouvoir 2
 TECNO MOBILE LIMITED,TECNO LB6,Tecno Pouvoir 2 Air
@@ -28311,15 +28360,18 @@ TECNO MOBILE LIMITED,TECNO KF6,Tecno Spark 7
 TECNO MOBILE LIMITED,TECNO KF6i,Tecno Spark 7
 TECNO MOBILE LIMITED,TECNO KF6j,Tecno Spark 7
 TECNO MOBILE LIMITED,TECNO KF6k,Tecno Spark 7
+TECNO,TECNO PR651E,Tecno Spark 7
 TECNO,TECNO PR651H,Tecno Spark 7
 TECNO MOBILE LIMITED,TECNO KF8,Tecno Spark 7 Pro
 TECNO MOBILE LIMITED,TECNO KF7j,Tecno Spark 7P
+TECNO MOBILE LIMITED,TECNO KG6,Tecno Spark 8
 TECNO MOBILE LIMITED,TECNO KC1,Tecno Spark Go
 TECNO MOBILE LIMITED,TECNO KE5,Tecno Spark Go 2020
 TECNO MOBILE LIMITED,TECNO KE5k,Tecno Spark Go 2020
 TECNO,TECNO K7,Tecno Spark K7
 TECNO,TECNO K8,Tecno Spark K8
 TECNO,TECNO K9,Tecno Spark Plus K9
+TECNO MOBILE LIMITED,TECNO P704a,Tecno Tab 4G P704a
 TECNO,TECNO W1,Tecno W1
 TECNO,TECNO W2,Tecno W2
 TECNO,TECNO-W3,Tecno W3
@@ -28679,6 +28731,7 @@ ulefone,Metal,Ulefone Metal
 ulefone,MIX,Ulefone Mix
 ulefone,MIX_2,Ulefone Mix 2
 Ulefone,Note_7P,Ulefone Note 7P
+Ulefone,Note 8P,Ulefone Note 8P
 ulefone,Paris,Ulefone Paris
 ulefone,Power,Ulefone Power
 ulefone,Power_3,Ulefone Power 3
@@ -28723,6 +28776,7 @@ UMIDIGI,A3_Pro,UMIDIGI A3 Pro
 UMIDIGI,A3X,UMIDIGI A3X
 UMIDIGI,A5_Pro,UMIDIGI A5 Pro
 UMIDIGI,A7 Pro,UMIDIGI A7 Pro
+UMIDIGI,A9,UMIDIGI A9
 UMIDIGI,A9 Pro,UMIDIGI A9 Pro
 UMIDIGI,BISON Pro,UMIDIGI Bison Pro
 UMIDIGI,C NOTE,UMIDIGI C Note
@@ -28826,6 +28880,7 @@ Vigorhood,DV320,Vigorhood DV320
 ,Venus USB2.0 Camera,Vimicro Venus USB 2.0 Camera
 ,Vimicro USB2.0 UVC PC Camera,Vimicro USB 2.0 UVC PC Camera
 Virgin Mobile,Lobster 700TV,Virgin Mobile Lobster 700TV
+Visioneer,Visioneer OneTouch 8820,Category:Scanned with Visioneer OneTouch 8820
 "SQ Tech. Co.,Ltd",SQ908 MEGA-Cam,unidentified VistaQuest
 VIVAX,VIVAX FLY 2,Vivax Fly 2
 SMART Fun,S4510,Vivax Smart Fun S4510
@@ -28979,6 +29034,7 @@ vivo,vivo 1910,Vivo V17 Pro
 vivo,vivo 1933,Vivo V19
 vivo,V2025,Vivo V20
 vivo,V2040,Vivo V20
+vivo,V2130,Vivo V23 5G
 vivo,vivo Y3 4G+64G,Vivo Y3
 vivo,V2043,Vivo Y20 2021
 vivo,V2043_21,Vivo Y20 2021
@@ -29849,6 +29905,7 @@ Xiaomi,Redmi 8A Dual,Xiaomi Redmi 8A Dual
 Xiaomi,Redmi 8A Pro,Xiaomi Redmi 8A Pro
 Google,Redmi 8A Pro,Xiaomi Redmi 8A Pro
 Xiaomi,M2004J19C,Xiaomi Redmi 9
+Xiaomi,M2004J19C (lancelot),Xiaomi Redmi 9
 Xiaomi,M2006C3MII,Xiaomi Redmi 9
 Xiaomi,Redmi 9,Xiaomi Redmi 9
 xiaomi,Redmi 9,Xiaomi Redmi 9
@@ -29866,6 +29923,7 @@ Xiaomi,M2010J19SL,Xiaomi Redmi 9T
 Xiaomi,M2010J19SY,Xiaomi Redmi 9T
 Xiaomi,21061119AG,Xiaomi Redmi 10
 Xiaomi,21061119DG,Xiaomi Redmi 10
+Xiaomi,21061119BI,Xiaomi Redmi 10 Prime
 Xiaomi,M2004J7AC,Xiaomi Redmi 10X 5G
 Xiaomi,Redmi Go,Xiaomi Redmi Go
 Xiaomi,Redmi K20,Xiaomi Redmi K20
@@ -29943,8 +30001,9 @@ xiaomi,Redmi Note 7 Pro PXL,Xiaomi Redmi Note 7 Pro
 Xiaomi,Redmi Note 7S,Xiaomi Redmi Note 7S
 Google,Redmi Note 7S,Xiaomi Redmi Note 7S
 Xiaomi,Redmi Note 8,Xiaomi Redmi Note 8
-Xiaomi,Redmi note 8,Xiaomi Redmi Note 8
+xiaomi,Redmi Note 8,Xiaomi Redmi Note 8
 ,Redmi Note 8,Xiaomi Redmi Note 8
+Xiaomi,Redmi note 8,Xiaomi Redmi Note 8
 Xiaomi,Redmi Note 8 (ginkgo),Xiaomi Redmi Note 8
 xiaomi,Redmi Note 8 P3XL,Xiaomi Redmi Note 8
 xiaomi,Redmi Note 8 P3XL - 1998 Cam,Xiaomi Redmi Note 8
@@ -29999,6 +30058,7 @@ Xiaomi,M2101K7BNY,Xiaomi Redmi Note 10S
 Xiaomi,M2101K7BNY (rosemary),Xiaomi Redmi Note 10S
 Xiaomi,M2103K19I,Xiaomi Redmi Note 10T 5G
 Xiaomi,M2103K19Y,Xiaomi Redmi Note 10T 5G
+Xiaomi,21121119SC,Xiaomi Redmi Note 11 4G
 Xiaomi,Redmi Pro,Xiaomi Redmi Pro
 Xiaomi,Redmi S2,Xiaomi Redmi S2 / Y2
 Xiaomi,Redmi Y2,Xiaomi Redmi S2 / Y2
@@ -30161,6 +30221,7 @@ Yuneec,Mantis Q,Yuneec Mantis Q
 YS7pro,YS7pro,Yunsong YS7 Pro
 YUSUN,LA3S,Yusun LA3S
 Z/I Imaging,DMC2e-230,Z/I Imaging DMC2e-230
+Z CAM,E2-F6,Z CAM E2-F6
 Z Camera,,Z Camera
 SURCOU,Z power,Zatec Z power
 SURCOU,Z_power,Zatec Z power
@@ -30293,6 +30354,7 @@ ZTE,ZTE BLADE A0622,ZTE Blade A6 Lite
 ZTE,ZTE BLADE A0605,ZTE Blade A6 Max
 ZTE,ZTE Blade A7 2019,ZTE Blade A7
 ZTE,ZTE Blade A7 2020,ZTE Blade A7 2020
+ZTE,ZTE Blade A7s,ZTE Blade A7s
 ZTE,ZTE BLADE A110,ZTE Blade A110
 ZTE,ZTE BLADE A112,ZTE Blade A112
 ZTE,ZTE BLADE A210,ZTE Blade A210
@@ -31198,6 +31260,7 @@ cus Photoeditor v.,6.4.0.2,Category:Software as equipment in Exif
 custom make,custom model,Category:Ambiguous equipment in Exif
 Make,Model,Category:Ambiguous equipment in Exif
 Manufacturer,CyberView 35 v1.74,Category:Software as equipment in Exif
+,CyberView CS - ImageBox,Category:Software as equipment in Exif
 CyanogenMod,,Category:Software as equipment in Exif
 CyanogenMod,blade,Category:Ambiguous equipment in Exif
 CyanogenMod,liquid,Category:Ambiguous equipment in Exif
@@ -31873,6 +31936,7 @@ Panasonic,PHOTOfunSTUDIO 5.1 HD,Category:Software as equipment in Exif
 Panasonic,PHOTOfunSTUDIO 5.2 HD,Category:Software as equipment in Exif
 Panasonic,PHOTOfunSTUDIO 6.0,Category:Software as equipment in Exif
 Panasonic,PHOTOfunSTUDIO 6.1 HD Lite,Category:Software as equipment in Exif
+Panasonic,PHOTOfunSTUDIO 6.2 HD,Category:Software as equipment in Exif
 Panasonic,PHOTOfunSTUDIO 6.3 HD Lite,Category:Software as equipment in Exif
 Panasonic,PHOTOfunSTUDIO 6.5 BD,Category:Software as equipment in Exif
 Panasonic,PHOTOfunSTUDIO 7.0 HD,Category:Software as equipment in Exif
