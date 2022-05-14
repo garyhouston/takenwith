@@ -28,6 +28,19 @@ type state struct {
 	lastEdit      time.Time
 }
 
+// strings.ToLower would convert all Unicode characters to lower case,
+// which would cause problems when the length of the character in UTF8
+// changes. E.g., Turkish İ -> i.
+func asciiToLower(s string) string {
+	runes := []rune(s)
+	for idx, ch := range runes {
+		if ch >= 'A' && ch <= 'Z' {
+			runes[idx] = ch + 32
+		}
+	}
+	return string(runes)
+}
+
 // insertPos finds a position in a page to insert a category: a) after
 // the last existing category, ignoring categories in unparsed
 // sections (HTML comments, <pre> etc.) b) before an unterminated
@@ -35,7 +48,7 @@ type state struct {
 func insertPos(page string) int {
 	// Assume that unparsed sections don't nest, but don't assume
 	// that a matching end tag is present.
-	page = strings.ToLower(page) // Ignore case when matching tags and category.
+	page = asciiToLower(page) // Ignore case when matching tags and "category".
 	startTags := []string{"<!--", "<nowiki>", "<pre>", "<math>"}
 	endTags := []string{"-->", "</nowiki>", "</pre>", "</math>"}
 	start := -1
