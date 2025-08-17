@@ -993,6 +993,7 @@ Apple,iPad Pro (12.9-inch) (4th generation),"iPad Pro (4th generation, 12.9 inch
 Apple,iPad Pro (12.9-inch) (5th generation),"iPad Pro (5th generation, 12.9 inch)"
 Apple,iPad Pro (12.9-inch) (6th generation),"iPad Pro (6th generation, 12.9 inch)"
 Apple,iPad Pro 11-inch (M4),"iPad Pro (7th generation, 11 inch)"
+Apple,iPad Pro 13-inch (M4),"iPad Pro (7th generation, 13 inch)"
 Apple,iPhone,iPhone (original)
 Apple,Iphone,iPhone (original)
 camera360,iPhone,iPhone (original)
@@ -1135,6 +1136,7 @@ Apple,iPhone 6S,iPhone 6S
 Apple,Apple iPhone 6s,iPhone 6S
 Apple Inc.,iPhone 6s,iPhone 6S
 ,iPhone 6S,iPhone 6S
+Apple iPhone 6s,iPhone 6s back camera,iPhone 6S
 camera360,iPhone6S,iPhone 6S
 OLYMPUS IMAGING CORP.,iPhone 6s,iPhone 6S
 Apple,"iPhone8,1",iPhone 6S
@@ -3492,6 +3494,7 @@ Canon,Canon 650D,Canon EOS 650D
 Canon EOS,650D,Canon EOS 650D
 Canon,Canon EOS REBEL T4i,Canon EOS 650D
 ,Canon EOS REBEL T4i,Canon EOS 650D
+Canon,EOS REBEL T4i,Canon EOS 650D
 Canon,Canon EOS Kiss X6i,Canon EOS 650D
 Canon,Canon EOS 700D,Canon EOS 700D
 Canon,EOS 700D,Canon EOS 700D
@@ -3908,11 +3911,13 @@ Canon,Canon OPTURA20,Canon FV M10 / MVX150i / Optura 20
 Canon,Canon MVX150i,Canon FV M10 / MVX150i / Optura 20
 ,Canon HS 100 Film Scanner,Category:Scanned with Canon HS 100 Film Scanner
 Canon,Canon iR1133 ser_180CACDC7466,Category:Scanned with Canon ImageRunner 1133
+Canon,Canon iR1133 ser_60128BF68124,Category:Scanned with Canon ImageRunner 1133
 Canon,Canon iR2002/2202,Category:Scanned with Canon ImageRunner 2002 / 2202
 Canon,Canon iR2002/2202_F4813947E052,Category:Scanned with Canon ImageRunner 2002 / 2202
 Canon,Canon iR2004/2204,Category:Scanned with Canon ImageRunner 2004 / 2204
 Canon,Canon iR2006/2206,Category:Scanned with Canon ImageRunner 2006 / 2206
 Canon,Canon iR2006/2206_F4A997E951B0,Category:Scanned with Canon ImageRunner 2006 / 2206
+Canon,Canon iR2006/2206_F4A997EA478E,Category:Scanned with Canon ImageRunner 2006 / 2206
 Canon,Canon iR C3020_F0038CADD8C6,Category:Scanned with Canon ImageRunner C3020
 Canon,Canon iR C3025_DCF505DC3DE7,Category:Scanned with Canon ImageRunner C3025
 Canon,Canon iR C3125,Category:Scanned with Canon ImageRunner C3125
@@ -7255,6 +7260,7 @@ FCNT,F-51C,FCNT Arrows N
 FCNT,A101FC,FCNT Arrows We
 FCNT,F-51B,FCNT Arrows We
 FCNT,FCG01,FCNT Arrows We
+FCNT,F-52E,FCNT Arrows We2
 FCNT,FCG02,FCNT Arrows We2
 FED,2,FED 2
 ,FED-5,FED 5
@@ -11616,6 +11622,7 @@ HONOR,WDY-LX3,Honor X6a
 HONOR,JDY-LX1,Honor X6b
 ,JDY-LX1,Honor X6b
 HONOR,JDY-LX2,Honor X6b
+,JDY-LX2,Honor X6b
 HONOR,JDY-LX3P,Honor X6b
 HONOR,CMA-LX1,Honor X7
 ,CMA-LX1,Honor X7
@@ -11770,9 +11777,10 @@ HUAWEI,HUAWEI Mate 50,Huawei Mate 50
 HUAWEI,HUAWEI Mate 50 Pro,Huawei Mate 50 Pro
 HUAWEI,DCO-AL00,Huawei Mate 50 Pro
 HUAWEI,DCO-LX9,Huawei Mate 50 Pro
+HUAWEI,CET-AL60,Huawei Mate 50E
 HUAWEI,HUAWEI Mate 60,Huawei Mate 60
 HUAWEI,HUAWEI Mate 60 Pro,Huawei Mate 60 Pro
-HUAWEI,CET-AL60,Huawei Mate 50E
+HUAWEI,HUAWEI Mate 70 Pro,Huawei Mate 70 Pro
 HUAWEI,NEO-AL00,Huawei Mate RS Porsche Design
 HUAWEI,NEO-L29,Huawei Mate RS Porsche Design
 HUAWEI,HUAWEI CRR-CL00,Huawei Mate S
@@ -12978,6 +12986,7 @@ itel,itel A661WP,itel A58 Pro
 ITEL,itel A662L,itel A60
 ITEL,itel A662LM,itel A60s
 ITEL,itel A665L,itel A70
+ITEL,itel A671L,itel A80
 itel,itel W5503,itel Alpha
 ITEL MOBILE LIMITED,itel A507LM,itel AC50
 ITEL,itel C671L,itel City 100
@@ -15223,6 +15232,7 @@ LG Electronics,KP500,LG Cookie
 LG,KP500,LG Cookie
 LG Electronics,KP570,LG Cookie
 LG Electronics,T320,LG Cookie 3G
+LG Electronics Inc,LGG350,LG G350
 LG Electronics Inc,LGG359,LG G359
 LG Electronics,GS290,LG GS290 Cookie Fresh
 LG Electronics,T300,LG Cookie Lite
@@ -17714,6 +17724,7 @@ motorola,motorola edge 50,Motorola Edge 50
 motorola,motorola edge 50 fusion,Motorola Edge 50 Fusion
 motorola,motorola edge 50 neo,Motorola Edge 50 Neo
 motorola,motorola edge 50 pro,Motorola Edge 50 Pro
+Motorola,Edge 50 Pro,Motorola Edge 50 Pro
 motorola,motorola edge 50 ultra,Motorola Edge 50 Ultra
 motorola,motorola edge 50s pro,Motorola Edge 50s Pro
 motorola,motorola edge 60 fusion,Motorola Edge 60 Fusion
@@ -18005,6 +18016,7 @@ motorola,moto g73 5G,Motorola Moto G73 5G
 motorola,moto g82 5G,Motorola Moto G82 5G
 motorola,moto g84 5G,Motorola Moto G84 5G
 motorola,moto g85 5G,Motorola Moto G85 5G
+moto g85 5G (malmo),motorola,Motorola Moto G85 5G
 motorola,moto g(100),Motorola Moto G100
 motorola,moto g200 5G,Motorola Moto G200 5G
 motorola,XT1799-2,Motorola Moto Green Pomelo
@@ -19216,6 +19228,7 @@ Nikon,Nikon DS-Fi3,Nikon DS-Fi3
 Nikon,Nikon DS-Ri2 Zoom,Nikon DS-Ri2
 NIKON CORPORATION,NIKON Df,Nikon Df
 Nikon,Df,Nikon Df
+NIKON,Df,Nikon Df
 ,NIKON Df,Nikon Df
 Nikon,Dn100,Nikon DN100
 NIKON,Nikon EM,Nikon EM
@@ -19388,6 +19401,7 @@ NIKON,Z50,Nikon Z 50
 NIKON CORPORATION,NIKON Z50_2,Nikon Z 50 II
 NIKON CORPORATION,NIKON Z f,Nikon Z f
 NIKON CORPORATION,NIKON Z fc,Nikon Z fc
+NIKON,Z fc,Nikon Z fc
 Nintendo,Nintendo 3DS,Nintendo 3DS
 Nintendo,NintendoDS,Nintendo DSi
 NO1,S6,No.1 S6
@@ -21209,6 +21223,7 @@ OnePlus,OnePlus 12,OnePlus 12
 OnePlus,OnePlus 12R,OnePlus 12R
 OnePlus,OnePlus 13,OnePlus 13
 OnePlus,OnePlus 13R,OnePlus 13R
+Oneplus,OnePlus 13R,OnePlus 13R
 OnePlus,OnePlus 13s,OnePlus 13s
 OnePlus,OnePlus Ace,OnePlus Ace
 OnePlus,OnePlus Ace 2,OnePlus Ace 2
@@ -21518,6 +21533,7 @@ OPPO,R821T,Oppo Find Muse
 OPPO,OPPO Find N2 Flip,Oppo Find N2 Flip
 OPPO,OPPO Find N3,Oppo Find N3
 OPPO,OPPO Find N3 Flip,Oppo Find N3 Flip
+OPPO,OPPO Find N5,Oppo Find N5
 OPPO,R8113,Oppo Find Piano
 OPPO,U7015,Oppo Find Way
 OPPO,U707,Oppo Find Way S
@@ -23761,6 +23777,7 @@ Polaroid,i1437,Polaroid i1437
 Polaroid,iD516,Polaroid iD516
 Polaroid,iE090,Polaroid iE090
 Polaroid,IE3035W,Polaroid iE3035W
+Polaroid,IE6035W,Polaroid iE6035W
 Polaroid,IE7276W,Polaroid iE7276W
 Polaroid,iF045,Polaroid iF045
 Polaroid,iX6038,Polaroid iX6038
@@ -23956,6 +23973,7 @@ PRAKTICA,MTL 5,Praktica MTL 5
 Pentacon,Praktica MTL 5,Praktica MTL 5
 Praktica,MTL5,Praktica MTL 5
 Pentacon,Praktica MTL 5B,Praktica MTL 5B
+"Pentacon; FUJI PHOTO FILM CO., LTD.",Praktica MTL 5 B; SLP800,Praktica MTL 5B
 Praktica,Praktica MTL 50,Praktica MTL 50
 PRAKTICA,MTL50,Praktica MTL 50
 Practica,Nova IB,Praktica Nova IB
@@ -27350,6 +27368,7 @@ samsung,SM-G9650 (star2qltechn),Samsung Galaxy S9+
 Android,GalaxyS9+,Samsung Galaxy S9+
 Samsung,Samsung Galaxy S10,Samsung Galaxy S10
 ,Samsung Galaxy S10,Samsung Galaxy S10
+Samsung Galaxy,S10,Samsung Galaxy S10
 samsung,SC-03L,Samsung Galaxy S10
 samsung,SCV41,Samsung Galaxy S10
 samsung,SM-G973C,Samsung Galaxy S10
@@ -27544,6 +27563,7 @@ samsung,SM-S928B,Samsung Galaxy S24 Ultra
 samsung,Galaxy S25,Samsung Galaxy S25
 samsung,Galaxy S25 Edge,Samsung Galaxy S25 Edge
 samsung,Galaxy S25 Ultra,Samsung Galaxy S25 Ultra
+SAMSUNG,Galaxy S25 Ultra,Samsung Galaxy S25 Ultra
 ,Galaxy S25 Ultra,Samsung Galaxy S25 Ultra
 samsung,SM-S938B,Samsung Galaxy S25 Ultra
 samsung,Galaxy S25+,Samsung Galaxy S25+
@@ -29299,6 +29319,7 @@ SHIFT,SHIFT5.3,Shift5.3
 SHIFT,SHIFT6m,Shift6m
 Google,SHIFT6m,Shift6m
 SHIFT,SHIFT6mq,Shift6mq
+SHIFT,SHIFTphone 8,Shiftphone 8
 Shuoying,DV-366SA,Shuoying DV-366SA
 Shuoying,DV565NA,Shuoying DV565NA
 ShouYing,Spca533,Shuoying Spca533
@@ -31887,6 +31908,7 @@ SunplusMM,TDC-50V0,Sunplus TDC-50V0
 SUNPLUS-MM,TDV1320,Sunplus TDV-1320
 SUNPLUS-MM,TDV3060AT,Sunplus TDV3060AT
 SunRise,Apollo HS,Category:Scanned with SunRise Apollo HS
+Sunrise,Apollo HS,Category:Scanned with SunRise Apollo HS
 Suntek,HC-300,Suntek HC-300
 Sunwell,DC623,Sunwell DC623
 Sunwell,DC811,Sunwell DC811
@@ -32840,6 +32862,7 @@ Ulefone,Armor 21,Ulefone Armor 21
 Ulefone,Armor 22,Ulefone Armor 22
 Ulefone,Armor 27 Pro,Ulefone Armor 27 Pro
 Ulefone,Armor 27T Pro,Ulefone Armor 27T Pro
+Ulefone,Armor Mini 20,Ulefone Armor Mini 20
 Ulefone,Armor Mini 20 Pro,Ulefone Armor Mini 20 Pro
 Ulefone,Armor_X,Ulefone Armor X
 Ulefone,Armor_X2,Ulefone Armor X2
@@ -33210,6 +33233,8 @@ vivo,iQOO Neo9,iQOO Neo9
 iQOO,iQOO Neo9 Pro,iQOO Neo9 Pro
 vivo,iQOO Neo9 Pro,iQOO Neo9 Pro
 vivo,iQOO Neo9S Pro+,iQOO Neo9S Pro+
+iQOO,iQOO Neo 10,iQOO Neo 10
+iQOO,iQOO Neo 10R,iQOO Neo 10R
 vivo,iQOO Neo5S,iQOO Neo55
 vivo,iQOO Neo 855,Vivo iQOO Neo 855
 vivo,iQOO Neo 855 plus,Vivo iQOO Neo 855 Plus
@@ -33358,6 +33383,7 @@ vivo,vivo V27e,Vivo V27e
 vivo,V2250,Vivo V29
 vivo,vivo V29,Vivo V29
 vivo,V2244,Vivo V29 Lite 5G
+vivo,vivo V29 Pro,Vivo V29 Pro
 vivo,V29 Pro,Vivo V29 Pro
 vivo,vivo V29e,Vivo V29e 5G
 vivo,V29e 5G,Vivo V29e 5G
@@ -34062,6 +34088,7 @@ WIKO,WAX,Wiko Wax
 WIKO,WIM,Wiko Wim
 WIKO,WIM Lite,Wiko Wim Lite
 WIKO,W-K130-EEA,Wiko Y50
+WIKO,W-K211-EEA,Wiko Y51
 WIKO,W-K211-OPE,Wiko Y51
 WIKO,W-K510-EEA,Wiko Y60
 WIKO,W-K560-EEA,Wiko Y61
@@ -34244,6 +34271,7 @@ blackshark,SKW-A0,Xiaomi Black Shark 2
 blackshark,SKW-H0,Xiaomi Black Shark 2
 blackshark,DLT-H0,Xiaomi Black Shark 2 Pro
 blackshark,SHARK KLE-H0,Xiaomi Black Shark 3
+blackshark,SHARK PRS-A0,Xiaomi Black Shark 4
 blackshark,SHARK PRS-H0,Xiaomi Black Shark 4
 blackshark,SHARK PAR-H0,Xiaomi Black Shark 4 Pro
 blackshark,SHARK KSR-H0 (kaiser-os),Xiaomi Black Shark 4 Pro
@@ -34563,6 +34591,7 @@ Xiaomi,23122PCD1G (garnet),Poco X6
 Xiaomi,23122PCD1I,Poco X6
 Xiaomi,2312FRAFDI,Poco X6 Neo
 Xiaomi,2311DRK48G,Poco X6 Pro
+,2311DRK48G,Poco X6 Pro
 Xiaomi,2311DRK48I,Poco X6 Pro
 Xiaomi,POCO X6 Pro 5G,Poco X6 Pro
 Xiaomi,2412DPC0AG,Poco X7 Pro
@@ -34784,6 +34813,7 @@ Xiaomi,M2012K11C,Xiaomi Redmi K40 Pro
 Xiaomi,22041211AC,Xiaomi Redmi K50
 Xiaomi,22081212C,Xiaomi Redmi K50 Ultra
 Xiaomi,22041216I,Xiaomi Redmi K50i
+XIAOMI,22041216I (XAGAIN),Xiaomi Redmi K50i
 Xiaomi,23013RK75C,Xiaomi Redmi K60 5G
 Xiaomi,Redmi K60,Xiaomi Redmi K60 5G
 Xiaomi,22127RK46C,Xiaomi Redmi K60 Pro
@@ -34953,6 +34983,7 @@ Xiaomi,M2103K19Y,Xiaomi Redmi Note 10T 5G
 Xiaomi,2201117TG,Xiaomi Redmi Note 11
 ,2201117TG,Xiaomi Redmi Note 11
 Xiaomi,2201117TG (spes),Xiaomi Redmi Note 11
+2201117TG (spes),Xiaomi,Xiaomi Redmi Note 11
 Xiaomi,2201117TG - 1998 Cam,Xiaomi Redmi Note 11
 Xiaomi,2201117TI,Xiaomi Redmi Note 11
 ,2201117TI,Xiaomi Redmi Note 11
@@ -34962,6 +34993,7 @@ Xiaomi,2201117TI (spes),Xiaomi Redmi Note 11
 Xiaomi,2201117TL,Xiaomi Redmi Note 11
 ,2201117TL,Xiaomi Redmi Note 11
 Xiaomi,2201117TL (spes),Xiaomi Redmi Note 11
+XIAOMI,2201117TL (SPES),Xiaomi Redmi Note 11
 Xiaomi,2201117TY,Xiaomi Redmi Note 11
 ,2201117TY,Xiaomi Redmi Note 11
 google,2201117TY,Xiaomi Redmi Note 11
@@ -35050,6 +35082,7 @@ Xiaomi,Redmi Note 14,Xiaomi Redmi Note 14
 Xiaomi,Redmi Note 14 5G,Xiaomi Redmi Note 14 5G
 Xiaomi,Redmi Note 14 Pro,Xiaomi Redmi Note 14 Pro
 Xiaomi,Redmi Note 14 Pro 5G,Xiaomi Redmi Note 14 Pro 5G
+Xiaomi,24090RA29G,Xiaomi Redmi Note 14 Pro 5G
 Xiaomi,Redmi Note 14 Pro+,Xiaomi Redmi Note 14 Pro+
 Xiaomi,Redmi Note 14 Pro+ 5G,Xiaomi Redmi Note 14 Pro+
 Xiaomi,24115RA8EG,Xiaomi Redmi Note 14 Pro+
@@ -35653,6 +35686,7 @@ nubia,NX629J,ZTE Nubia Red Magic 3
 nubia,REDMAGIC 6Pro,ZTE Nubia Red Magic 6 Pro
 nubia,REDMAGIC 6S Pro,ZTE Nubia Red Magic 6S Pro
 nubia,REDMAGIC 7,ZTE Nubia Red Magic 7
+nubia,REDMAGIC 7Pro,Nubia Red Magic 7 Pro
 nubia,REDMAGIC 8Pro,ZTE Nubia Red Magic 8 Pro
 nubia,REDMAGIC 8SPro,Nubia RedMagic 8S Pro
 nubia,REDMAGIC 9Pro,ZTE Nubia Red Magic 9 Pro
